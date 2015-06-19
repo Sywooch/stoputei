@@ -17,6 +17,6 @@ class Country extends ActiveRecord
         } else {
             return false;
         }
-        //test
+        //test-master
     }
 }
