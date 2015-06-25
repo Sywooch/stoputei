@@ -6,6 +6,7 @@ $config = [
     'id' => 'amazing-tour',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language'=> 'en',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -42,11 +43,41 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
-                // ...
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+            ],
+        ],
+        //precompile sass
+        'assetManager' => [
+            'converter' => [
+                'class' => 'yii\web\AssetConverter',
+                'commands' => [
+                    'less' => ['css', 'lessc {from} {to} --no-color --sourcemap'],
+                    'scss' => ['css', 'sass {from} {to}'],
+                    'sass' => ['css', 'sass {from} {to} --sourcemap']
+                ],
+            ],
+        ],
+        //translations
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    //'basePath' => '@app/messages',
+                    //'sourceLanguage' => 'en-US',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                        'app/error' => 'error.php',
+                    ],
+                ],
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
     ],
+
+    'on beforeAction' => function ($event) {
+        $afterRequest = new \app\components\AfterRequest();
+        $afterRequest->setUserLocale();
+    },
     'params' => $params,
 ];
 

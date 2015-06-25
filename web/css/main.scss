@@ -1,0 +1,38 @@
+//color variable
+$light-grey-border: #EAE9E9;
+$header-color: #452070;
+$header-color-hover: #7b34ba;
+$header-li-active: rgba(123, 52, 186, 0.15);
+
+#header-navbar{
+  background: #ffffff;
+  border-bottom: 1px solid $light-grey-border;
+
+  .navbar-header {
+    .navbar-brand {
+      color: $header-color;
+      &:hover{color: $header-color-hover;}
+    }
+  }
+
+  .custom-header{
+    margin-right: 0px;
+    li{
+      a{
+        &:hover{
+          color: $header-color-hover;
+        }
+      }
+      &.active{
+        border-bottom: 3px solid $header-color;
+        a {
+          background: $header-li-active;
+          color: $header-color;
+          &:hover{
+            color: $header-color-hover;
+          }
+        }
+      }
+    }
+  }
+}

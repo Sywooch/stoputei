@@ -19,6 +19,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/main.scss'
     ];
     public $js = [
         'https://maps.googleapis.com/maps/api/js',
