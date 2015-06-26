@@ -51,9 +51,7 @@ $config = [
             'converter' => [
                 'class' => 'yii\web\AssetConverter',
                 'commands' => [
-                    'less' => ['css', 'lessc {from} {to} --no-color --source-map'],
                     'scss' => ['css', 'sass {from} {to} --sourcemap'],
-                    'sass' => ['css', 'sass {from} {to} --sourcemap'],
                 ],
             ],
         ],
