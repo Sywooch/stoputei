@@ -84,7 +84,7 @@ class HotelImagesController extends Controller
                                 small_image($url, $v->Id, $key);
                                 $count++;
                                 echo $v->Id. "\n";
-                                if($count == $stop)return;
+                                //if($count == $stop)return;
                             }
                         }
                     }
@@ -99,7 +99,7 @@ class HotelImagesController extends Controller
                             echo $one->Id. "\n";
                         }
                         $count++;
-                        if($count == $stop)return;
+                        //if($count == $stop)return;
                     }
                 }
             }
