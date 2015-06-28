@@ -1,0 +1,56 @@
+//color variable
+$site-color: #0000cd;
+$site-color-hover: #000097;
+$site-color-light: rgba(0, 0, 255, 0.65);
+$grey: #b1b1b1;
+$grey-light: #d0d0d0;
+$light-grey-border: #EAE9E9;
+$header-li-active: rgba(123, 52, 186, 0.15);
+
+#header-navbar{
+  background: #ffffff;
+  border-bottom: 1px solid $light-grey-border;
+
+  .navbar-header {
+    .navbar-brand {
+      color: $site-color;
+      &:hover{color: $site-color-hover;}
+    }
+    button{
+      &:active, &:focus{background: transparent;}
+      border: none;
+      &:hover{
+        background: transparent;
+        .icon-bar{
+          background: $site-color;
+        }
+      }
+      .icon-bar{
+        width: 24px;
+        height: 4px;
+        background: $grey;
+      }
+    }
+  }
+
+  .custom-header{
+    margin-right: 0px;
+    li{
+      a{
+        &:hover{
+          color: $site-color-hover;
+        }
+      }
+      &.active{
+        border-bottom: 3px solid $site-color;
+        a {
+          background: #ffffff;
+          color: $site-color;
+          &:hover{
+            color: $site-color-hover;
+          }
+        }
+      }
+    }
+  }
+}
