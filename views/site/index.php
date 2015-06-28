@@ -3,5 +3,5 @@
 $this->title = 'StoPutei';
 ?>
 <div class="site-index">
-
+    <?=phpinfo();?>
 </div>

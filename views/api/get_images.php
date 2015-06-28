@@ -78,7 +78,7 @@ foreach($countries as $c){
         if(is_array($one)) {
             foreach ($one as $k => $v) {
                 $images = SoapClientApi::getHotelImages($v->Id);
-                if (!is_null($images)) {
+                if ((!is_null($images)) and (is_array($images))) {
                     foreach ($images as $key => $img) {
                         $url = $img;
 
@@ -93,7 +93,7 @@ foreach($countries as $c){
             }
         }else{
             $images = SoapClientApi::getHotelImages($one->Id);
-            if(!is_null($images)) {
+            if ((!is_null($images)) and (is_array($images))) {
                 foreach ($images as $key => $img) {
                     $url = $img;
 
