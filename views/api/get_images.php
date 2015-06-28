@@ -3,6 +3,7 @@ use app\models\SoapClientApi;
 use yii\helpers\BaseFileHelper;
 
 function crop_image($url, $id, $key){
+    $path = 'uploads/hotel/images/big/';
     $size = getimagesize($url);
     $img_width = $size[0];
     $img_height = $size[1];
@@ -12,8 +13,8 @@ function crop_image($url, $id, $key){
     $destination_image = imagecreatetruecolor($img_width, $new_image_height);
     imagecopyresized($destination_image, imagecreatefromjpeg($url), 0, 0, 0, 0, $img_width, $new_image_height, $img_width, $new_image_height);
 
-    BaseFileHelper::createDirectory('uploads/hotel_images/big/');
-    imagejpeg($destination_image, 'uploads/hotel_images/big/' . $key . '.jpg', 100);
+    BaseFileHelper::createDirectory($path.$id);
+    imagejpeg($destination_image, $path .$id. '/' . $key . '.jpg', 100);
     imagedestroy($destination_image);
     imagedestroy($src_image);
 }
@@ -47,6 +48,7 @@ function crop_image($url, $id, $key){
 }*/
 
 function small_image($url, $id, $key){
+    $path = 'uploads/hotel/images/small/';
     $size = getimagesize($url);
     $img_width = $size[0];
     $img_height = $size[1];
@@ -54,22 +56,22 @@ function small_image($url, $id, $key){
         $ratio = $img_width/$img_height;
         $new_img = 'http://hotels.sletat.ru/i/p/'.$id.'_'.$key.'_'.round(200/$ratio).'_200_0.jpg';
         $img_src = imagecreatefromjpeg($new_img);
-        BaseFileHelper::createDirectory('uploads/hotel_images/small/');
-        imagejpeg($img_src, 'uploads/hotel_images/small/'.$key.'.jpg', 100);
+        BaseFileHelper::createDirectory($path.$id);
+        imagejpeg($img_src, $path .$id. '/' .$key.'.jpg', 100);
     }else{
         $ratio = $img_height/$img_width;
         $new_img = 'http://hotels.sletat.ru/i/p/'.$id.'_'.$key.'_200_'.round(200/$ratio).'_0.jpg';
         $img_src = imagecreatefromjpeg($new_img);
-        BaseFileHelper::createDirectory('uploads/hotel_images/small/');
-        imagejpeg($img_src, 'uploads/hotel_images/small/'.$key.'.jpg', 100);
+        BaseFileHelper::createDirectory($path.$id);
+        imagejpeg($img_src, $path .$id. '/' .$key.'.jpg', 100);
     }
 }
 
 //SAVE IMAGES FROM HOTEL
 $count = 0;
-$stop = 15;
+//$stop = 10;
 foreach($countries as $c){
-    ini_set('max_execution_time', 7200);
+    ini_set('max_execution_time', 360000);
     ini_set('memory_limit', '-1');
     $hotels = SoapClientApi::getHotels($c->Id);
     foreach($hotels as $key => $one){
@@ -83,11 +85,9 @@ foreach($countries as $c){
                         crop_image($url, $v->Id, $key);
                         //scale_image($url, $v->Id, $key);
                         small_image($url, $v->Id, $key);
-                        //BaseFileHelper::createDirectory('uploads/hotel_images/'.$v->Id);
-                        //file_put_contents($new_img, file_get_contents($small_img));
                         echo '<br><img class="img-with-sign" src="'.$img.'">';
                         $count++;
-                        if ($count == $stop) return;
+                        //if ($count == $stop) return;
                     }
                 }
             }
@@ -100,12 +100,10 @@ foreach($countries as $c){
                     crop_image($url, $one->Id, $key);
                     //scale_image($url, $one->Id, $key);
                     small_image($url, $one->Id, $key);
-                    //BaseFileHelper::createDirectory('uploads/hotel_images/'.$v->Id);
-                    //file_put_contents($new_img, file_get_contents($small_img));
                     echo '<br><img class="img-with-sign" src="'.$img.'">';
                 }
                 $count++;
-                if($count == $stop)return;
+                //if($count == $stop)return;
             }
         }
     }

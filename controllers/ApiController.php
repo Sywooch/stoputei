@@ -39,7 +39,7 @@ class ApiController extends Controller
         ]);
     }
 
-    public function actionImageList($id){
+    public function actionImageList(){
         //$big_images =  FileHelper::findFiles('uploads/hotel_images/big/');
         //$scale_images =  FileHelper::findFiles('uploads/hotel_images/scale/');
         //$small_images =  FileHelper::findFiles('uploads/hotel_images/small/');
