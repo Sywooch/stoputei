@@ -27,6 +27,7 @@ class HotelImagesController extends Controller
      */
     public function actionIndex()
     {
+
         function crop_image($url, $id, $key){
             $path = 'web/uploads/hotel/images/big/';
             $size = getimagesize($url);
@@ -67,6 +68,7 @@ class HotelImagesController extends Controller
         $countries = SoapClientApi::getCountries();
         //SAVE IMAGES FROM HOTEL
         $count = 0;
+        $h_count = 0;
         //$stop = 10;
         foreach($countries as $c){
             ini_set('max_execution_time', 36000000);
@@ -84,9 +86,9 @@ class HotelImagesController extends Controller
                                 echo $v->Id. "\n";
                                 //if($count == $stop)return;
                             }
-                            echo 'hotel N : '.$key. "\n";
-                            $count++;
                         }
+                        echo 'hotel N : '.$key. "\n";
+                        $count++;
                     }
                 }else{
                     $images = SoapClientApi::getHotelImages($one->Id);
@@ -97,11 +99,13 @@ class HotelImagesController extends Controller
                             small_image($url, $one->Id, $key);
                             echo $one->Id. "\n";
                         }
-                        echo 'hotel N : '.$key. "\n";
-                        $count++;
                         //if($count == $stop)return;
                     }
+                    echo 'hotel N : '.$key. "\n";
+                    $count++;
                 }
+                $h_count++;
+                echo 'HOTEL COUNT : '.$h_count. "\n";
             }
         }
     }
