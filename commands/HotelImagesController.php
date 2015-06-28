@@ -25,10 +25,10 @@ class HotelImagesController extends Controller
      * This command echoes what you have entered as the message.
      * @param string $message the message to be echoed.
      */
-    public function actionIndex($message = 'hello world')
+    public function actionIndex()
     {
         function crop_image($url, $id, $key){
-            $path = 'uploads11/hotel/images/big/';
+            $path = 'web/uploads/hotel/images/big/';
             $size = getimagesize($url);
             $img_width = $size[0];
             $img_height = $size[1];
@@ -45,7 +45,7 @@ class HotelImagesController extends Controller
         }
 
         function small_image($url, $id, $key){
-            $path = 'uploads11/hotel/images/small/';
+            $path = 'web/uploads/hotel/images/small/';
             $size = getimagesize($url);
             $img_width = $size[0];
             $img_height = $size[1];
@@ -69,7 +69,7 @@ class HotelImagesController extends Controller
         $count = 0;
         //$stop = 10;
         foreach($countries as $c){
-            ini_set('max_execution_time', 360000);
+            ini_set('max_execution_time', 36000000);
             ini_set('memory_limit', '-1');
             $hotels = SoapClientApi::getHotels($c->Id);
             foreach($hotels as $key => $one){
@@ -79,13 +79,13 @@ class HotelImagesController extends Controller
                         if ((!is_null($images)) and (is_array($images))) {
                             foreach ($images as $key => $img) {
                                 $url = $img;
-
                                 crop_image($url, $v->Id, $key);
                                 small_image($url, $v->Id, $key);
-                                $count++;
                                 echo $v->Id. "\n";
                                 //if($count == $stop)return;
                             }
+                            echo 'hotel N : '.$key. "\n";
+                            $count++;
                         }
                     }
                 }else{
@@ -93,11 +93,11 @@ class HotelImagesController extends Controller
                     if ((!is_null($images)) and (is_array($images))) {
                         foreach ($images as $key => $img) {
                             $url = $img;
-
                             crop_image($url, $one->Id, $key);
                             small_image($url, $one->Id, $key);
                             echo $one->Id. "\n";
                         }
+                        echo 'hotel N : '.$key. "\n";
                         $count++;
                         //if($count == $stop)return;
                     }
