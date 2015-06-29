@@ -28,6 +28,8 @@ class HotelImagesController extends Controller
     public function actionIndex()
     {
 
+
+
         function crop_image($url, $id, $key){
             $path = 'web/uploads/hotel/images/big/';
             $size = getimagesize($url);
@@ -64,8 +66,25 @@ class HotelImagesController extends Controller
                 imagejpeg($img_src, $path .$id. '/' .$key.'.jpg', 100);
             }
         }
+        $images = SoapClientApi::getHotelImages(23950);
+        if ((!is_null($images)) and (is_array($images))) {
+            foreach ($images as $key => $img) {
+                $url = $img;
+                crop_image($url, 23950, $key);
+                small_image($url, 23950, $key);
+                //echo $v->Id. "\n";
+                //if($count == $stop)return;
+            }
+        }
 
         $countries = SoapClientApi::getCountries();
+        $c_arr = [];
+        foreach($countries as $one){
+            if($one->Id > 18) {
+                $c_arr[] = $one;
+            }
+        }
+        echo count($c_arr);return;
         //SAVE IMAGES FROM HOTEL
         $count = 0;
         $h_count = 0;
