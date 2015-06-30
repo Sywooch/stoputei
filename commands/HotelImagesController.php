@@ -67,6 +67,9 @@ class HotelImagesController extends Controller
         }
 
 
+        ini_set('max_execution_time', 36000000);
+        ini_set('memory_limit', '-1');
+
         $hotels = Hotel::find()->limit($limit)->offset($offset)->all();
         foreach($hotels as $k => $one){
             echo $one->hotel_id."\n";
