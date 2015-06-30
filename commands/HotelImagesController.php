@@ -26,17 +26,15 @@ class HotelImagesController extends Controller
      * This command echoes what you have entered as the message.
      * @param string $message the message to be echoed.
      */
-    public function actionIndex()
+    public function actionIndex($limit, $offset)
     {
-
-
 
         function crop_image($url, $id, $key){
             $path = 'web/uploads/hotel/images/big/';
                 $size = getimagesize($url);
                 $img_width = $size[0];
                 $img_height = $size[1];
-                $crop_H = $img_height * 0.174;
+                $crop_H = $img_height * 0.18;
                 $new_image_height = $img_height - $crop_H;
                 $src_image = imagecreatefromjpeg($url);
                 $destination_image = imagecreatetruecolor($img_width, $new_image_height);
@@ -69,7 +67,7 @@ class HotelImagesController extends Controller
         }
 
 
-        $hotels = Hotel::find()->limit(20)->offset(12807)->all();
+        $hotels = Hotel::find()->limit($limit)->offset($offset)->all();
         foreach($hotels as $k => $one){
             echo $one->hotel_id."\n";
             $images = SoapClientApi::getHotelImages($one->hotel_id);
