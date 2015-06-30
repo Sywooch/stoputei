@@ -10,6 +10,7 @@ use yii\helpers\Url;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\SoapClientApi;
+use app\models\Hotel;
 
 class ApiController extends Controller
 {
@@ -50,9 +51,9 @@ class ApiController extends Controller
     }
 
     public function actionHotels(){
-        $countries = SoapClientApi::getCountries();
+        $hotels = Hotel::find()->where(['country_id' => 149])->limit(30)->all();
         return $this->render('get_hotels', [
-            'countries' => $countries
+            'hotels' => $hotels
         ]);
     }
 }
