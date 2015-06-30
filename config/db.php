@@ -7,12 +7,20 @@ if($_SERVER['HTTP_HOST'] == 'amazing-tour') {
         'password' => 'qwerty',
         'charset' => 'utf8',
     ];
-}else{
+}elseif($_SERVER['HTTP_HOST'] == 'dev.stoputei.com'){
     return [
         'class' => 'yii\db\Connection',
-        'dsn' => 'mysql:host=localhost;dbname=u943820889_tour',
-        'username' => 'u943820889_user',
-        'password' => 'qwerty',
+        'dsn' => 'mysql:host=localhost;dbname=stoputei_dev',
+        'username' => 'us_stoputei_dev',
+        'password' => 'QazWsxEdc1234',
+        'charset' => 'utf8',
+    ];
+}elseif($_SERVER['HTTP_HOST'] == 'stoputei.com'){
+    return [
+        'class' => 'yii\db\Connection',
+        'dsn' => 'mysql:host=localhost;dbname=stoputei',
+        'username' => 'us_stoputei',
+        'password' => 'PQazWsxEdc1234',
         'charset' => 'utf8',
     ];
 }

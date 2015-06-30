@@ -2,9 +2,12 @@
 use app\models\SoapClientApi;
 use yii\helpers\BaseFileHelper;
 use app\models\HotelComment;
-
+use app\models\Hotel;
 ?>
 <div class="image-div">
+
+    <?=$_SERVER['HTTP_HOST'];?>
+
     <?php
     /*
     $i = 0;

@@ -10,6 +10,7 @@ namespace app\commands;
 use yii\console\Controller;
 use app\models\SoapClientApi;
 use yii\helpers\BaseFileHelper;
+use app\models\Hotel;
 
 /**
  * This command echoes the first argument that you have entered.
@@ -67,6 +68,12 @@ class HotelImagesController extends Controller
                 }
         }
 
+        $hotels = Hotel::find()->limit(20)->offset(12807)->all();
+        foreach($hotels as $one){
+            echo $one->hotel_id."\n";;
+        }
+
+        /*
         $countries = SoapClientApi::getCountries();
         $c_arr = [];
         foreach($countries as $one){
@@ -115,6 +122,6 @@ class HotelImagesController extends Controller
                 $h_count++;
                 echo 'HOTEL COUNT : '.$h_count. "\n";
             }
-        }
+        }*/
     }
 }
