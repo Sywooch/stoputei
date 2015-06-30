@@ -68,9 +68,20 @@ class HotelImagesController extends Controller
                 }
         }
 
+
         $hotels = Hotel::find()->limit(20)->offset(12807)->all();
-        foreach($hotels as $one){
-            echo $one->hotel_id."\n";;
+        foreach($hotels as $k => $one){
+            echo $one->hotel_id."\n";
+            $images = SoapClientApi::getHotelImages($one->hotel_id);
+            if ((!is_null($images)) and (is_array($images))) {
+                foreach ($images as $key => $img) {
+                    $url = $img;
+                    crop_image($url, $one->hotel_id, $key);
+                    small_image($url, $one->hotel_id, $key);
+                    echo $one->hotel_id. "\n";
+                }
+            }
+            echo 'hotel N : '.$k. "\n";
         }
 
         /*
