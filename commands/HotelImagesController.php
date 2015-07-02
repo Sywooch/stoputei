@@ -7,6 +7,7 @@
 
 namespace app\commands;
 
+use yii\base\Exception;
 use yii\console\Controller;
 use app\models\SoapClientApi;
 use yii\helpers\BaseFileHelper;
@@ -73,16 +74,21 @@ class HotelImagesController extends Controller
         $hotels = Hotel::find()->limit($limit)->offset($offset)->all();
         foreach($hotels as $k => $one){
             echo $one->hotel_id."\n";
-            $images = SoapClientApi::getHotelImages($one->hotel_id);
-            if ((!is_null($images)) and (is_array($images))) {
-                foreach ($images as $key => $img) {
-                    $url = $img;
-                    crop_image($url, $one->hotel_id, $key);
-                    small_image($url, $one->hotel_id, $key);
-                    echo $one->hotel_id. "\n";
+            try {
+                $images = SoapClientApi::getHotelImages($one->hotel_id);
+                if ((!is_null($images)) and (is_array($images))) {
+                    foreach ($images as $key => $img) {
+                        $url = $img;
+                        crop_image($url, $one->hotel_id, $key);
+                        small_image($url, $one->hotel_id, $key);
+                        echo $one->hotel_id . "\n";
+                    }
                 }
+                echo 'hotel N : ' . $k . "\n";
+            }catch (Exception $e){
+                $e->getMessage();
+                continue;
             }
-            echo 'hotel N : '.$k. "\n";
         }
 
         /*
