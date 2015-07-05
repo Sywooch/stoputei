@@ -68,10 +68,13 @@ class SoapClientApi
     }
 
     public static function getHotelInformation($hotelId){
-        $hotel_info = self::getInstance()->GetHotelInformation(
+        if($hotel_info = self::getInstance()->GetHotelInformation(
             ["hotelId" => $hotelId]
-        );
-        return $hotel_info->GetHotelInformationResult;
+        )){
+            return $hotel_info->GetHotelInformationResult;
+        }else{
+            throw new Exception("Current hotel with ID $hotelId does not exist.");
+        }
     }
 
     public static function getHotelFacilities($hotelId){
