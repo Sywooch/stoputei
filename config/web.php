@@ -3,7 +3,7 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'amazing-tour',
+    'id' => 'stoputei',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'language'=> 'en',
@@ -27,7 +27,7 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            //'useFileTransport' => false,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -44,6 +44,7 @@ $config = [
             'enableStrictParsing' => false,
             'rules' => [
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
             ],
         ],
         //precompile sass
@@ -52,7 +53,7 @@ $config = [
                 'class' => 'yii\web\AssetConverter',
                 'commands' => [
                     'scss' => ['css', 'sass {from} {to} '],
-                    'sass' => ['css', 'sass {from} {to} --sourcemap'],
+                    'sass' => ['css', 'sass {from} {to} '],
                 ],
             ],
         ],

@@ -1,0 +1,37 @@
+#user-tour-response{
+  .user-tour-wrapper{
+    border-bottom: 1px solid $grey-light;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    .header-info{
+      .count{
+        font-size: 0.9em;
+        color: $grey-light-text;
+      }
+      .created{
+        margin-left: 10px;
+        font-weight: 300;
+      }
+    }
+
+    .body, .people{
+      .describe{
+        font-weight: 300;
+      }
+      .data{
+        font-weight: 600;
+        font-size: 0.9em;
+      }
+    }
+
+    .buttons {
+      padding-left: 0px;
+      .btn{
+        border-radius: 0px;
+        padding: 4px 10px;
+        margin-bottom: 2px;
+      }
+    }
+  }
+}

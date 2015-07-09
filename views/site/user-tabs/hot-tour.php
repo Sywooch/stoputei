@@ -1,0 +1,4 @@
+<?php
+
+?>
+Hot tours

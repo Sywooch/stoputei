@@ -6,16 +6,11 @@ use yii\db\ActiveRecord;
 class City extends ActiveRecord
 {
 
-    public function beforeSave($insert)
-    {
-        if (parent::beforeSave($insert)) {
-            if(self::find()->where(['city_id' => $this->city_id])->one()){
-                return false;
-            }else {
-                return true;
-            }
-        } else {
-            return false;
-        }
+    public function getCountry(){
+        return $this->hasOne(Country::className(), ['city_id' => 'country_id']);
+    }
+
+    public function getUserTours(){
+        return $this->hasMany(UserTour::className(), ['resort_id' => 'city_id']);
     }
 }

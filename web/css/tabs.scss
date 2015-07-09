@@ -1,0 +1,250 @@
+#control-tabs{
+  .nav-tabs{
+    box-shadow: $nav-light-grey-border;
+    li{
+      width: 15%;
+      a{
+        text-align: center;
+        font-size: 1.2em;
+        color: $grey-light-text;
+        border-radius: 0;
+      }
+      &.active{
+        a{
+          color: $grey-dark;
+          font-weight: 600;
+          background: $grey-light;
+        }
+      }
+      .tab-badge{
+        position: absolute;
+        top: -6px;
+        right: -8px;
+        background: $red;
+      }
+    }
+    &.manager{
+      li{
+        width: 20%;
+      }
+    }
+  }
+  .tab-content{
+    overflow: hidden;
+  }
+  .filter-tour {
+    .back-to-main{
+      visibility: hidden;
+      width: 30px;
+      height: 70px;
+      position: absolute;
+      top: 75px;
+      background: $site-color-light;
+      margin-left: -15px;
+      z-index: 100;
+      vertical-align: middle;
+      line-height: 84px;
+      color: white;
+      box-shadow: 2px 0px 2px 0px $blue-shadow-color;
+      cursor: pointer;
+      &:hover{
+        background: $site-color-hover;
+      }
+      &.open{
+        visibility: visible;
+      }
+      .glyphicon{
+        font-size: 2em;
+      }
+    }
+    .left-data {
+      padding: 0px;
+      margin-left: -20px;
+      transition: all $middle-speed ease-in;
+      &.implicit {
+        margin-left: -2000px;
+        visibility: hidden;
+      }
+      .filter, .create-tour{
+        max-height: $max-hotel-height;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+        &::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+          border-radius: 0px;
+        }
+        &::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+          background: $grey-light;
+        }
+        transition: all $middle-speed ease-in;
+
+        &.inactive{
+          &:after{
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            position: absolute;
+            background: $opacity-middle;
+            z-index: 100;
+          }
+          .wrapper-words{
+            position: absolute;
+            z-index: 999;
+            width: 80%;
+            margin-left: 26px;
+            margin-top: 120px;
+            font-size: 1.2em;
+            text-align: center;
+            font-weight: 600;
+          }
+        }
+      }
+      form {
+        max-width: 240px;
+        .form-group {
+          margin-bottom: 0;
+          input[type="text"], input[type="email"], input[type="password"], select, [name="get-tour-button"], [type="number"], [name="create-tour-button"], #gettourform-hotel_id {
+            border-radius: 0px;
+          }
+        }
+        .field-gettourform-hotel{
+          .remove-hotel-name{
+            position: absolute;
+            right: 20px;
+            top: 9px;
+            color: $grey-text;
+            &:hover{
+              color: $red;
+            }
+          }
+        }
+        #gettourform-hotel_id{
+          display: none;
+          overflow-y: auto;
+          max-height: 150px;
+          height: 100%;
+          z-index: 100;
+          position: relative;
+          top: -18px;
+          option{
+            padding: 7px 0px 7px 12px;
+            margin: 0px;
+            margin-left: -12px;
+            margin-top: -6px;
+            width: 120%;
+            &:hover{
+              background: $grey-light;
+            }
+          }
+        }
+        .label-get-tour {
+          text-align: left;
+        }
+        #gettourform-stars, #createtourform-stars {
+          .star {
+            position: absolute;
+            margin-top: -4px;
+            font-size: 1.4em;
+            .glyphicon-star {
+              color: $gold;
+            }
+            .glyphicon-star-empty {
+              color: $grey-text;
+            }
+          }
+        }
+        #gettourform-beach_line, #gettourform-hotel_type, #gettourform-room_type, #gettourform-nutrition, #createtourform-nutrition {
+          .checkbox-one {
+            height: 25px;
+            line-height: 25px;
+            span {
+              cursor: pointer;
+              position: absolute;
+              margin-left: 20px;
+              font-size: 1em;
+              margin-top: -2px;
+              color: $grey-text;
+            }
+          }
+        }
+        #gettourform-room_type, #gettourform-nutrition, #createtourform-nutrition {
+          .checkbox-one {
+            margin-left: -15px;
+          }
+        }
+        #gettourform-night_min, #gettourform-night_max {
+          max-width: 70px;
+        }
+        .field-gettourform-flight_included {
+          .flight-label {
+            position: relative;
+            float: right;
+            top: -18px;
+          }
+        }
+        .date {
+          .input-group-addon, #gettourform-from_date {
+            border-radius: 0px;
+          }
+        }
+        .add-info {
+          resize: vertical;
+          width: 100%;
+        }
+        #create-tour{
+          &.inactive{
+            pointer-events: none;
+          }
+        }
+      }
+      .hotels-container, .user-tour-container {
+        max-height: $max-hotel-height;
+        overflow-y: auto;
+        transition: all $middle-speed ease-in;
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+        &::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+          border-radius: 0px;
+        }
+        &::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+          background: $grey-light;
+        }
+        .loader-bg{
+          position: fixed;
+          z-index: 10;
+          background: $milk;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          min-height: $max-hotel-height;
+          img{
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            left: 50%;
+            top: 50%;
+            margin-left: -65px;
+            margin-top: -65px;
+          }
+        }
+      }
+    }
+    .right-data{
+      transition: all $middle-speed ease-in;
+      text-align: center;
+    }
+  }
+}

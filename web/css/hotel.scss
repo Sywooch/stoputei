@@ -1,0 +1,66 @@
+.hotel-list-wrap{
+  padding: 5px 0px;
+  border-bottom: 1px solid $grey-light;
+  .hotel-title{
+    .name{
+      display: block;
+      font-size: 1.2em;
+      font-weight: 300;
+      color: $grey-dark;
+    }
+    .star{
+      display: block;
+      color: $gold;
+      .glyphicon-star-empty{
+        color: $grey-text;
+      }
+    }
+  }
+  .hotel-body{
+    .images{
+      overflow: hidden;
+      .hotel-img{
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+        width: 80px;
+        height: 65px;
+      }
+    }
+    .information {
+      padding: 0;
+      .info {
+        padding: 0;
+        .rate, .country, .city {
+          display: block;
+        }
+        .rate {
+          .status{
+            font-weight: 300;
+            font-size: 0.8em;
+          }
+          .number {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-left: 10px;
+          }
+        }
+      }
+      .buttons {
+        padding-left: 35px;
+        .btn{
+          border-radius: 0px;
+          padding: 4px 10px;
+          margin-bottom: 2px;
+          &.more-hotel-info{
+            width: 100%;
+          }
+          &.add-to-filter{
+            border: 1px solid transparent;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

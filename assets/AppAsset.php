@@ -25,6 +25,7 @@ class AppAsset extends AssetBundle
         'https://maps.googleapis.com/maps/api/js',
         'js/main.js'
     ];
+    public $images = [];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset'

@@ -1,0 +1,117 @@
+.site-login, .site-registration{
+  position: relative;
+  margin: auto;
+  width: 40%;
+  min-width: 260px;
+  border: $light-grey-border;
+  padding: 25px;
+  box-shadow: $grey-shadow;
+  background: $opacity-big;
+
+  h1{
+    color: $grey-text;
+    text-shadow: $dark-text-shadow;
+  }
+  p{
+    color: $grey-light-text;
+    padding-right: 8.33333333%;
+    &.error-field{
+      color: $red;
+      font-size: 1.1em;
+    }
+    &.success-field{
+      color: $green;
+      font-size: 1.1em;
+      font-weight: 600;
+    }
+  }
+  .form-group{
+    &.required{
+      label:after{
+        content: ' *';
+        color: $red;
+      }
+    }
+  }
+  .label-login{
+    text-align: left;
+  }
+  input[type="text"], input[type="email"], input[type="password"], select{
+    border-radius: 0px;
+    background: rgba(255, 255, 255, 0.60);
+  }
+  .checkbox{
+    margin-left: 17px;
+    label, p{
+      margin-left: 8.33333333%;
+    }
+  }
+  #registrationform-role{
+    label{
+      height: 40px;
+      margin-bottom: -10px;
+    }
+    .radio-wrapper{
+      width: 92%;
+      height: 40px;
+      position: absolute;
+      background: $yellow-dirty;
+      cursor: pointer;
+      text-align: center;
+      line-height: 36px;
+      z-index: 10;
+      font-size: 1.2em;
+      color: $grey-text;
+      .icon {
+        position: relative;
+        top: 3px;
+        left: 5px;
+      }
+      &.left{
+        left: 0;
+      }
+      &.right{
+        right: 0;
+      }
+      &:hover{
+        background: $yellow-dirty-hover;
+        color: #ffffff;
+      }
+    }
+  }
+  .field-registrationform-company_name, .field-registrationform-company_city, .field-registrationform-company_phone{
+    label:after {
+      content: ' *';
+      color: $red;
+    }
+  }
+  [name="login-button"]{
+    border-radius: 0px;
+  }
+}
+.bg-wrap{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  img{
+    margin: auto;
+    display: block;
+    width: 100%;
+    min-height: 700px;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+  }
+}
+
+.bg-wrap {
+  &.registration {
+    img {
+      min-height: 1450px;
+    }
+  }
+}
+

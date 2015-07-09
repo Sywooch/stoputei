@@ -4,48 +4,138 @@ $site-color-hover: #000097;
 $site-color-light: rgba(0, 0, 255, 0.65);
 $grey: #b1b1b1;
 $grey-light: #d0d0d0;
-$light-grey-border: #EAE9E9;
-$header-li-active: rgba(123, 52, 186, 0.15);
+$grey-dark: #3c3c3c;
+$grey-text: rgb(147, 146, 146);
+$grey-light-text: rgb(165, 164, 164);
+$red: #a94442;
+$green: #5cb85c;
+$yellow-light: #ffe577;
+$yellow-dirty: #edd98b;
+$yellow-dirty-hover: #bba76b;
+$gold: #ffda0c;
+$milk: rgba(255, 255, 255, 0.3);
 
-#header-navbar{
-  background: #ffffff;
-  border-bottom: 1px solid $light-grey-border;
+//borders
+$grey-border: #bfbebe;
+$light-grey-border: 1px solid #DAD9D9;
+$nav-light-grey-border: 0px 2px 4px -1px #bfbebe;
 
-  .navbar-header {
-    .navbar-brand {
-      color: $site-color;
-      &:hover{color: $site-color-hover;}
-    }
-    button{
-      &:active, &:focus{background: transparent;}
-      border: none;
-      &:hover{
+//shadows
+$grey-shadow: 2px 5px 7px rgba(203, 203, 203, 0.5);
+$dark-text-shadow: 1px 1px rgb(73, 72, 72);
+$blue-shadow-color: rgb(33, 33, 153);
+
+//opacity-colors
+$opacity-small: rgba(255, 255, 255, 0.70);
+$opacity-middle: rgba(255, 255, 255, 0.50);
+$opacity-big: rgba(255, 255, 255, 0.30);
+
+//sizes
+$max-hotel-height: 550px;
+
+//speed
+$slow-speed: 1.5s;
+$middle-speed: 1s;
+$fast-speed: 0.5s;
+
+//import files
+@import "auth";
+@import "tabs";
+@import "hotel";
+@import "popup";
+@import "tour";
+
+
+//fonts
+@import url(http://fonts.googleapis.com/css?family=Exo+2:400,300,700&subset=latin,cyrillic);
+body {
+  font-family: 'Exo 2';
+  #header-navbar {
+    background: #ffffff;
+    border-bottom: $light-grey-border;
+
+    &.to-top{
+      position: relative;
+      top: 0;
+      background: $opacity-big;
+      #header-navbar-collapse li.active a{
         background: transparent;
-        .icon-bar{
-          background: $site-color;
+      }
+      .site-registration, .site-login{
+        top: -60px;
+      }
+      li{
+        a{
+          text-shadow: 1px 1px $grey-dark;
         }
       }
-      .icon-bar{
-        width: 24px;
-        height: 4px;
-        background: $grey;
-      }
     }
-  }
-
-  .custom-header{
-    margin-right: 0px;
-    li{
-      a{
-        &:hover{
+    .navbar-header {
+      .navbar-brand {
+        color: $site-color;
+        &:hover {
           color: $site-color-hover;
         }
       }
-      &.active{
-        border-bottom: 3px solid $site-color;
+      button {
+        &:active, &:focus {
+          background: transparent;
+        }
+        border: none;
+        &:hover {
+          background: transparent;
+          .icon-bar {
+            background: $site-color;
+          }
+        }
+        .icon-bar {
+          width: 24px;
+          height: 4px;
+          background: $grey;
+        }
+      }
+    }
+
+    .custom-header {
+      margin-right: 0px;
+      li {
         a {
-          background: #ffffff;
+          &:hover {
+            color: $site-color-hover;
+          }
+        }
+        &.active {
+          border-bottom: 3px solid $site-color;
+          a {
+            background: #ffffff;
+            color: $site-color;
+            &:hover {
+              color: $site-color-hover;
+            }
+          }
+        }
+        &.dropdown{
+          a{
+            background: transparent;
+            color: $grey;
+            &:hover{
+              color: $site-color-hover;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  .container{
+    &.to-top{
+      margin-top: -60px;
+      .site-login, .site-registration{
+        .switch-link{
+          margin-left: 10px;
           color: $site-color;
+          text-shadow: 1px 1px 1px 1px $site-color;
           &:hover{
             color: $site-color-hover;
           }
