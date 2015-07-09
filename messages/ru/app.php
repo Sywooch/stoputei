@@ -39,7 +39,7 @@ return [
     'You signed up successfully. Please, check out your email for verification your account.' => 'Вы успешно зарегистрировались. Пожалуйста, проверьте вашу электронную почту, чтобы активировать аккаунт.',
     'You have not verify your account.' => 'Ваш аккаунт еще не активирован.',
     'Follow this link to verify your account' => 'Перейдите по ссылке, чтобы активировать аккаунт.',
-    'Now you can log in into your account.' => 'Теперь вы можете войти в свой аккаунт.',
+    'Your account was successfully confirmed.' => 'Ваш аккаунт был успешно подтвержден.',
     'Your account has been not approved by Administration.' => 'Ваш аккаунт еще не был утвержден Администрацией.',
     'Site home page' => 'Домашняя страница',
     'Get a tour' => 'Запрос тура',

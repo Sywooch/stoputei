@@ -158,10 +158,10 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         if (parent::beforeSave($insert)) {
             if ($insert) {
                 $this->updated_at = new Expression('NOW()');
-                $this->generateAuthKey();
             }
             if($this->isNewRecord){
                 $this->created_at = new Expression('NOW()');
+                $this->generateAuthKey();
             }
             return true;
         }

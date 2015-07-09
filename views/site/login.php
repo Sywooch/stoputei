@@ -28,7 +28,7 @@ $verify_success = Yii::$app->request->get('verify_success', null);
     <?php endif;?>
 
     <?php if(!empty($verify_success)):?>
-        <p class="col-xs-offset-1 success-field"><?=Yii::t('app', 'Now you can log in into your account.');?></p>
+        <p class="col-xs-offset-1 success-field"><?=Yii::t('app', 'Your account was successfully confirmed.');?></p>
     <?php endif;?>
 
     <?php $form = ActiveForm::begin([
