@@ -11,7 +11,7 @@ class UserTour extends ActiveRecord
     }
 
     public function getCountry(){
-        return $this->hasOne(Country::className(), ['id' => 'country_id']);
+        return $this->hasOne(Country::className(), ['country_id' => 'country_id']);
     }
 
     public function getCity(){
