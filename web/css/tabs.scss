@@ -21,6 +21,7 @@
         top: -6px;
         right: -8px;
         background: $red;
+        z-index: 100;
       }
     }
     &.manager{
@@ -36,14 +37,14 @@
     .back-to-main{
       visibility: hidden;
       width: 30px;
-      height: 70px;
+      height: 100px;
       position: absolute;
-      top: 75px;
+      top: 100px;
       background: $site-color-light;
-      margin-left: -15px;
+      left: -15px;
       z-index: 100;
       vertical-align: middle;
-      line-height: 84px;
+      line-height: 110px;
       color: white;
       box-shadow: 2px 0px 2px 0px $blue-shadow-color;
       cursor: pointer;

@@ -30,7 +30,7 @@ class RegistrationForm extends Model
         return [
             [['password', 'password_repeat', 'email', 'region_id'], 'required'],
             ['password', 'compare'],
-            ['password', 'string', 'length' => [8, 24]],
+            ['password', 'string', 'length' => [5, 20]],
             ['email', 'trim'],
             ['email', 'unique', 'targetClass' => '\app\models\User',
                 'message' => Yii::t('app','Email has already been taken')],
