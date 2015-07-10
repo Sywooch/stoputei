@@ -77,6 +77,7 @@ return [
     'Amount of children (under 2 years old)' => 'Детей до 2-х лет',
     'Amount of room' => 'Количество номеров',
     'Flight included' => 'Перелет включен',
+    'Flight not included' => 'Перелет не включен',
     'From date' => 'Начало поездки',
     'To date' => 'Окончание поездки',
     'Budget' => 'Бюджет',

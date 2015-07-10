@@ -17,11 +17,6 @@ use app\models\UserTour;
 
 class TourController extends Controller
 {
-
-    public function actionGetTourUser(){
-
-    }
-
     public function actionAjaxResortsDropdown(){
         if(Yii::$app->request->isAjax) {
             $country_id = \Yii::$app->request->getQueryParam('country_id', null);
@@ -168,6 +163,29 @@ class TourController extends Controller
                     echo Json::encode($response);
                     Yii::$app->end();
                 }
+            }
+        }
+    }
+
+    public function actionGetUserTourFullInfo(){
+        if(Yii::$app->request->isAjax) {
+            $user_tour_id = Yii::$app->request->getQueryParam('user_tour_id', null);
+            if(!is_null($user_tour_id)){
+                $userTour = UserTour::findOne($user_tour_id);
+                $response = [
+                    'status' => 'ok',
+                    'html' => $this->renderAjax('partial/user-tour-full-info', ['tour' => $userTour]),
+                ];
+                echo Json::encode($response);
+                Yii::$app->end();
+            }else{
+                $response = [
+                    'status' => 'error',
+                    'html' => '',
+                    'message' => Yii::t('app', "Tour was not found.")
+                ];
+                echo Json::encode($response);
+                Yii::$app->end();
             }
         }
     }

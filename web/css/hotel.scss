@@ -19,12 +19,19 @@
   .hotel-body{
     .images{
       overflow: hidden;
-      .hotel-img{
+      .hotel-img, .empty-img{
         padding: 0;
         margin: 0;
         display: inline-block;
         width: 80px;
         height: 65px;
+      }
+      .empty-img{
+        text-align: center;
+        color: $grey-light;
+        .glyphicon-camera{
+          font-size: 4em;
+        }
       }
     }
     .information {

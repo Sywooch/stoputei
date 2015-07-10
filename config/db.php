@@ -3,8 +3,8 @@
 // password on real for this environment
     return [
         'class' => 'yii\db\Connection',
-        'dsn' => 'mysql:host=localhost;dbname=stoputei',
-        'username' => 'us_stoputei',
-        'password' => 'PQazWsxEdc1234',
+        'dsn' => 'mysql:host=localhost;dbname=amazing-tour',
+        'username' => 'root',
+        'password' => 'qwerty',
         'charset' => 'utf8',
     ];

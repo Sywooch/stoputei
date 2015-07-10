@@ -18,6 +18,14 @@ class UserTour extends ActiveRecord
         return $this->hasOne(City::className(), ['city_id' => 'resort_id']);
     }
 
+    public function getHotel(){
+        return $this->hasOne(Hotel::className(), ['hotel_id' => 'hotel_id']);
+    }
+
+    public function getDepartCity(){
+        return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_id']);
+    }
+
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {

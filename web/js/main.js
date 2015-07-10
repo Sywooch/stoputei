@@ -222,8 +222,22 @@ $(function(){
     }
 
     //open user's tour with full information
-    $('.tour-more-info').on('click', function(){
-
+    $(document).on('click', '.tour-more-info', function(){
+        var url = $('.ajax-user-tour-full-info').attr('href');
+        var user_tour_id = $(this).attr('data-tour-id');
+        $('.hotels-container .loader-bg').removeClass('hide');
+        $.get(url, {'user_tour_id' : user_tour_id}).done(function(response){
+            var data = $.parseJSON(response);
+            $('.hotels-container .loader-bg').addClass('hide');
+            if(data.status == 'ok') {
+                $('.right-data').html(data.html);
+                $('.create-tour').removeClass('inactive');
+                $('#create-tour-response').removeClass('inactive');
+                $('.wrapper-words').hide();
+            }else{
+                $('.right-data').text(data.message);
+            }
+        });
     });
 
 });

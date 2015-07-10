@@ -79,7 +79,12 @@ class SoapClientApi
 
     public static function getHotelFacilities($hotelId){
         $hotel_info = self::getHotelInformation($hotelId);
-        return $hotel_info->HotelFacilities->HotelInfoFacilityGroup;
+        $hotel_facility = $hotel_info->HotelFacilities;
+        $facilities = [];
+        if(property_exists($hotel_facility,'HotelInfoFacilityGroup')){
+            $facilities = $hotel_facility->HotelInfoFacilityGroup;
+        }
+        return $facilities;
     }
 
     public static function getHotelImages($hotelId){

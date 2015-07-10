@@ -15,8 +15,12 @@
           font-weight: 600;
           background: $grey-light;
         }
+        .tab-badge{
+          visibility: visible;
+        }
       }
       .tab-badge{
+        visibility: hidden;
         position: absolute;
         top: -6px;
         right: -8px;
@@ -198,7 +202,7 @@
           resize: vertical;
           width: 100%;
         }
-        #create-tour{
+        #create-tour-response{
           &.inactive{
             pointer-events: none;
           }

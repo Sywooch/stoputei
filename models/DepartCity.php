@@ -9,6 +9,10 @@ class DepartCity extends ActiveRecord
         return 'depart_city';
     }
 
+    public function getUserTours(){
+        return $this->hasMany(UserTour::className(), ['depart_city_id' => 'city_id']);
+    }
+
     public function regionDropdown(){
         $cities = self::find()->all();
         $list = [];

@@ -6,6 +6,14 @@ $photos_show = [];
 $stop_photo = 2;
 if(file_exists($photos_dir) && is_dir($photos_dir)){
     $photos = BaseFileHelper::findFiles($photos_dir);
+}else{
+    $photos = [];
+}
+if(!count($photos)){
+    $empty_photos = [];
+    for($i = 0; $i < 3; ++$i){
+        $empty_photos[] = '<span class="empty-img"><i class="glyphicon glyphicon-camera"></i></span>';
+    }
 }
 foreach($photos as $key => $one){
     $photos_show[] = '/'.$one;
@@ -43,9 +51,15 @@ if($hotel->hotel_rate == 0){
     </div>
     <div class="row hotel-body">
         <div class="col-xs-6 images">
-            <?php foreach($photos_show as $img):?>
-                <img src="<?=$img;?>" class="img-responsive hotel-img">
-            <?php endforeach;?>
+            <?php if(count($photos)):?>
+                <?php foreach($photos_show as $img):?>
+                    <img src="<?=$img;?>" class="img-responsive hotel-img">
+                <?php endforeach;?>
+            <?php else:?>
+                <?php foreach($empty_photos as $img):?>
+                    <?=$img;?>
+                <?php endforeach;?>
+            <?php endif;?>
         </div>
         <div class="col-xs-6 information">
             <div class="col-xs-6 info">

@@ -84,7 +84,7 @@ use yii\web\JsExpression;
 
             <div class="form-group">
                 <div class="col-xs-11 col-xs-offset-1">
-                    <?= Html::submitButton(Yii::t('app','Create a tour'), ['class' => 'btn btn-success col-xs-12 inactive', 'name' => 'create-tour-button', 'id' => 'create-tour']) ?>
+                    <?= Html::submitButton(Yii::t('app','Create a tour'), ['class' => 'btn btn-success col-xs-12 inactive', 'name' => 'create-tour-button', 'id' => 'create-tour-response']) ?>
                 </div>
             </div>
 
@@ -95,6 +95,7 @@ use yii\web\JsExpression;
             <div id="user-tour-response">
                 <?=$userTours;?>
             </div>
+            <?= Html::a('', Url::toRoute(['tour/get-user-tour-full-info']), ['class' => 'ajax-user-tour-full-info']);?>
         </div>
     </div>
     <div class="col-md-3 right-data">
