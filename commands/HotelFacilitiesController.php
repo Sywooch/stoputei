@@ -7,7 +7,6 @@
 
 namespace app\commands;
 
-use yii\base\Exception;
 use yii\console\Controller;
 use app\models\SoapClientApi;
 use app\models\Hotel;
@@ -66,11 +65,7 @@ class HotelFacilitiesController extends Controller
         $hotels = Hotel::find()->limit($limit)->offset($offset)->all();
         foreach($hotels as $k => $hotel){
             echo "-------- $hotel->hotel_id --------- HOTEL COUNT : $hotel->id ---------- \n";
-            try{
-                $hotelFacilities = SoapClientApi::getHotelFacilities($hotel->hotel_id);
-            }catch (Exception $e){
-                echo "Hotel with this ID not found!!! \n";
-            }
+            $hotelFacilities = SoapClientApi::getHotelFacilities($hotel->hotel_id);
             if(!empty($hotelFacilities)) {
                 //echo 'HOTEL ID : '.$hotel->hotel_id."\n";
                 foreach($hotelFacilities as $facility){

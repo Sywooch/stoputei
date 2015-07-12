@@ -2,6 +2,7 @@
 namespace app\models;
 
 use Yii;
+use yii\base\Exception;
 
 class SoapClientApi
 {
@@ -17,7 +18,8 @@ class SoapClientApi
                 "Login" => Yii::$app->params['api']['soap_login'],
                 "Password" => Yii::$app->params['api']['soap_password']
             ];
-            $client = new \SoapClient(Yii::$app->params['api']['wsdl']);
+            $exceptions = [];
+            $client = new \SoapClient(Yii::$app->params['api']['wsdl'], $exceptions);
             $header = new \SoapHeader(Yii::$app->params['api']['namespace'], 'AuthInfo', $auth, false);
 
             $client->__setSoapHeaders($header);
@@ -68,23 +70,32 @@ class SoapClientApi
     }
 
     public static function getHotelInformation($hotelId){
-        if($hotel_info = self::getInstance()->GetHotelInformation(
-            ["hotelId" => $hotelId]
-        )){
+        try{
+            $hotel_info = self::getInstance()->GetHotelInformation(
+                ["hotelId" => $hotelId]
+            );
             return $hotel_info->GetHotelInformationResult;
-        }else{
-            throw new Exception("Current hotel with ID $hotelId does not exist.");
+        } catch (\SoapFault $exception) {
+            echo $exception->getMessage();
+            return null;
         }
     }
 
     public static function getHotelFacilities($hotelId){
-        $hotel_info = self::getHotelInformation($hotelId);
-        $hotel_facility = $hotel_info->HotelFacilities;
-        $facilities = [];
-        if(property_exists($hotel_facility,'HotelInfoFacilityGroup')){
-            $facilities = $hotel_facility->HotelInfoFacilityGroup;
+        try {
+            $hotel_info = self::getHotelInformation($hotelId);
+            if(!is_object($hotel_info)){
+                return [];
+            }
+            $hotel_facility = $hotel_info->HotelFacilities;
+            $facilities = [];
+            if(property_exists($hotel_facility,'HotelInfoFacilityGroup')){
+                $facilities = $hotel_facility->HotelInfoFacilityGroup;
+            }
+            return $facilities;
+        }catch(Exception $e){
+            return [];
         }
-        return $facilities;
     }
 
     public static function getHotelImages($hotelId){
