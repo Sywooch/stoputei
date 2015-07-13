@@ -12,6 +12,9 @@ $(function(){
     }
     google.maps.event.addDomListener(window, 'load', initialize_google_map);*/
 
+    //initialize tooltip
+    $('[data-toggle="tooltip"]').tooltip();
+
     //switch between user roles in registration
     $('#registrationform-role').on('change', function(){
         var role = $('[name="RegistrationForm[role]"]:checked').val();
@@ -117,7 +120,7 @@ $(function(){
         getHotelList();
     });
 
-    $('.remove-hotel-name').on('click', function(){
+    $('.field-gettourform-hotel .remove-hotel-name').on('click', function(){
         $('#gettourform-hotel_id').val('');
         $('#gettourform-hotel').val('');
         getHotelList();
@@ -135,7 +138,8 @@ $(function(){
         $('.back-to-main .glyphicon-menu-right').removeClass('hide');
         $('.filter-tour .left-data').addClass('implicit');
         $('.filter-tour .right-data').addClass('col-xs-12').removeClass('col-md-3');
-        $('.right-data').text('HOTEL INFO');
+        $('.right-data').hide();
+        $('.full-hotel-information').removeClass('hide').text('HOTEL FULL INFORMATION');
     });
 
     //show filter, hide hotel information
@@ -145,20 +149,29 @@ $(function(){
         $('.back-to-main .glyphicon-menu-right').addClass('hide');
         $('.filter-tour .left-data').removeClass('implicit');
         $('.filter-tour .right-data').removeClass('col-xs-12').addClass('col-md-3');
-        $('.right-data').text('TOP HOTELS');
+        $('.full-hotel-information').addClass('hide');
+        $('.right-data').show();
     });
 
-    //Add hotel to filter
+    //Add hotel to filter by USER or MANAGER
     $(document).on('click', '.add-to-filter', function(e){
         e.preventDefault();
         var hotel_id = $(this).attr('data-hotel-id');
         var hotel_name = $(this).attr('data-hotel-name');
         var option = '<option value="'+hotel_id+'">'+hotel_name+'</option>';
-        $('#gettourform-hotel_id').html(option);
-        $("#gettourform-hotel_id option").filter(function() {
-            return $(this).val() == hotel_id;
-        }).attr('selected', true);
-        $('#gettourform-hotel').val(hotel_name);
+        if($(this).hasClass('manager')){
+            $('#createtourform-hotel_id').val(hotel_id);
+            /*$("#createtourform-hotel_id option").filter(function () {
+                return $(this).val() == hotel_id;
+            }).attr('selected', true);*/
+            $('#createtourform-hotel').val(hotel_name);
+        }else {
+            $('#gettourform-hotel_id').html(option);
+            $("#gettourform-hotel_id option").filter(function () {
+                return $(this).val() == hotel_id;
+            }).attr('selected', true);
+            $('#gettourform-hotel').val(hotel_name);
+        }
     });
 
     $('#submit-tour').on('click', function(e){
@@ -225,17 +238,124 @@ $(function(){
     $(document).on('click', '.tour-more-info', function(){
         var url = $('.ajax-user-tour-full-info').attr('href');
         var user_tour_id = $(this).attr('data-tour-id');
-        $('.hotels-container .loader-bg').removeClass('hide');
+        $('.user-tour-container .loader-bg').removeClass('hide');
         $.get(url, {'user_tour_id' : user_tour_id}).done(function(response){
+            var data = $.parseJSON(response);
+            $('.user-tour-container .loader-bg').addClass('hide');
+            if(data.status == 'ok') {
+                console.log(data);
+                $('.right-data .main-data').hide();
+                $('#right-data-response').html(data.html);
+                $('.create-tour').removeClass('inactive');
+                $('.create-tour').html(data.form);
+                $('a[href="#tour-from-user"]').text(data.tab_name);
+                $('#user-tour-response').html(data.hotels);
+                $('#create-tour-response').removeClass('inactive');
+                $('[data-toggle="tooltip"]').tooltip();
+            }else{
+                $('#right-data-response').text(data.message);
+            }
+        });
+    });
+
+    //close user's tour with full information
+    $(document).on('click', '.close-tour-full-info', function(){
+        returnToUserTourList();
+    });
+
+    //load user's tour request and overwrite filter
+    function returnToUserTourList(){
+        var url = $('.ajax-user-tour-request').attr('href');
+        $('.user-tour-container .loader-bg').removeClass('hide');
+        $.get(url).done(function(response){
+            var data = $.parseJSON(response);
+            $('.user-tour-container .loader-bg').addClass('hide');
+            if(data.status == 'ok') {
+                $('.right-data .main-data').show();
+                $('.create-tour').addClass('inactive').empty().html(data.form);
+                $('.user-tour-full-info').remove();
+                $('#create-tour-response').addClass('inactive');
+                $('#user-tour-response').html(data.html);
+                $('a[href="#tour-from-user"]').text(data.tab_name);
+                $('[data-toggle="tooltip"]').tooltip();
+            }else{
+                $('#right-data-response').text(data.message);
+            }
+        });
+    }
+
+    //show and hide FLIGHT INCLUDED
+    $(document).on('change', '#createtourform-flight_included', function(){
+        var is_checked = ($(this).attr('checked') == 'checked')?true:false;
+        if(is_checked){
+            $(this).removeAttr('checked');
+            $('.flight-included').addClass('hide');
+        }else{
+            $(this).attr('checked', 'checked');
+            $('.flight-included').removeClass('hide');
+        }
+    });
+
+    //show and hide VOYAGE through
+    $(document).on('change', '#createtourform-voyage_there', function(){
+        var is_checked = ($(this).attr('checked') == 'checked')?true:false;
+        if(is_checked){
+            $(this).removeAttr('checked');
+            $('.voyage_through_there').removeClass('hide');
+        }else{
+            $(this).attr('checked', 'checked');
+            $('.voyage_through_there').addClass('hide');
+        }
+    });
+
+    //show and hide VOYAGE FROM through
+    $(document).on('change', '#createtourform-voyage_from_there', function(){
+        var is_checked = ($(this).attr('checked') == 'checked')?true:false;
+        if(is_checked){
+            $(this).removeAttr('checked');
+            $('.voyage_through_from_there').removeClass('hide');
+        }else{
+            $(this).attr('checked', 'checked');
+            $('.voyage_through_from_there').addClass('hide');
+        }
+    });
+
+    //Show hide ADD PAYMENT
+    $(document).on('change', '#createtourform-add_payment', function(){
+        var is_checked = ($(this).attr('checked') == 'checked')?true:false;
+        if(is_checked){
+            $(this).removeAttr('checked');
+            $('.add-payment').addClass('hide');
+        }else{
+            $(this).attr('checked', 'checked');
+            $('.add-payment').removeClass('hide');
+        }
+    });
+
+    //Manager tour response submit
+    $(document).on('click', '#create-tour-response', function(e){
+        e.preventDefault();
+        var url = $('#manager-tour-response-form').attr('action');
+        var data = $('#manager-tour-response-form').serialize();
+        $('.hotels-container .loader-bg').removeClass('hide');
+        $.post(url, data).done(function(response){
             var data = $.parseJSON(response);
             $('.hotels-container .loader-bg').addClass('hide');
             if(data.status == 'ok') {
-                $('.right-data').html(data.html);
-                $('.create-tour').removeClass('inactive');
-                $('#create-tour-response').removeClass('inactive');
-                $('.wrapper-words').hide();
+                console.log(data.model);
+                $('#modal-container .modal-content').text(data.message);
+                $('#modal-container').modal('show');
+                $('#modal-container').on('hide.bs.modal', function (e) {
+                    console.log('modal will close');
+                    returnToUserTourList();
+                })
             }else{
-                $('.right-data').text(data.message);
+                console.log(data.model);
+                $('.form-group .help-block').text('');
+                for (var i in data.errors) {
+                    $('.field-createtourform-'+i+' .help-block').text(data.errors[i]);
+                    $('.field-createtourform-'+i).removeClass('has-success').addClass('has-error');
+                }
             }
         });
     });

@@ -41,9 +41,24 @@
 .user-tour-full-info{
   .header{
     padding: 0px;
+    border-bottom: $light-grey-border;
   }
   .body{
     padding: 0px;
     text-align: left;
+    margin-top: 15px;
+    .describe{
+      font-weight: 300;
+    }
+    .value{
+      font-weight: 600;
+    }
+  }
+  .buttons {
+    padding-left: 0px;
+    .close-tour-full-info {
+      border-radius: 0px;
+      width: 100%;
+    }
   }
 }

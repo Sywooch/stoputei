@@ -16,10 +16,10 @@ $this->title = 'StoPutei';
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active" id="tour-from-user">
                     <?=$this->render('manager-tabs/tour-from-user', [
-                        'CreateTourForm' => $CreateTourForm,
-                        'destinationDropdown' => $destinationDropdown,
-                        'departCityDropdown' => $departCityDropdown,
-                        'userTours' => $this->renderAjax('//tour/partial/user-tour-list', ['tours' => $userTours])
+                        'userTours' => $this->renderAjax('//tour/partial/user-tour-list', ['tours' => $userTours]),
+                        'responseForm' => $this->renderAjax('//tour/partial/manager-tour-response-form-empty', [
+                            'CreateTourForm' => $CreateTourForm
+                        ]),
                     ]);?>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="flights">

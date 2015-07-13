@@ -118,7 +118,7 @@
             border-radius: 0px;
           }
         }
-        .field-gettourform-hotel{
+        .field-gettourform-hotel, .create-tour-response{
           .remove-hotel-name{
             position: absolute;
             right: 20px;
@@ -148,6 +148,9 @@
             }
           }
         }
+        #createtourform-hotel_id{
+          display: none;
+        }
         .label-get-tour {
           text-align: left;
         }
@@ -164,7 +167,7 @@
             }
           }
         }
-        #gettourform-beach_line, #gettourform-hotel_type, #gettourform-room_type, #gettourform-nutrition, #createtourform-nutrition {
+        .form-group {
           .checkbox-one {
             height: 25px;
             line-height: 25px;
@@ -178,9 +181,12 @@
             }
           }
         }
-        #gettourform-room_type, #gettourform-nutrition, #createtourform-nutrition {
+        .form-group {
           .checkbox-one {
             margin-left: -15px;
+            &.type{
+              margin-left: 0px;
+            }
           }
         }
         #gettourform-night_min, #gettourform-night_max {
@@ -192,6 +198,9 @@
             float: right;
             top: -18px;
           }
+        }
+        .flight-included{
+          background: $grey-light;
         }
         .date {
           .input-group-addon, #gettourform-from_date {

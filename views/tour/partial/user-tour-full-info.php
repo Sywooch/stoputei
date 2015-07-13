@@ -39,15 +39,14 @@ $to_date = date('d.m.Y', strtotime($tour->to_date));
             <span class="describe"><?=Yii::t('app', 'To');?> </span>
             <span class="value"><?=$to_date;?></span>
         </div>
-        <?php if($tour->flight_included == 1):?>
-            <div class="field">
-                <span class="value"><?=Yii::t('app', 'Flight included');?></span>
-            </div>
-        <?php else:?>
-            <div class="field">
-                <span class="value"><?=Yii::t('app', 'Flight not included');?></span>
-            </div>
-        <?php endif;?>
+        <div class="field">
+            <span class="describe"><?=Yii::t('app', 'Flight');?> : </span>
+            <?php if($tour->flight_included == 1):?>
+            <span class="value"><?=Yii::t('app', 'Included');?></span>
+            <?php else:?>
+                <span class="value"><?=Yii::t('app', 'not included');?></span>
+            <?php endif;?>
+        </div>
 
         <div class="field">
             <span class="describe"><?=Yii::t('app', 'Amount of adult');?> : </span>
@@ -71,5 +70,8 @@ $to_date = date('d.m.Y', strtotime($tour->to_date));
                 <span class="value"><?=$tour->add_info;?></span>
             </div>
         <?php endif;?>
+    </div>
+    <div class="col-xs-6 buttons">
+        <a href="#" class="close-tour-full-info btn btn-primary"><?= Yii::t('app', 'Close');?></a>
     </div>
 </div>

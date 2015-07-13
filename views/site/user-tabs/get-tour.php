@@ -55,19 +55,19 @@ use yii\web\JsExpression;
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){
                         $checked = true;
-                        $span = Html::tag('span', Yii::t('app','RO'), ['class' => 'type-name']);
+                        $span = Html::tag('span', Yii::t('app','RO'), ['class' => 'type-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Room only')]);
                     }elseif($value == 1){
-                        $span = Html::tag('span', Yii::t('app','BB'), ['class' => 'line-name']);
+                        $span = Html::tag('span', Yii::t('app','BB'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Bed & Breakfast')]);
                     }elseif($value == 2){
-                        $span = Html::tag('span', Yii::t('app','HB'), ['class' => 'line-name']);
+                        $span = Html::tag('span', Yii::t('app','HB'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Half Board (Breakfast and Dinner normally)')]);
                     }elseif($value == 3){
-                        $span = Html::tag('span', Yii::t('app','HB+'), ['class' => 'line-name']);
+                        $span = Html::tag('span', Yii::t('app','HB+'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Half Board plus')]);
                     }elseif($value == 4){
-                        $span = Html::tag('span', Yii::t('app','FB+'), ['class' => 'line-name']);
+                        $span = Html::tag('span', Yii::t('app','FB+'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Full Board plus')]);
                     }elseif($value == 5){
-                        $span = Html::tag('span', Yii::t('app','AL'), ['class' => 'line-name']);
+                        $span = Html::tag('span', Yii::t('app','AL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'All Inclusive')]);
                     }elseif($value == 6){
-                        $span = Html::tag('span', Yii::t('app','UAL'), ['class' => 'line-name']);
+                        $span = Html::tag('span', Yii::t('app','UAL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Ultra All Inclusive')]);
                     }
                     $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);
@@ -78,11 +78,11 @@ use yii\web\JsExpression;
                         $checked = true;
                         $span = Html::tag('span', Yii::t('app','Any line'), ['class' => 'line-name']);
                     }elseif($value == 1){
-                        $span = Html::tag('span', Yii::t('app','First line'), ['class' => 'line-name']);
+                        $span = Html::tag('span', Yii::t('app','First'), ['class' => 'line-name']);
                     }elseif($value == 2){
-                        $span = Html::tag('span', Yii::t('app','Second line'), ['class' => 'line-name']);
+                        $span = Html::tag('span', Yii::t('app','Second'), ['class' => 'line-name']);
                     }elseif($value == 3){
-                        $span = Html::tag('span', Yii::t('app','Third line'), ['class' => 'line-name']);
+                        $span = Html::tag('span', Yii::t('app','Third'), ['class' => 'line-name']);
                     }
                     $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one']);

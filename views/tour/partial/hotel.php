@@ -71,7 +71,7 @@ if($hotel->hotel_rate == 0){
             </div>
             <div class="col-xs-6 buttons">
                 <a href="#" class="more-hotel-info btn btn-primary" data-hotel-id="<?=$hotel->hotel_id;?>"><?= Yii::t('app', 'More');?></a>
-                <a href="#" class="add-to-filter btn btn-default" data-hotel-id="<?=$hotel->hotel_id;?>" data-hotel-name="<?=$hotel->name;?>"><?= Yii::t('app', 'Choose');?></a>
+                <a href="#" class="add-to-filter manager btn btn-default" data-hotel-id="<?=$hotel->hotel_id;?>" data-hotel-name="<?=$hotel->name;?>"><?= Yii::t('app', 'Choose');?></a>
             </div>
         </div>
     </div>
