@@ -1,14 +1,26 @@
 <?php
+use app\models\TourResponse;
 $date = new DateTime($tour->created_at);
+$tourResponse = new TourResponse();
+$isResponsed = $tourResponse->hasResponse($tour->id);
 ?>
 <div class="user-tour-wrapper col-xs-12">
     <div class="col-xs-12 header-info">
         <span class="count"><?=Yii::t('app', 'Order').' № '.$tour->id;?></span>
         <span class="created"><?=$date->format('d.m.Y H:i:s');?></span>
+        <?php if($isResponsed > 0):?>
+            <span class="response">
+                <i class="glyphicon glyphicon-ok-circle"></i>
+                <span class="view-count">(<?=Yii::t('app', 'offers: {n}',['n' => $isResponsed]);?>)</span>
+            </span>
+        <?php endif;?>
     </div>
     <div class="col-xs-5 body">
         <div><span class="describe"><?=Yii::t('app', 'Destination');?></span> : <span class="data"><?=$tour->country->name;?></span></div>
         <div><span class="describe"><?=Yii::t('app', 'Resort');?> : <span class="data"><?=$tour->city->name;?></span></div>
+        <?php if(!is_null($tour->hotel_id)):?>
+            <div><span class="describe"><?=Yii::t('app', 'Hotel');?> : <span class="data"><?=$tour->hotel->name;?></span></div>
+        <?php endif;?>
     </div>
     <div class="col-xs-5 people">
         <div><span class="describe"><?=Yii::t('app', 'Amount of adult');?></span> : <span class="data"><?= $tour->adult_amount;?></span></div>

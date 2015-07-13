@@ -2,7 +2,7 @@
 
 return [
     'application_name' => 'stoputei',
-    'adminEmail' => 'admin@stoputei.com',
+    'adminEmail' => 'noreply@stoputei.com',
     'api' => [
         "soap_login" => "Timateo83@gmail.com",
         "soap_password" => "1234567",

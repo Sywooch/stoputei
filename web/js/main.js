@@ -15,6 +15,10 @@ $(function(){
     //initialize tooltip
     $('[data-toggle="tooltip"]').tooltip();
 
+    //set workplace height
+    var windowH = $(window).height();
+    $('.hotels-container, .user-tour-container, .create-tour').css('max-height', windowH+'px');
+
     //switch between user roles in registration
     $('#registrationform-role').on('change', function(){
         var role = $('[name="RegistrationForm[role]"]:checked').val();
@@ -111,6 +115,26 @@ $(function(){
         });
     });
 
+    var autocomplete_url_manager = $('.ajax-hotel-autocomplete-manager').attr('href');
+    $(document).on('input', '#createtourform-hotel', function(){
+        var country_id = $('#createtourform-destination').val();
+        var resort_id = $('#createtourform-resort').val();
+        var query = $('#createtourform-hotel').val();
+        var url = autocomplete_url_manager+'?country_id='+country_id+'&resort_id='+resort_id+'&query='+query;
+        $.get(url).done(function(response){
+            var data = $.parseJSON(response);
+            $('.hotels-container .loader-bg').addClass('hide');
+            if(data.status == 'ok') {
+                var list_hotels = '';
+                for (var i in data.hotels) {
+                    list_hotels += '<option value="'+data.hotels[i].hotel_id+'">'+data.hotels[i].hotel_name+'</option>';
+                }
+                $('#createtourform-hotel_id').html(list_hotels).show();
+            }else{
+            }
+        });
+    });
+
     //choose filed from autocomplete
     $('#gettourform-hotel_id').on('click', function(){
        var hotel_id = $(this).val();
@@ -119,15 +143,31 @@ $(function(){
         $(this).hide();
         getHotelList();
     });
+    //choose filed from autocomplete
+    $(document).on('click', '#createtourform-hotel_id', function(){
+        var hotel_id = $(this).val();
+        var hotel_name = $('#createtourform-hotel_id option:selected').text();
+        $('#createtourform-hotel').val(hotel_name);
+        $(this).hide();
+    });
 
+    //remove hotel name from hotel-name field
     $('.field-gettourform-hotel .remove-hotel-name').on('click', function(){
         $('#gettourform-hotel_id').val('');
         $('#gettourform-hotel').val('');
         getHotelList();
     });
+    //remove hotel name from hotel-name field
+    $(document).on('click', '.remove-hotel-name-manager', function(){
+        $('#createtourform-hotel_id').val('');
+        $('#createtourform-hotel').val('');
+    });
 
     $('.filter').on('click', function(){
         $('#gettourform-hotel_id').hide();
+    });
+    $(document).on('click', '.wrap', function(){
+        $('#createtourform-hotel_id').hide();
     });
 
     //show hotel information, hide filter
@@ -161,9 +201,6 @@ $(function(){
         var option = '<option value="'+hotel_id+'">'+hotel_name+'</option>';
         if($(this).hasClass('manager')){
             $('#createtourform-hotel_id').val(hotel_id);
-            /*$("#createtourform-hotel_id option").filter(function () {
-                return $(this).val() == hotel_id;
-            }).attr('selected', true);*/
             $('#createtourform-hotel').val(hotel_name);
         }else {
             $('#gettourform-hotel_id').html(option);
@@ -277,6 +314,7 @@ $(function(){
                 $('#create-tour-response').addClass('inactive');
                 $('#user-tour-response').html(data.html);
                 $('a[href="#tour-from-user"]').text(data.tab_name);
+                $('#modal-container').modal('hide');
                 $('[data-toggle="tooltip"]').tooltip();
             }else{
                 $('#right-data-response').text(data.message);
@@ -342,13 +380,9 @@ $(function(){
             var data = $.parseJSON(response);
             $('.hotels-container .loader-bg').addClass('hide');
             if(data.status == 'ok') {
-                console.log(data.model);
-                $('#modal-container .modal-content').text(data.message);
+                console.log(data.popup);
+                $('#modal-container .modal-content').html(data.popup);
                 $('#modal-container').modal('show');
-                $('#modal-container').on('hide.bs.modal', function (e) {
-                    console.log('modal will close');
-                    returnToUserTourList();
-                })
             }else{
                 console.log(data.model);
                 $('.form-group .help-block').text('');
@@ -358,6 +392,11 @@ $(function(){
                 }
             }
         });
+    });
+
+
+    $(document).on('click', '.to-request-list', function(){
+        returnToUserTourList();
     });
 
 });

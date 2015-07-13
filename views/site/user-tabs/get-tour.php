@@ -85,7 +85,7 @@ use yii\web\JsExpression;
                         $span = Html::tag('span', Yii::t('app','Third'), ['class' => 'line-name']);
                     }
                     $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
-                    return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one']);
+                    return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
                 }]);?>
             <?= $form->field($GetTourForm, 'hotel_type')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
@@ -102,7 +102,7 @@ use yii\web\JsExpression;
                         $span = Html::tag('span', Yii::t('app','Health'), ['class' => 'line-name']);
                     }
                     $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
-                    return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one']);
+                    return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
                 }]);?>
             <div class="form-group">
                 <label class="col-xs-11 col-xs-offset-1 control-label label-get-tour" for="gettourform-hotel_type"><?=Yii::t('app', 'Amount of nights');?></label>

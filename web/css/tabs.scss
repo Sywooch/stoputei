@@ -119,7 +119,7 @@
           }
         }
         .field-gettourform-hotel, .create-tour-response{
-          .remove-hotel-name{
+          .remove-hotel-name, .remove-hotel-name-manager{
             position: absolute;
             right: 20px;
             top: 9px;
@@ -129,7 +129,7 @@
             }
           }
         }
-        #gettourform-hotel_id{
+        #gettourform-hotel_id, #createtourform-hotel_id{
           display: none;
           overflow-y: auto;
           max-height: 150px;
@@ -149,7 +149,7 @@
           }
         }
         #createtourform-hotel_id{
-          display: none;
+          top: -8px;
         }
         .label-get-tour {
           text-align: left;
@@ -218,7 +218,6 @@
         }
       }
       .hotels-container, .user-tour-container {
-        max-height: $max-hotel-height;
         overflow-y: auto;
         transition: all $middle-speed ease-in;
         &::-webkit-scrollbar {
@@ -243,7 +242,7 @@
           left: 0;
           bottom: 0;
           right: 0;
-          min-height: $max-hotel-height;
+          //min-height: $max-hotel-height;
           img{
             position: absolute;
             width: 130px;

@@ -81,7 +81,7 @@ class SiteController extends Controller
                     $departCityDropdown = $departCity->regionDropdown();
                     $userTours = UserTour::find()->where([
                         'region_owner_id' => Yii::$app->user->identity->region_id
-                        ])->select('id, country_id, resort_id, created_at, adult_amount, children_under_12_amount, children_under_2_amount')->all();
+                    ])->all();
                     return $this->render('index_manager_paid',
                         [
                             'email' => Yii::$app->user->identity->email,

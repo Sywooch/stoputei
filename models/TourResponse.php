@@ -39,4 +39,11 @@ class TourResponse extends ActiveRecord
         }
         return false;
     }
+
+    public function hasResponse($tour_response_id, $manager_id = null){
+        if(is_null($manager_id)){
+            $manager_id = \Yii::$app->user->identity->getId();
+        }
+        return self::find()->where(['from_tour_id' => $tour_response_id, 'manager_id' => $manager_id])->count();
+    }
 }

@@ -5,6 +5,14 @@
       border-radius: 0px;
       font-size: 1.1em;
       color: $grey-text;
+      .modal-footer{
+        button{
+          border-radius: 0px;
+        }
+        .btn + .btn{
+          margin-left: 0px;
+        }
+      }
     }
   }
 }

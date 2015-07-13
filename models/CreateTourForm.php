@@ -44,6 +44,7 @@ class CreateTourForm extends Model
     public $charge_manager;
     public $tour_cost;
     public $user_id;
+    public $from_tour_id;
 
     /**
      * @return array the validation rules.
@@ -54,7 +55,7 @@ class CreateTourForm extends Model
             [['destination', 'resort', 'room_count', 'nutrition', 'location', 'room_type', 'room_view', 'tour_cost'], 'required'],
             [['stars', 'apartment', 'hotel_type', 'beach_line'], 'default', 'value' => []],
             [['hotel', 'hotel_id', 'oil_tax', 'visa', 'voyage_through_city_there', 'voyage_through_city_from_there'], 'default', 'value' => null],
-            [['adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count', 'tour_cost', 'night_count', 'user_id'], 'integer'],
+            [['adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count', 'tour_cost', 'night_count', 'user_id', 'from_tour_id'], 'integer'],
             ['stars', 'each', 'rule' => ['in', 'range' => [400, 401, 402, 403, 404]]],
             ['nutrition', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3, 4, 5, 6]]],
             ['location', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3]]],

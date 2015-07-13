@@ -19,12 +19,9 @@ use dosamigos\datepicker\DatePicker;
 
 <?= $form->field($CreateTourForm, 'resort')->dropDownList($dropdownResort);?>
 
-<?= $form->field($CreateTourForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 create-tour-response">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name"></i></div>'])->input('text') ?>
+<?= $form->field($CreateTourForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 create-tour-response">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name-manager"></i></div>'])->input('text') ?>
 
-<?= $form->field($CreateTourForm, 'hotel_id')->hiddenInput()->label('');?>
-
-<?= Html::a('', Url::toRoute(['tour/ajax-hotels-autocomplete']), ['class' => 'ajax-hotel-autocomplete']);?>
-
+<?= $form->field($CreateTourForm, 'hotel_id')->dropDownList([], ['multiple' => true])->label('');?>
 
 <?= $form->field($CreateTourForm, 'stars')->checkboxList([404 => '', 403 => '', 402 => '', 401 => '', 400 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
@@ -211,6 +208,7 @@ use dosamigos\datepicker\DatePicker;
 <?= $form->field($CreateTourForm, 'charge_manager')->checkbox();?>
 <?= $form->field($CreateTourForm, 'tour_cost')->input('number', ['min' => 0, 'max' => 99000000, 'step' => 100]);?>
 <?= $form->field($CreateTourForm, 'user_id')->hiddenInput()->label('');?>
+<?= $form->field($CreateTourForm, 'from_tour_id')->hiddenInput()->label('');?>
 
 <?= Html::a('', Url::toRoute(['tour/ajax-resorts-dropdown']), ['class' => 'ajax-resort']);?>
 <?= Html::a('', Url::toRoute(['tour/get-user-tour-list']), ['class' => 'ajax-user-tour-list']);?>
