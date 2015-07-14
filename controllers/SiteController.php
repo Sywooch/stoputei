@@ -16,6 +16,9 @@ use app\models\GetTourForm;
 use app\models\Country;
 use app\models\CustomMailer;
 use app\models\CreateTourForm;
+use app\models\UserFlightForm;
+use app\models\UserFlight;
+use app\models\ManagerFlightForm;
 
 class SiteController extends Controller
 {
@@ -60,6 +63,7 @@ class SiteController extends Controller
         switch(Yii::$app->user->identity->role){
             case 1:
                 $GetTourForm = new GetTourForm();
+                $UserFlightForm = new UserFlightForm();
                 $country = new Country();
                 $departCity = new DepartCity();
                 $destinationDropdown = $country->destinationDropdown();
@@ -69,12 +73,14 @@ class SiteController extends Controller
                     [
                         'email' => Yii::$app->user->identity->email,
                         'GetTourForm' => $GetTourForm,
+                        'UserFlightForm' => $UserFlightForm,
                         'destinationDropdown' => $destinationDropdown,
                         'departCityDropdown' => $departCityDropdown
                     ]);
             case 2:
                 if((Yii::$app->user->identity->single_region_paid == 1) or (Yii::$app->user->identity->multiple_region_paid == 1)) {
                     $CreateTourForm = new CreateTourForm();
+                    $ManagerFlightForm = new ManagerFlightForm();
                     $country = new Country();
                     $departCity = new DepartCity();
                     $destinationDropdown = $country->destinationDropdown();
@@ -82,13 +88,18 @@ class SiteController extends Controller
                     $userTours = UserTour::find()->where([
                         'region_owner_id' => Yii::$app->user->identity->region_id
                     ])->all();
+                    $userFlights = UserFlight::find()->where([
+                        'region_owner_id' => Yii::$app->user->identity->region_id
+                    ])->all();
                     return $this->render('index_manager_paid',
                         [
                             'email' => Yii::$app->user->identity->email,
                             'CreateTourForm' => $CreateTourForm,
+                            'ManagerFlightForm' => $ManagerFlightForm,
                             'destinationDropdown' => $destinationDropdown,
                             'departCityDropdown' => $departCityDropdown,
-                            'userTours' => $userTours
+                            'userTours' => $userTours,
+                            'userFlights' => $userFlights
                         ]);
                 }else{
                     return $this->render('index_manager',

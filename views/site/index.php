@@ -1,4 +1,6 @@
 <?php
+use yii\helpers\Html;
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 $this->title = 'StoPutei';
 ?>
@@ -26,7 +28,11 @@ $this->title = 'StoPutei';
                     <?=$this->render('user-tabs/offers');?>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="flights">
-                    <?=$this->render('user-tabs/flights');?>
+                    <?=$this->render('user-tabs/flights',[
+                        'UserFlightForm' => $UserFlightForm,
+                        'destinationDropdown' => $destinationDropdown,
+                        'departCityDropdown' => $departCityDropdown
+                    ]);?>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="favourites">
                     <?=$this->render('user-tabs/favourites');?>
@@ -36,5 +42,6 @@ $this->title = 'StoPutei';
                 </div>
             </div>
         </div>
+        <?= Html::a('', Url::toRoute(['tour/ajax-resorts-dropdown']), ['class' => 'ajax-resort']);?>
     </div>
 </div>

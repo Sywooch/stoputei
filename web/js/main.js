@@ -17,7 +17,7 @@ $(function(){
 
     //set workplace height
     var windowH = $(window).height();
-    $('.hotels-container, .user-tour-container, .create-tour').css('max-height', windowH+'px');
+    $('.hotels-container, .user-tour-container, .create-tour, .filter').css('max-height', windowH+'px');
 
     //switch between user roles in registration
     $('#registrationform-role').on('change', function(){
@@ -397,6 +397,46 @@ $(function(){
 
     $(document).on('click', '.to-request-list', function(){
         returnToUserTourList();
+    });
+
+
+    /*####################  FLIGHTS ##################*/
+    //dropdown list with resorts for user after country change
+    $('#userflightform-destination').on('change', function(){
+        var destination = $(this).val();
+        var resort_url = $('.ajax-resort').attr('href');
+        $.get(resort_url,{'country_id':destination}).done(function(response){
+            var data = $.parseJSON(response);
+            var select_resort = '';
+            for (var i in data) {
+                select_resort += '<option value="'+data[i].city_id+'">'+data[i].city_name+'</option>';
+            }
+            $('#userflightform-resort').html(select_resort);
+        });
+    });
+
+    //user flights request
+    $('#submit-flight').on('click', function(e){
+        e.preventDefault();
+        var url = $('#user-flight-form').attr('action');
+        var data = $('#user-flight-form').serialize();
+        $('.hotels-container .loader-bg').removeClass('hide');
+        $.post(url,data).done(function(response){
+            var data = $.parseJSON(response);
+            $('.hotels-container .loader-bg').addClass('hide');
+            if(data.status == 'ok') {
+                console.log(data.popup);
+                $('#modal-container .modal-content').html(data.popup);
+                $('#modal-container').modal('show');
+            }else{
+                console.log(data.model);
+                $('.form-group .help-block').text('');
+                for (var i in data.errors) {
+                    $('.field-userflightform-'+i+' .help-block').text(data.errors[i]);
+                    $('.field-userflightform-'+i).removeClass('has-success').addClass('has-error');
+                }
+            }
+        });
     });
 
 });

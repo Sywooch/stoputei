@@ -4,27 +4,23 @@ namespace app\models;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 
-class TourResponse extends ActiveRecord
+class UserFlight extends ActiveRecord
 {
     public static function tableName(){
-        return 'tour_response';
+        return 'user_flight';
     }
 
-    /*public function getCountry(){
+    public function getCountry(){
         return $this->hasOne(Country::className(), ['country_id' => 'country_id']);
     }
 
     public function getCity(){
-        return $this->hasOne(City::className(), ['city_id' => 'resort_id']);
-    }
-
-    public function getHotel(){
-        return $this->hasOne(Hotel::className(), ['hotel_id' => 'hotel_id']);
+        return $this->hasOne(City::className(), ['city_id' => 'city_id']);
     }
 
     public function getDepartCity(){
         return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_id']);
-    }*/
+    }
 
     public function beforeSave($insert)
     {
@@ -38,12 +34,5 @@ class TourResponse extends ActiveRecord
             return true;
         }
         return false;
-    }
-
-    public function hasResponse($tour_response_id, $manager_id = null){
-        if(is_null($manager_id)){
-            $manager_id = \Yii::$app->user->identity->getId();
-        }
-        return self::find()->where(['from_tour_id' => $tour_response_id, 'manager_id' => $manager_id])->count();
     }
 }

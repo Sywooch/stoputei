@@ -2,9 +2,7 @@
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\jui\AutoComplete;
 use dosamigos\datepicker\DatePicker;
-use yii\web\JsExpression;
 ?>
 <div class="row filter-tour">
     <span class="back-to-main">
@@ -168,7 +166,6 @@ use yii\web\JsExpression;
 
             <?= $form->field($GetTourForm, 'add_info')->textarea(['class' => 'add-info']);?>
 
-            <?= Html::a('', Url::toRoute(['tour/ajax-resorts-dropdown']), ['class' => 'ajax-resort']);?>
             <?= Html::a('', Url::toRoute(['tour/get-hotel-list']), ['class' => 'ajax-tour-list']);?>
 
             <div class="form-group">

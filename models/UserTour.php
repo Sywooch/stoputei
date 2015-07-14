@@ -30,10 +30,10 @@ class UserTour extends ActiveRecord
     {
         if (parent::beforeSave($insert)) {
             if ($insert) {
-                $this->updated_at = new Expression('NOW()');
+                $this->updated_at = time();
             }
             if($this->isNewRecord){
-                $this->created_at = new Expression('NOW()');
+                $this->created_at = time();
             }
             return true;
         }

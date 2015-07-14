@@ -1,12 +1,12 @@
 <?php
-$date = new DateTime($tour->created_at);
+$date = date(('d.m.Y H:i:s'), $tour->created_at);
 $from_date = date('d.m.Y', strtotime($tour->from_date));
 $to_date = date('d.m.Y', strtotime($tour->to_date));
 ?>
 <div class="col-xs-12 user-tour-full-info">
     <div class="col-xs-12 header">
         <span><?=Yii::t('app', 'Order').' № '.$tour->id;?></span>
-        <span><?=$date->format('d.m.Y H:i:s');?></span>
+        <span><?=$date;?></span>
     </div>
     <div class="col-xs-12 body">
         <div class="field">

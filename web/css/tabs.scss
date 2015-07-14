@@ -37,7 +37,7 @@
   .tab-content{
     overflow: hidden;
   }
-  .filter-tour {
+  .filter-tour, .filter-flights {
     .back-to-main{
       visibility: hidden;
       width: 30px;
@@ -70,8 +70,8 @@
         margin-left: -2000px;
         visibility: hidden;
       }
-      .filter, .create-tour{
-        max-height: $max-hotel-height;
+      .filter, .create-tour, .create-flight{
+        //max-height: $max-hotel-height;
         overflow-y: scroll;
         &::-webkit-scrollbar {
           width: 6px;
@@ -114,8 +114,18 @@
         max-width: 240px;
         .form-group {
           margin-bottom: 0;
-          input[type="text"], input[type="email"], input[type="password"], select, [name="get-tour-button"], [type="number"], [name="create-tour-button"], #gettourform-hotel_id {
+          input[type="text"], input[type="email"], input[type="password"], [type="submit"], select, [name="get-tour-button"], [type="number"], [name="create-tour-button"], #gettourform-hotel_id {
             border-radius: 0px;
+          }
+          &.required{
+            &[class*="resort"], &[class*="destination"], &[class*="nutrition"], &[class*="location"], &[class*="room_type"], &[class*="room_view"], &[class*="room_count"],
+            &[class*="tour_cost"], &[class*="depart_city"], &[class*="from_date"], &[class*="to_date"], &[class*="date_city"], &[class*="adult_count_senior_24"],
+            {
+              label:after {
+                content: ' *';
+                color: $red;
+              }
+            }
           }
         }
         .field-gettourform-hotel, .create-tour-response{
@@ -217,7 +227,7 @@
           }
         }
       }
-      .hotels-container, .user-tour-container {
+      .hotels-container, .user-tour-container, .flights-container, .manager-flight-container {
         overflow-y: auto;
         transition: all $middle-speed ease-in;
         &::-webkit-scrollbar {

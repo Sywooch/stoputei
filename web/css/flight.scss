@@ -1,0 +1,30 @@
+.flight-wrapper{
+  padding: 0px;
+  border-bottom: 1px solid $grey-light;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  .header{
+    .count{
+      font-size: 0.9em;
+      color: $grey-light-text;
+    }
+    .created{
+      margin-left: 10px;
+      font-weight: 300;
+    }
+  }
+  .body{
+    .describe{
+      font-weight: 300;
+    }
+    .value{
+      font-weight: 600;
+      font-size: 0.9em;
+    }
+  }
+  .buttons{
+    .more-flight-info{
+      border-radius: 0px;
+    }
+  }
+}
