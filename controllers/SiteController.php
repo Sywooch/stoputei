@@ -163,8 +163,8 @@ class SiteController extends Controller
 
         $model = new RegistrationForm();
         $model->role = 1;
-        $departCity = new DepartCity();
-        $dropdown = $departCity->regionDropdown();
+        $country = new Country();
+        $dropdown = $country->destinationDropdown();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $user = new User();
             $user->email = $model->email;
@@ -176,6 +176,7 @@ class SiteController extends Controller
             $user->company_phone = $model->company_phone;
             $user->company_address = $model->company_address;
             $user->company_street = $model->company_street;
+            $user->company_underground = $model->company_underground;
             $user->setVerifyCode();
             if($user->save()) {
                 CustomMailer::sendSingleMail('verify', 'Verify you account on '.Yii::$app->params['application_name'], $user->email, null, ['email' => $user->email, 'token' => $user->verify]);
@@ -186,6 +187,22 @@ class SiteController extends Controller
                 'model' => $model,
                 'dropdown' => $dropdown
             ]);
+        }
+    }
+
+    public function actionGetCityDropdown(){
+        if(Yii::$app->request->isAjax) {
+            $country_id = \Yii::$app->request->getQueryParam('country_id', null);
+            $country = Country::findOne($country_id);
+            $cities = $country->cities;
+            $list = [];
+            foreach ($cities as $key => $city) {
+                $list[] = [
+                    'city_id' => $city->city_id,
+                    'city_name' => $city->name
+                ];
+            }
+            echo json_encode($list);
         }
     }
 

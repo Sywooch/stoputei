@@ -45,7 +45,7 @@ class FlightController extends Controller
                         'status' => 'ok',
                         'popup' => '<div>'.Yii::t('app', "Congratulations! Request on flights was submitted successfully.").'</div><div class="modal-footer">
                                         <button type="button" class="btn btn-default col-xs-6 create-one-more-flight" data-dismiss="modal">'.Yii::t('app', 'Create new one request').'</button>
-                                        <button type="button" class="btn btn-primary col-xs-6 to-request-list">'.Yii::t('app', 'Back to request list').'</button>
+                                        <button type="button" class="btn btn-primary col-xs-6 to-request-user-flight-list" data-dismiss="modal">'.Yii::t('app', 'Back to request list').'</button>
                                       </div>'
                     ];
                 }else{
@@ -159,7 +159,7 @@ class FlightController extends Controller
                         'model' => $model,
                         'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your response to tourist\s flight. Warning! All responses are actually only 2 days.").'</div><div class="modal-footer">
                                         <button type="button" class="btn btn-default col-xs-6 create-one-more-flight-response" data-dismiss="modal">'.Yii::t('app', 'Create new one').'</button>
-                                        <button type="button" class="btn btn-primary col-xs-6 to-request-flight-list">'.Yii::t('app', 'Back to request list').'</button>
+                                        <button type="button" class="btn btn-primary col-xs-6 to-request-flight-list-from-modal">'.Yii::t('app', 'Back to request list').'</button>
                                       </div>'
                     ];
                 }else{

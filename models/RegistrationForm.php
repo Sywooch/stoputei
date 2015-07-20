@@ -13,6 +13,7 @@ class RegistrationForm extends Model
     public $email;
     public $password;
     public $password_repeat;
+    public $country;
     public $region_id;
     public $role;
     public $company_name;
@@ -20,6 +21,7 @@ class RegistrationForm extends Model
     public $company_address;
     public $company_phone;
     public $company_street;
+    public $company_underground;
     public $consent;
 
     /**
@@ -37,6 +39,7 @@ class RegistrationForm extends Model
             ['email', 'email'],
             [['consent'], 'boolean'],
             ['role', 'default', 'value' => 1],
+            ['company_underground', 'default', 'value' => null],
             ['consent', 'required', 'requiredValue' => true, 'message' => Yii::t('app','{attribute} must be checked.'), 'when' => function ($model) {
                 return $model->role == 1;
             }, 'whenClient' => "function (attribute, value) {
@@ -57,6 +60,7 @@ class RegistrationForm extends Model
             'email' => Yii::t('app', 'Email'),
             'password' => Yii::t('app', 'Password'),
             'password_repeat' => Yii::t('app', 'Confirm Password'),
+            'country' => Yii::t('app', 'Country'),
             'region_id' => Yii::t('app', 'Region'),
             'role' => Yii::t('app', 'Role'),
             'consent' => Yii::t('app', 'Consent'),
@@ -65,6 +69,7 @@ class RegistrationForm extends Model
             'company_phone' => Yii::t('app', 'Company phone'),
             'company_address' => Yii::t('app', 'Company address'),
             'company_street' => Yii::t('app', 'Company street'),
+            'company_underground' => Yii::t('app', 'Underground'),
         ];
     }
 }

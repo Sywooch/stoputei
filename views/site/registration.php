@@ -33,7 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $form->field($model, 'password')->passwordInput() ?>
     <?= $form->field($model, 'password_repeat')->passwordInput() ?>
-    <?= $form->field($model, 'region_id')->dropDownList($dropdown,['prompt' => Yii::t('app','Choose region')]);?>
+    <?= $form->field($model, 'country')->dropDownList($dropdown,['prompt' => Yii::t('app','Choose country')]);?>
+    <?= $form->field($model, 'region_id')->dropDownList([],['prompt' => Yii::t('app','Choose region')]);?>
     <?= $form->field($model, 'role')->radioList([1 => 'user', 2 => 'manager'],
         ['item' => function ($index, $label, $name, $checked, $value) {
         return '<label class="col-xs-6"><span class="radio-wrapper '.(($index==0)?'left':'right').'">'.(($index==0)?Yii::t('app', 'User'):Yii::t('app', 'Manager')).'<span class="icon glyphicon glyphicon-'.(($index==0)?'check':'unchecked').'"></span></span> ' .
@@ -48,7 +49,10 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'company_phone')->input('text',['placeholder' => '(+380)-XXX-X-XXX '. Yii::t('app', 'or').' (+79)-XXX-X-XXX)']);?>
         <?= $form->field($model, 'company_address');?>
         <?= $form->field($model, 'company_street');?>
+        <?= $form->field($model, 'company_underground');?>
     </div>
+
+    <?= Html::a('', Url::toRoute(['site/get-city-dropdown']), ['class' => 'get-city-dropdown']);?>
 
     <div class="form-group">
         <div class="col-xs-10 col-xs-offset-1">

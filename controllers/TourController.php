@@ -78,17 +78,20 @@ class TourController extends Controller
         $model = new GetTourForm();
         if(Yii::$app->request->isAjax) {
             if($model->load(Yii::$app->request->get())){
+                $query = [];
+                if(!empty($model->stars)){
+                    $query['star_id'] = $model->stars;
+                }
                 if(!empty($model->hotel_id[0])){
                     $hotels = Hotel::find()->where([
                         'country_id' => $model->destination,
                         'hotel_id' => $model->hotel_id[0]
-                    ])->select('id, hotel_id, hotel_rate, name, country_name, resort, star_id')->all();
+                    ])->andWhere($query)->select('id, hotel_id, hotel_rate, name, country_name, resort, star_id')->all();
                 }else{
                     $hotels = Hotel::find()->where([
                         'country_id' => $model->destination,
-                        'resort_id' => $model->resort,
-                        'star_id' => $model->stars
-                    ])->select('id, hotel_id, hotel_rate, name, country_name, resort, star_id')->all();
+                        'resort_id' => $model->resort
+                    ])->andWhere($query)->select('id, hotel_id, hotel_rate, name, country_name, resort, star_id')->all();
                 }
 
                 if($hotels){

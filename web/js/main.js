@@ -19,9 +19,18 @@ $(function(){
     var windowH = $(window).height();
     $('.overflow-list').css('max-height', windowH+'px');
 
-
-    $('#custom-header .dropdown').on('click', function () {
-       $(this).toggleClass('open');
+    //country dropdown REGISTRATION
+    $('#registrationform-country').on('change', function(){
+        var country_id = $(this).val();
+        var region_url = $('.get-city-dropdown').attr('href');
+        $.get(region_url,{'country_id':country_id}).done(function(response){
+            var data = $.parseJSON(response);
+            var select_resort = '';
+            for (var i in data) {
+                select_resort += '<option value="'+data[i].city_id+'">'+data[i].city_name+'</option>';
+            }
+            $('#registrationform-region_id').html(select_resort);
+        });
     });
     //switch between user roles in registration
     $('#registrationform-role').on('change', function(){
@@ -229,6 +238,7 @@ $(function(){
             if(data.status == 'ok') {
                 console.log(data.message);
                 $('#modal-container .modal-content').html(data.popup);
+                $('#modal-container').modal({backdrop: 'static', keyboard: false});
                 $('#modal-container').modal('show');
             }else{
                 $('.form-group .help-block').text('');
@@ -238,7 +248,26 @@ $(function(){
                 }
             }
         });
-    })
+    });
+
+    //handling modal window USER TOUR
+    $(document).on('click', '.create-one-more-tour', function(){
+        $('#get-tour-form').remove();
+        var url = $('.ajax-empty-tour-form').attr('href');
+        $('.hotels-container .loader-bg').removeClass('hide');
+        $.get(url).done(function(response){
+            var data = $.parseJSON(response);
+            $('.hotels-container .loader-bg').addClass('hide');
+            if(data.status == 'ok') {
+                console.log(data.form);
+                $('.tour-container').html(data.form);
+                $('#hotel-response').empty();
+                $('.tab-badge.get-tour').text('0');
+            }else{
+
+            }
+        });
+    });
 
     //dropdown list with user's tour for manager after country change
     $(document).on('change', '#createtourform-destination', function(){
@@ -414,6 +443,7 @@ $(function(){
             if(data.status == 'ok') {
                 console.log(data.popup);
                 $('#modal-container .modal-content').html(data.popup);
+                $('#modal-container').modal({backdrop: 'static', keyboard: false});
                 $('#modal-container').modal('show');
             }else{
                 console.log(data.model);
@@ -461,6 +491,7 @@ $(function(){
             if(data.status == 'ok') {
                 console.log(data.popup);
                 $('#modal-container .modal-content').html(data.popup);
+                $('#modal-container').modal({backdrop: 'static', keyboard: false});
                 $('#modal-container').modal('show');
             }else{
                 console.log(data.model);
@@ -546,6 +577,7 @@ $(function(){
             if(data.status == 'ok') {
                 console.log(data.model);
                 $('#modal-container .modal-content').html(data.popup);
+                $('#modal-container').modal({backdrop: 'static', keyboard: false});
                 $('#modal-container').modal('show');
             }else{
                 console.log(data.model);
@@ -558,8 +590,8 @@ $(function(){
         });
     });
 
-    //handling modal window USER FLIGHT
-    $(document).on('click', '.create-one-more-flight', function(){
+    //handling modal window USER FLIGHT (create one more)
+    $(document).on('click', '.create-one-more-flight, .to-request-user-flight-list', function(){
         $('#user-flight-form').remove();
         var url = $('.ajax-empty-flight-form').attr('href');
         $('.flight-container .loader-bg').removeClass('hide');
@@ -569,25 +601,6 @@ $(function(){
             if(data.status == 'ok') {
                 console.log(data.form);
                 $('.flight-container').html(data.form);
-            }else{
-
-            }
-        });
-    });
-
-    //handling modal window USER TOUR
-    $(document).on('click', '.create-one-more-tour', function(){
-        $('#get-tour-form').remove();
-        var url = $('.ajax-empty-tour-form').attr('href');
-        $('.hotels-container .loader-bg').removeClass('hide');
-        $.get(url).done(function(response){
-            var data = $.parseJSON(response);
-            $('.hotels-container .loader-bg').addClass('hide');
-            if(data.status == 'ok') {
-                console.log(data.form);
-                $('.tour-container').html(data.form);
-                $('#hotel-response').empty();
-                $('.tab-badge.get-tour').text('0');
             }else{
 
             }
@@ -616,7 +629,7 @@ $(function(){
         });
     }
 
-    $(document).on('click', '.close-flight-full-info', function(){
+    $(document).on('click', '.close-flight-full-info, .to-request-flight-list-from-modal', function(){
         returnToUserFlightList();
     });
 
