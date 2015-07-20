@@ -12,8 +12,19 @@
       margin-left: 10px;
       font-weight: 300;
     }
+    .response{
+      margin-left: 22px;
+      .glyphicon-ok-circle{
+        color: $green;
+        font-size: 1.4em;
+        position: relative;
+        top: 3px;
+      }
+      .view-count{font-weight: 300;}
+    }
   }
   .body{
+    padding: 0px;
     .describe{
       font-weight: 300;
     }
@@ -23,8 +34,34 @@
     }
   }
   .buttons{
-    .more-flight-info{
+    padding-left: 0px;
+    a{
       border-radius: 0px;
+    }
+  }
+}
+
+.user-flight-full-info{
+  .header{
+    padding: 0px;
+    border-bottom: $light-grey-border;
+  }
+  .body{
+    padding: 0px;
+    text-align: left;
+    margin-top: 15px;
+    .describe{
+      font-weight: 300;
+    }
+    .value{
+      font-weight: 600;
+    }
+  }
+  .buttons {
+    padding-left: 0px;
+    .close-flight-full-info {
+      border-radius: 0px;
+      width: 100%;
     }
   }
 }

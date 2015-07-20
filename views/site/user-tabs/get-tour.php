@@ -9,7 +9,7 @@ use dosamigos\datepicker\DatePicker;
         <i class="glyphicon glyphicon-menu-right hide"></i>
     </span>
     <div class="col-md-9 left-data">
-        <div class="col-md-4 filter">
+        <div class="col-md-4 filter tour-container overflow-list">
             <?php $form = ActiveForm::begin([
                 'id' => 'get-tour-form',
                 'action' => Url::toRoute(['tour/submit-tour-user']),
@@ -176,7 +176,7 @@ use dosamigos\datepicker\DatePicker;
 
             <?php ActiveForm::end(); ?>
         </div>
-        <div class="col-md-8 hotels-container">
+        <div class="col-md-8 hotels-container overflow-list">
             <div class="loader-bg hide"><img src="/images/loader.gif"></div>
             <div id="hotel-response">
 

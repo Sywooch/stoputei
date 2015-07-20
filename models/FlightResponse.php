@@ -4,10 +4,10 @@ namespace app\models;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 
-class TourResponse extends ActiveRecord
+class FlightResponse extends ActiveRecord
 {
     public static function tableName(){
-        return 'tour_response';
+        return 'flight_response';
     }
 
     public function getCountry(){
@@ -18,16 +18,8 @@ class TourResponse extends ActiveRecord
         return $this->hasOne(City::className(), ['city_id' => 'city_id']);
     }
 
-    public function getHotel(){
-        return $this->hasOne(Hotel::className(), ['hotel_id' => 'hotel_id']);
-    }
-
-    public function getDepartCityThere(){
-        return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_there']);
-    }
-
-    public function getDepartCityFromThere(){
-        return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_from_there']);
+    public function getDepartCity(){
+        return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_id']);
     }
 
     public function beforeSave($insert)
@@ -44,10 +36,10 @@ class TourResponse extends ActiveRecord
         return false;
     }
 
-    public function hasResponse($tour_response_id, $manager_id = null){
+    public function hasResponse($flight_response_id, $manager_id = null){
         if(is_null($manager_id)){
             $manager_id = \Yii::$app->user->identity->getId();
         }
-        return self::find()->where(['from_tour_id' => $tour_response_id, 'manager_id' => $manager_id])->count();
+        return self::find()->where(['from_flight_id' => $flight_response_id, 'manager_id' => $manager_id])->count();
     }
 }

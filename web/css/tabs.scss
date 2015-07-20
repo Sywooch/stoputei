@@ -16,14 +16,16 @@
           background: $grey-light;
         }
         .tab-badge{
-          visibility: visible;
+          opacity: 1;
+          top: -6px;
+          right: -8px;
         }
       }
       .tab-badge{
-        visibility: hidden;
+        opacity: 0.25;
         position: absolute;
-        top: -6px;
-        right: -8px;
+        top: 4px;
+        right: 6px;
         background: $red;
         z-index: 100;
       }
@@ -36,6 +38,22 @@
   }
   .tab-content{
     overflow: hidden;
+  }
+  .overflow-list{
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+      border-radius: 0px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+      background: $grey-light;
+    }
+    transition: all $middle-speed ease-in;
   }
   .filter-tour, .filter-flights {
     .back-to-main{
@@ -71,22 +89,6 @@
         visibility: hidden;
       }
       .filter, .create-tour, .create-flight{
-        //max-height: $max-hotel-height;
-        overflow-y: scroll;
-        &::-webkit-scrollbar {
-          width: 6px;
-        }
-        &::-webkit-scrollbar-track {
-          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-          border-radius: 0px;
-        }
-        &::-webkit-scrollbar-thumb {
-          border-radius: 10px;
-          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-          background: $grey-light;
-        }
-        transition: all $middle-speed ease-in;
-
         &.inactive{
           &:after{
             content: '';
@@ -114,21 +116,25 @@
         max-width: 240px;
         .form-group {
           margin-bottom: 0;
-          input[type="text"], input[type="email"], input[type="password"], [type="submit"], select, [name="get-tour-button"], [type="number"], [name="create-tour-button"], #gettourform-hotel_id {
+          input[type="text"], input[type="email"], input[type="password"], [type="submit"], select, [name="get-tour-button"], [type="number"], [name*="create-"], #gettourform-hotel_id {
             border-radius: 0px;
           }
           &.required{
-            &[class*="resort"], &[class*="destination"], &[class*="nutrition"], &[class*="location"], &[class*="room_type"], &[class*="room_view"], &[class*="room_count"],
-            &[class*="tour_cost"], &[class*="depart_city"], &[class*="from_date"], &[class*="to_date"], &[class*="date_city"], &[class*="adult_count_senior_24"],
-            {
-              label:after {
+              .control-label:after {
                 content: ' *';
                 color: $red;
               }
+          }
+          &.field-managerflightform-voyage_is_direct_from, &.field-managerflightform-voyage_is_direct_to{
+            label{
+              color: $grey-text;
             }
           }
         }
-        .field-gettourform-hotel, .create-tour-response{
+        .voyage_is_direct_from, .voyage_is_direct_to{
+          background: $grey-light;
+        }
+        .field-gettourform-hotel, .create-tour-response, .field-touroffersform-hotel{
           .remove-hotel-name, .remove-hotel-name-manager{
             position: absolute;
             right: 20px;
@@ -139,14 +145,14 @@
             }
           }
         }
-        #gettourform-hotel_id, #createtourform-hotel_id{
+        #gettourform-hotel_id, #createtourform-hotel_id, #touroffersform-hotel_id{
           display: none;
           overflow-y: auto;
           max-height: 150px;
           height: 100%;
           z-index: 100;
           position: relative;
-          top: -18px;
+          top: -15px;
           option{
             padding: 7px 0px 7px 12px;
             margin: 0px;
@@ -164,7 +170,7 @@
         .label-get-tour {
           text-align: left;
         }
-        #gettourform-stars, #createtourform-stars {
+        #gettourform-stars, #createtourform-stars, #touroffersform-stars {
           .star {
             position: absolute;
             margin-top: -4px;
@@ -189,6 +195,9 @@
               margin-top: -2px;
               color: $grey-text;
             }
+          }
+          .control-label{
+            text-align: left;
           }
         }
         .form-group {
@@ -227,7 +236,7 @@
           }
         }
       }
-      .hotels-container, .user-tour-container, .flights-container, .manager-flight-container {
+      .hotels-container, .user-tour-container, .flights-container, .manager-flight-container, .user-offer-list {
         overflow-y: auto;
         transition: all $middle-speed ease-in;
         &::-webkit-scrollbar {

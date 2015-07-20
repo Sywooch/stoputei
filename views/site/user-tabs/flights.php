@@ -6,7 +6,7 @@ use dosamigos\datepicker\DatePicker;
 ?>
 <div class="row filter-tour">
     <div class="col-md-9 left-data">
-        <div class="col-md-4 filter">
+        <div class="col-md-4 filter flight-container overflow-list">
             <?php $form = ActiveForm::begin([
                 'id' => 'user-flight-form',
                 'action' => Url::toRoute(['flight/submit-user-flight']),
@@ -113,10 +113,10 @@ use dosamigos\datepicker\DatePicker;
 
             <?php ActiveForm::end();?>
         </div>
-        <div class="col-md-8 flights-container">
+        <div class="col-md-8 flights-container overflow-list">
             <div class="loader-bg hide"><img src="/images/loader.gif"></div>
             <div id="flight-response">
-
+                <?=$userFlights;?>
             </div>
         </div>
     </div>

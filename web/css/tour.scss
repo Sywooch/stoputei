@@ -1,4 +1,4 @@
-#user-tour-response{
+#user-tour-response, #user-tour-response-list{
   .user-tour-wrapper{
     border-bottom: 1px solid $grey-light;
     margin-top: 5px;
@@ -24,6 +24,11 @@
         }
         .view-count{font-weight: 300;}
       }
+      .hotel-rate{
+        margin-left: 10px;
+        color: $grey-text;
+        font-weight: 300;
+      }
     }
 
     .body, .people{
@@ -35,6 +40,16 @@
         font-weight: 600;
         font-size: 0.9em;
       }
+      .hotel-photo{
+        padding: 0px;
+      }
+      .tour-info{
+        padding-right: 0px;
+        font-size: 0.8em;
+      }
+      &.offer{
+        font-size: 0.8em;
+      }
     }
 
     .buttons {
@@ -44,6 +59,13 @@
         padding: 4px 10px;
         margin-bottom: 2px;
       }
+    }
+    .empty-img-offer{
+      display: block;
+      margin: auto;
+      font-size: 4em;
+      text-align: center;
+      color: $grey-light-text;
     }
   }
 }

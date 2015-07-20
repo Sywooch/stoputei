@@ -1,4 +1,5 @@
 <?php
+use app\models\FlightResponse;
 $flight_class = '';
 switch($flight->flight_class){
     case 0:
@@ -16,11 +17,19 @@ $date_city_to_since = date('d.m.Y', strtotime($flight->date_city_to_since));
 $date_city_to_until = date('d.m.Y', strtotime($flight->date_city_to_until));
 $date_city_from_since = date('d.m.Y', strtotime($flight->date_city_from_since));
 $date_city_from_until = date('d.m.Y', strtotime($flight->date_city_from_until));
+$flightResponse = new FlightResponse();
+$responseCount = $flightResponse->hasResponse($flight->id);
 ?>
 <div class="col-xs-12 flight-wrapper">
     <div class="col-xs-12 header">
         <span class="count"><?=Yii::t('app', 'Order').' № '.$flight->id;?>
         </span><span class="created"><?=date('d.m.Y H:i:s', $flight->created_at);?></span>
+        <?php if($responseCount > 0):?>
+            <span class="response">
+                <i class="glyphicon glyphicon-ok-circle"></i>
+                <span class="view-count">(<?=Yii::t('app', 'offers: {n}',['n' => $responseCount]);?>)</span>
+            </span>
+        <?php endif;?>
     </div>
     <div class="col-xs-12 body">
         <div class="col-xs-5">
@@ -54,7 +63,7 @@ $date_city_from_until = date('d.m.Y', strtotime($flight->date_city_from_until));
             </div>
         </div>
         <div class="col-xs-2 buttons">
-            <a href="#" class="more-flight-info btn btn-primary" data-hotel-id="<?=$flight->id;?>"><?= Yii::t('app', 'More');?></a>
+            <a href="#" class="more-flight-info btn btn-primary" data-flight-id="<?=$flight->id;?>"><?= Yii::t('app', 'More');?></a>
         </div>
     </div>
 </div>

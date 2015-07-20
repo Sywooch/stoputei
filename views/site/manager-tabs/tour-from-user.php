@@ -7,10 +7,10 @@ use yii\helpers\Url;
         <i class="glyphicon glyphicon-menu-right hide"></i>
     </span>
     <div class="col-md-9 left-data">
-        <div class="col-md-4 create-tour inactive">
+        <div class="col-md-4 create-tour overflow-list inactive">
         <?=$responseForm;?>
         </div>
-        <div class="col-md-8 user-tour-container">
+        <div class="col-md-8 user-tour-container overflow-list">
             <div class="loader-bg hide"><img src="/images/loader.gif"></div>
             <div id="user-tour-response">
                 <?=$userTours;?>

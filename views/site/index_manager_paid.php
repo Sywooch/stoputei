@@ -43,6 +43,10 @@ $this->title = 'StoPutei';
 
         <?= Html::a('', Url::toRoute(['tour/get-user-tour-list']), ['class' => 'ajax-user-tour-list']);?>
         <?= Html::a('', Url::toRoute(['tour/get-user-tour-full-info']), ['class' => 'ajax-user-tour-full-info']);?>
+        <?= Html::a('', Url::toRoute(['flight/get-user-flight-full-info']), ['class' => 'ajax-user-flight-full-info']);?>
+        <?= Html::a('', Url::toRoute(['flight/close-flight-full-info']), ['class' => 'ajax-close-user-flight-full-info']);?>
         <?= Html::a('', Url::toRoute(['tour/get-user-tour-request']), ['class' => 'ajax-user-tour-request']);?>
+        <?= Html::a('', Url::toRoute(['tour/ajax-create-one-more-manager-response']), ['class' => 'ajax-create-one-more-manager-response']);?>
+        <?= Html::a('', Url::toRoute(['flight/ajax-create-one-more-manager-flight-response']), ['class' => 'ajax-create-one-more-manager-flight-response']);?>
     </div>
 </div>

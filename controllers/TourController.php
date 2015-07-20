@@ -2,8 +2,6 @@
 
 namespace app\controllers;
 
-use app\models\Country;
-use app\models\CreateTourForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\Json;
@@ -16,6 +14,9 @@ use yii\web\View;
 use app\models\UserTour;
 use app\models\DepartCity;
 use app\models\TourResponse;
+use app\models\Country;
+use app\models\CreateTourForm;
+use app\models\TourOffersForm;
 
 class TourController extends Controller
 {
@@ -135,7 +136,9 @@ class TourController extends Controller
                 if($userTour->save()) {
                     $response = [
                         'status' => 'ok',
-                        'message' => Yii::t('app', "Congratulations! Just now you have been created your order.")
+                        'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your order.").'</div><div class="modal-footer">
+                                        <button type="button" class="btn btn-default col-xs-12 create-one-more-tour" data-dismiss="modal">'.Yii::t('app', 'Close').'</button>
+                                      </div>'
                     ];
                 }else{
                     $response = [
@@ -196,10 +199,8 @@ class TourController extends Controller
                 $dropdownResort = [$userTour->resort_id => $userTour->city->name];
                 $createTourForm->user_id = $userTour->owner_id;
                 $createTourForm->from_tour_id = $userTour->id;
-                if(!is_null($userTour->hotel_id)) {
-                    $createTourForm->hotel = $userTour->hotel->name;
-                    $createTourForm->hotel_id = $userTour->hotel_id;
-                }
+                $createTourForm->flight_included = $userTour->flight_included;
+
                 //get hotels list
                 if(!empty($userTour->hotel_id)){
                     $createTourForm->hotel_id = $userTour->hotel_id;
@@ -208,12 +209,14 @@ class TourController extends Controller
                         'country_id' => $userTour->country_id,
                         'hotel_id' => $userTour->hotel_id
                     ])->all();
+                    $dropdownHotel = [$userTour->hotel_id => $userTour->hotel->name];
                 }else{
                     $hotels = Hotel::find()->where([
                         'country_id' => $userTour->country_id,
                         'resort_id' => $userTour->resort_id,
                         //'star_id' => $userTour->stars
                     ])->all();
+                    $dropdownHotel = [];
                 }
                 $response = [
                     'status' => 'ok',
@@ -224,6 +227,7 @@ class TourController extends Controller
                         'dropdownDestination' => $dropdownDestination,
                         'dropdownResort' => $dropdownResort,
                         'departCityThereDropdown' => $departCityThereDropdown,
+                        'dropdownHotel' => $dropdownHotel
                     ]),
                     'tab_name' => Yii::t('app', 'Creating tour')
                 ];
@@ -307,7 +311,7 @@ class TourController extends Controller
                     $response = [
                         'status' => 'ok',
                         'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your response to tourist. Warning! All responses are actually only 2 days.").'</div><div class="modal-footer">
-                                        <button type="button" class="btn btn-default col-xs-6" data-dismiss="modal">'.Yii::t('app', 'Create new one').'</button>
+                                        <button type="button" class="btn btn-default col-xs-6 create-one-more-manager-response" data-dismiss="modal">'.Yii::t('app', 'Create new one').'</button>
                                         <button type="button" class="btn btn-primary col-xs-6 to-request-list">'.Yii::t('app', 'Back to request list').'</button>
                                       </div>'
                     ];
@@ -325,6 +329,108 @@ class TourController extends Controller
                     'errors' => $model->getErrors(),
                     'model' => $model
                 ];
+                echo Json::encode($response);
+                Yii::$app->end();
+            }
+        }
+    }
+
+    public function actionAjaxGetEmptyTourForm(){
+        if(Yii::$app->request->isAjax) {
+            $GetTourForm = new GetTourForm();
+            $country = new Country();
+            $departCity = new DepartCity();
+            $destinationDropdown = $country->destinationDropdown();
+            $departCityDropdown = $departCity->regionDropdown();
+            $response = [
+                'status' => 'ok',
+                'form' => $this->renderAjax('partial/user-tour-request-form', [
+                    'destinationDropdown' => $destinationDropdown,
+                    'GetTourForm' => $GetTourForm,
+                    'departCityDropdown' => $departCityDropdown
+                ])
+            ];
+            echo Json::encode($response);
+            Yii::$app->end();
+        }
+    }
+
+    public function actionAjaxCreateOneMoreManagerResponse(){
+        if(Yii::$app->request->isAjax) {
+            $createTourForm = new CreateTourForm();
+            if($createTourForm->load(Yii::$app->request->get())){
+                $userTour = UserTour::findOne($createTourForm->from_tour_id);
+                $createTourForm = new CreateTourForm();
+                $departCity = new DepartCity();
+                $departCityThereDropdown = $departCity->regionDropdown();
+                $dropdownDestination = [$userTour->country_id => $userTour->country->name];
+                $dropdownResort = [$userTour->resort_id => $userTour->city->name];
+                $createTourForm->flight_included = $userTour->flight_included;
+
+                if(!empty($userTour->hotel_id)){
+                    $dropdownHotel = [$userTour->hotel_id => $userTour->hotel->name];
+                }else{
+                    $dropdownHotel = [];
+                }
+                $response = [
+                    'status' => 'ok',
+                    'form' => $this->renderAjax('partial/manager-tour-response-form', [
+                        'CreateTourForm' => $createTourForm,
+                        'dropdownDestination' => $dropdownDestination,
+                        'dropdownResort' => $dropdownResort,
+                        'departCityThereDropdown' => $departCityThereDropdown,
+                        'dropdownHotel' => $dropdownHotel
+                    ]),
+                    'tab_name' => Yii::t('app', 'Tour from users')
+                ];
+            }else{
+                $response = [
+                    'status' => 'error',
+                    'html' => '',
+                    'message' => Yii::t('app', "Tour was not found.")
+                ];
+            }
+            echo Json::encode($response);
+            Yii::$app->end();
+        }
+    }
+
+    public function actionAjaxGetOffersList(){
+        $model = new TourOffersForm();
+        if(Yii::$app->request->isAjax) {
+            if ($model->load(Yii::$app->request->get())) {
+                $query = [];
+                if(!empty($model->from_date)){
+                    $query['from_date'] = $model->from_date;
+                }
+                if(!empty($model->to_date)){
+                    $query['to_date'] = $model->to_date;
+                }
+                if(!empty($model->hotel_id)){
+                    $query['hotel_id'] = $model->hotel_id;
+                }
+                if($model->night_count != 0){
+                    $query['hotel_id'] = $model->hotel_id;
+                }
+                $tourResponses = TourResponse::find()->where([
+                    'city_id' => $model->resort,
+                    'depart_city_there' => $model->depart_city,
+                    'user_id' => Yii::$app->user->identity->getId()
+                ])->andWhere($query)->all();
+                if(!empty($tourResponses)) {
+                    $response = [
+                        'status' => 'ok',
+                        'model' => $model,
+                        'tours' => $this->renderAjax('partial/user-tour-response-list', ['tourUserResponse' => $tourResponses]),
+                        'count' => count($tourResponses)
+                    ];
+                }else{
+                    $response = [
+                        'status' => 'error',
+                        'message' => Yii::t('app', 'Hotels not found. Please, change search params.'),
+                        'count' => 0
+                    ];
+                }
                 echo Json::encode($response);
                 Yii::$app->end();
             }

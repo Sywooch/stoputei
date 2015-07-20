@@ -19,6 +19,9 @@ use app\models\CreateTourForm;
 use app\models\UserFlightForm;
 use app\models\UserFlight;
 use app\models\ManagerFlightForm;
+use app\models\TourResponse;
+use app\models\FlightResponse;
+use app\models\TourOffersForm;
 
 class SiteController extends Controller
 {
@@ -64,18 +67,29 @@ class SiteController extends Controller
             case 1:
                 $GetTourForm = new GetTourForm();
                 $UserFlightForm = new UserFlightForm();
+                $TourOffersForm = new TourOffersForm();
                 $country = new Country();
                 $departCity = new DepartCity();
+                $flightsUserResponse = FlightResponse::find()->where([
+                    'user_id' => Yii::$app->user->identity->getId()
+                ])->all();
+                $tourUserResponse = TourResponse::find()->where([
+                    'user_id' => Yii::$app->user->identity->getId()
+                ])->all();
                 $destinationDropdown = $country->destinationDropdown();
                 $departCityDropdown = $departCity->regionDropdown();
                 $GetTourForm->flight_included = 1;
+
                 return $this->render('index',
                     [
                         'email' => Yii::$app->user->identity->email,
                         'GetTourForm' => $GetTourForm,
                         'UserFlightForm' => $UserFlightForm,
+                        'TourOffersForm' => $TourOffersForm,
                         'destinationDropdown' => $destinationDropdown,
-                        'departCityDropdown' => $departCityDropdown
+                        'departCityDropdown' => $departCityDropdown,
+                        'flightsUserResponse' => $flightsUserResponse,
+                        'tourUserResponse' => $tourUserResponse
                     ]);
             case 2:
                 if((Yii::$app->user->identity->single_region_paid == 1) or (Yii::$app->user->identity->multiple_region_paid == 1)) {

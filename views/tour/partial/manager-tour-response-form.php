@@ -19,9 +19,9 @@ use dosamigos\datepicker\DatePicker;
 
 <?= $form->field($CreateTourForm, 'resort')->dropDownList($dropdownResort);?>
 
-<?= $form->field($CreateTourForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 create-tour-response">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name-manager"></i></div>'])->input('text') ?>
+<?= $form->field($CreateTourForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 create-tour-response">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name-manager"></i></div><div class="col-xs-11 col-xs-offset-1">{error}</div>'])->input('text') ?>
 
-<?= $form->field($CreateTourForm, 'hotel_id')->dropDownList([], ['multiple' => true])->label('');?>
+<?= $form->field($CreateTourForm, 'hotel_id')->dropDownList($dropdownHotel, ['multiple' => true])->label('');?>
 
 <?= $form->field($CreateTourForm, 'stars')->checkboxList([404 => '', 403 => '', 402 => '', 401 => '', 400 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
@@ -153,7 +153,7 @@ use dosamigos\datepicker\DatePicker;
 <?= $form->field($CreateTourForm, 'room_count')->dropDownList([1 => 1, 2 => 2, 3 => 3]);?>
 <?= $form->field($CreateTourForm, 'flight_included')->checkbox();?>
 
-<div class="flight-included hide">
+<div class="flight-included <?=($CreateTourForm->flight_included==0)?'hide':'';?>">
     <?= $form->field($CreateTourForm, 'depart_city_there')->dropDownList($departCityThereDropdown);?>
     <?= $form->field($CreateTourForm, 'from_date')->widget(
         DatePicker::className(), [

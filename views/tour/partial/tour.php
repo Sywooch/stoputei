@@ -2,16 +2,16 @@
 use app\models\TourResponse;
 $created = date('d.m.Y H:i:s', $tour->created_at);
 $tourResponse = new TourResponse();
-$isResponsed = $tourResponse->hasResponse($tour->id);
+$responseCount = $tourResponse->hasResponse($tour->id);
 ?>
 <div class="user-tour-wrapper col-xs-12">
     <div class="col-xs-12 header-info">
         <span class="count"><?=Yii::t('app', 'Order').' № '.$tour->id;?></span>
         <span class="created"><?=$created;?></span>
-        <?php if($isResponsed > 0):?>
+        <?php if($responseCount > 0):?>
             <span class="response">
                 <i class="glyphicon glyphicon-ok-circle"></i>
-                <span class="view-count">(<?=Yii::t('app', 'offers: {n}',['n' => $isResponsed]);?>)</span>
+                <span class="view-count">(<?=Yii::t('app', 'offers: {n}',['n' => $responseCount]);?>)</span>
             </span>
         <?php endif;?>
     </div>

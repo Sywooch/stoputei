@@ -15,9 +15,6 @@
             </select></div>
         <div class="col-xs-11 col-xs-offset-1"><div class="help-block"></div></div>
     </div>
-    <div class="form-group field-createtourform-hotel">
-        <label class="col-xs-11 col-xs-offset-1 control-label label-get-tour" for="createtourform-hotel">Отель</label><div class="col-xs-11 col-xs-offset-1 create-tour-response"><input type="text" id="createtourform-hotel" class="form-control" name="CreateTourForm[hotel]"><i class="glyphicon glyphicon-remove-circle remove-hotel-name"></i></div>
-    </div>
     <div class="form-group field-userflightform-way_ticket">
         <label class="col-xs-11 col-xs-offset-1 control-label label-get-tour" for="userflightform-way_ticket"><?=Yii::t('app', 'Way ticket');?></label>
         <div class="col-xs-11 col-xs-offset-1 "><input type="hidden" name="UserFlightForm[way_ticket]" value=""><div id="userflightform-way_ticket"><div class="checkbox-one type"><label><span class="line-name">В одну сторону</span><input type="radio" name="UserFlightForm[way_ticket]" value="1" checked=""></label></div>

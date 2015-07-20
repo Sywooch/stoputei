@@ -8,9 +8,9 @@ $this->title = 'StoPutei';
     <div class="row">
         <div class="col-xs-12" id="control-tabs">
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#get-tour" aria-controls="get-tour" role="tab" data-toggle="tab"><?=Yii::t('app','Get a tour');?></a><span class="badge offers-tab tab-badge"></span></li>
-                <li role="presentation"><a href="#offers" aria-controls="offers" role="tab" data-toggle="tab"><?=Yii::t('app','Offers');?></a></li>
-                <li role="presentation"><a href="#flights" aria-controls="flights" role="tab" data-toggle="tab"><?=Yii::t('app','Flights');?></a></li>
+                <li role="presentation" class="active"><a href="#get-tour" aria-controls="get-tour" role="tab" data-toggle="tab"><?=Yii::t('app','Get a tour');?></a><span class="badge offers-tab tab-badge get-tour"></span></li>
+                <li role="presentation"><a href="#offers" aria-controls="offers" role="tab" data-toggle="tab"><?=Yii::t('app','Offers');?></a><span class="badge offers-tab tab-badge user-offers"><?=count($tourUserResponse);?></span></li>
+                <li role="presentation"><a href="#flights" aria-controls="flights" role="tab" data-toggle="tab"><?=Yii::t('app','Flights');?></a><span class="badge offers-tab tab-badge flights"><?=count($flightsUserResponse);?></span></li>
                 <li role="presentation"><a href="#favourites" aria-controls="favourites" role="tab" data-toggle="tab"><?=Yii::t('app','Favourites');?></a></li>
                 <li role="presentation"><a href="#hot-tour" aria-controls="hot-tour" role="tab" data-toggle="tab"><?=Yii::t('app','Hot tours');?></a></li>
             </ul>
@@ -25,13 +25,19 @@ $this->title = 'StoPutei';
                     ]);?>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="offers">
-                    <?=$this->render('user-tabs/offers');?>
+                    <?=$this->render('user-tabs/offers', [
+                        'tourUserResponse' => $this->renderAjax('//tour/partial/user-tour-response-list', ['tourUserResponse' => $tourUserResponse]),
+                        'destinationDropdown' => $destinationDropdown,
+                        'TourOffersForm' => $TourOffersForm,
+                        'departCityDropdown' => $departCityDropdown
+                    ]);?>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="flights">
                     <?=$this->render('user-tabs/flights',[
                         'UserFlightForm' => $UserFlightForm,
                         'destinationDropdown' => $destinationDropdown,
-                        'departCityDropdown' => $departCityDropdown
+                        'departCityDropdown' => $departCityDropdown,
+                        'userFlights' => $this->renderAjax('//flight/partial/user-flight-response-list', ['flights' => $flightsUserResponse]),
                     ]);?>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="favourites">
@@ -43,5 +49,9 @@ $this->title = 'StoPutei';
             </div>
         </div>
         <?= Html::a('', Url::toRoute(['tour/ajax-resorts-dropdown']), ['class' => 'ajax-resort']);?>
+        <?= Html::a('', Url::toRoute(['flight/ajax-get-empty-flight-form']), ['class' => 'ajax-empty-flight-form']);?>
+        <?= Html::a('', Url::toRoute(['tour/ajax-get-empty-tour-form']), ['class' => 'ajax-empty-tour-form']);?>
+        <?= Html::a('', Url::toRoute(['tour/ajax-get-offers-list']), ['class' => 'ajax-get-offers-list']);?>
+        <?= Html::a('', Url::toRoute(['tour/ajax-hotels-autocomplete']), ['class' => 'ajax-hotel-autocomplete-offer']);?>
     </div>
 </div>
