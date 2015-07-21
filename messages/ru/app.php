@@ -52,6 +52,7 @@ return [
     'Site home page' => 'Домашняя страница',
     'Get a tour' => 'Запрос тура',
     'Create a tour' => 'Создать тур',
+    'Create same tour' => 'Создать похожий тур',
     'Creating tour' => 'Создание тура',
     'Offers' => 'Предложения',
     'Offer' => 'Предложение',

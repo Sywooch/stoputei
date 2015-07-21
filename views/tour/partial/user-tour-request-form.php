@@ -16,7 +16,7 @@ use dosamigos\datepicker\DatePicker;
 
 <?= $form->field($GetTourForm, 'destination')->dropDownList($destinationDropdown,['prompt' => Yii::t('app','Choose destination')]);?>
 
-<?= $form->field($GetTourForm, 'resort')->dropDownList([],['prompt' => Yii::t('app','Choose destination')]);?>
+<?= $form->field($GetTourForm, 'resort')->dropDownList($resortDropdown,['prompt' => Yii::t('app','Choose destination')]);?>
 
 <?= $form->field($GetTourForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 ">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name"></i></div>'])->input('text') ?>
 

@@ -140,7 +140,8 @@ class TourController extends Controller
                     $response = [
                         'status' => 'ok',
                         'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your order.").'</div><div class="modal-footer">
-                                        <button type="button" class="btn btn-default col-xs-12 create-one-more-tour" data-dismiss="modal">'.Yii::t('app', 'Close').'</button>
+                                        <button type="button" class="btn btn-default col-xs-6 create-one-more-tour" data-dismiss="modal">'.Yii::t('app', 'Close').'</button>
+                                        <button type="button" class="btn btn-primary col-xs-6" data-dismiss="modal">'.Yii::t('app', 'Create same tour').'</button>
                                       </div>'
                     ];
                 }else{
@@ -350,7 +351,8 @@ class TourController extends Controller
                 'form' => $this->renderAjax('partial/user-tour-request-form', [
                     'destinationDropdown' => $destinationDropdown,
                     'GetTourForm' => $GetTourForm,
-                    'departCityDropdown' => $departCityDropdown
+                    'departCityDropdown' => $departCityDropdown,
+                    'resortDropdown' => []
                 ])
             ];
             echo Json::encode($response);
