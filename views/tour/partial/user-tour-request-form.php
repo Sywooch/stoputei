@@ -41,22 +41,23 @@ use dosamigos\datepicker\DatePicker;
         $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox']);
     }]);?>
-<?= $form->field($GetTourForm, 'nutrition')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => ''],
+<?= $form->field($GetTourForm, 'nutrition')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
         if($value == 0){
-            $checked = true;
-            $span = Html::tag('span', Yii::t('app','RO'), ['class' => 'type-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Room only')]);
+            $span = Html::tag('span', Yii::t('app','Any nutrition'), ['class' => 'type-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Any nutrition')]);
         }elseif($value == 1){
-            $span = Html::tag('span', Yii::t('app','BB'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Bed & Breakfast')]);
+            $span = Html::tag('span', Yii::t('app','RO'), ['class' => 'type-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Room only')]);
         }elseif($value == 2){
-            $span = Html::tag('span', Yii::t('app','HB'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Half Board (Breakfast and Dinner normally)')]);
+            $span = Html::tag('span', Yii::t('app','BB'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Bed & Breakfast')]);
         }elseif($value == 3){
-            $span = Html::tag('span', Yii::t('app','HB+'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Half Board plus')]);
+            $span = Html::tag('span', Yii::t('app','HB'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Half Board (Breakfast and Dinner normally)')]);
         }elseif($value == 4){
-            $span = Html::tag('span', Yii::t('app','FB+'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Full Board plus')]);
+            $span = Html::tag('span', Yii::t('app','HB+'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Half Board plus')]);
         }elseif($value == 5){
-            $span = Html::tag('span', Yii::t('app','AL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'All Inclusive')]);
+            $span = Html::tag('span', Yii::t('app','FB+'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Full Board plus')]);
         }elseif($value == 6){
+            $span = Html::tag('span', Yii::t('app','AL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'All Inclusive')]);
+        }elseif($value == 7){
             $span = Html::tag('span', Yii::t('app','UAL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Ultra All Inclusive')]);
         }
         $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
@@ -65,7 +66,6 @@ use dosamigos\datepicker\DatePicker;
 <?= $form->field($GetTourForm, 'beach_line')->checkboxList([0 => '', 1 => '', 2 => '', 3 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
         if($value == 0){
-            $checked = true;
             $span = Html::tag('span', Yii::t('app','Any line'), ['class' => 'line-name']);
         }elseif($value == 1){
             $span = Html::tag('span', Yii::t('app','First'), ['class' => 'line-name']);
@@ -80,7 +80,6 @@ use dosamigos\datepicker\DatePicker;
 <?= $form->field($GetTourForm, 'hotel_type')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
         if($value == 0){
-            $checked = true;
             $span = Html::tag('span', Yii::t('app','Any type'), ['class' => 'type-name']);
         }elseif($value == 1){
             $span = Html::tag('span', Yii::t('app','Teen'), ['class' => 'line-name']);
@@ -99,36 +98,44 @@ use dosamigos\datepicker\DatePicker;
         <?= $form->field($GetTourForm, 'night_min', ['options' => ['class' => 'col-xs-6']], ['template' => '{label}<div class="col-xs-5">{input}</div>', 'labelOptions' => ['class' => 'col-xs-2 control-label label-night']])->dropDownList([1 => 1, 2 => 2]);?>
         <?= $form->field($GetTourForm, 'night_max', ['options' => ['class' => 'col-xs-6']], ['template' => '{label}<div class="col-xs-5">{input}</div>', 'labelOptions' => ['class' => 'col-xs-2 control-label label-night']])->dropDownList([1 => 1, 2 => 2]);?>
     </div>
-<?= $form->field($GetTourForm, 'room_type')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => ''],
+<?= $form->field($GetTourForm, 'room_type')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => '', 8 => '', 9 => '', 10 => '', 11 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
         if($value == 0){
-            $checked = true;
-            $span = Html::tag('span', Yii::t('app','Standart'), ['class' => 'type-name']);
+            $span = Html::tag('span', Yii::t('app','Any type'), ['class' => 'type-name']);
         }elseif($value == 1){
-            $span = Html::tag('span', Yii::t('app','Family'), ['class' => 'line-name']);
+            $span = Html::tag('span', Yii::t('app','Standart'), ['class' => 'type-name']);
         }elseif($value == 2){
-            $span = Html::tag('span', Yii::t('app','Deluxe'), ['class' => 'line-name']);
+            $span = Html::tag('span', Yii::t('app','Family'), ['class' => 'line-name']);
         }elseif($value == 3){
-            $span = Html::tag('span', Yii::t('app','Suite'), ['class' => 'line-name']);
+            $span = Html::tag('span', Yii::t('app','Deluxe'), ['class' => 'line-name']);
         }elseif($value == 4){
-            $span = Html::tag('span', Yii::t('app','Villa'), ['class' => 'line-name']);
+            $span = Html::tag('span', Yii::t('app','Suite'), ['class' => 'line-name']);
         }elseif($value == 5){
-            $span = Html::tag('span', Yii::t('app','Apartaments'), ['class' => 'line-name']);
+            $span = Html::tag('span', Yii::t('app','Villa'), ['class' => 'line-name']);
         }elseif($value == 6){
-            $span = Html::tag('span', Yii::t('app','Duplex'), ['class' => 'line-name']);
-        }elseif($value == 7){
             $span = Html::tag('span', Yii::t('app','Club'), ['class' => 'line-name']);
+        }elseif($value == 7){
+            $span = Html::tag('span', Yii::t('app','Apartments'), ['class' => 'line-name']);
+        }elseif($value == 8){
+            $span = Html::tag('span', Yii::t('app','Duplex'), ['class' => 'line-name']);
+        }elseif($value == 9){
+            $span = Html::tag('span', Yii::t('app','Studio'), ['class' => 'line-name']);
+        }elseif($value == 10){
+            $span = Html::tag('span', Yii::t('app','Bungalow'), ['class' => 'line-name']);
+        }elseif($value == 11){
+            $span = Html::tag('span', Yii::t('app','Eco'), ['class' => 'line-name']);
         }
         $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);
     }]);?>
-<?= $form->field($GetTourForm, 'adult_amount')->dropDownList([1 => 1, 2 => 2]);?>
-<?= $form->field($GetTourForm, 'children_under_12_amount')->dropDownList([0 => 0, 1 => 1, 2 => 2]);?>
-<?= $form->field($GetTourForm, 'children_under_2_amount')->dropDownList([0 => 0, 1 => 1, 2 => 2]);?>
-<?= $form->field($GetTourForm, 'room_count')->dropDownList([1 => 1, 2 => 2]);?>
+<?= $form->field($GetTourForm, 'adult_amount')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => 1]);?>
+<?= $form->field($GetTourForm, 'children_under_12_amount')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => 0]);?>
+<?= $form->field($GetTourForm, 'children_under_2_amount')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => 0]);?>
+<?= $form->field($GetTourForm, 'room_count')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => 0]);?>
 <?= $form->field($GetTourForm, 'flight_included')->checkbox();?>
 
-<?= $form->field($GetTourForm, 'depart_city')->dropDownList($departCityDropdown);?>
+<?= $form->field($GetTourForm, 'depart_country')->dropDownList($departCountryDropdown, ['prompt' => Yii::t('app','Choose destination')]);?>
+<?= $form->field($GetTourForm, 'depart_city')->dropDownList([],['prompt' => Yii::t('app','Choose destination')]);?>
 
 <?= $form->field($GetTourForm, 'from_date')->widget(
     DatePicker::className(), [
@@ -154,9 +161,9 @@ use dosamigos\datepicker\DatePicker;
     ]
 ]);?>
 
-<?= $form->field($GetTourForm, 'budget')->input('number', ['min' => 1000, 'max' => 90000000, 'step' => 200]);?>
+<?= $form->field($GetTourForm, 'budget')->input('number', ['min' => 0, 'max' => 99000000, 'step' => 1000]);?>
 
-<?= $form->field($GetTourForm, 'add_info')->textarea(['class' => 'add-info']);?>
+<?= $form->field($GetTourForm, 'add_info')->textarea(['class' => 'add-info', 'placeholder' => Yii::t('app', 'Max length - 200')]);?>
 
 <?= Html::a('', Url::toRoute(['tour/get-hotel-list']), ['class' => 'ajax-tour-list']);?>
 

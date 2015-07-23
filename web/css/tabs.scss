@@ -199,6 +199,11 @@
           .control-label{
             text-align: left;
           }
+          &.field-gettourform-hotel_type, &.field-gettourform-beach_line{
+            &.disabled{
+              color: $grey-light-text;
+            }
+          }
         }
         .form-group {
           .checkbox-one {
@@ -229,6 +234,7 @@
         .add-info {
           resize: vertical;
           width: 100%;
+          min-height: 120px;
         }
         #create-tour-response{
           &.inactive{

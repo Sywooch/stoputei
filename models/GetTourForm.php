@@ -19,6 +19,7 @@ class GetTourForm extends Model
     public $beach_line;
     public $hotel_type;
     public $room_type;
+    public $depart_country;
     public $depart_city;
     public $night_min;
     public $night_max;
@@ -38,13 +39,13 @@ class GetTourForm extends Model
     public function rules()
     {
         return [
-            [['destination', 'resort', 'night_min', 'night_max', 'adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count', 'depart_city', 'from_date', 'to_date'], 'required'],
+            [['destination', 'resort', 'night_min', 'night_max', 'adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count'], 'required'],
             ['add_info', 'string', 'max' => 255],
             ['flight_included', 'boolean'],
             ['hotel_id', 'safe'],
             ['hotel_id', 'default', 'value' => null],
             ['stars', 'each', 'rule' => ['in', 'range' => [400, 401, 402, 403, 404]]],
-            ['nutrition', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3, 4, 5, 6]]],
+            ['nutrition', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3, 4, 5, 6, 7]]],
             ['room_type', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3, 4, 5, 6, 7]]],
             ['hotel_type', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3, 4]]],
             ['beach_line', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3]]],
@@ -52,6 +53,16 @@ class GetTourForm extends Model
             [['budget'], 'default', 'value' => 1000],
             ['from_date', 'compare', 'compareAttribute' => 'to_date', 'operator'=>'<'],
             ['night_min', 'compare', 'compareAttribute' => 'night_max', 'operator'=>'<'],
+            ['stars', 'required',  'message' => Yii::t('app','{attribute} must be checked.'), 'when' => function ($model) {
+                return $model->hotel_id == '';
+            }, 'whenClient' => "function (attribute, value) {
+                return $('[name=\"GetTourForm[hotel_id]\"]').val() == '';
+            }"],
+            [['from_date', 'to_date', 'depart_city'], 'required',  'message' => Yii::t('app','{attribute} can not be blank.'), 'when' => function ($model) {
+                return $model->flight_included == 1;
+            }, 'whenClient' => "function (attribute, value) {
+                return $('[name=\"GetTourForm[flight_included]\"]').val() == 1;
+            }"],
         ];
     }
 
@@ -68,6 +79,7 @@ class GetTourForm extends Model
             'hotel_type' => Yii::t('app', 'Hotel type'),
             'room_type' => Yii::t('app', 'Room type'),
             'depart_city' => Yii::t('app', 'Depart city'),
+            'depart_country' => Yii::t('app', 'Depart country'),
             'night_min' => Yii::t('app', 'From'),
             'night_max' => Yii::t('app', 'To'),
             'adult_amount' => Yii::t('app', 'Amount of adult'),

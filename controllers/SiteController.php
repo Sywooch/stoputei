@@ -78,6 +78,7 @@ class SiteController extends Controller
                 ])->all();
                 $destinationDropdown = $country->destinationDropdown();
                 $departCityDropdown = $departCity->regionDropdown();
+                $departCountryDropdown = $destinationDropdown;
                 $GetTourForm->flight_included = 1;
 
                 return $this->render('index',
@@ -89,7 +90,8 @@ class SiteController extends Controller
                         'destinationDropdown' => $destinationDropdown,
                         'departCityDropdown' => $departCityDropdown,
                         'flightsUserResponse' => $flightsUserResponse,
-                        'tourUserResponse' => $tourUserResponse
+                        'tourUserResponse' => $tourUserResponse,
+                        'departCountryDropdown' => $departCountryDropdown
                     ]);
             case 2:
                 if((Yii::$app->user->identity->single_region_paid == 1) or (Yii::$app->user->identity->multiple_region_paid == 1)) {

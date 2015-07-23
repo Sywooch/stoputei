@@ -347,17 +347,20 @@ class TourController extends Controller
     public function actionAjaxGetEmptyTourForm(){
         if(Yii::$app->request->isAjax) {
             $GetTourForm = new GetTourForm();
+            $GetTourForm->flight_included = 1;
             $country = new Country();
             $departCity = new DepartCity();
             $destinationDropdown = $country->destinationDropdown();
             $departCityDropdown = $departCity->regionDropdown();
+            $departCountryDropdown = $destinationDropdown;
             $response = [
                 'status' => 'ok',
                 'form' => $this->renderAjax('partial/user-tour-request-form', [
                     'destinationDropdown' => $destinationDropdown,
                     'GetTourForm' => $GetTourForm,
                     'departCityDropdown' => $departCityDropdown,
-                    'resortDropdown' => []
+                    'resortDropdown' => [],
+                    'departCountryDropdown' => $departCountryDropdown
                 ])
             ];
             echo Json::encode($response);
