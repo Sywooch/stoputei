@@ -50,7 +50,6 @@ use dosamigos\datepicker\DatePicker;
             <?= $form->field($GetTourForm, 'nutrition')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){
-                        $checked = true;
                         $span = Html::tag('span', Yii::t('app','RO'), ['class' => 'type-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Room only')]);
                     }elseif($value == 1){
                         $span = Html::tag('span', Yii::t('app','BB'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Bed & Breakfast')]);
@@ -71,7 +70,6 @@ use dosamigos\datepicker\DatePicker;
             <?= $form->field($GetTourForm, 'beach_line')->checkboxList([0 => '', 1 => '', 2 => '', 3 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){
-                        $checked = true;
                         $span = Html::tag('span', Yii::t('app','Any line'), ['class' => 'line-name']);
                     }elseif($value == 1){
                         $span = Html::tag('span', Yii::t('app','First'), ['class' => 'line-name']);
@@ -86,7 +84,6 @@ use dosamigos\datepicker\DatePicker;
             <?= $form->field($GetTourForm, 'hotel_type')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){
-                        $checked = true;
                         $span = Html::tag('span', Yii::t('app','Any type'), ['class' => 'type-name']);
                     }elseif($value == 1){
                         $span = Html::tag('span', Yii::t('app','Teen'), ['class' => 'line-name']);
@@ -108,7 +105,6 @@ use dosamigos\datepicker\DatePicker;
              <?= $form->field($GetTourForm, 'room_type')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){
-                        $checked = true;
                         $span = Html::tag('span', Yii::t('app','Standart'), ['class' => 'type-name']);
                     }elseif($value == 1){
                         $span = Html::tag('span', Yii::t('app','Family'), ['class' => 'line-name']);
