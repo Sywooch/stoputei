@@ -5,7 +5,7 @@ return [
     'adminEmail' => 'noreply@stoputei.com',
     'api' => [
         "soap_login" => "Timateo83@gmail.com",
-        "soap_password" => "1234567",
+        "soap_password" => "123456789",
         "wsdl" => "http://module.sletat.ru/XmlGate.svc?singleWSDL",
         "namespace" => "urn:SletatRu:DataTypes:AuthData:v1"
     ],
