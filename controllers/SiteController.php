@@ -164,7 +164,7 @@ class SiteController extends Controller
         $model = new RegistrationForm();
         $model->role = 1;
         $country = new Country();
-        $dropdown = $country->destinationDropdown();
+        $dropdown = $country->destinationDropdown([16, 53, 62, 64, 66, 79, 150, 121, 124]);
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $user = new User();
             $user->email = $model->email;

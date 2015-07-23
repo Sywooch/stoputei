@@ -36,9 +36,9 @@ class TourController extends Controller
         }
     }
 
-    public function actionAjaxHotelsAutocomplete($country_id, $query){
+    public function actionAjaxHotelsAutocomplete($country_id, $resort_id, $query){
         if(Yii::$app->request->isAjax) {
-            if($hotels = Hotel::find()->where(['country_id' => $country_id])->andWhere(['like', 'name', $query])->all()) {
+            if($hotels = Hotel::find()->where(['country_id' => $country_id, 'resort_id' => $resort_id])->andWhere(['like', 'name', $query])->all()) {
                 $list = [];
                 foreach ($hotels as $key => $hotel) {
                     $list[] = [
@@ -50,8 +50,13 @@ class TourController extends Controller
                     'hotels' => $list,
                     'status' => 'ok'
                 ];
-                echo json_encode($response);
+            }else{
+                $response = [
+                    'hotels' => [],
+                    'status' => 'ok'
+                ];
             }
+            echo json_encode($response);
         }
     }
 

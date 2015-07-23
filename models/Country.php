@@ -17,8 +17,12 @@ class Country extends ActiveRecord
         return $this->hasMany(UserTour::className(), ['country_id' => 'id']);
     }
 
-    public function destinationDropdown(){
-        $countries = self::find()->all();
+    public function destinationDropdown($countries = null){
+        if(is_null($countries)) {
+            $countries = self::find()->all();
+        }else{
+            $countries = self::find()->where(['country_id' => $countries])->all();
+        }
         $list = [];
         foreach($countries as $key => $country){
             $list[$country->country_id] = $country->name;

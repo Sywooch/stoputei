@@ -23,7 +23,7 @@ class AfterRequest extends Behavior
         if(in_array($short_language,$this->language_array)){
             \Yii::$app->language = $short_language;
         }else{
-            \Yii::$app->language = 'en';
+            \Yii::$app->language = 'ru';
         }
     }
 }

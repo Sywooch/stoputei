@@ -81,6 +81,8 @@ $(function(){
 
     //get a tour on ajax(resort)
     $(document).on('change', '#gettourform-resort', function(){
+        $('#gettourform-hotel').val('');
+        $('#gettourform-hotel_id').val('');
         getHotelList();
     });
 
@@ -111,9 +113,9 @@ $(function(){
     var autocomplete_url = $('.ajax-hotel-autocomplete').attr('href');
     $(document).on('input', '#gettourform-hotel', function(){
         var country_id = $('#gettourform-destination').val();
-        var city_id = $('#gettourform-resort').val();
+        var resort_id = $('#gettourform-resort').val();
         var query = $('#gettourform-hotel').val();
-        var url = autocomplete_url+'?country_id='+country_id+'&query='+query;
+        var url = autocomplete_url+'?country_id='+country_id+'&resort_id='+resort_id+'&query='+query;
         $.get(url).done(function(response){
             var data = $.parseJSON(response);
             $('.hotels-container .loader-bg').addClass('hide');
