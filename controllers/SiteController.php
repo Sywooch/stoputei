@@ -22,6 +22,7 @@ use app\models\ManagerFlightForm;
 use app\models\TourResponse;
 use app\models\FlightResponse;
 use app\models\TourOffersForm;
+use app\models\CreateHotTourForm;
 
 class SiteController extends Controller
 {
@@ -96,6 +97,7 @@ class SiteController extends Controller
             case 2:
                 if((Yii::$app->user->identity->single_region_paid == 1) or (Yii::$app->user->identity->multiple_region_paid == 1)) {
                     $CreateTourForm = new CreateTourForm();
+                    $CreateHotTourForm = new CreateHotTourForm();
                     $ManagerFlightForm = new ManagerFlightForm();
                     $country = new Country();
                     $departCity = new DepartCity();
@@ -111,6 +113,7 @@ class SiteController extends Controller
                         [
                             'email' => Yii::$app->user->identity->email,
                             'CreateTourForm' => $CreateTourForm,
+                            'CreateHotTourForm' => $CreateHotTourForm,
                             'ManagerFlightForm' => $ManagerFlightForm,
                             'destinationDropdown' => $destinationDropdown,
                             'departCityDropdown' => $departCityDropdown,

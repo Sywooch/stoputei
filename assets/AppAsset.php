@@ -23,7 +23,11 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'https://maps.googleapis.com/maps/api/js',
-        'js/main.js'
+        'js/main.js',
+        'js/user-tour.js',
+        'js/manager-create-response-tour.js',
+        'js/create-hot-tour.js',
+        'js/flights.js',
     ];
     public $images = [];
     public $depends = [

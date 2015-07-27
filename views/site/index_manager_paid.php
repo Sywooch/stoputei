@@ -8,7 +8,8 @@ $this->title = 'StoPutei';
     <div class="row">
         <div class="col-xs-12" id="control-tabs">
             <ul class="nav nav-tabs manager" role="tablist">
-                <li role="presentation" class="active"><a href="#tour-from-user" aria-controls="tour-from-user" role="tab" data-toggle="tab"><?=Yii::t('app','Tour from users');?></a><span class="badge offers-tab tab-badge"><?=count($userTours);?></span></li>
+                <li role="presentation" class="active"><a href="#create-tour" aria-controls="create-tour" role="tab" data-toggle="tab"><?=Yii::t('app','Create a tour');?></a><span class="badge offers-tab tab-badge create-hot-tour"></span></li>
+                <li role="presentation"><a href="#tour-from-user" aria-controls="tour-from-user" role="tab" data-toggle="tab"><?=Yii::t('app','Tour from users');?></a><span class="badge offers-tab tab-badge"><?=count($userTours);?></span></li>
                 <li role="presentation"><a href="#flights" aria-controls="flights" role="tab" data-toggle="tab"><?=Yii::t('app','Flights');?></a><span class="badge offers-tab tab-badge"><?=count($userFlights);?></span></li>
                 <li role="presentation"><a href="#my-offers" aria-controls="my-offers" role="tab" data-toggle="tab"><?=Yii::t('app','My offers');?></a></li>
                 <li role="presentation"><a href="#my-hot-tours" aria-controls="my-hot-tours" role="tab" data-toggle="tab"><?=Yii::t('app','My hot tours');?></a></li>
@@ -16,7 +17,14 @@ $this->title = 'StoPutei';
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade in active" id="tour-from-user">
+                <div role="tabpanel" class="tab-pane fade in active" id="create-tour">
+                    <?=$this->render('manager-tabs/create-tour', [
+                        'CreateHotTourForm' => $CreateHotTourForm,
+                        'dropdownDestination' => $destinationDropdown,
+                        'departCityThereDropdown' => $departCityDropdown
+                    ]);?>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tour-from-user">
                     <?=$this->render('manager-tabs/tour-from-user', [
                         'userTours' => $this->renderAjax('//tour/partial/user-tour-list', ['tours' => $userTours]),
                         'responseForm' => $this->renderAjax('//tour/partial/manager-tour-response-form-empty', [
@@ -48,5 +56,8 @@ $this->title = 'StoPutei';
         <?= Html::a('', Url::toRoute(['tour/get-user-tour-request']), ['class' => 'ajax-user-tour-request']);?>
         <?= Html::a('', Url::toRoute(['tour/ajax-create-one-more-manager-response']), ['class' => 'ajax-create-one-more-manager-response']);?>
         <?= Html::a('', Url::toRoute(['flight/ajax-create-one-more-manager-flight-response']), ['class' => 'ajax-create-one-more-manager-flight-response']);?>
+        <?= Html::a('', Url::toRoute(['tour/ajax-hotels-autocomplete-manager']), ['class' => 'ajax-hotel-autocomplete-manager']);?>
+        <?= Html::a('', Url::toRoute(['tour/get-hotel-manager-list']), ['class' => 'ajax-hot-tour-hotel-list']);?>
+        <?= Html::a('', Url::toRoute(['tour/create-one-more-hot-tour']), ['class' => 'ajax-create-one-more-hot-tour']);?>
     </div>
 </div>

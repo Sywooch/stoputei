@@ -37,7 +37,9 @@ $flight_included = ($tour->flight_included==1)?Yii::t('app', 'Flight included'):
         <div class="col-xs-7 tour-info">
             <div class="data"><?=$tour->country->name;?></div>
             <div class="data"><?=$tour->city->name;?></div>
-            <div><span class="describe"><?=Yii::t('app', 'Depart city from');?></span> : <span class="data"><?= $tour->departCityThere->name;?></span></div>
+            <?php if(!is_null($tour->departCityThere)):?>
+                <div><span class="describe"><?=Yii::t('app', 'Depart city from');?></span> : <span class="data"><?= $tour->departCityThere->name;?></span></div>
+            <?php endif;?>
             <div class="data"><?=$flight_included;?></div>
         </div>
     </div>

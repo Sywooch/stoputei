@@ -143,4 +143,76 @@ body {
       }
     }
   }
+
+  #ui-datepicker-div{
+    width: 100%;
+    max-width: 240px;
+    border-radius: 4px;
+    background: #ffffff;
+    z-index: 1000;
+    &.ui-widget-content{
+      border: 1px solid #aaaaaa;
+      background: #ffffff;
+      color: #222222;
+      .ui-widget-header{
+        border: 1px solid #aaaaaa;
+        background: #cccccc;
+        color: #222222;
+        font-weight: bold;
+        .ui-datepicker-title{
+          margin: 0 2.3em;
+          line-height: 1.8em;
+          text-align: center;
+        }
+      }
+      .ui-datepicker-calendar{
+          width: 100%;
+          font-size: .9em;
+          border-collapse: collapse;
+          margin: 0 0 .4em;
+          thead{
+            display: table-header-group;
+            vertical-align: middle;
+            border-color: inherit;
+            th{
+              padding: .7em .3em;
+              text-align: center;
+              font-weight: bold;
+              border: 0;
+            }
+          }
+          tbody{
+            display: table-row-group;
+            vertical-align: middle;
+            border-color: inherit;
+            tr{
+              display: table-row;
+              vertical-align: inherit;
+              border-color: inherit;
+              td{
+                border: 0;
+                padding: 1px;
+                .ui-state-default{
+                  border: 1px solid #d3d3d3;
+                  background: #e6e6e6;
+                  font-weight: normal;
+                  color: #555555;
+                  &.ui-state-highlight{
+                    border: 1px solid #fcefa1;
+                    background: #fbf9ee;
+                    color: #363636;
+                  }
+                }
+                a{
+                  display: block;
+                  padding: .2em;
+                  text-align: right;
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+      }
+    }
+  }
 }

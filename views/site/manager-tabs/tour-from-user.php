@@ -28,5 +28,5 @@ use yii\helpers\Url;
     <div class="col-xs-12 full-hotel-information hide">
 
     </div>
-    <?= Html::a('', Url::toRoute(['tour/ajax-hotels-autocomplete-manager']), ['class' => 'ajax-hotel-autocomplete-manager']);?>
+
 </div>

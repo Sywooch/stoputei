@@ -74,6 +74,8 @@ class FlightController extends Controller
                 $userFlight = UserFlight::findOne($user_flight_id);
                 $ManagerFlightForm = new ManagerFlightForm();
                 $departCity = new DepartCity();
+                $country = new Country();
+                $dropdownDepartCountry = $country->destinationDropdown();
                 $departCityDropdown = $departCity->regionDropdown();
                 $dropdownDestination = [$userFlight->country_id => $userFlight->country->name];
                 $dropdownResort = [$userFlight->city_id => $userFlight->city->name];
@@ -82,6 +84,10 @@ class FlightController extends Controller
                 $ManagerFlightForm->voyage_is_direct_to = 1;
                 $ManagerFlightForm->voyage_is_direct_from = 1;
                 $ManagerFlightForm->way_ticket = $userFlight->way_ticket;
+                $ManagerFlightForm->adult_count_under_24 = $userFlight->adult_count_under_24;
+                $ManagerFlightForm->adult_count_senior_24 = $userFlight->adult_count_senior_24;
+                $ManagerFlightForm->children_under_12_amount = $userFlight->children_under_12_amount;
+                $ManagerFlightForm->children_under_2_amount = $userFlight->children_under_2_amount;
                 if($userFlight->flight_class == 0) {
                     $ManagerFlightForm->flight_class = [1, 2];
                 }else{
@@ -103,7 +109,8 @@ class FlightController extends Controller
                         'dropdownDestination' => $dropdownDestination,
                         'dropdownResort' => $dropdownResort,
                         'departCityDropdown' => $departCityDropdown,
-                        'dropdownDepartCityFrom' => $list
+                        'dropdownDepartCityFrom' => $list,
+                        'departCountryDropdown' => $dropdownDepartCountry
                     ]),
                     'tab_name' => Yii::t('app', 'Creating flight'),
                     'checked' => Yii::t('app', 'Checked'),

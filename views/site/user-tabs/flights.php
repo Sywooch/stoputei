@@ -33,7 +33,8 @@ use dosamigos\datepicker\DatePicker;
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
                 }]);?>
 
-            <?= $form->field($UserFlightForm, 'depart_city')->dropDownList($departCityDropdown);?>
+            <?= $form->field($UserFlightForm, 'depart_country')->dropDownList($destinationDropdown,['prompt' => Yii::t('app','Choose destination')]);?>
+            <?= $form->field($UserFlightForm, 'depart_city')->dropDownList([]);?>
 
             <?= $form->field($UserFlightForm, 'date_city_to_since')->widget(
                 DatePicker::className(), [
@@ -50,7 +51,7 @@ use dosamigos\datepicker\DatePicker;
             <?= $form->field($UserFlightForm, 'date_city_to_until')->widget(
                 DatePicker::className(), [
                 'inline' => false,
-                'options' => ['placeholder' => Yii::t('app', 'To date')],
+                'options' => ['placeholder' => Yii::t('app', date('Y-M-d'))],
                 'clientOptions' => [
                     'autoclose' => true,
                     'format' => 'yyyy-m-d',
@@ -62,7 +63,10 @@ use dosamigos\datepicker\DatePicker;
             <?= $form->field($UserFlightForm, 'date_city_from_since')->widget(
                 DatePicker::className(), [
                 'inline' => false,
-                'options' => ['placeholder' => Yii::t('app', date('Y-M-d'))],
+                'options' => [
+                    'placeholder' => Yii::t('app', date('Y-M-d')),
+                    'disabled' => true
+                ],
                 'clientOptions' => [
                     'autoclose' => true,
                     'format' => 'yyyy-m-d',
@@ -74,7 +78,10 @@ use dosamigos\datepicker\DatePicker;
             <?= $form->field($UserFlightForm, 'date_city_from_until')->widget(
                 DatePicker::className(), [
                 'inline' => false,
-                'options' => ['placeholder' => Yii::t('app', 'To date')],
+                'options' => [
+                    'placeholder' => Yii::t('app', date('Y-M-d')),
+                    'disabled' => true
+                ],
                 'clientOptions' => [
                     'autoclose' => true,
                     'format' => 'yyyy-m-d',
@@ -83,10 +90,10 @@ use dosamigos\datepicker\DatePicker;
                 ]
             ]);?>
 
-            <?= $form->field($UserFlightForm, 'adult_count_senior_24')->dropDownList([1 => 1, 2 => 2, 3 => 3]);?>
-            <?= $form->field($UserFlightForm, 'adult_count_under_24')->dropDownList([0 => 0, 1 => 1, 2 => 2]);?>
-            <?= $form->field($UserFlightForm, 'children_under_12_amount')->dropDownList([0 => 0, 1 => 1, 2 => 2]);?>
-            <?= $form->field($UserFlightForm, 'children_under_2_amount')->dropDownList([0 => 0, 1 => 1, 2 => 2]);?>
+            <?= $form->field($UserFlightForm, 'adult_count_senior_24')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => '']);?>
+            <?= $form->field($UserFlightForm, 'adult_count_under_24')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => '']);?>
+            <?= $form->field($UserFlightForm, 'children_under_12_amount')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => '']);?>
+            <?= $form->field($UserFlightForm, 'children_under_2_amount')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => '']);?>
 
             <?= $form->field($UserFlightForm, 'flight_class')->radioList([0 => '', 1 => '', 2 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){

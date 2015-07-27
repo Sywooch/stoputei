@@ -34,9 +34,9 @@ $to_date = date('d.m.Y', strtotime($tour->to_date));
             <span class="value"><?=$tour->departCity->name;?></span>
         </div>
         <div class="field">
-            <span class="describe"><?=Yii::t('app', 'From');?> </span>
+            <span class="describe"><?=Yii::t('app', 'Since');?> </span>
             <span class="value"><?=$from_date;?></span>
-            <span class="describe"><?=Yii::t('app', 'To');?> </span>
+            <span class="describe"><?=Yii::t('app', 'Until');?> </span>
             <span class="value"><?=$to_date;?></span>
         </div>
         <div class="field">
@@ -61,8 +61,8 @@ $to_date = date('d.m.Y', strtotime($tour->to_date));
             <span class="value"><?=$tour->children_under_2_amount;?></span>
         </div>
         <div class="field">
-            <span class="describe"><?=Yii::t('app', 'Amount of room');?> : </span>
-            <span class="value"><?=Yii::t('app', 'From');?> <?=$tour->night_min;?> <?=Yii::t('app', 'To');?> <?=$tour->night_max;?></span>
+            <span class="describe"><?=Yii::t('app', 'Night count');?> : </span>
+            <span class="value"><?=$tour->night_max;?></span>
         </div>
         <?php if(!empty($tour->add_info)):?>
             <div class="field">

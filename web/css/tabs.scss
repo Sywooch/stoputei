@@ -134,8 +134,8 @@
         .voyage_is_direct_from, .voyage_is_direct_to{
           background: $grey-light;
         }
-        .field-gettourform-hotel, .create-tour-response, .field-touroffersform-hotel{
-          .remove-hotel-name, .remove-hotel-name-manager{
+        .field-gettourform-hotel, .create-tour-response, .field-touroffersform-hotel, .field-createhottourform-hotel{
+          .remove-hotel-name, .remove-hotel-name-manager, .remove-hotel-hot-tour{
             position: absolute;
             right: 20px;
             top: 9px;
@@ -145,7 +145,7 @@
             }
           }
         }
-        #gettourform-hotel_id, #createtourform-hotel_id, #touroffersform-hotel_id{
+        #gettourform-hotel_id, #createtourform-hotel_id, #touroffersform-hotel_id, #createhottourform-hotel_id{
           display: none;
           overflow-y: auto;
           max-height: 150px;
@@ -164,13 +164,13 @@
             }
           }
         }
-        #createtourform-hotel_id{
+        #gettourform-hotel_id, #createtourform-hotel_id, #touroffersform-hotel_id, #createhottourform-hotel_id{
           top: -8px;
         }
         .label-get-tour {
           text-align: left;
         }
-        #gettourform-stars, #createtourform-stars, #touroffersform-stars {
+        #gettourform-stars, #createtourform-stars, #touroffersform-stars, #createhottourform-stars {
           .star {
             position: absolute;
             margin-top: -4px;
@@ -182,6 +182,10 @@
               color: $grey-text;
             }
           }
+        }
+        .label-add-paymnet{
+          margin-left: 7px;
+          text-align: left;
         }
         .form-group {
           .checkbox-one {
@@ -204,6 +208,12 @@
               color: $grey-light-text;
             }
           }
+
+          #from_date_hot_tour, #to_date_hot_tour{
+            height: 36px;
+            width: 100%;
+            padding: 5px;
+          }
         }
         .form-group {
           .checkbox-one {
@@ -214,7 +224,7 @@
           }
         }
         #gettourform-night_min, #gettourform-night_max {
-          max-width: 70px;
+          max-width: 120px;
         }
         .field-gettourform-flight_included {
           .flight-label {
@@ -242,7 +252,7 @@
           }
         }
       }
-      .hotels-container, .user-tour-container, .flights-container, .manager-flight-container, .user-offer-list {
+      .hotels-container, .user-tour-container, .flights-container, .manager-flight-container, .user-offer-list, .manager-hot-tour-container {
         overflow-y: auto;
         transition: all $middle-speed ease-in;
         &::-webkit-scrollbar {

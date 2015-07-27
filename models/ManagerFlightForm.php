@@ -12,12 +12,15 @@ class ManagerFlightForm extends Model
     public $resort;
     public $way_ticket;
     public $depart_city_to;
+    public $depart_country_to;
     public $depart_city_from;
     public $date_city_to;
     public $date_city_from;
     public $voyage_is_direct_to;
     public $voyage_direct_to;
+    public $voyage_direct_country_to;
     public $voyage_direct_from;
+    public $voyage_direct_country_from;
     public $voyage_is_direct_from;
     public $date_docking_to_hours;
     public $date_docking_from_hours;
@@ -41,9 +44,9 @@ class ManagerFlightForm extends Model
     public function rules()
     {
         return [
-            [['destination', 'resort', 'depart_city_to', 'date_city_to', 'adult_count_senior_24', 'flight_cost', 'flight_class'], 'required'],
+            [['destination', 'resort', 'depart_city_to', 'date_city_to', 'flight_cost', 'flight_class'], 'required'],
             [['charter_flight', 'regular_flight', 'adult_count_under_24', 'children_under_12_amount', 'children_under_2_amount', 'voyage_is_direct_from', 'voyage_is_direct_to', 'voyage_direct_to', 'voyage_direct_from', 'tickets_exist'], 'default', 'value' => 0],
-            [['way_ticket'], 'default', 'value' => 1],
+            [['way_ticket', 'adult_count_senior_24'], 'default', 'value' => 1],
             [['depart_city_from', 'date_city_from'], 'required', 'message' => Yii::t('app','{attribute} must be checked.'), 'when' => function ($model) {
                 return $model->way_ticket == 2;
             }, 'whenClient' => "function (attribute, value) {
@@ -65,16 +68,19 @@ class ManagerFlightForm extends Model
     {
         return [
             'destination' => Yii::t('app', 'Destination'),
-            'resort' => Yii::t('app', 'Resort'),
+            'resort' => Yii::t('app', 'Resort/City'),
             'way_ticket' => Yii::t('app', 'Way ticket'),
             'depart_city_to' => Yii::t('app', 'Depart city to'),
+            'depart_country_to' => Yii::t('app', 'Depart country'),
             'depart_city_from' => Yii::t('app', 'Depart city from'),
             'date_city_to' => Yii::t('app', 'Flight start time'),
             'voyage_is_direct_to' => Yii::t('app', 'Voyage'),
             'voyage_is_direct_from' => Yii::t('app', 'Voyage'),
             'date_city_from' => Yii::t('app', 'Flight end time'),
             'voyage_direct_to' => Yii::t('app', 'Voyage through'),
+            'voyage_direct_country_to' => Yii::t('app', 'Depart country'),
             'voyage_direct_from' => Yii::t('app', 'Voyage through'),
+            'voyage_direct_country_from' => Yii::t('app', 'Depart country'),
             'date_docking_to_hours' => Yii::t('app', 'Date docking (hours)'),
             'date_docking_from_hours' => Yii::t('app', 'Date docking (hours)'),
             'date_docking_to_minutes' => Yii::t('app', 'Date docking (minutes)'),

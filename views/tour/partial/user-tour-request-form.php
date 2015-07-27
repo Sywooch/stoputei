@@ -93,11 +93,7 @@ use dosamigos\datepicker\DatePicker;
         $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
     }]);?>
-    <div class="form-group">
-        <label class="col-xs-11 col-xs-offset-1 control-label label-get-tour" for="gettourform-hotel_type"><?=Yii::t('app', 'Amount of nights');?></label>
-        <?= $form->field($GetTourForm, 'night_min', ['options' => ['class' => 'col-xs-6']], ['template' => '{label}<div class="col-xs-5">{input}</div>', 'labelOptions' => ['class' => 'col-xs-2 control-label label-night']])->dropDownList([1 => 1, 2 => 2]);?>
-        <?= $form->field($GetTourForm, 'night_max', ['options' => ['class' => 'col-xs-6']], ['template' => '{label}<div class="col-xs-5">{input}</div>', 'labelOptions' => ['class' => 'col-xs-2 control-label label-night']])->dropDownList([1 => 1, 2 => 2]);?>
-    </div>
+<?= $form->field($GetTourForm, 'night_max')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => 0]);?>
 <?= $form->field($GetTourForm, 'room_type')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => '', 8 => '', 9 => '', 10 => '', 11 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
         if($value == 0){

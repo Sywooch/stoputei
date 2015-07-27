@@ -19,6 +19,7 @@
   .hotel-body{
     .images{
       overflow: hidden;
+      padding-right: 0px;
       .hotel-img, .empty-img{
         padding: 0;
         margin: 0;
@@ -27,7 +28,7 @@
         height: 65px;
       }
       .empty-img{
-        text-align: center;
+        text-align: left;
         color: $grey-light;
         .glyphicon-camera{
           font-size: 4em;
@@ -60,7 +61,7 @@
           padding: 4px 10px;
           margin-bottom: 2px;
           &.more-hotel-info{
-            width: 100%;
+            //width: 100%;
           }
           &.add-to-filter{
             border: 1px solid transparent;
@@ -68,6 +69,13 @@
           }
         }
       }
+    }
+  }
+}
+#user-tour-response{
+  .buttons{
+    .more-hotel-info{
+      //width: 100%;
     }
   }
 }
