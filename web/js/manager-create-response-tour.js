@@ -55,15 +55,6 @@ $(function(){
     });
 
     //remove hotel name from hotel-name field
-    $('.field-gettourform-hotel .remove-hotel-name').on('click', function(){
-        $('#gettourform-hotel_id').val('');
-        $('#gettourform-hotel').val('').removeAttr('data-toggle title data-original-title');
-        $('.field-gettourform-hotel_type, .field-gettourform-beach_line').removeClass('disabled');
-        $('[name="GetTourForm[beach_line]"]').removeAttr('disabled');
-        $('[name="GetTourForm[hotel_type]"]').removeAttr('disabled');
-        getHotelListForResponseTour();
-    });
-    //remove hotel name from hotel-name field
     $(document).on('click', '.remove-hotel-name-manager', function(){
         $('#createtourform-hotel_id').val('');
         $('#createtourform-hotel').val('').removeAttr('data-toggle title data-original-title');

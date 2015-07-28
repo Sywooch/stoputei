@@ -82,8 +82,8 @@ class GetTourForm extends Model
             'children_under_2_amount' => Yii::t('app', 'Amount of children (under 2 years old)'),
             'room_count' => Yii::t('app', 'Amount of room'),
             'flight_included' => Yii::t('app', 'Flight included'),
-            'from_date' => Yii::t('app', 'From date'),
-            'to_date' => Yii::t('app', 'To date'),
+            'from_date' => Yii::t('app', 'Flight to since'),
+            'to_date' => Yii::t('app', 'Flight to until'),
             'budget' => Yii::t('app', 'Budget'),
             'add_info' => Yii::t('app', 'Add information')
         ];

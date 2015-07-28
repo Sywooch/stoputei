@@ -28,6 +28,7 @@ class AppAsset extends AssetBundle
         'js/manager-create-response-tour.js',
         'js/create-hot-tour.js',
         'js/flights.js',
+        'js/user-offers.js',
     ];
     public $images = [];
     public $depends = [

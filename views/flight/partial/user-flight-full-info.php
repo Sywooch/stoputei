@@ -79,15 +79,13 @@ switch($flight->flight_class){
             <span class="value"><?=$date_city_from_until;?></span>
         </div>
 
-        <?php if($flight->direct_flight == 1):?>
-            <div class="field">
-                <span class="describe"><?=Yii::t('app', 'Only direct flight');?></span>
-            </div>
-        <?php endif;?>
-
         <?php if($flight->regular_flight == 1):?>
             <div class="field">
                 <span class="describe"><?=Yii::t('app', 'Only regular flight');?></span>
+            </div>
+        <?php else:?>
+            <div class="field">
+                <span class="describe"><?=Yii::t('app', 'Only direct flight');?></span>
             </div>
         <?php endif;?>
     </div>

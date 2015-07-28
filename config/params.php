@@ -10,4 +10,5 @@ return [
         "namespace" => "urn:SletatRu:DataTypes:AuthData:v1"
     ],
     'hash' => 'ffd96fd7bf8dybgfdh69gvfv9df9vfofv',
+    'depart_countries' => [16, 53, 62, 64, 66, 79, 150, 121, 124]
 ];

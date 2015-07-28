@@ -18,7 +18,7 @@ use dosamigos\datepicker\DatePicker;
 
 <?= $form->field($GetTourForm, 'resort')->dropDownList($resortDropdown,['prompt' => Yii::t('app','Choose destination')]);?>
 
-<?= $form->field($GetTourForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 ">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name"></i></div>'])->input('text') ?>
+<?= $form->field($GetTourForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 ">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name-user-request"></i></div>'])->input('text') ?>
 
 <?= $form->field($GetTourForm, 'hotel_id')->dropDownList([], ['multiple' => true])->label('');?>
 
@@ -125,9 +125,9 @@ use dosamigos\datepicker\DatePicker;
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);
     }]);?>
 <?= $form->field($GetTourForm, 'adult_amount')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => 1]);?>
-<?= $form->field($GetTourForm, 'children_under_12_amount')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => 0]);?>
-<?= $form->field($GetTourForm, 'children_under_2_amount')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => 0]);?>
-<?= $form->field($GetTourForm, 'room_count')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => 0]);?>
+<?= $form->field($GetTourForm, 'children_under_12_amount')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => '']);?>
+<?= $form->field($GetTourForm, 'children_under_2_amount')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => '']);?>
+<?= $form->field($GetTourForm, 'room_count')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => '']);?>
 <?= $form->field($GetTourForm, 'flight_included')->checkbox();?>
 
 <?= $form->field($GetTourForm, 'depart_country')->dropDownList($departCountryDropdown, ['prompt' => Yii::t('app','Choose destination')]);?>
@@ -157,7 +157,7 @@ use dosamigos\datepicker\DatePicker;
     ]
 ]);?>
 
-<?= $form->field($GetTourForm, 'budget')->input('number', ['min' => 0, 'max' => 99000000, 'step' => 1000]);?>
+<?= $form->field($GetTourForm, 'budget')->input('number', ['min' => 0, 'max' => 99000000, 'step' => 1000, 'value' => '']);?>
 
 <?= $form->field($GetTourForm, 'add_info')->textarea(['class' => 'add-info', 'placeholder' => Yii::t('app', 'Max length - 200')]);?>
 

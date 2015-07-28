@@ -135,7 +135,7 @@
           background: $grey-light;
         }
         .field-gettourform-hotel, .create-tour-response, .field-touroffersform-hotel, .field-createhottourform-hotel{
-          .remove-hotel-name, .remove-hotel-name-manager, .remove-hotel-hot-tour{
+          .remove-hotel-name, .remove-hotel-name-manager, .remove-hotel-hot-tour, .remove-hotel-name-user-request, .remove-hotel-name-user-offer{
             position: absolute;
             right: 20px;
             top: 9px;
@@ -198,6 +198,16 @@
               font-size: 1em;
               margin-top: -2px;
               color: $grey-text;
+            }
+            &.not-any-check{
+              .type-name{
+                color: $gold;
+              }
+            }
+            &.any-check{
+              .type-name{
+                color: $green;
+              }
             }
           }
           .control-label{

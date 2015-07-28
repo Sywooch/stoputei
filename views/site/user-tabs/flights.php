@@ -33,7 +33,7 @@ use dosamigos\datepicker\DatePicker;
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
                 }]);?>
 
-            <?= $form->field($UserFlightForm, 'depart_country')->dropDownList($destinationDropdown,['prompt' => Yii::t('app','Choose destination')]);?>
+            <?= $form->field($UserFlightForm, 'depart_country')->dropDownList($departCountryDropdown,['prompt' => Yii::t('app','Choose destination')]);?>
             <?= $form->field($UserFlightForm, 'depart_city')->dropDownList([]);?>
 
             <?= $form->field($UserFlightForm, 'date_city_to_since')->widget(
@@ -109,8 +109,16 @@ use dosamigos\datepicker\DatePicker;
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
                 }]);?>
 
-            <?= $form->field($UserFlightForm, 'direct_flight')->checkbox();?>
-            <?= $form->field($UserFlightForm, 'regular_flight')->checkbox();?>
+            <?= $form->field($UserFlightForm, 'regular_flight')->radioList([0 => '', 1 => ''],
+                ['item' => function($index, $label, $name, $checked, $value){
+                    if($value == 0){
+                        $span = Html::tag('span', Yii::t('app','Only direct flight'), ['class' => 'line-name']);
+                    }elseif($value == 1){
+                        $span = Html::tag('span', Yii::t('app','Only regular flight'), ['class' => 'line-name']);
+                    }
+                    $checkbox = Html::radio($name, $checked, ['value' => $value]);
+                    return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
+                }]);?>
 
             <div class="form-group">
                 <div class="col-xs-11 col-xs-offset-1">

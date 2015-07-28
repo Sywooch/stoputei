@@ -163,14 +163,14 @@ use yii\helpers\Url;
                     $checkbox = Html::radio($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
                 }]);?>
-            <?= $form->field($CreateHotTourForm, 'adult_amount')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => 0]);?>
-            <?= $form->field($CreateHotTourForm, 'children_under_12_amount')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => 0]);?>
-            <?= $form->field($CreateHotTourForm, 'children_under_2_amount')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => 0]);?>
-            <?= $form->field($CreateHotTourForm, 'room_count')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => 0]);?>
+            <?= $form->field($CreateHotTourForm, 'adult_amount')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => 1]);?>
+            <?= $form->field($CreateHotTourForm, 'children_under_12_amount')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => '']);?>
+            <?= $form->field($CreateHotTourForm, 'children_under_2_amount')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => '']);?>
+            <?= $form->field($CreateHotTourForm, 'room_count')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => '']);?>
             <?= $form->field($CreateHotTourForm, 'flight_included')->checkbox();?>
 
             <div class="hot-tour flight-included <?=($CreateHotTourForm->flight_included==0)?'hide':'';?>">
-                <?= $form->field($CreateHotTourForm, 'depart_country_to')->dropDownList($dropdownDestination,['prompt' => Yii::t('app','Choose destination')]);?>
+                <?= $form->field($CreateHotTourForm, 'depart_country_to')->dropDownList($departCountryDropdown,['prompt' => Yii::t('app','Choose destination')]);?>
                 <?= $form->field($CreateHotTourForm, 'depart_city_there')->dropDownList([]);?>
 
                 <?= $form->field($CreateHotTourForm, 'from_date')->widget(\yii\jui\DatePicker::classname(), [
@@ -205,8 +205,8 @@ use yii\helpers\Url;
             </div>
             <div>
                 <label class="col-xs-11 col-xs-offset-1 control-label label-add-paymnet" for="createhottourform-add-payment"><?=Yii::t('app', 'Add payment');?></label>
-                <?= $form->field($CreateHotTourForm, 'visa')->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => 0]);?>
-                <?= $form->field($CreateHotTourForm, 'oil_tax')->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => 0]);?>
+                <?= $form->field($CreateHotTourForm, 'visa')->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => '']);?>
+                <?= $form->field($CreateHotTourForm, 'oil_tax')->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => '']);?>
                 <?= $form->field($CreateHotTourForm, 'add_payment')->checkbox();?>
             </div>
 
@@ -224,7 +224,7 @@ use yii\helpers\Url;
             <?php $CreateHotTourForm->medicine_insurance = 1;?>
             <?= $form->field($CreateHotTourForm, 'medicine_insurance')->checkbox();?>
             <?= $form->field($CreateHotTourForm, 'charge_manager')->checkbox();?>
-            <?= $form->field($CreateHotTourForm, 'tour_cost')->input('number', ['min' => 0, 'max' => 99000000, 'step' => 100]);?>
+            <?= $form->field($CreateHotTourForm, 'tour_cost')->input('number', ['min' => 0, 'max' => 99000000, 'step' => 100, 'value' => '']);?>
 
             <?php $CreateHotTourForm->is_hot_tour = 1;?>
             <?= $form->field($CreateHotTourForm, 'is_hot_tour')->hiddenInput()->label('');?>

@@ -21,14 +21,16 @@ $this->title = 'StoPutei';
                     <?=$this->render('manager-tabs/create-tour', [
                         'CreateHotTourForm' => $CreateHotTourForm,
                         'dropdownDestination' => $destinationDropdown,
-                        'departCityThereDropdown' => $departCityDropdown
+                        'departCityThereDropdown' => $departCityDropdown,
+                        'departCountryDropdown' => $departCountryDropdown
                     ]);?>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tour-from-user">
                     <?=$this->render('manager-tabs/tour-from-user', [
                         'userTours' => $this->renderAjax('//tour/partial/user-tour-list', ['tours' => $userTours]),
                         'responseForm' => $this->renderAjax('//tour/partial/manager-tour-response-form-empty', [
-                            'CreateTourForm' => $CreateTourForm
+                            'CreateTourForm' => $CreateTourForm,
+                            'departCountryDropdown' => $departCountryDropdown
                         ]),
                     ]);?>
                 </div>
@@ -36,7 +38,8 @@ $this->title = 'StoPutei';
                     <?=$this->render('manager-tabs/flights', [
                         'userFlights' => $this->renderAjax('//flight/partial/user-flight-list', ['flights' => $userFlights]),
                         'responseForm' => $this->renderAjax('//flight/partial/manager-flight-response-form-empty', [
-                            'ManagerFlightForm' => $ManagerFlightForm
+                            'ManagerFlightForm' => $ManagerFlightForm,
+                            'departCountryDropdown' => $departCountryDropdown
                         ]),
                     ]);?>
                 </div>

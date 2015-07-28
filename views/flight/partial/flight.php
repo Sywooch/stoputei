@@ -48,7 +48,9 @@ $responseCount = $flightResponse->hasResponse($flight->id);
         </div>
         <div class="col-xs-5">
             <div>
-                <span class="describe"><?=Yii::t('app', 'Depart city to');?> : </span><span class="value"><?=$flight->departCity->name;?></span>
+                <?php if(!is_null($flight->departCity)):?>
+                    <span class="describe"><?=Yii::t('app', 'Depart city to');?> : </span><span class="value"><?=$flight->departCity->name;?></span>
+                <?php endif;?>
             </div>
             <div>
                 <span class="describe"><?=Yii::t('app', 'Since');?> </span><span class="value"><?=$date_city_to_since;?></span>

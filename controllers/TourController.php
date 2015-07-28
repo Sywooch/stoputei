@@ -38,6 +38,25 @@ class TourController extends Controller
         }
     }
 
+    public function actionAjaxResortsDropdownForFilter(){
+        if(Yii::$app->request->isAjax) {
+            $country_id = \Yii::$app->request->getQueryParam('country_id', null);
+            $country = Country::findOne($country_id);
+            $cities = $country->cities;
+            $list[] = [
+                'city_id' => '',
+                'city_name' => Yii::t('app', 'All resorts')
+            ];
+            foreach ($cities as $key => $city) {
+                $list[] = [
+                    'city_id' => $city->city_id,
+                    'city_name' => $city->name
+                ];
+            }
+            echo json_encode($list);
+        }
+    }
+
     public function actionAjaxHotelsAutocomplete($country_id, $resort_id, $query){
         if(Yii::$app->request->isAjax) {
             if($hotels = Hotel::find()->where(['country_id' => $country_id, 'resort_id' => $resort_id])->andWhere(['like', 'name', $query])->all()) {
@@ -352,8 +371,11 @@ class TourController extends Controller
                 $tourResponse->city_id = $model->resort;
                 if(!empty($model->hotel_id[0])) {
                     $tourResponse->hotel_id = $model->hotel_id[0];
+                    $hotel = Hotel::find()->where(['hotel_id' => $model->hotel_id[0]])->one();
+                    $tourResponse->hotel_star = $hotel->star_id;
                 }else{
                     $tourResponse->hotel_id = null;
+                    $tourResponse->hotel_star = null;
                 }
                 $tourResponse->night_count = $model->night_count;
                 $tourResponse->adult_amount = $model->adult_amount;
@@ -479,23 +501,25 @@ class TourController extends Controller
         if(Yii::$app->request->isAjax) {
             if ($model->load(Yii::$app->request->get())) {
                 $query = [];
-                if(!empty($model->from_date)){
-                    $query['from_date'] = $model->from_date;
-                }
-                if(!empty($model->to_date)){
-                    $query['to_date'] = $model->to_date;
+                if(!empty($model->destination)){
+                    $query['country_id'] = $model->destination;
                 }
                 if(!empty($model->hotel_id)){
                     $query['hotel_id'] = $model->hotel_id;
                 }
+                if(!empty($model->resort)){
+                    $query['city_id'] = $model->resort;
+                }
                 if($model->night_count != 0){
-                    $query['hotel_id'] = $model->hotel_id;
+                    $query['night_count'] = $model->night_count;
+                }
+                if(!empty($model->depart_city)){
+                    $query['depart_city_there'] = $model->depart_city;
                 }
                 $tourResponses = TourResponse::find()->where([
-                    'city_id' => $model->resort,
-                    'depart_city_there' => $model->depart_city,
                     'user_id' => Yii::$app->user->identity->getId()
                 ])->andWhere($query)->all();
+
                 if(!empty($tourResponses)) {
                     $response = [
                         'status' => 'ok',

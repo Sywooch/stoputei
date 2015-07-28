@@ -199,5 +199,7 @@ return [
     'Payment is absent' => 'Отсутствуют',
     'Create one more hot tour' => 'Создать еще один горящий тур',
     'Request answer' => 'Отправить ответ',
-    'Resort/City' => 'Курорт/Город'
+    'Resort/City' => 'Курорт/Город',
+    'All destinations' => 'Все направления',
+    'All resorts' => 'Все курорты'
 ];

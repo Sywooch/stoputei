@@ -21,6 +21,8 @@ use yii\helpers\Url;
 
 <?= $form->field($CreateTourForm, 'hotel_id')->dropDownList($dropdownHotel, ['multiple' => true])->label('');?>
 
+<?= $form->field($CreateTourForm, 'hotel_star')->hiddenInput()->label('');?>
+
 <?= $form->field($CreateTourForm, 'stars')->checkboxList([404 => '', 403 => '', 402 => '', 401 => '', 400 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
         if($value == 404){
@@ -195,15 +197,14 @@ use yii\helpers\Url;
     ]);?>
     <?= $form->field($CreateTourForm, 'voyage_from_there')->checkbox();?>
     <div class="voyage_through_from_there">
-        <?= $form->field($CreateTourForm, 'depart_country_from_there')->dropDownList($dropdownDestination);?>
         <?= $form->field($CreateTourForm, 'voyage_through_city_from_there')->dropDownList($destinationCityDropdown);?>
     </div>
 </div>
 
     <div>
         <label class="col-xs-11 col-xs-offset-1 control-label label-add-paymnet" for="createtourform-add-payment"><?=Yii::t('app', 'Add payment');?></label>
-        <?= $form->field($CreateTourForm, 'visa')->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => 0]);?>
-        <?= $form->field($CreateTourForm, 'oil_tax')->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => 0]);?>
+        <?= $form->field($CreateTourForm, 'visa')->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => '']);?>
+        <?= $form->field($CreateTourForm, 'oil_tax')->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => '']);?>
         <?= $form->field($CreateTourForm, 'add_payment')->checkbox();?>
     </div>
 <?= $form->field($CreateTourForm, 'tickets_exist')->radioList([0 => '', 1 => ''],
@@ -219,7 +220,7 @@ use yii\helpers\Url;
     }]);?>
 <?= $form->field($CreateTourForm, 'medicine_insurance')->checkbox();?>
 <?= $form->field($CreateTourForm, 'charge_manager')->checkbox();?>
-<?= $form->field($CreateTourForm, 'tour_cost')->input('number', ['min' => 0, 'max' => 99000000, 'step' => 100]);?>
+<?= $form->field($CreateTourForm, 'tour_cost')->input('number', ['min' => 0, 'max' => 99000000, 'step' => 100, 'value' => '']);?>
 <?= $form->field($CreateTourForm, 'user_id')->hiddenInput()->label('');?>
 <?= $form->field($CreateTourForm, 'from_tour_id')->hiddenInput()->label('');?>
 <?= $form->field($CreateTourForm, 'is_hot_tour')->hiddenInput()->label('');?>

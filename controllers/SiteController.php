@@ -78,8 +78,8 @@ class SiteController extends Controller
                     'user_id' => Yii::$app->user->identity->getId()
                 ])->all();
                 $destinationDropdown = $country->destinationDropdown();
+                $departCountryDropdown = $country->destinationDropdown(\Yii::$app->params['depart_countries']);
                 $departCityDropdown = $departCity->regionDropdown();
-                $departCountryDropdown = $destinationDropdown;
                 $GetTourForm->flight_included = 1;
 
                 return $this->render('index',
@@ -103,6 +103,7 @@ class SiteController extends Controller
                     $departCity = new DepartCity();
                     $destinationDropdown = $country->destinationDropdown();
                     $departCityDropdown = $departCity->regionDropdown();
+                    $departCountryDropdown = $country->destinationDropdown(\Yii::$app->params['depart_countries']);
                     $userTours = UserTour::find()->where([
                         'region_owner_id' => Yii::$app->user->identity->region_id
                     ])->all();
@@ -118,7 +119,8 @@ class SiteController extends Controller
                             'destinationDropdown' => $destinationDropdown,
                             'departCityDropdown' => $departCityDropdown,
                             'userTours' => $userTours,
-                            'userFlights' => $userFlights
+                            'userFlights' => $userFlights,
+                            'departCountryDropdown' => $departCountryDropdown
                         ]);
                 }else{
                     return $this->render('index_manager',

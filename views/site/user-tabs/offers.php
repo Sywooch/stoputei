@@ -20,11 +20,11 @@ use dosamigos\datepicker\DatePicker;
                 ],
             ]); ?>
 
-            <?= $form->field($TourOffersForm, 'destination')->dropDownList($destinationDropdown,['prompt' => Yii::t('app','Choose destination')]);?>
+            <?= $form->field($TourOffersForm, 'destination')->dropDownList($destinationDropdown,['prompt' => Yii::t('app','All destinations')]);?>
 
-            <?= $form->field($TourOffersForm, 'resort')->dropDownList([],['prompt' => Yii::t('app','Choose destination')]);?>
+            <?= $form->field($TourOffersForm, 'resort')->dropDownList([],['prompt' => Yii::t('app','All resorts')]);?>
 
-            <?= $form->field($TourOffersForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 ">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name"></i></div>'])->input('text') ?>
+            <?= $form->field($TourOffersForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 ">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name-user-offer"></i></div>'])->input('text') ?>
 
             <?= $form->field($TourOffersForm, 'hotel_id')->dropDownList([], ['multiple' => true])->label('');?>
 
@@ -51,32 +51,6 @@ use dosamigos\datepicker\DatePicker;
             <?= $form->field($TourOffersForm, 'depart_city')->dropDownList($departCityDropdown);?>
 
             <?= $form->field($TourOffersForm, 'night_count')->dropDownList([0 => 0, 1 => 1, 2 => 2, 3 => 3]);?>
-
-            <?= $form->field($TourOffersForm, 'from_date')->widget(
-                DatePicker::className(), [
-                'inline' => false,
-                'options' => ['placeholder' => Yii::t('app', date('Y-M-d'))],
-                'clientOptions' => [
-                    'autoclose' => true,
-                    'format' => 'yyyy-m-d',
-                    'todayHighlight' => true,
-                    'startDate' => date('Y-M-d', strtotime('+2 days')),
-                ]
-            ]);?>
-
-            <?= $form->field($TourOffersForm, 'to_date')->widget(
-                DatePicker::className(), [
-                'inline' => false,
-                'options' => ['placeholder' => Yii::t('app', 'To date')],
-                'clientOptions' => [
-                    'autoclose' => true,
-                    'format' => 'yyyy-m-d',
-                    'todayHighlight' => true,
-                    'startDate' => date('Y-M-d', strtotime('+4 days'))
-                ]
-            ]);?>
-
-            <?= $form->field($TourOffersForm, 'budget')->input('number', ['min' => 1000, 'max' => 90000000, 'step' => 200]);?>
 
             <?= Html::a('', Url::toRoute(['tour/get-hotel-list']), ['class' => 'ajax-tour-list']);?>
 

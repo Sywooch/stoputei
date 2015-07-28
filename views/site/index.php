@@ -38,6 +38,7 @@ $this->title = 'StoPutei';
                         'UserFlightForm' => $UserFlightForm,
                         'destinationDropdown' => $destinationDropdown,
                         'departCityDropdown' => $departCityDropdown,
+                        'departCountryDropdown' => $departCountryDropdown,
                         'userFlights' => $this->renderAjax('//flight/partial/user-flight-response-list', ['flights' => $flightsUserResponse]),
                     ]);?>
                 </div>
@@ -50,6 +51,7 @@ $this->title = 'StoPutei';
             </div>
         </div>
         <?= Html::a('', Url::toRoute(['tour/ajax-resorts-dropdown']), ['class' => 'ajax-resort']);?>
+        <?= Html::a('', Url::toRoute(['tour/ajax-resorts-dropdown-for-filter']), ['class' => 'ajax-resort-for-filter']);?>
         <?= Html::a('', Url::toRoute(['flight/ajax-get-empty-flight-form']), ['class' => 'ajax-empty-flight-form']);?>
         <?= Html::a('', Url::toRoute(['tour/ajax-get-empty-tour-form']), ['class' => 'ajax-empty-tour-form']);?>
         <?= Html::a('', Url::toRoute(['tour/ajax-create-same-tour']), ['class' => 'ajax-same-tour']);?>

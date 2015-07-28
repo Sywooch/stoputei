@@ -24,7 +24,7 @@ use dosamigos\datepicker\DatePicker;
 
             <?= $form->field($GetTourForm, 'resort')->dropDownList([],['prompt' => Yii::t('app','Choose destination')]);?>
 
-            <?= $form->field($GetTourForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 ">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name"></i></div>'])->input('text') ?>
+            <?= $form->field($GetTourForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 ">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name-user-request"></i></div>'])->input('text') ?>
 
             <?= $form->field($GetTourForm, 'hotel_id')->dropDownList([], ['multiple' => true])->label('');?>
 
@@ -47,7 +47,7 @@ use dosamigos\datepicker\DatePicker;
                 $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
                 return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox']);
             }]);?>
-            <?= $form->field($GetTourForm, 'nutrition')->radioList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => ''],
+            <?= $form->field($GetTourForm, 'nutrition')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){
                         $span = Html::tag('span', Yii::t('app','Any nutrition'), ['class' => 'type-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Any nutrition')]);
@@ -66,7 +66,7 @@ use dosamigos\datepicker\DatePicker;
                     }elseif($value == 7){
                         $span = Html::tag('span', Yii::t('app','UAL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Ultra All Inclusive')]);
                     }
-                    $checkbox = Html::radio($name, $checked, ['value' => $value]);
+                    $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);
                 }]);?>
             <?= $form->field($GetTourForm, 'beach_line')->radioList([0 => '', 1 => '', 2 => '', 3 => ''],
@@ -131,9 +131,9 @@ use dosamigos\datepicker\DatePicker;
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);
                 }]);?>
             <?= $form->field($GetTourForm, 'adult_amount')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => 1]);?>
-            <?= $form->field($GetTourForm, 'children_under_12_amount')->input('number', ['min' => 0, 'max' => 10, 'step' => 1, 'value' => 0]);?>
-            <?= $form->field($GetTourForm, 'children_under_2_amount')->input('number', ['min' => 0, 'max' => 10, 'step' => 1, 'value' => 0]);?>
-            <?= $form->field($GetTourForm, 'room_count')->input('number', ['min' => 0, 'max' => 10, 'step' => 1, 'value' => 0]);?>
+            <?= $form->field($GetTourForm, 'children_under_12_amount')->input('number', ['min' => 0, 'max' => 10, 'step' => 1, 'value' => '']);?>
+            <?= $form->field($GetTourForm, 'children_under_2_amount')->input('number', ['min' => 0, 'max' => 10, 'step' => 1, 'value' => '']);?>
+            <?= $form->field($GetTourForm, 'room_count')->input('number', ['min' => 0, 'max' => 10, 'step' => 1, 'value' => '']);?>
             <?= $form->field($GetTourForm, 'flight_included')->checkbox();?>
 
             <?= $form->field($GetTourForm, 'depart_country')->dropDownList($departCountryDropdown, ['prompt' => Yii::t('app','Choose destination')]);?>
@@ -154,7 +154,7 @@ use dosamigos\datepicker\DatePicker;
                 <?= $form->field($GetTourForm, 'to_date')->widget(
                     DatePicker::className(), [
                     'inline' => false,
-                    'options' => ['placeholder' => Yii::t('app', 'To date')],
+                    'options' => ['placeholder' => Yii::t('app', date('Y-M-d'))],
                     'clientOptions' => [
                         'autoclose' => true,
                         'format' => 'yyyy-m-d',
@@ -163,7 +163,7 @@ use dosamigos\datepicker\DatePicker;
                     ]
                 ]);?>
 
-            <?= $form->field($GetTourForm, 'budget')->input('number', ['min' => 0, 'max' => 99000000, 'step' => 1000, 'value' => 0]);?>
+            <?= $form->field($GetTourForm, 'budget')->input('number', ['min' => 0, 'max' => 99000000, 'step' => 1000, 'value' => '']);?>
 
             <?= $form->field($GetTourForm, 'add_info')->textarea(['class' => 'add-info', 'placeholder' => Yii::t('app', 'Max length - 200')]);?>
 

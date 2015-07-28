@@ -117,7 +117,7 @@ $(function(){
     });
 
     //Add hotel to filter by USER or MANAGER
-    $(document).on('click', '.add-to-filter', function(e){
+    $(document).on('click', '.add-to-filter.user-type', function(e){
         e.preventDefault();
         var hotel_id = $(this).attr('data-hotel-id');
         var hotel_name = $(this).attr('data-hotel-name');
@@ -134,6 +134,7 @@ $(function(){
             $('.field-gettourform-hotel_type, .field-gettourform-beach_line').addClass('disabled');
             $('[name="GetTourForm[beach_line]"]').attr('disabled', 'disabled').attr('checked', false);
             $('[name="GetTourForm[hotel_type]"]').attr('disabled', 'disabled').attr('checked', false);
+        getHotelList();
     });
 
 
@@ -178,5 +179,40 @@ $(function(){
 
             }
         });
+    });
+
+    //clear hotel name user request
+    $(document).on('click' ,'.remove-hotel-name-user-request', function(){
+        $('#gettourform-hotel').val('');
+        $('#gettourform-hotel_id').val('');
+        getHotelList();
+    });
+
+    //check all or not checkbox
+    $(document).on('change', '#gettourform-nutrition [name="GetTourForm[nutrition][]"]', function(){
+        var val = $(this).val();
+        var is_checked = ($(this).prop('checked'))?true:false;
+        if((val == 0) && is_checked){
+            $('[name="GetTourForm[nutrition][]"]').not(this).prop('checked', false);
+            $(this).closest('.checkbox-one').removeClass('not-any-check').addClass('any-check');
+        }else if((val == 0) && !is_checked){
+            $('[name="GetTourForm[nutrition][]"]').not(this).prop('checked', true);
+            $(this).closest('.checkbox-one').removeClass('any-check').addClass('not-any-check');
+        }else if((val != 0) && is_checked){
+            $('[name="GetTourForm[nutrition][]"]:first').prop('checked', false).closest('.checkbox-one').removeClass('any-check not-any-check');;
+        }
+    });
+    $(document).on('change', '#gettourform-room_type [name="GetTourForm[room_type][]"]', function(){
+        var val = $(this).val();
+        var is_checked = ($(this).prop('checked'))?true:false;
+        if((val == 0) && is_checked){
+            $('[name="GetTourForm[room_type][]"]').not(this).prop('checked', false);
+            $(this).closest('.checkbox-one').removeClass('not-any-check').addClass('any-check');
+        }else if((val == 0) && !is_checked){
+            $('[name="GetTourForm[room_type][]"]').not(this).prop('checked', true);
+            $(this).closest('.checkbox-one').removeClass('any-check').addClass('not-any-check');
+        }else if((val != 0) && is_checked){
+            $('[name="GetTourForm[room_type][]"]:first').prop('checked', false).closest('.checkbox-one').removeClass('any-check not-any-check');
+        }
     });
 });

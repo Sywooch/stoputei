@@ -36,7 +36,6 @@ class FlightController extends Controller
                 $userFlight->children_under_12_amount = $model->children_under_12_amount;
                 $userFlight->children_under_2_amount = $model->children_under_2_amount;
                 $userFlight->flight_class = $model->flight_class;
-                $userFlight->direct_flight = $model->direct_flight;
                 $userFlight->regular_flight = $model->regular_flight;
                 $userFlight->owner_id = Yii::$app->user->identity->getId();
                 $userFlight->region_owner_id = Yii::$app->user->identity->region_id;
@@ -76,6 +75,7 @@ class FlightController extends Controller
                 $departCity = new DepartCity();
                 $country = new Country();
                 $dropdownDepartCountry = $country->destinationDropdown();
+                $departCountryDropdown = $country->destinationDropdown(Yii::$app->params['depart_countries']);
                 $departCityDropdown = $departCity->regionDropdown();
                 $dropdownDestination = [$userFlight->country_id => $userFlight->country->name];
                 $dropdownResort = [$userFlight->city_id => $userFlight->city->name];
@@ -110,7 +110,8 @@ class FlightController extends Controller
                         'dropdownResort' => $dropdownResort,
                         'departCityDropdown' => $departCityDropdown,
                         'dropdownDepartCityFrom' => $list,
-                        'departCountryDropdown' => $dropdownDepartCountry
+                        'dropdownDepartCountry' => $dropdownDepartCountry,
+                        'departCountryDropdown' => $departCountryDropdown
                     ]),
                     'tab_name' => Yii::t('app', 'Creating flight'),
                     'checked' => Yii::t('app', 'Checked'),
@@ -196,13 +197,15 @@ class FlightController extends Controller
             $country = new Country();
             $departCity = new DepartCity();
             $destinationDropdown = $country->destinationDropdown();
+            $departCountryDropdown = $country->destinationDropdown(Yii::$app->params['depart_countries']);
             $departCityDropdown = $departCity->regionDropdown();
             $response = [
                     'status' => 'ok',
                     'form' => $this->renderAjax('partial/user-flight-request-form', [
                     'destinationDropdown' => $destinationDropdown,
                     'UserFlightForm' => $UserFlightForm,
-                    'departCityDropdown' => $departCityDropdown
+                    'departCityDropdown' => $departCityDropdown,
+                    'departCountryDropdown' => $departCountryDropdown
                 ])
             ];
             echo Json::encode($response);
