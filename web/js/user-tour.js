@@ -121,6 +121,7 @@ $(function(){
         e.preventDefault();
         var hotel_id = $(this).attr('data-hotel-id');
         var hotel_name = $(this).attr('data-hotel-name');
+        var hotel_star = $(this).attr('data-hotel-star');
         var option = '<option value="'+hotel_id+'">'+hotel_name+'</option>';
             $('#gettourform-hotel_id').html(option);
             $("#gettourform-hotel_id option").filter(function () {
@@ -131,9 +132,13 @@ $(function(){
                 $('#gettourform-hotel').attr('data-toggle', 'tooltip').attr('title', hotel_name).attr('data-original-title', hotel_name);
                 $('[data-toggle="tooltip"]').tooltip();
             }
-            $('.field-gettourform-hotel_type, .field-gettourform-beach_line').addClass('disabled');
+            $('.field-gettourform-hotel_type, .field-gettourform-beach_line, .field-gettourform-stars').addClass('disabled');
             $('[name="GetTourForm[beach_line]"]').attr('disabled', 'disabled').attr('checked', false);
             $('[name="GetTourForm[hotel_type]"]').attr('disabled', 'disabled').attr('checked', false);
+            $('#gettourform-stars [name="GetTourForm[stars][]"]').attr('disabled', 'disabled').prop('checked', false);
+            $('#gettourform-stars [name="GetTourForm[stars][]"]').filter(function () {
+                return $(this).val() == hotel_star;
+            }).prop('checked', true);
         getHotelList();
     });
 
@@ -189,6 +194,7 @@ $(function(){
         $('#gettourform-beach_line [name="GetTourForm[beach_line]"]').attr('disabled', false);
         $('.field-gettourform-hotel_type').removeClass('disabled');
         $('#gettourform-hotel_type [name="GetTourForm[hotel_type]"]').attr('disabled', false);
+        $('#gettourform-stars [name="GetTourForm[stars][]"]').attr('disabled', false).prop('checked', false);
         getHotelList();
     });
 

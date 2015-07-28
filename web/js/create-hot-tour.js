@@ -55,18 +55,14 @@ $(function(){
     });
 
     //remove hotel name from hotel-name field
-    $('.field-createhottourform-hotel .remove-hotel-name').on('click', function(){
-        $('#createhottourform-hotel_id').val('');
-        $('#createhottourform-hotel').val('').removeAttr('data-toggle title data-original-title');
-        $('.field-createhottourform-hotel_type, .field-createhottourform-beach_line').removeClass('disabled');
-        $('[name="CreateHotTourForm[beach_line]"]').removeAttr('disabled');
-        $('[name="CreateHotTourForm[hotel_type]"]').removeAttr('disabled');
-        getHotelListForHotTour();
-    });
-    //remove hotel name from hotel-name field
     $(document).on('click', '.remove-hotel-hot-tour', function(){
         $('#createhottourform-hotel_id').val('');
         $('#createhottourform-hotel').val('').removeAttr('data-toggle title data-original-title');
+        $('.field-createhottourform-hotel_type, .field-createhottourform-beach_line, .field-createhottourform-stars').removeClass('disabled');
+        $('[name="CreateHotTourForm[beach_line]"]').removeAttr('disabled');
+        $('[name="CreateHotTourForm[hotel_type]"]').removeAttr('disabled');
+        $('#createhottourform-stars [name="CreateHotTourForm[stars][]"]').removeAttr('disabled');
+        $('#createhottourform-stars [name="CreateHotTourForm[stars][]"]').prop('checked', false);
         getHotelListForHotTour();
     });
 
@@ -122,6 +118,11 @@ $(function(){
 
     //dropdown list with user's tour for manager after resort change
     $(document).on('change', '#createhottourform-resort', function(){
+        getHotelListForHotTour();
+    });
+
+    //dropdown list with user's tour for manager after resort change
+    $(document).on('change', '#createhottourform-stars', function(){
         getHotelListForHotTour();
     });
 
@@ -222,12 +223,20 @@ $(function(){
         e.preventDefault();
         var hotel_id = $(this).attr('data-hotel-id');
         var hotel_name = $(this).attr('data-hotel-name');
+        var hotel_star = $(this).attr('data-hotel-star');
         var option = '<option value="'+hotel_id+'">'+hotel_name+'</option>';
             $('#createhottourform-hotel_id').html(option);
             $("#createhottourform-hotel_id option").filter(function () {
                 return $(this).val() == hotel_id;
             }).attr('selected', true);
             $('#createhottourform-hotel').val(hotel_name);
+        $('.field-createhottourform-beach_line, .field-createhottourform-hotel_type, .field-createhottourform-stars').addClass('disabled');
+        $('#createhottourform-beach_line [name="CreateHotTourForm[beach_line]"]').attr('disabled', true);
+        $('#createhottourform-hotel_type [name="CreateHotTourForm[hotel_type]"]').attr('disabled', true);
+        $('#createhottourform-stars [name="CreateHotTourForm[stars][]"]').attr('disabled', true).prop('checked', false);
+        $('#createhottourform-stars [name="CreateHotTourForm[stars][]"]').filter(function () {
+            return $(this).val() == hotel_star;
+        }).prop('checked', true);
             getHotelListForHotTour();
     });
 

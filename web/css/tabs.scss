@@ -213,7 +213,9 @@
           .control-label{
             text-align: left;
           }
-          &.field-gettourform-hotel_type, &.field-gettourform-beach_line{
+          &.field-gettourform-hotel_type, &.field-gettourform-beach_line,
+          &.field-gettourform-stars, &.field-createhottourform-stars,
+          &.field-createhottourform-beach_line, &.field-createhottourform-hotel_type{
             &.disabled{
               color: $grey-light-text;
             }
