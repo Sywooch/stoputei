@@ -185,6 +185,10 @@ $(function(){
     $(document).on('click' ,'.remove-hotel-name-user-request', function(){
         $('#gettourform-hotel').val('');
         $('#gettourform-hotel_id').val('');
+        $('.field-gettourform-beach_line').removeClass('disabled');
+        $('#gettourform-beach_line [name="GetTourForm[beach_line]"]').attr('disabled', false);
+        $('.field-gettourform-hotel_type').removeClass('disabled');
+        $('#gettourform-hotel_type [name="GetTourForm[hotel_type]"]').attr('disabled', false);
         getHotelList();
     });
 

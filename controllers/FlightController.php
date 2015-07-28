@@ -154,7 +154,6 @@ class FlightController extends Controller
                 $managerFlight->adult_count_under_24 = $model->adult_count_under_24;
                 $managerFlight->children_under_12_amount = $model->children_under_12_amount;
                 $managerFlight->children_under_2_amount = $model->children_under_2_amount;
-                //$managerFlight->flight_class = $model->flight_class;
                 $managerFlight->charter_flight = $model->charter_flight;
                 $managerFlight->regular_flight = $model->regular_flight;
                 $managerFlight->user_id = $model->user_id;
