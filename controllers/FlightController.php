@@ -263,4 +263,49 @@ class FlightController extends Controller
             Yii::$app->end();
         }
     }
+
+    public function actionAjaxFilterFlightList()
+    {
+        $UserFlightForm = new UserFlightForm();
+        if (Yii::$app->request->isAjax) {
+            if($UserFlightForm->load(Yii::$app->request->get())){
+                $query = [];
+                if(!empty($UserFlightForm->destination)){
+                    $query['country_id'] = $UserFlightForm->destination;
+                }
+                if(!empty($UserFlightForm->resort)){
+                    $query['city_id'] = $UserFlightForm->resort;
+                }
+                if(!empty($UserFlightForm->depart_city)){
+                    $query['depart_city_to_id'] = $UserFlightForm->depart_city;
+                }
+                /*if(!empty($UserFlightForm->date_city_to_since)){
+                    $query['date_city_to'] = $UserFlightForm->date_city_to_since;
+                }
+                if(!empty($UserFlightForm->date_city_to_until)){
+                    $query['date_city_from'] = $UserFlightForm->date_city_to_until;
+                }*/
+                $userFlightList = FlightResponse::find()->where([
+                    'user_id' => Yii::$app->user->identity->getId()
+                ])->andWhere($query)->all();
+                if($userFlightList){
+                    $response = [
+                        'status' => 'ok',
+                        'list' => $this->renderAjax('partial/user-flight-response-list', ['flights' => $userFlightList]),
+                        'count' => count($userFlightList),
+                        'message' => ''
+                    ];
+                }else{
+                    $response = [
+                        'status' => 'error',
+                        'list' => '',
+                        'count' => 0,
+                        'message' => Yii::t('app', "Flights not found. Please, change search params.")
+                    ];
+                }
+                echo Json::encode($response);
+                Yii::$app->end();
+            }
+        }
+    }
 }

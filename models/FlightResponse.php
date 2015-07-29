@@ -19,7 +19,7 @@ class FlightResponse extends ActiveRecord
     }
 
     public function getDepartCity(){
-        return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_id']);
+        return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_to_id']);
     }
 
     public function beforeSave($insert)

@@ -4,7 +4,7 @@ $(function(){
     $(document).on('change', '#userflightform-destination', function(){
         var destination = $(this).val();
         $('.flight-container .loader-bg').removeClass('hide');
-        var resort_url = $('.ajax-resort').attr('href');
+        var resort_url = $('.ajax-resort-for-filter').attr('href');
         $.get(resort_url,{'country_id':destination}).done(function(response){
             var data = $.parseJSON(response);
             $('.flight-container .loader-bg').addClass('hide');
@@ -264,6 +264,42 @@ $(function(){
             }
             $('#userflightform-depart_city').html(select_resort);
         });
+    });
+
+    //filter USER flight list
+    function filterFlightList(){
+        var url = $('.ajax-filter-flight-list').attr('href');
+        var data = $('#user-flight-form').serialize();
+        $('.flights-container .loader-bg').removeClass('hide');
+        $.get(url, data).done(function(response){
+            var data = $.parseJSON(response);
+            $('.flights-container .loader-bg').addClass('hide');
+            if(data.status == 'ok'){
+                $('#flight-response').html(data.list);
+                $('.badge.offers-tab.flights').text(data.count);
+            }else{
+
+                $('#flight-response').html(data.message);
+                $('.badge.offers-tab.flights').text(data.count);
+            }
+        });
+    }
+
+    //change filter list after choose filter fields
+    $(document).on('change', '#userflightform-destination', function(){
+        filterFlightList();
+    });
+    $(document).on('change', '#userflightform-resort', function(){
+        filterFlightList();
+    });
+    $(document).on('change', '#userflightform-depart_country', function(){
+        filterFlightList();
+    });
+    $(document).on('change', '#userflightform-date_city_to_since', function(){
+        filterFlightList();
+    });
+    $(document).on('change', '#userflightform-date_city_to_until', function(){
+        filterFlightList();
     });
 
 });

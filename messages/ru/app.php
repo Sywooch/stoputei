@@ -201,5 +201,6 @@ return [
     'Request answer' => 'Отправить ответ',
     'Resort/City' => 'Курорт/Город',
     'All destinations' => 'Все направления',
-    'All resorts' => 'Все курорты'
+    'All resorts' => 'Все курорты',
+    'Flights not found. Please, change search params.' => 'Авиабилетов по данному запросу не найдено. Пожалуйста, измените условия поискового запроса.',
 ];
