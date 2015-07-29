@@ -42,7 +42,7 @@ class UserFlightForm extends Model
             }, 'whenClient' => "function (attribute, value) {
                 return $('[name=\"ManagerFlightForm[way_ticket]\"]').val() == 2;
             }"],
-            [['date_city_from_since', 'date_city_from_until',], 'default', 'value' => null]
+            [['date_city_from_since', 'date_city_from_until', 'depart_country'], 'default', 'value' => null]
         ];
     }
 

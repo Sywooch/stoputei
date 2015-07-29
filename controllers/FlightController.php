@@ -293,14 +293,16 @@ class FlightController extends Controller
                         'status' => 'ok',
                         'list' => $this->renderAjax('partial/user-flight-response-list', ['flights' => $userFlightList]),
                         'count' => count($userFlightList),
-                        'message' => ''
+                        'message' => '',
+                        'model' => $UserFlightForm
                     ];
                 }else{
                     $response = [
                         'status' => 'error',
                         'list' => '',
                         'count' => 0,
-                        'message' => Yii::t('app', "Flights not found. Please, change search params.")
+                        'message' => Yii::t('app', "Flights not found. Please, change search params."),
+                        'model' => $UserFlightForm
                     ];
                 }
                 echo Json::encode($response);

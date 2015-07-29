@@ -277,6 +277,7 @@ $(function(){
             if(data.status == 'ok'){
                 $('#flight-response').html(data.list);
                 $('.badge.offers-tab.flights').text(data.count);
+                console.log(data.model);
             }else{
 
                 $('#flight-response').html(data.message);
@@ -293,6 +294,9 @@ $(function(){
         filterFlightList();
     });
     $(document).on('change', '#userflightform-depart_country', function(){
+        filterFlightList();
+    });
+    $(document).on('change', '#userflightform-depart_city', function(){
         filterFlightList();
     });
     $(document).on('change', '#userflightform-date_city_to_since', function(){
