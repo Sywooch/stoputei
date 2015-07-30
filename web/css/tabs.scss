@@ -200,12 +200,12 @@
               color: $grey-text;
             }
             &.not-any-check{
-              .type-name{
+              .type-name, .line-name{
                 color: $gold;
               }
             }
             &.any-check{
-              .type-name{
+              .type-name, .line-name{
                 color: $green;
               }
             }

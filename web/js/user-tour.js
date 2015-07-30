@@ -1,5 +1,5 @@
 $(function(){
-//get a depart city from depart country
+    //get a depart city from depart country
     $(document).on('change', '#gettourform-depart_country', function(){
         var destination = $(this).val();
         var resort_url = $('.ajax-resort').attr('href');
@@ -12,6 +12,26 @@ $(function(){
             $('#gettourform-depart_city').html(select_resort);
         });
     });
+
+    //change fields after add hotel to filter
+    function addHotelToFilter(){
+        var hotel_star = $(this).attr('data-hotel-star');
+        $('.field-gettourform-hotel_type, .field-gettourform-beach_line, .field-gettourform-stars').addClass('disabled');
+        $('[name="GetTourForm[beach_line]"]').attr('disabled', 'disabled').attr('checked', false);
+        $('[name="GetTourForm[hotel_type]"]').attr('disabled', 'disabled').attr('checked', false);
+        $('#gettourform-stars [name="GetTourForm[stars][]"]').attr('disabled', 'disabled').prop('checked', false);
+        $('#gettourform-stars [name="GetTourForm[stars][]"]').filter(function () {
+            return $(this).val() == hotel_star;
+        }).prop('checked', true);
+    }
+    function removeHotelFromFilter(){
+        $('.field-gettourform-hotel_type, .field-gettourform-beach_line, .field-gettourform-stars').removeClass('disabled');
+        $('#gettourform-beach_line [name="GetTourForm[beach_line][]"]').attr('disabled', false).prop('checked', false);
+        $('#gettourform-hotel_type [name="GetTourForm[hotel_type]"]').attr('disabled', false).prop('checked', false);
+        $('#gettourform-room_type [name="GetTourForm[room_type][]"]').attr('disabled', false).prop('checked', false);
+        $('#gettourform-nutrition [name="GetTourForm[nutrition][]"]').attr('disabled', false).prop('checked', false);
+        $('#gettourform-stars [name="GetTourForm[stars][]"]').attr('disabled', false).prop('checked', false);
+    }
 
     //get a tour on ajax(destination)
     $(document).on('change', '#gettourform-destination', function(){
@@ -27,6 +47,7 @@ $(function(){
             }
             $('#gettourform-resort').html(select_resort);
             getHotelList();
+            removeHotelFromFilter();
         });
     });
 
@@ -35,6 +56,7 @@ $(function(){
         $('#gettourform-hotel').val('');
         $('#gettourform-hotel_id').val('');
         getHotelList();
+        removeHotelFromFilter();
     });
 
     //get a tour on ajax(stars)
@@ -110,6 +132,7 @@ $(function(){
         $('[name="GetTourForm[hotel_type]"]').attr('disabled', 'disabled');
         $(this).hide();
         getHotelList();
+        removeHotelFromFilter()
     });
 
     $('.filter').on('click', function(){
@@ -121,7 +144,6 @@ $(function(){
         e.preventDefault();
         var hotel_id = $(this).attr('data-hotel-id');
         var hotel_name = $(this).attr('data-hotel-name');
-        var hotel_star = $(this).attr('data-hotel-star');
         var option = '<option value="'+hotel_id+'">'+hotel_name+'</option>';
             $('#gettourform-hotel_id').html(option);
             $("#gettourform-hotel_id option").filter(function () {
@@ -132,16 +154,9 @@ $(function(){
                 $('#gettourform-hotel').attr('data-toggle', 'tooltip').attr('title', hotel_name).attr('data-original-title', hotel_name);
                 $('[data-toggle="tooltip"]').tooltip();
             }
-            $('.field-gettourform-hotel_type, .field-gettourform-beach_line, .field-gettourform-stars').addClass('disabled');
-            $('[name="GetTourForm[beach_line]"]').attr('disabled', 'disabled').attr('checked', false);
-            $('[name="GetTourForm[hotel_type]"]').attr('disabled', 'disabled').attr('checked', false);
-            $('#gettourform-stars [name="GetTourForm[stars][]"]').attr('disabled', 'disabled').prop('checked', false);
-            $('#gettourform-stars [name="GetTourForm[stars][]"]').filter(function () {
-                return $(this).val() == hotel_star;
-            }).prop('checked', true);
         getHotelList();
+        addHotelToFilter();
     });
-
 
     //submit user tour form
     $(document).on('click', '#submit-tour', function(e){
@@ -158,6 +173,7 @@ $(function(){
                 $('#modal-container').modal({backdrop: 'static', keyboard: false});
                 $('#modal-container').modal('show');
             }else{
+                console.log(data.model);
                 $('.form-group .help-block').text('');
                 for (var i in data.errors) {
                     $('.field-gettourform-'+i+' .help-block').text(data.errors[i]);
@@ -190,12 +206,8 @@ $(function(){
     $(document).on('click' ,'.remove-hotel-name-user-request', function(){
         $('#gettourform-hotel').val('');
         $('#gettourform-hotel_id').val('');
-        $('.field-gettourform-beach_line').removeClass('disabled');
-        $('#gettourform-beach_line [name="GetTourForm[beach_line]"]').attr('disabled', false);
-        $('.field-gettourform-hotel_type').removeClass('disabled');
-        $('#gettourform-hotel_type [name="GetTourForm[hotel_type]"]').attr('disabled', false);
-        $('#gettourform-stars [name="GetTourForm[stars][]"]').attr('disabled', false).prop('checked', false);
         getHotelList();
+        removeHotelFromFilter();
     });
 
     //check all or not checkbox
@@ -223,6 +235,19 @@ $(function(){
             $(this).closest('.checkbox-one').removeClass('any-check').addClass('not-any-check');
         }else if((val != 0) && is_checked){
             $('[name="GetTourForm[room_type][]"]:first').prop('checked', false).closest('.checkbox-one').removeClass('any-check not-any-check');
+        }
+    });
+    $(document).on('change', '#gettourform-beach_line [name="GetTourForm[beach_line][]"]', function(){
+        var val = $(this).val();
+        var is_checked = ($(this).prop('checked'))?true:false;
+        if((val == 0) && is_checked){
+            $('[name="GetTourForm[beach_line][]"]').not(this).prop('checked', false);
+            $(this).closest('.checkbox-one').removeClass('not-any-check').addClass('any-check');
+        }else if((val == 0) && !is_checked){
+            $('[name="GetTourForm[beach_line][]"]').not(this).prop('checked', true);
+            $(this).closest('.checkbox-one').removeClass('any-check').addClass('not-any-check');
+        }else if((val != 0) && is_checked){
+            $('[name="GetTourForm[beach_line][]"]:first').prop('checked', false).closest('.checkbox-one').removeClass('any-check not-any-check');
         }
     });
 });

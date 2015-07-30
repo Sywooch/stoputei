@@ -45,6 +45,7 @@ class GetTourForm extends Model
             [['hotel_id', 'beach_line', 'hotel_type'], 'default', 'value' => null],
             ['stars', 'each', 'rule' => ['in', 'range' => [400, 401, 402, 403, 404]]],
             ['nutrition', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3, 4, 5, 6, 7]]],
+            ['beach_line', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3]]],
             ['room_type', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]]],
             [['budget', 'night_max'], 'integer'],
             [['budget'], 'default', 'value' => 0],

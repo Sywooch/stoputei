@@ -141,7 +141,7 @@ use dosamigos\datepicker\DatePicker;
         'autoclose' => true,
         'format' => 'yyyy-m-d',
         'todayHighlight' => true,
-        'startDate' => date('Y-M-d', strtotime('+2 days')),
+        'startDate' => date('Y-M-d', strtotime('today')),
     ]
 ]);?>
 
@@ -153,7 +153,7 @@ use dosamigos\datepicker\DatePicker;
         'autoclose' => true,
         'format' => 'yyyy-m-d',
         'todayHighlight' => true,
-        'startDate' => date('Y-M-d', strtotime('+4 days'))
+        'startDate' => date('Y-M-d', strtotime('+2 days'))
     ]
 ]);?>
 

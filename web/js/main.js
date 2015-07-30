@@ -61,6 +61,9 @@ $(function(){
         }
     });
 
+    //open dropdown
+    $('[data-toggle=dropdown]').dropdown();
+
     //country dropdown REGISTRATION
     $('#registrationform-country').on('change', function(){
         var country_id = $(this).val();

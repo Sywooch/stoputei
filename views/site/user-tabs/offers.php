@@ -24,13 +24,6 @@ use dosamigos\datepicker\DatePicker;
 
             <?= $form->field($TourOffersForm, 'resort')->dropDownList([],['prompt' => Yii::t('app','All resorts')]);?>
 
-            <?= $form->field($TourOffersForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 ">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name-user-offer"></i></div>'])->input('text') ?>
-
-            <?= $form->field($TourOffersForm, 'hotel_id')->dropDownList([], ['multiple' => true])->label('');?>
-
-            <?= Html::a('', Url::toRoute(['tour/ajax-hotels-autocomplete']), ['class' => 'ajax-hotel-autocomplete']);?>
-
-
             <?= $form->field($TourOffersForm, 'stars')->checkboxList([404 => '', 403 => '', 402 => '', 401 => '', 400 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 404){

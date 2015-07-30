@@ -36,9 +36,11 @@ $responseCount = $flightResponse->hasResponse($flight->id);
             <div>
                 <span class="describe"><?=Yii::t('app', 'Destination');?> : </span><span class="value"><?=$flight->country->name;?></span>
             </div>
+            <?php if($flight->city):?>
             <div>
                 <span class="describe"><?=Yii::t('app', 'Resort');?> : </span><span class="value"><?=$flight->city->name;?></span>
             </div>
+            <?php endif;?>
             <div>
                 <span class="value"><?=$flight_way;?></span>
             </div>

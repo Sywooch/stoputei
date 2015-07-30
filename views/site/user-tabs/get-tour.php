@@ -69,7 +69,7 @@ use dosamigos\datepicker\DatePicker;
                     $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);
                 }]);?>
-            <?= $form->field($GetTourForm, 'beach_line')->radioList([0 => '', 1 => '', 2 => '', 3 => ''],
+            <?= $form->field($GetTourForm, 'beach_line')->checkboxList([0 => '', 1 => '', 2 => '', 3 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){
                         $span = Html::tag('span', Yii::t('app','Any line'), ['class' => 'line-name']);
@@ -80,7 +80,7 @@ use dosamigos\datepicker\DatePicker;
                     }elseif($value == 3){
                         $span = Html::tag('span', Yii::t('app','Third'), ['class' => 'line-name']);
                     }
-                    $checkbox = Html::radio($name, $checked, ['value' => $value]);
+                    $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
                 }]);?>
             <?= $form->field($GetTourForm, 'hotel_type')->radioList([0 => '', 1 => '', 2 => '', 3 => '', 4 => ''],
@@ -147,7 +147,7 @@ use dosamigos\datepicker\DatePicker;
                         'autoclose' => true,
                         'format' => 'yyyy-m-d',
                         'todayHighlight' => true,
-                        'startDate' => date('Y-M-d', strtotime('+2 days')),
+                        'startDate' => date('Y-M-d', strtotime('today')),
                     ]
                 ]);?>
 
@@ -159,7 +159,7 @@ use dosamigos\datepicker\DatePicker;
                         'autoclose' => true,
                         'format' => 'yyyy-m-d',
                         'todayHighlight' => true,
-                        'startDate' => date('Y-M-d', strtotime('+4 days'))
+                        'startDate' => date('Y-M-d', strtotime('+2 days'))
                     ]
                 ]);?>
 

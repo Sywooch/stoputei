@@ -6,7 +6,7 @@ use yii\db\ActiveRecord;
 class Country extends ActiveRecord
 {
     public function getCities(){
-        return $this->hasMany(City::className(), ['country_id' => 'id']);
+        return $this->hasMany(City::className(), ['country_id' => 'id'])->orderBy('name');
     }
 
     public function getHotels(){

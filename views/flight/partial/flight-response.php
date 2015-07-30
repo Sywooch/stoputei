@@ -12,9 +12,11 @@ $date_to = $date_city_to->format('d.m.Y H:i');
             <div>
                 <span class="describe"><?=Yii::t('app', 'Destination');?> : </span><span class="value"><?=$flight->country->name;?></span>
             </div>
+            <?php if($flight->city):?>
             <div>
                 <span class="describe"><?=Yii::t('app', 'Resort');?> : </span><span class="value"><?=$flight->city->name;?></span>
             </div>
+            <?php endif;?>
             <div>
                 <span class="value"></span>
             </div>
@@ -22,9 +24,11 @@ $date_to = $date_city_to->format('d.m.Y H:i');
             <div>
                 <span class="describe"><?=Yii::t('app', 'Flight cost');?> : </span><span class="value"><?=$flight->flight_cost;?></span>
             </div>
+            <?php if($flight->departCity):?>
             <div>
                 <span class="describe"><?=Yii::t('app', 'Depart city');?> : </span><span class="value"><?=$flight->departCity->name;?></span>
             </div>
+            <?php endif;?>
             <div>
                 <span class="describe"><?=Yii::t('app', 'Flight start time');?> : </span><span class="value"><?=$date_to;?></span>
             </div>

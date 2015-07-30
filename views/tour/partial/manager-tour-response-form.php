@@ -174,7 +174,7 @@ use yii\helpers\Url;
             'autoclose' => true,
             'format' => 'yyyy-m-d',
             'todayHighlight' => true,
-            'startDate' => date('Y-M-d', strtotime('+2 days')),
+            'startDate' => date('Y-M-d', strtotime('today')),
         ]
     ]);?>
 
@@ -192,7 +192,7 @@ use yii\helpers\Url;
             'autoclose' => true,
             'format' => 'yyyy-m-d',
             'todayHighlight' => true,
-            'startDate' => date('Y-M-d', strtotime('+4 days')),
+            'startDate' => date('Y-M-d', strtotime('+2 days')),
         ]
     ]);?>
     <?= $form->field($CreateTourForm, 'voyage_from_there')->checkbox();?>

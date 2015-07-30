@@ -59,7 +59,7 @@ class TourController extends Controller
 
     public function actionAjaxHotelsAutocomplete($country_id, $resort_id, $query){
         if(Yii::$app->request->isAjax) {
-            if($hotels = Hotel::find()->where(['country_id' => $country_id, 'resort_id' => $resort_id])->andWhere(['like', 'name', $query])->all()) {
+            if($hotels = Hotel::find()->where(['country_id' => $country_id, 'resort_id' => $resort_id])->andWhere(['like', 'name', $query])->orderBy('name')->all()) {
                 $list = [];
                 foreach ($hotels as $key => $hotel) {
                     $list[] = [
@@ -83,7 +83,7 @@ class TourController extends Controller
 
     public function actionAjaxHotelsAutocompleteManager($country_id, $resort_id, $query){
         if(Yii::$app->request->isAjax) {
-            if($hotels = Hotel::find()->where(['country_id' => $country_id, 'resort_id' => $resort_id])->andWhere(['like', 'name', $query])->all()) {
+            if($hotels = Hotel::find()->where(['country_id' => $country_id, 'resort_id' => $resort_id])->andWhere(['like', 'name', $query])->orderBy('name')->all()) {
                 $list = [];
                 foreach ($hotels as $key => $hotel) {
                     $list[] = [
@@ -227,7 +227,8 @@ class TourController extends Controller
                 }else{
                     $response = [
                         'status' => 'error',
-                        'errors' => $model->getErrors()
+                        'errors' => $model->getErrors(),
+                        'model' => $model
                     ];
                 }
                 echo Json::encode($response);
@@ -235,7 +236,8 @@ class TourController extends Controller
             }else{
                 $response = [
                     'status' => 'error',
-                    'errors' => $model->getErrors()
+                    'errors' => $model->getErrors(),
+                    'model' => $model
                 ];
                 echo Json::encode($response);
                 Yii::$app->end();
