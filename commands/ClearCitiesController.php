@@ -27,11 +27,12 @@ class ClearCitiesController extends Controller
      */
     public function actionIndex()
     {
-        $ekskurs_city = City::find()->where(['like', 'name', 'программма'])->all();
+        $ekskurs_city = City::find()->where(['like', 'name', 'программа'])->all();
         foreach($ekskurs_city as $each){
             echo $each->name." \n";
-            $each->delete();
+            ///$each->delete();
         }
+        return;
         $cities = City::find()->orderBy('name')->all();
         foreach($cities as $key => $city){
             echo "KEY: $key ... ID: $city->city_id ... $city->name \n";
