@@ -8,6 +8,7 @@ use dosamigos\datepicker\DatePicker;
     <span class="back-to-main">
         <i class="glyphicon glyphicon-menu-right hide"></i>
     </span>
+    <div class="main-tab-container user-offers-tab-container col-xs-12" data-tab-class="user-offers">
     <div class="col-md-9 left-data">
         <div class="col-md-4 filter user-offers overflow-list">
             <?php $form = ActiveForm::begin([
@@ -63,5 +64,9 @@ use dosamigos\datepicker\DatePicker;
         <div id="right-data-response-offers">
 
         </div>
+    </div>
+    </div>
+    <div class="col-xs-12 full-tour-information close-tab" data-tab-class="user-offers">
+
     </div>
 </div>

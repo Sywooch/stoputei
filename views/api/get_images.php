@@ -2,7 +2,7 @@
 use app\models\SoapClientApi;
 use yii\helpers\BaseFileHelper;
 
-function crop_image($url, $id, $key){
+/*function crop_image($url, $id, $key){
     $path = 'uploads/hotel/images/big/';
     $size = getimagesize($url);
     $img_width = $size[0];
@@ -45,7 +45,7 @@ function crop_image($url, $id, $key){
         BaseFileHelper::createDirectory('uploads/hotel_images/scale/');
         imagejpeg($img_scale, 'uploads/hotel_images/scale/'.$key.'.jpg', 100);
     }
-}*/
+}
 
 function small_image($url, $id, $key){
     $path = 'uploads/hotel/images/small/';
@@ -107,5 +107,9 @@ foreach($countries as $c){
             }
         }
     }
+}*/
+$userTour = \app\models\UserTour::findOne(105);
+foreach($userTour->nutritions as $one){
+    echo $one->abbreviation.',';
 }
 ?>

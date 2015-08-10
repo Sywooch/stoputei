@@ -4,9 +4,10 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <div class="row filter-tour">
-    <span class="back-to-main">
+    <span class="back-to-main" data-tab-class="hot-tour">
         <i class="glyphicon glyphicon-menu-right hide"></i>
     </span>
+    <div class="main-tab-container create-hot-tour-tab-container col-xs-12" data-tab-class="hot-tour">
     <div class="col-md-9 left-data">
         <div class="col-md-4 create-hot-tour-manager overflow-list inactive">
             <?php $form = ActiveForm::begin([
@@ -255,7 +256,8 @@ use yii\helpers\Url;
 
         </div>
     </div>
-    <div class="col-xs-12 full-hotel-information hide">
+    </div>
+    <div class="col-xs-12 full-hotel-information close-tab" data-tab-class="hot-tour">
 
     </div>
     <?= Html::a('', Url::toRoute(['tour/ajax-hotels-autocomplete-manager']), ['class' => 'ajax-hotel-autocomplete-manager']);?>

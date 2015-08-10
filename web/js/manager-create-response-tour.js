@@ -126,6 +126,7 @@ $(function(){
     $(document).on('click', '.tour-more-info', function(){
         var url = $('.ajax-user-tour-full-info').attr('href');
         var user_tour_id = $(this).attr('data-tour-id');
+        var filter_type = $(this).attr('data-filter-type');
         url = url+'?filter_type=manager-response';
         $('.user-tour-container .loader-bg').removeClass('hide');
         $.get(url, {'user_tour_id' : user_tour_id}).done(function(response){

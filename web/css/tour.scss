@@ -1,4 +1,4 @@
-#user-tour-response, #user-tour-response-list{
+#user-tour-response, #user-tour-response-list, #manager-offers-response, #manager-hot-tours-response{
   .user-tour-wrapper{
     border-bottom: 1px solid $grey-light;
     margin-top: 5px;
@@ -42,6 +42,10 @@
       }
       .hotel-photo{
         padding: 0px;
+        .hotel-img{
+          width: 80px;
+          height: 65px;
+        }
       }
       .tour-info{
         padding-right: 0px;
@@ -66,6 +70,7 @@
       font-size: 4em;
       text-align: center;
       color: $grey-light-text;
+      margin-left: -25px;
     }
   }
 }
@@ -84,6 +89,7 @@
     }
     .value{
       font-weight: 600;
+      display: inline-block;
     }
   }
   .buttons {

@@ -44,10 +44,8 @@ class ApiController extends Controller
         //$big_images =  FileHelper::findFiles('uploads/hotel_images/big/');
         //$scale_images =  FileHelper::findFiles('uploads/hotel_images/scale/');
         //$small_images =  FileHelper::findFiles('uploads/hotel_images/small/');
-        $countries = SoapClientApi::getCountries();
-        return $this->render('get_images', [
-            'countries' => $countries
-        ]);
+        //$countries = SoapClientApi::getCountries();
+        return $this->render('get_images');
     }
 
     public function actionHotels(){

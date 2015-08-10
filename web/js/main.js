@@ -1,17 +1,4 @@
 $(function(){
-
-    //Google map
-    /*function initialize_google_map(latitude, longitude) {
-        var mapCanvas = document.getElementById('map-canvas');
-        var mapOptions = {
-            center: new google.maps.LatLng(latitude, longitude),
-            zoom: 2,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(mapCanvas, mapOptions);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize_google_map);*/
-
     //initialize tooltip
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -111,25 +98,63 @@ $(function(){
     //show hotel information, hide filter
     $(document).on('click', '.more-hotel-info', function(e){
         e.preventDefault();
+        var tab_class = $(this).attr('data-tab-class');
         var hotel_id = $(this).attr('data-hotel-id');
-        $('.back-to-main').addClass('open');
-        $('.back-to-main .glyphicon-menu-right').removeClass('hide');
-        $('.filter-tour .left-data').addClass('implicit');
-        $('.filter-tour .right-data').addClass('col-xs-12').removeClass('col-md-3');
-        $('.right-data').hide();
-        $('.full-hotel-information').removeClass('hide').text('HOTEL FULL INFORMATION');
+        var url = $('.ajax-show-hotel-full-info').attr('href');
+        $.get(url,{'hotel_id': hotel_id}).done(function(response){
+            var data = $.parseJSON(response);
+            $('.back-to-main[data-tab-class="'+tab_class+'"]').addClass('open');
+            $('.back-to-main[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').removeClass('hide');
+            $('.main-tab-container[data-tab-class="'+tab_class+'"]').addClass('implicit');
+            if(data.status == 'ok'){
+                $('.full-hotel-information:not([data-tab-class="'+tab_class+'"])').addClass('close-tab').removeClass('open-tab').empty();
+                $('.full-hotel-information[data-tab-class="'+tab_class+'"]').removeClass('close-tab').addClass('open-tab').attr('data-current-hotel', hotel_id).html(data.hotel);
+            }else{
+                $('.full-hotel-information:not([data-tab-class="'+tab_class+'"])').addClass('close-tab').removeClass('open-tab').empty();
+                $('.full-hotel-information[data-tab-class="'+tab_class+'"]').removeClass('close-tab').addClass('open-tab').text(data.message);
+            }
+        });
     });
 
     //show filter, hide hotel information
     $(document).on('click', '.back-to-main', function(e){
         e.preventDefault();
-        $('.back-to-main').removeClass('open');
-        $('.back-to-main .glyphicon-menu-right').addClass('hide');
-        $('.filter-tour .left-data').removeClass('implicit');
-        $('.filter-tour .right-data').removeClass('col-xs-12').addClass('col-md-3');
-        $('.full-hotel-information').addClass('hide');
-        $('.right-data').show();
+        var tab_class = $(this).attr('data-tab-class');
+        $('.back-to-main[data-tab-class="'+tab_class+'"]').removeClass('open');
+        $('.back-to-main[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').addClass('hide');
+        //$('.filter-tour .left-data').removeClass('implicit');
+        //$('.filter-tour .right-data').removeClass('col-xs-12').addClass('col-md-3');
+        $('.full-hotel-information[data-tab-class="'+tab_class+'"]').addClass('close-tab').removeClass('open-tab').removeAttr('data-current-hotel').empty();
+        //$('.right-data').show();
+        $('.main-tab-container[data-tab-class="'+tab_class+'"]').removeClass('implicit');
     });
 
+    //show hotel in tab if user did not close it, but switch on other tab
+    $('a[role="tab"]').on('click', function(){
+        var url = $('.ajax-show-hotel-full-info').attr('href');
+        var tab = $(this).attr('aria-controls');
+        //alert(tab);
+        if(tab == 'create-tour'){
+            tab_class = 'hot-tour';
+        }else if(tab == 'tour-from-user'){
+            tab_class = 'manager-response';
+        }
+        var tab_current_hotel = $('#'+tab+' .full-hotel-information').attr('data-current-hotel');
+        if(typeof tab_current_hotel != 'undefined'){
+            $.get(url,{'hotel_id': tab_current_hotel}).done(function(response){
+                var data = $.parseJSON(response);
+                $('.back-to-main[data-tab-class="'+tab_class+'"]').addClass('open');
+                $('.back-to-main[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').removeClass('hide');
+                $('.main-tab-container[data-tab-class="'+tab_class+'"]').addClass('implicit');
+                if(data.status == 'ok'){
+                    $('.full-hotel-information:not([data-tab-class="'+tab_class+'"])').addClass('close-tab').removeClass('open-tab').empty();
+                    $('.full-hotel-information[data-tab-class="'+tab_class+'"]').removeClass('close-tab').addClass('open-tab').attr('data-current-hotel', tab_current_hotel).html(data.hotel);
+                }else{
+                    $('.full-hotel-information:not([data-tab-class="'+tab_class+'"])').addClass('close-tab').removeClass('open-tab').empty();
+                    $('.full-hotel-information[data-tab-class="'+tab_class+'"]').removeClass('close-tab').addClass('open-tab').text(data.message);
+                }
+            });
+        }
+    });
 
 });

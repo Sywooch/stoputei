@@ -5,6 +5,7 @@ use yii\helpers\Url;
 use dosamigos\datepicker\DatePicker;
 ?>
 <div class="row filter-tour">
+    <div class="main-tab-container user-flights-tab-container col-xs-12" data-tab-class="user-flights">
     <div class="col-md-9 left-data">
         <div class="col-md-4 filter flight-container overflow-list">
             <?php $form = ActiveForm::begin([
@@ -137,5 +138,9 @@ use dosamigos\datepicker\DatePicker;
     </div>
     <div class="col-md-3 right-data">
         TOP HOTELS
+    </div>
+    </div>
+    <div class="col-xs-12 full-flights-information close-tab" data-tab-class="user-flights">
+
     </div>
 </div>

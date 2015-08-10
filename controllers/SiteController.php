@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\ManagerHotTourForm;
+use app\models\ManagerOffersForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -99,6 +101,8 @@ class SiteController extends Controller
                     $CreateTourForm = new CreateTourForm();
                     $CreateHotTourForm = new CreateHotTourForm();
                     $ManagerFlightForm = new ManagerFlightForm();
+                    $ManagerOffersForm = new ManagerOffersForm();
+                    $ManagerHotTourForm = new ManagerHotTourForm();
                     $country = new Country();
                     $departCity = new DepartCity();
                     $destinationDropdown = $country->destinationDropdown();
@@ -110,17 +114,29 @@ class SiteController extends Controller
                     $userFlights = UserFlight::find()->where([
                         'region_owner_id' => Yii::$app->user->identity->region_id
                     ])->all();
+                    $myOffers = TourResponse::find()->where([
+                        'manager_id' => Yii::$app->user->identity->getId(),
+                        'is_hot_tour' => 0
+                    ])->all();
+                    $myHotTours = TourResponse::find()->where([
+                        'manager_id' => Yii::$app->user->identity->getId(),
+                        'is_hot_tour' => 1
+                    ])->all();
                     return $this->render('index_manager_paid',
                         [
                             'email' => Yii::$app->user->identity->email,
                             'CreateTourForm' => $CreateTourForm,
                             'CreateHotTourForm' => $CreateHotTourForm,
                             'ManagerFlightForm' => $ManagerFlightForm,
+                            'ManagerOffersForm' => $ManagerOffersForm,
+                            'ManagerHotTourForm' => $ManagerHotTourForm,
                             'destinationDropdown' => $destinationDropdown,
                             'departCityDropdown' => $departCityDropdown,
                             'userTours' => $userTours,
                             'userFlights' => $userFlights,
-                            'departCountryDropdown' => $departCountryDropdown
+                            'departCountryDropdown' => $departCountryDropdown,
+                            'myOffers' => $myOffers,
+                            'myHotTours' => $myHotTours
                         ]);
                 }else{
                     return $this->render('index_manager',

@@ -15,16 +15,18 @@ foreach($photos as $key => $one){
 $empty_photo = '<span class="empty-img-offer"><i class="glyphicon glyphicon-camera"></i></span>';
 $created = date('d.m.Y H:i:s', $tour->created_at);
 $flight_included = ($tour->flight_included==1)?Yii::t('app', 'Flight included'):Yii::t('app', 'Flight not included');
-
+$filter_type = (Yii::$app->user->identity->role == 1)?'user-response':'manager-response';
 ?>
 <div class="user-tour-wrapper col-xs-12">
     <div class="col-xs-12 header-info">
         <span class="count hide"><?=Yii::t('app', 'Offer').' № '.$tour->id;?></span>
         <span class="created hide"><?=$created;?></span>
-        <div class="hotel-title">
-            <?=$tour->hotel->name;?>
-            <span class="hotel-rate">(<?= Yii::t('app', 'Rate').'  '.$tour->hotel->hotel_rate;?>)</span>
-        </div>
+        <?php if($tour->hotel):?>
+            <div class="hotel-title">
+                <?=$tour->hotel->name;?>
+                <span class="hotel-rate">(<?= Yii::t('app', 'Rate').'  '.$tour->hotel->hotel_rate;?>)</span>
+            </div>
+        <?php endif;?>
     </div>
     <div class="col-xs-6 body">
         <div class="col-xs-5 hotel-photo">
@@ -49,6 +51,6 @@ $flight_included = ($tour->flight_included==1)?Yii::t('app', 'Flight included'):
         <div><span class="describe"><?=Yii::t('app', 'Amount of children (under 2 years old)');?></span> : <span class="data"><?= $tour->children_under_2_amount;?></span></div>
     </div>
     <div class="col-xs-2 buttons">
-        <a href="#" class="tour-more-info btn btn-primary" data-tour-id="<?=$tour->id;?>"><?= Yii::t('app', 'More');?></a>
+        <a href="#" class="tour-more-info btn btn-primary" data-tour-id="<?=$tour->id;?>" data-filter-type="<?=$filter_type;?>"><?= Yii::t('app', 'More');?></a>
     </div>
 </div>

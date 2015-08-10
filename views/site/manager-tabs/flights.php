@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <div class="row filter-tour">
+    <div class="main-tab-container flights-manager-tab-container col-xs-12">
     <div class="col-md-9 left-data">
         <div class="col-md-4 create-flight overflow-list inactive">
             <?=$responseForm;?>
@@ -21,6 +22,7 @@ use yii\helpers\Url;
         <div id="right-data-response-flight">
 
         </div>
+    </div>
     </div>
 
 </div>

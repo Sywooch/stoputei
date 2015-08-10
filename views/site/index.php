@@ -27,7 +27,7 @@ $this->title = 'StoPutei';
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="offers">
                     <?=$this->render('user-tabs/offers', [
-                        'tourUserResponse' => $this->renderAjax('//tour/partial/user-tour-response-list', ['tourUserResponse' => $tourUserResponse]),
+                        'tourUserResponse' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $tourUserResponse]),
                         'destinationDropdown' => $destinationDropdown,
                         'TourOffersForm' => $TourOffersForm,
                         'departCityDropdown' => $departCityDropdown
@@ -58,5 +58,6 @@ $this->title = 'StoPutei';
         <?= Html::a('', Url::toRoute(['tour/ajax-get-offers-list']), ['class' => 'ajax-get-offers-list']);?>
         <?= Html::a('', Url::toRoute(['tour/ajax-hotels-autocomplete']), ['class' => 'ajax-hotel-autocomplete-offer']);?>
         <?= Html::a('', Url::toRoute(['flight/ajax-filter-flight-list']), ['class' => 'ajax-filter-flight-list']);?>
+        <?= Html::a('', Url::toRoute(['tour/get-user-tour-full-info']), ['class' => 'ajax-user-tour-full-info']);?>
     </div>
 </div>

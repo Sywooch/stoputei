@@ -10,9 +10,9 @@ $this->title = 'StoPutei';
             <ul class="nav nav-tabs manager" role="tablist">
                 <li role="presentation" class="active"><a href="#create-tour" aria-controls="create-tour" role="tab" data-toggle="tab"><?=Yii::t('app','Create a tour');?></a><span class="badge offers-tab tab-badge create-hot-tour"></span></li>
                 <li role="presentation"><a href="#tour-from-user" aria-controls="tour-from-user" role="tab" data-toggle="tab"><?=Yii::t('app','Tour from users');?></a><span class="badge offers-tab tab-badge"><?=count($userTours);?></span></li>
-                <li role="presentation"><a href="#flights" aria-controls="flights" role="tab" data-toggle="tab"><?=Yii::t('app','Flights');?></a><span class="badge offers-tab tab-badge"><?=count($userFlights);?></span></li>
-                <li role="presentation"><a href="#my-offers" aria-controls="my-offers" role="tab" data-toggle="tab"><?=Yii::t('app','My offers');?></a></li>
-                <li role="presentation"><a href="#my-hot-tours" aria-controls="my-hot-tours" role="tab" data-toggle="tab"><?=Yii::t('app','My hot tours');?></a></li>
+                <li role="presentation"><a href="#flights" aria-controls="flights" role="tab" data-toggle="tab"><?=Yii::t('app','Flights');?></a><span class="badge offers-tab tab-badge user-flights"><?=count($userFlights);?></span></li>
+                <li role="presentation"><a href="#my-offers" aria-controls="my-offers" role="tab" data-toggle="tab"><?=Yii::t('app','My offers');?></a><span class="badge offers-tab tab-badge manager-offers"><?=count($myOffers);?></span></li>
+                <li role="presentation"><a href="#my-hot-tours" aria-controls="my-hot-tours" role="tab" data-toggle="tab"><?=Yii::t('app','My hot tours');?></a><span class="badge offers-tab tab-badge manager-hot-tours"><?=count($myHotTours);?></span></li>
             </ul>
 
             <!-- Tab panes -->
@@ -44,10 +44,18 @@ $this->title = 'StoPutei';
                     ]);?>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="my-offers">
-                    <?=$this->render('manager-tabs/my-offers');?>
+                    <?=$this->render('manager-tabs/my-offers',[
+                        'ManagerOffersForm' => $ManagerOffersForm,
+                        'dropdownDestination' => $destinationDropdown,
+                        'myOffers' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $myOffers]),
+                    ]);?>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="my-hot-tours">
-                    <?=$this->render('manager-tabs/my-hot-tours');?>
+                    <?=$this->render('manager-tabs/my-hot-tours',[
+                        'ManagerHotTourForm' => $ManagerHotTourForm,
+                        'dropdownDestination' => $destinationDropdown,
+                        'myHotTours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $myHotTours]),
+                    ]);?>
                 </div>
             </div>
         </div>
@@ -62,5 +70,9 @@ $this->title = 'StoPutei';
         <?= Html::a('', Url::toRoute(['tour/ajax-hotels-autocomplete-manager']), ['class' => 'ajax-hotel-autocomplete-manager']);?>
         <?= Html::a('', Url::toRoute(['tour/get-hotel-manager-list']), ['class' => 'ajax-hot-tour-hotel-list']);?>
         <?= Html::a('', Url::toRoute(['tour/create-one-more-hot-tour']), ['class' => 'ajax-create-one-more-hot-tour']);?>
+        <?= Html::a('', Url::toRoute(['hotel/ajax-show-hotel-full-info']), ['class' => 'ajax-show-hotel-full-info']);?>
+        <?= Html::a('', Url::toRoute(['tour/ajax-resorts-dropdown-for-filter']), ['class' => 'ajax-resort-for-filter']);?>
+        <?= Html::a('', Url::toRoute(['tour/ajax-get-manager-offers-list']), ['class' => 'ajax-get-manager-offers-list']);?>
+        <?= Html::a('', Url::toRoute(['tour/ajax-get-manager-hot-tours-list']), ['class' => 'ajax-get-manager-hot-tours-list']);?>
     </div>
 </div>

@@ -197,10 +197,15 @@ return [
     'Date start' => 'Дата вылета',
     'Date end' => 'Дата вылета',
     'Payment is absent' => 'Отсутствуют',
+    'Is absent' => 'Отсутствует',
     'Create one more hot tour' => 'Создать еще один горящий тур',
     'Request answer' => 'Отправить ответ',
     'Resort/City' => 'Курорт/Город',
     'All destinations' => 'Все направления',
     'All resorts' => 'Все курорты',
     'Flights not found. Please, change search params.' => 'Авиабилетов по данному запросу не найдено. Пожалуйста, измените условия поискового запроса.',
+    'Hotel rate' => 'Рейтинг отеля',
+    'Hotel description coming soon.' => 'Описание отеля будет предоставлено в ближайщее время',
+    'Not selected' => 'Не выбрано',
+    'Hotel category' => 'Категория отеля'
 ];

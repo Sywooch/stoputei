@@ -27,7 +27,7 @@ class ClearCitiesController extends Controller
      */
     public function actionIndex()
     {
-        $ekskurs_city = City::find()->where(['like', 'name', 'программа'])->all();
+        $ekskurs_city = City::find()->where(['like', 'name', 'область'])->all();
         foreach($ekskurs_city as $each){
             echo $each->name." \n";
             $each->delete();

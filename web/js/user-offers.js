@@ -83,4 +83,27 @@ $(function(){
         $('#touroffersform-hotel_id').val('');
         getUserOffersList();
     });
+
+    //open user's tour with full information
+    $(document).on('click', '.tour-more-info-user', function(){
+        var url = $('.ajax-user-tour-full-info').attr('href');
+        var user_tour_id = $(this).attr('data-tour-id');
+        url = url+'?filter_type=user-response';
+        $('.user-tour-container .loader-bg').removeClass('hide');
+        $.get(url, {'user_tour_id' : user_tour_id}).done(function(response){
+            var data = $.parseJSON(response);
+            $('.user-tour-container .loader-bg').addClass('hide');
+            if(data.status == 'ok') {
+                console.log(data);
+                $('.right-data .main-data').hide();
+                $('#right-data-response').html(data.html);
+                $('a[href="#tour-from-user"]').text(data.tab_name);
+                $('#user-tour-response').empty().html(data.hotels);
+                $('[data-toggle="tooltip"]').tooltip();
+                $('.create-tour').removeClass('inactive').empty().html(data.form);
+            }else{
+                $('#right-data-response').text(data.message);
+            }
+        });
+    });
 });
