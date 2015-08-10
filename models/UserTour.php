@@ -27,7 +27,7 @@ class UserTour extends ActiveRecord
     }
 
     public function getCategories(){
-        return $this->hasMany(HotelCategory::className(), ['id' => 'category_id'])
+        return $this->hasMany(HotelCategory::className(), ['star_id' => 'category_id'])
             ->viaTable(UserTourCategories::tableName(), ['tour_id' => 'id']);
     }
 
