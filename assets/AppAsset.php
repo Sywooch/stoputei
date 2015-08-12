@@ -30,6 +30,8 @@ class AppAsset extends AssetBundle
         'js/user-offers.js',
         'js/manager-offers.js',
         'js/manager-hot-tours.js',
+        'js/user-hot-tours.js',
+        'js/user-favourites.js',
     ];
     public $images = [];
     public $depends = [

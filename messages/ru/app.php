@@ -150,6 +150,7 @@ return [
     'Depart city there' => 'Вылет туда из',
     'Depart city from there' => 'Вылет обратно из',
     'Voyage' => 'Рейс прямой',
+    'Voyage is not direct' => 'Рейс составной',
     'Voyage through' => 'Рейс составной через',
     'Add payment' => 'Доплаты',
     'Visa' => 'Виза',
@@ -207,5 +208,18 @@ return [
     'Hotel rate' => 'Рейтинг отеля',
     'Hotel description coming soon.' => 'Описание отеля будет предоставлено в ближайщее время',
     'Not selected' => 'Не выбрано',
-    'Hotel category' => 'Категория отеля'
+    'Hotel category' => 'Категория отеля',
+    'Tour was not found.' => 'Указанный тур не найден. Пожалуйста, измените условия поиска и попробуйте снова.',
+    'From A to Z' => 'От А до Я',
+    'From Z to A' => 'От Я до А',
+    'From cheap to expensive' => 'Стоимость(по возрастанию)',
+    'From expensive to cheap' => 'Стоимость(по убыванию)',
+    'From new to old' => 'Дата публикации(по возрастанию)',
+    'From old to new' => 'Дата публикации(по убыванию)',
+    'Order by' => 'Сортировать по',
+    'night' => 'ночь',
+    'nights' => 'ночей',
+    '{n,nights}' => '{n} ночей',
+    'Insurance not included' => 'не включена',
+    'Insurance included' => 'включена'
 ];

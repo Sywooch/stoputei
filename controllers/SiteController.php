@@ -4,6 +4,9 @@ namespace app\controllers;
 
 use app\models\ManagerHotTourForm;
 use app\models\ManagerOffersForm;
+use app\models\UserFavouriteForm;
+use app\models\UserHotTourForm;
+use app\models\UserTourFavourites;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -71,6 +74,8 @@ class SiteController extends Controller
                 $GetTourForm = new GetTourForm();
                 $UserFlightForm = new UserFlightForm();
                 $TourOffersForm = new TourOffersForm();
+                $UserHotTourForm = new UserHotTourForm();
+                $userFavouriteForm = new UserFavouriteForm();
                 $country = new Country();
                 $departCity = new DepartCity();
                 $flightsUserResponse = FlightResponse::find()->where([
@@ -79,6 +84,16 @@ class SiteController extends Controller
                 $tourUserResponse = TourResponse::find()->where([
                     'user_id' => Yii::$app->user->identity->getId()
                 ])->all();
+                $userHotTours = TourResponse::find()->where([
+                    'region_manager_id' => Yii::$app->user->identity->region_id,
+                    'is_hot_tour' => 1
+                ])->all();
+                $userFavouritesIds = Yii::$app->user->identity->favourites;
+                $favouritesIds = [];
+                foreach($userFavouritesIds as $one){
+                    $favouritesIds[] = $one->tour_id;
+                }
+                $userFavouriteTours = TourResponse::findAll($favouritesIds);
                 $destinationDropdown = $country->destinationDropdown();
                 $departCountryDropdown = $country->destinationDropdown(\Yii::$app->params['depart_countries']);
                 $departCityDropdown = $departCity->regionDropdown();
@@ -90,11 +105,15 @@ class SiteController extends Controller
                         'GetTourForm' => $GetTourForm,
                         'UserFlightForm' => $UserFlightForm,
                         'TourOffersForm' => $TourOffersForm,
+                        'UserHotTourForm' => $UserHotTourForm,
+                        'userFavouriteForm' => $userFavouriteForm,
                         'destinationDropdown' => $destinationDropdown,
                         'departCityDropdown' => $departCityDropdown,
                         'flightsUserResponse' => $flightsUserResponse,
                         'tourUserResponse' => $tourUserResponse,
-                        'departCountryDropdown' => $departCountryDropdown
+                        'departCountryDropdown' => $departCountryDropdown,
+                        'userHotTours' => $userHotTours,
+                        'userFavouriteTours' => $userFavouriteTours
                     ]);
             case 2:
                 if((Yii::$app->user->identity->single_region_paid == 1) or (Yii::$app->user->identity->multiple_region_paid == 1)) {

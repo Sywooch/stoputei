@@ -157,4 +157,23 @@ $(function(){
         }
     });
 
+    //order tour list
+    $(document).on('change', '[name="order-tour-list"]', function(){
+        var value = $(this).val();
+        var container_id = $(this).closest('div').attr('id');
+        var data = [];
+            $('#'+container_id+' .user-tour-wrapper').each(function(){
+                data.push($(this).attr('data-tour-id'));
+            });
+        var url = $('.ajax-order-tours-list').attr('href');
+        $.get(url, {'ids': data, 'order_by': value}).done(function(response){
+            var data = $.parseJSON(response);
+            if(data.status == 'ok'){
+                $('#'+container_id).html(data.tourList);
+            }else{
+                $('#'+container_id).text(data.message);
+            }
+        });
+    });
+
 });

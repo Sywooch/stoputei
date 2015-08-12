@@ -47,6 +47,7 @@ class CreateHotTourForm extends Model
     public $tour_cost;
     public $user_id;
     public $from_tour_id;
+    public $region_manager_id;
     public $is_hot_tour;
 
     /**
@@ -57,7 +58,7 @@ class CreateHotTourForm extends Model
         return [
             [['destination', 'resort', 'hotel', 'room_count', 'nutrition', 'location', 'room_type', 'room_view', 'tour_cost'], 'required'],
             [['stars', 'apartment'], 'default', 'value' => []],
-            [['hotel_id', 'oil_tax', 'visa', 'voyage_through_city_there', 'voyage_through_city_from_there', 'user_id', 'from_tour_id', 'from_date', 'to_date'], 'default', 'value' => null],
+            [['hotel_id', 'oil_tax', 'visa', 'voyage_through_city_there', 'voyage_through_city_from_there', 'user_id', 'from_tour_id', 'from_date', 'to_date', 'region_manager_id'], 'default', 'value' => null],
             [['adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count', 'tour_cost', 'night_count', 'room_view', 'beach_line', 'hotel_type', 'room_type', 'location', 'nutrition'], 'integer'],
             ['stars', 'each', 'rule' => ['in', 'range' => [400, 401, 402, 403, 404]]],
             [['flight_included', 'is_hot_tour'], 'default', 'value' => 1],

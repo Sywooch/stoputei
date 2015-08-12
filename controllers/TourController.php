@@ -2,8 +2,11 @@
 
 namespace app\controllers;
 
+use app\models\UserFavouriteForm;
+use app\models\UserHotTourForm;
 use app\models\UserTourBeachLines;
 use app\models\UserTourCategories;
+use app\models\UserTourFavourites;
 use app\models\UserTourNutritions;
 use app\models\UserTourRooms;
 use Yii;
@@ -450,6 +453,7 @@ class TourController extends Controller
                 $tourResponse->user_id = $model->user_id;
                 $tourResponse->from_tour_id = $model->from_tour_id;
                 $tourResponse->manager_id = Yii::$app->user->identity->getId();
+                $tourResponse->region_manager_id = Yii::$app->user->identity->region_id;
                 if($tourResponse->save()) {
                     $response = [
                         'status' => 'ok',
@@ -630,6 +634,7 @@ class TourController extends Controller
                 $tourResponse->tour_cost = $model->tour_cost;
                 $tourResponse->is_hot_tour = $model->is_hot_tour;
                 $tourResponse->manager_id = Yii::$app->user->identity->getId();
+                $tourResponse->region_manager_id = Yii::$app->user->identity->region_id;
                 if($tourResponse->save()) {
                     $response = [
                         'status' => 'ok',
@@ -764,6 +769,172 @@ class TourController extends Controller
                     'message' => Yii::t('app', "Tour was not found."),
                     'count' => 0,
                     'model' => $model
+                ];
+            }
+            echo Json::encode($response);
+            Yii::$app->end();
+        }
+    }
+
+    public function actionAjaxGetUserHotToursList(){
+        $model = new UserHotTourForm();
+        if(Yii::$app->request->isAjax) {
+            if($model->load(Yii::$app->request->get())){
+                $query = [];
+                if(!empty($model->destination)){
+                    $query['country_id'] = $model->destination;
+                }
+                if(!empty($model->resort)){
+                    $query['city_id'] = $model->resort;
+                }
+                $userHotTours = TourResponse::find()->where([
+                    'region_manager_id' => Yii::$app->user->identity->region_id,
+                    'is_hot_tour' => 1
+                ])->andWhere($query)->all();
+                if($userHotTours){
+                    $response = [
+                        'status' => 'ok',
+                        'tours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $userHotTours]),
+                        'count' => count($userHotTours)
+                    ];
+                }else{
+                    $response = [
+                        'status' => 'error',
+                        'tours' => [],
+                        'message' => Yii::t('app', "Tour was not found."),
+                        'count' => 0,
+                        'model' => $model
+                    ];
+                }
+            }else{
+                $response = [
+                    'status' => 'error',
+                    'tours' => [],
+                    'message' => Yii::t('app', "Tour was not found."),
+                    'count' => 0,
+                    'model' => $model
+                ];
+            }
+            echo Json::encode($response);
+            Yii::$app->end();
+        }
+    }
+
+    public function actionAjaxGetUserFavouritesToursList(){
+        $model = new UserFavouriteForm();
+        if(Yii::$app->request->isAjax) {
+            if($model->load(Yii::$app->request->get())){
+                $query = [];
+                if(!empty($model->destination)){
+                    $query['country_id'] = $model->destination;
+                }
+                $userFavouritesIds = Yii::$app->user->identity->favourites;
+                $favouritesIds = [];
+                foreach($userFavouritesIds as $one){
+                    $favouritesIds[] = $one->tour_id;
+                }
+                $userFavouriteTours = TourResponse::find()->where([
+                    'id' => $favouritesIds
+                ])->andWhere($query)->all();
+                if($userFavouriteTours){
+                    $response = [
+                        'status' => 'ok',
+                        'tours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $userFavouriteTours]),
+                        'count' => count($userFavouriteTours)
+                    ];
+                }else{
+                    $response = [
+                        'status' => 'error',
+                        'tours' => [],
+                        'message' => Yii::t('app', "Tour was not found."),
+                        'count' => 0,
+                        'model' => $model
+                    ];
+                }
+            }else{
+                $response = [
+                    'status' => 'error',
+                    'tours' => [],
+                    'message' => Yii::t('app', "Tour was not found."),
+                    'count' => 0,
+                    'model' => $model
+                ];
+            }
+            echo Json::encode($response);
+            Yii::$app->end();
+        }
+    }
+
+    public function actionAddToFavourite($tour_id){
+        if(Yii::$app->request->isAjax) {
+            $userFavourite = new UserTourFavourites();
+            $userTourFavourite = $userFavourite->isFavourite($tour_id);
+            if($userTourFavourite){
+                $userFavourite->deleteAll(['tour_id' => $tour_id, 'user_id' => Yii::$app->user->identity->getId()]);
+                $response = [
+                    'status' => 'ok',
+                    'action' => 'delete',
+                    'tour_id' => $tour_id,
+                    'count' => $userFavourite->find()->where(['user_id' => Yii::$app->user->identity->getId()])->count()
+                ];
+            }else {
+                $userFavourite->tour_id = $tour_id;
+                $userFavourite->user_id = Yii::$app->user->identity->getId();
+                if($userFavourite->save()) {
+                    $userFavouriteTour[] = TourResponse::findOne($tour_id);
+                    $response = [
+                        'status' => 'ok',
+                        'action' => 'add',
+                        'tour' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $userFavouriteTour]),
+                        'tour_id' => $tour_id,
+                        'count' => $userFavourite->find()->where(['user_id' => Yii::$app->user->identity->getId()])->count()
+                    ];
+                }else{
+                    $response = [
+                        'status' => 'error',
+                        'message' => Yii::t('app','Error')
+                    ];
+                }
+            }
+            echo Json::encode($response);
+            Yii::$app->end();
+        }
+    }
+
+    //order tour list
+    public function actionAjaxOrderToursList(){
+        if(Yii::$app->request->isAjax) {
+            $order_by = Yii::$app->request->getQueryParam('order_by', null);
+            $ids = Yii::$app->request->getQueryParam('ids', null);
+            if(!is_null($order_by)){
+                $query = '';
+                switch($order_by){
+                    case 'cheap-to-expensive':
+                        $query .= 'tour_cost asc';
+                        break;
+                    case 'expensive-to-cheap':
+                        $query .= 'tour_cost desc';
+                        break;
+                    case 'new-to-old':
+                        $query .= 'created_at desc';
+                        break;
+                    case 'old-to-new':
+                        $query .= 'created_at asc';
+                        break;
+                }
+                $tourList = TourResponse::find()->where([
+                    'id' => $ids
+                ])->orderBy($query)->all();
+                $response = [
+                    'status' => 'ok',
+                    'ids' => Yii::$app->request->get(),
+                    'order_by' => $order_by,
+                    'tourList' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $tourList]),
+                ];
+            }else{
+                $response = [
+                    'status' => 'error',
+                    'message' => Yii::t('app','Error')
                 ];
             }
             echo Json::encode($response);

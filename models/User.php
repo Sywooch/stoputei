@@ -167,4 +167,8 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         }
         return false;
     }
+
+    public function getFavourites(){
+        return $this->hasMany(UserTourFavourites::className(), ['user_id' => 'id']);
+    }
 }
