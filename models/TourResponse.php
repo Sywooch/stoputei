@@ -2,8 +2,6 @@
 namespace app\models;
 
 use yii\db\ActiveRecord;
-use yii\db\Expression;
-use yii\web\User;
 
 class TourResponse extends ActiveRecord
 {
