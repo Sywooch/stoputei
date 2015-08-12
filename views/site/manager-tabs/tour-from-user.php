@@ -14,7 +14,9 @@ use yii\helpers\Url;
         <div class="col-md-8 user-tour-container overflow-list">
             <div class="loader-bg hide"><img src="/images/loader.gif"></div>
             <div id="user-tour-response">
-                <?=$userTours;?>
+                <div class="list-data">
+                    <?=$userTours;?>
+                </div>
             </div>
         </div>
     </div>

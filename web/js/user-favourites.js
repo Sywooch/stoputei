@@ -7,7 +7,7 @@ $(function(){
            if(data.status == 'ok'){
                $('.badge.offers-tab.tab-badge.favourites-tours').text(data.count);
                if(data.action == 'add'){
-                   $('#user-favourite-tours-response .user-tour-wrapper:last').after(data.tour);
+                   $('#user-favourite-tours-response .list-data').prepend(data.tour);
                     $('.favourite-user-tour[data-tour-id="'+data.tour_id+'"]').addClass('glyphicon-heart favourite').removeClass('glyphicon-heart-empty');
                }else if(data.action == 'delete'){
                    $('.favourite-user-tour[data-tour-id="'+data.tour_id+'"]').removeClass('glyphicon-heart favourite').addClass('glyphicon-heart-empty');
@@ -34,10 +34,10 @@ $(function(){
             $('.user-favourites-tours .loader-bg').addClass('hide');
             console.log(data.model);
             if(data.status == 'ok') {
-                $('#user-favourite-tours-response').html(data.tours);
+                $('#user-favourite-tours-response .list-data').html(data.tours);
                 $('#user-favourite-tours-response .favourites-count').text(data.count);
             }else{
-                $('#user-favourite-tours-response').html(data.message);
+                $('#user-favourite-tours-response .list-data').html(data.message);
                 $('#user-favourite-tours-response .favourites-count').text(data.count);
             }
         });

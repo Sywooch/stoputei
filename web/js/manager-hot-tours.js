@@ -29,10 +29,10 @@ $(function(){
             $('.manager-hot-tours .loader-bg').addClass('hide');
             console.log(data.model);
             if(data.status == 'ok') {
-                $('#manager-hot-tours-response').html(data.tours);
+                $('#manager-hot-tours-response .list-data').html(data.tours);
                 $('.offers-tab.tab-badge.manager-hot-tours').text(data.count);
             }else{
-                $('#manager-hot-tours-response').html(data.message);
+                $('#manager-hot-tours-response .list-data').html(data.message);
                 $('.offers-tab.tab-badge.manager-hot-tours').text(data.count);
             }
         });

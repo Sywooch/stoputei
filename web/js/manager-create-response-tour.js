@@ -10,10 +10,10 @@ $(function(){
             $('.user-tour-container .loader-bg').addClass('hide');
             if(data.status == 'ok') {
                 console.log(data.message);
-                $('#user-tour-response').html(data.html);
+                $('#user-tour-response .list-data').html(data.html);
                 $('.offers-tab.tab-badge.get-tour').text(data.count);
             }else{
-                $('#user-tour-response').text(data.message);
+                $('#user-tour-response .list-data').text(data.message);
                 $('.offers-tab.tab-badge.get-tour').text(data.count);
             }
         });
@@ -112,11 +112,11 @@ $(function(){
             var data = $.parseJSON(response);
             $('.hotels-container .loader-bg').addClass('hide');
             if(data.status == 'ok') {
-                $('#user-tour-response').html(data.html);
+                $('#user-tour-response .list-data').html(data.html);
                 $('.offers-tab.tab-badge').text(data.count);
                 $('[data-toggle="tooltip"]').tooltip();
             }else{
-                $('#user-tour-response').text(data.message);
+                $('#user-tour-response .list-data').text(data.message);
                 $('.offers-tab.tab-badge').text(data.count);
             }
         });
@@ -137,7 +137,7 @@ $(function(){
                 $('.right-data .main-data').hide();
                 $('#right-data-response').html(data.html);
                 $('a[href="#tour-from-user"]').text(data.tab_name);
-                $('#user-tour-response').empty().html(data.hotels);
+                $('#user-tour-response .list-data').empty().html(data.hotels);
                 $('[data-toggle="tooltip"]').tooltip();
                 $('.create-tour').removeClass('inactive').empty().html(data.form);
             }else{
@@ -163,7 +163,7 @@ $(function(){
                 $('.create-tour').addClass('inactive').empty().html(data.form);
                 $('.user-tour-full-info').remove();
                 $('#create-tour-response').addClass('inactive');
-                $('#user-tour-response').html(data.html);
+                $('#user-tour-response .list-data').html(data.html);
                 $('a[href="#tour-from-user"]').text(data.tab_name);
                 $('#modal-container').modal('hide');
                 $('[data-toggle="tooltip"]').tooltip();

@@ -161,17 +161,19 @@ $(function(){
     $(document).on('change', '[name="order-tour-list"]', function(){
         var value = $(this).val();
         var container_id = $(this).closest('div').attr('id');
+        $(this).closest('.loader-bg').removeClass('hide');
         var data = [];
             $('#'+container_id+' .user-tour-wrapper').each(function(){
                 data.push($(this).attr('data-tour-id'));
             });
         var url = $('.ajax-order-tours-list').attr('href');
         $.get(url, {'ids': data, 'order_by': value}).done(function(response){
+            $(this).closest('.loader-bg').addClass('hide');
             var data = $.parseJSON(response);
             if(data.status == 'ok'){
-                $('#'+container_id).html(data.tourList);
+                $('#'+container_id+' .list-data').html(data.tourList);
             }else{
-                $('#'+container_id).text(data.message);
+                $('#'+container_id+' .list-data').text(data.message);
             }
         });
     });

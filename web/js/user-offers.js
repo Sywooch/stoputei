@@ -26,10 +26,10 @@ $(function(){
             if(data.status == 'ok') {
                 console.log(data.tours);
                 console.log(data.model);
-                $('#user-tour-response-list').html(data.tours);
+                $('#user-tour-response-list .list-data').html(data.tours);
                 $('.offers-tab.tab-badge.user-offers').text(data.count);
             }else{
-                $('#user-tour-response-list').html(data.message);
+                $('#user-tour-response-list .list-data').html(data.message);
                 $('.offers-tab.tab-badge.user-offers').text(data.count);
             }
         });
@@ -98,7 +98,7 @@ $(function(){
                 $('.right-data .main-data').hide();
                 $('#right-data-response').html(data.html);
                 $('a[href="#tour-from-user"]').text(data.tab_name);
-                $('#user-tour-response').empty().html(data.hotels);
+                $('#user-tour-response .list-data').empty().html(data.hotels);
                 $('[data-toggle="tooltip"]').tooltip();
                 $('.create-tour').removeClass('inactive').empty().html(data.form);
             }else{
