@@ -228,10 +228,12 @@ if($tour->to_date) {
                         <span class="value"><?=$to_date;?></span>
                     </div>
                     <?php if(!is_null($tour->voyage_from_there)):?>
+                        <?php if(!is_null($tour->voyageThroughCityFromThere)):?>
                         <div>
                             <span class="field"><?=Yii::t('app', 'Voyage through');?> : </span>
                             <span class="value"><?=$tour->voyageThroughCityFromThere->name;?></span>
                         </div>
+                        <?php endif;?>
                     <?php endif;?>
                 <?php else:?>
                     <div>
