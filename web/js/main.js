@@ -178,4 +178,88 @@ $(function(){
         });
     });
 
+    //show full tour info
+    $(document).on('click', '.tour-full-info-user', function(e){
+        e.preventDefault();
+        var url = $('.ajax-tour-full-info').attr('href');
+        var tour_id = $(this).attr('data-tour-id');
+        var main_container = $(this).closest('.main-tab-container');
+        var tab_class = main_container.attr('data-tab-class');
+        //clear tour full info in close tab
+        $('.main-tab-container:not([data-tab-class="'+tab_class+'"]) .full-tour-information').empty();
+        $.get(url, {'tour_id' : tour_id}).done(function(response){
+            $('.back-to-main-from-tour[data-tab-class="'+tab_class+'"]').addClass('open');
+            $('.back-to-main-from-tour[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').removeClass('hide');
+            var data = $.parseJSON(response);
+            if(data.status == 'ok'){
+                $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data').addClass('col-xs-3 small-left').removeClass('col-md-9').attr('data-current-tour', tour_id);
+                $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data .'+tab_class+':first').addClass('close-left').removeClass('col-md-4');
+                $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data .'+tab_class+':last').addClass('col-xs-12').removeClass('col-md-8');
+                $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data .'+tab_class+':last .list-data .user-tour-wrapper').addClass('small-column');
+                $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data .'+tab_class+':last .list-data .user-tour-wrapper .body').addClass('col-xs-8').removeClass('col-xs-6');
+                $('.main-tab-container[data-tab-class="'+tab_class+'"] .right-data').addClass('small-right col-xs-9').removeClass('col-md-3').attr('data-current-tour', tour_id);
+                $('.main-tab-container[data-tab-class="'+tab_class+'"] .right-data .main-data').addClass('hide');
+                $('.main-tab-container[data-tab-class="'+tab_class+'"] .right-data .full-tour-information').addClass('show').delay(1000).html(data.tour);
+                $('.main-tab-container[data-tab-class="'+tab_class+'"] .full-tour-information').addClass('col-xs-12').removeClass('col-xs-12').attr('data-current-tour', tour_id);
+            }else{
+                $('.main-tab-container[data-tab-class="'+tab_class+'"] .full-tour-information').text(data.message);
+            }
+        });
+    });
+
+    //rechange user tour full information
+    $('a[role="tab"]').on('click', function() {
+        var tab = $(this).attr('aria-controls');
+        if (tab == 'favourites') {
+            tab_class = 'user-favourite-tours';
+        } else if (tab == 'offers') {
+            tab_class = 'user-offers';
+        } else if(tab == 'hot-tour'){
+            tab_class = 'user-hot-tours';
+        }
+        $('.main-tab-container:not([data-tab-class="'+tab_class+'"]) .full-tour-information').empty();
+        var current_tour_id = $('.main-tab-container[data-tab-class="'+tab_class+'"] .full-tour-information').attr('data-current-tour');
+
+        if(typeof current_tour_id != 'undefined'){
+            var url = $('.ajax-tour-full-info').attr('href');
+            //add tour full info in ipening tab container
+            $.get(url, {'tour_id' : current_tour_id}).done(function(response){
+                $('.back-to-main-from-tour[data-tab-class="'+tab_class+'"]').addClass('open');
+                $('.back-to-main-from-tour[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').removeClass('hide');
+                var data = $.parseJSON(response);
+                if(data.status == 'ok'){
+                    $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data').addClass('col-xs-3 small-left').removeClass('col-md-9').attr('data-current-tour', current_tour_id);
+                    $('.main-tab-container[data-tab-class="'+tab_class+'"] .full-tour-information').addClass('col-xs-12').removeClass('col-xs-9').attr('data-current-tour', current_tour_id);
+                    $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data .'+tab_class+':last').addClass('col-xs-12').removeClass('col-md-8');
+                    $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data .'+tab_class+':last .list-data .user-tour-wrapper').addClass('small-column');
+                    $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data .'+tab_class+':last .list-data .user-tour-wrapper .body').addClass('col-xs-8').removeClass('col-xs-6');
+                    $('.main-tab-container[data-tab-class="'+tab_class+'"] .right-data').addClass('small-right col-xs-9').removeClass('col-md-3').attr('data-current-tour', current_tour_id);
+                    $('.main-tab-container[data-tab-class="'+tab_class+'"] .right-data .full-tour-information').addClass('show col-xs-12').removeClass('col-xs-9').delay(1000).html(data.tour);
+                    //$('.main-tab-container[data-tab-class="'+tab_class+'"] .full-tour-information').html(data.tour);
+                }else{
+                    $('.main-tab-container[data-tab-class="'+tab_class+'"] .full-tour-information').text(data.message);
+                }
+            });
+        }
+    });
+
+    //show filter, hide full tour information
+    $(document).on('click', '.back-to-main-from-tour', function(e){
+        e.preventDefault();
+        var tab_class = $(this).attr('data-tab-class');
+        $('.back-to-main-from-tour[data-tab-class="'+tab_class+'"]').removeClass('open');
+        $('.back-to-main-from-tour[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').addClass('hide');
+
+        //hide full tour information
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data').removeClass('col-xs-3 small-left').addClass('col-md-9').removeAttr('data-current-tour');
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data .'+tab_class+':first').removeClass('close-left').addClass('col-md-4');
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data .'+tab_class+':last').removeClass('col-xs-12').addClass('col-md-8');
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data .'+tab_class+':last .list-data .user-tour-wrapper').removeClass('small-column');
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data .'+tab_class+':last .list-data .user-tour-wrapper .body').removeClass('col-xs-8').addClass('col-xs-6');
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .right-data').addClass('small-right col-xs-9').addClass('col-md-3').removeAttr('data-current-tour');
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .right-data .main-data').removeClass('hide');
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .right-data .full-tour-information').removeClass('show').empty();
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .full-tour-information').removeClass('col-xs-12 show').addClass('col-xs-12').removeAttr('data-current-tour')
+    });
+
 });

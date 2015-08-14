@@ -5,7 +5,7 @@ use yii\helpers\Url;
 use dosamigos\datepicker\DatePicker;
 ?>
 <div class="row filter-tour">
-    <span class="back-to-main">
+    <span class="back-to-main-from-tour" data-tab-class="user-offers">
         <i class="glyphicon glyphicon-menu-right hide"></i>
     </span>
     <div class="main-tab-container user-offers-tab-container col-xs-12" data-tab-class="user-offers">
@@ -50,7 +50,7 @@ use dosamigos\datepicker\DatePicker;
 
             <?php ActiveForm::end(); ?>
         </div>
-        <div class="col-md-8 user-offer-list overflow-list">
+        <div class="col-md-8 user-offers overflow-list">
             <div class="loader-bg hide"><img src="/images/loader.gif"></div>
             <div id="user-tour-response-list">
                 <?= Html::dropDownList('order-tour-list', 'id', [
@@ -75,9 +75,9 @@ use dosamigos\datepicker\DatePicker;
         <div id="right-data-response-offers">
 
         </div>
-    </div>
-    </div>
-    <div class="col-xs-12 full-tour-information close-tab" data-tab-class="user-offers">
+        <div class="col-xs-12 full-tour-information close-tab" data-tab-class="user-offers">
 
+        </div>
+    </div>
     </div>
 </div>

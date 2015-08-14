@@ -188,8 +188,8 @@ use dosamigos\datepicker\DatePicker;
     <div class="col-md-3 right-data">
         TOP HOTELS
     </div>
-    </div>
-    <div class="col-xs-12 full-hotel-information close-tab" data-tab-class="get-tour">
-
+        <div class="col-xs-12 full-hotel-information close-tab" data-tab-class="get-tour">
+            dcdscd
+        </div>
     </div>
 </div>

@@ -941,4 +941,25 @@ class TourController extends Controller
             Yii::$app->end();
         }
     }
+
+    //full information about tour
+    public function actionAjaxTourFullInfo(){
+        $tour_id = Yii::$app->request->getQueryParam('tour_id', null);
+        if(!is_null($tour_id)){
+            $tour = TourResponse::findOne($tour_id);
+            $response = [
+                'status' => 'ok',
+                'tour' => $this->renderAjax('partial/tour-full-info', ['tour' => $tour]),
+                'message' => Yii::t('app', 'Tour was found.')
+            ];
+        }else{
+            $response = [
+                'status' => 'error',
+                'tour' => '',
+                'message' => Yii::t('app', 'Tour was not found.')
+            ];
+        }
+        echo Json::encode($response);
+        Yii::$app->end();
+    }
 }

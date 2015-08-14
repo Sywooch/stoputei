@@ -3,7 +3,7 @@ return [
     'Login' => 'Вход',
     'Logout' => 'Выйти',
     'Yes' => 'Да',
-    'No' => 'No',
+    'No' => 'Нет',
     'Stoputei' => '100 путей',
     'About' => 'О компании',
     'Contacts' => 'Контакты',
@@ -221,5 +221,6 @@ return [
     'nights' => 'ночей',
     '{n,nights}' => '{n} ночей',
     'Insurance not included' => 'не включена',
-    'Insurance included' => 'включена'
+    'Insurance included' => 'включена',
+    'Location' => 'Размещение'
 ];

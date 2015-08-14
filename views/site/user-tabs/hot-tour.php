@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <div class="row user-hot-tours">
-    <span class="back-to-main" data-tab-class="user-hot-tours">
+    <span class="back-to-main-from-tour" data-tab-class="user-hot-tours">
         <i class="glyphicon glyphicon-menu-right hide"></i>
     </span>
     <div class="main-tab-container user-hot-tours-tab-container col-xs-12" data-tab-class="user-hot-tours">
@@ -42,6 +42,10 @@ use yii\helpers\Url;
                     </div>
                 </div>
             </div>
+
+            <div class="col-xs-12 full-tour-information close-tab hide" data-tab-class="user-hot-tours">
+
+            </div>
         </div>
         <div class="col-md-3 right-data">
             <div class="main-data">
@@ -50,9 +54,9 @@ use yii\helpers\Url;
             <div id="right-data-response-user-hot-tours">
 
             </div>
-        </div>
-    </div>
-    <div class="col-xs-12 full-tour-information close-tab" data-tab-class="user-hot-tours">
+            <div class="col-xs-12 full-tour-information close-tab" data-tab-class="user-hot-tours">
 
+            </div>
+        </div>
     </div>
 </div>

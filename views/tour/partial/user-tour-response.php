@@ -23,6 +23,25 @@ if(Yii::$app->user->identity->role == 1){
     $filter_type = 'manager-response';
     $favourite_class = '';
 }
+
+$star = '';
+switch($tour->hotel->star_id){
+    case 400:
+        $star .= '<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i>';
+        break;
+    case 401:
+        $star .= '<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i>';
+        break;
+    case 402:
+        $star .= '<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i>';
+        break;
+    case 403:
+        $star .= '<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star-empty"></i>';
+        break;
+    case 404:
+        $star .= '<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i>';
+        break;
+}
 ?>
 <div class="user-tour-wrapper col-xs-12" data-tour-id="<?=$tour->id;?>">
     <div class="col-xs-12 header-info">
@@ -31,12 +50,13 @@ if(Yii::$app->user->identity->role == 1){
                 <span class="favourite-user-tour glyphicon <?=$favourite_class;?>" data-tour-id="<?=$tour->id;?>"></span>
             </a>
         <?php endif;?>
-        <span class="count hide"><?=Yii::t('app', 'Offer').' № '.$tour->id;?></span>
-        <span class="created hide"><?=$created;?></span>
+        <span class="count"><?=Yii::t('app', 'Offer').' № '.$tour->id;?></span>
+        <span class="created"><?=$created;?></span>
         <?php if($tour->hotel):?>
             <div class="hotel-title">
                 <?=$tour->hotel->name;?>
                 <span class="hotel-rate">(<?= Yii::t('app', 'Rate').'  '.$tour->hotel->hotel_rate;?>)</span>
+                <span class="hotel-star"><?=$star;?></span>
             </div>
         <?php endif;?>
     </div>
@@ -77,6 +97,12 @@ if(Yii::$app->user->identity->role == 1){
         <div><span class="describe"><?=Yii::t('app', 'Room type');?></span> : <span class="data"><?= Yii::t('app', \app\models\TourResponse::getRoomName($tour->room_view));?></span></div>
     </div>
     <div class="col-xs-2 buttons">
-        <a href="#" class="tour-more-info btn btn-primary" data-tour-id="<?=$tour->id;?>" data-filter-type="<?=$filter_type;?>"><?= Yii::t('app', 'More');?></a>
+        <a href="#" class="<?=(Yii::$app->user->identity->role == 1)?'tour-full-info-user':'tour-more-info tour-full-info-manager';?> btn btn-primary" data-tour-id="<?=$tour->id;?>" data-filter-type="<?=$filter_type;?>"><?= Yii::t('app', 'More');?></a>
+        <span class="tour-cost">
+            <?=$tour->tour_cost;?>
+        </span>
+        <span class="company-name">
+            <?=$tour->owner->company_name;?>
+        </span>
     </div>
 </div>

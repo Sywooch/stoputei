@@ -2,7 +2,6 @@
 namespace app\models;
 
 use yii\db\ActiveRecord;
-
 class TourResponse extends ActiveRecord
 {
     public static function tableName(){
@@ -27,6 +26,18 @@ class TourResponse extends ActiveRecord
 
     public function getDepartCityFromThere(){
         return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_from_there']);
+    }
+
+    public function getVoyageThroughCityThere(){
+        return $this->hasOne(DepartCity::className(), ['city_id' => 'voyage_through_city_there']);
+    }
+
+    public function getVoyageThroughCityFromThere(){
+        return $this->hasOne(DepartCity::className(), ['city_id' => 'voyage_through_city_from_there']);
+    }
+
+    public function getOwner(){
+        return $this->hasOne(User::className(), ['id' => 'manager_id']);
     }
 
     public function beforeSave($insert)
@@ -85,6 +96,8 @@ class TourResponse extends ActiveRecord
                 return \Yii::t('app', 'QTRL');
             default:
                 return \Yii::t('app', 'SGL');
+            default:
+                return \Yii::t('app', 'Any type');
         }
     }
 
@@ -118,6 +131,55 @@ class TourResponse extends ActiveRecord
                 return \Yii::t('app', 'Eco');
             default:
                 return \Yii::t('app', 'Any type');
+        }
+    }
+
+    public static function getHotelType($hotel_type){
+        switch($hotel_type) {
+            case 0:
+                return \Yii::t('app', 'Teen');
+            case 1:
+                return \Yii::t('app', 'Family');
+            case 2:
+                return \Yii::t('app', 'Urban');
+            case 3:
+                return \Yii::t('app', 'Health');
+            default:
+                return \Yii::t('app', 'Any type');
+        }
+    }
+
+    public static function getRoomView($room_view){
+        switch($room_view) {
+            case 0:
+                return \Yii::t('app', 'Land view');
+            case 1:
+                return \Yii::t('app', 'Sea view');
+            case 2:
+                return \Yii::t('app', 'Pool view');
+            case 3:
+                return \Yii::t('app', 'Garden view');
+            default:
+                return \Yii::t('app', 'Any type');
+        }
+    }
+
+    public static function getBeachLine($beach_line){
+        switch($beach_line) {
+            case 0:
+                return \Yii::t('app', 'First');
+            case 1:
+                return \Yii::t('app', 'Second');
+            case 2:
+                return \Yii::t('app', 'Third');
+            case 3:
+                return \Yii::t('app', 'Fourth');
+            case 4:
+                return \Yii::t('app', 'Fifth');
+            case 5:
+                return \Yii::t('app', 'Other');
+            default:
+                return \Yii::t('app', 'Other');
         }
     }
 }

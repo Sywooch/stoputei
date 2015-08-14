@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <div class="row user-favourite-tours">
-    <span class="back-to-main" data-tab-class="user-favourite-tours">
+    <span class="back-to-main-from-tour" data-tab-class="user-favourite-tours">
         <i class="glyphicon glyphicon-menu-right hide"></i>
     </span>
     <div class="main-tab-container user-favourites-tours-tab-container col-xs-12" data-tab-class="user-favourite-tours">
@@ -23,7 +23,7 @@ use yii\helpers\Url;
 
                 <?php ActiveForm::end();?>
             </div>
-            <div class="col-md-8 user-hot-tours overflow-list">
+            <div class="col-md-8 user-favourite-tours overflow-list">
                 <div class="loader-bg hide"><img src="/images/loader.gif"></div>
                 <div id="user-favourite-tours-response">
                     <?= Html::dropDownList('order-tour-list', 'id', [
@@ -48,9 +48,9 @@ use yii\helpers\Url;
             <div id="right-data-response-user-favourite-tours">
 
             </div>
-        </div>
-    </div>
-    <div class="col-xs-12 full-tour-information close-tab" data-tab-class="user-favourite-tours">
+            <div class="col-xs-12 full-tour-information close-tab" data-tab-class="user-favourite-tours">
 
+            </div>
+        </div>
     </div>
 </div>

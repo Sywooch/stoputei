@@ -32,10 +32,21 @@
         color: $grey-text;
         font-weight: 300;
       }
+      .hotel-star{
+        position: absolute;
+        left: 0px;
+        top: 34px;
+        .glyphicon-star-empty{
+          color: $grey-text;
+        }
+        .glyphicon-star{
+          color: $gold;
+        }
+      }
       .glyphicon-heart, .glyphicon-heart-empty{
         display: inline-block;
         position: absolute;
-        top: 2px;
+        top: 4px;
         left: -22px;
         font-size: 1.2em;
         color: $grey-light-text;
@@ -56,6 +67,7 @@
       }
       .hotel-photo{
         padding: 0px;
+        margin-top: 10px;
         .hotel-img{
           width: 80px;
           height: 65px;
@@ -77,6 +89,14 @@
         padding: 4px 10px;
         margin-bottom: 2px;
       }
+      .tour-cost{
+        color: $yellow-dirty-hover;
+        font-weight: 600;
+      }
+      .company-name{
+        font-size: 0.8em;
+        font-weight: 600;
+      }
     }
     .empty-img-offer{
       display: block;
@@ -85,6 +105,24 @@
       text-align: center;
       color: $grey-light-text;
       margin-left: -25px;
+    }
+
+    //small column
+    &.small-column{
+      .header-info{
+        .created{
+          display: none;
+        }
+        .hotel-title{
+          font-size: 0.9em;
+          .hotel-rate{
+            display: none;
+          }
+        }
+      }
+      .people{
+        display: none;
+      }
     }
   }
 }
@@ -111,6 +149,103 @@
     .close-tour-full-info {
       border-radius: 0px;
       width: 100%;
+    }
+  }
+}
+
+.tour-full-info{
+  .header{
+    text-align: left;
+    .offer-number{
+      color: $grey-dark;
+    }
+    .created{
+      color: $grey-text;
+      font-size: 0.9em;
+    }
+  }
+  .hotel-header{
+    text-align: left;
+    .name{
+      font-size: 1.2em;
+      font-weight: 300;
+    }
+    .rate{
+      color: $green;
+      font-weight: 600;
+      right: 29px;
+      position: absolute;
+      top: 4px;
+      font-size: 0.9em;
+    }
+    .stars{
+      position: absolute;
+      left: 14px;
+      top: -6px;
+      .glyphicon-star{
+        color: $gold;
+      }
+      .glyphicon-star-empty{
+        color: $grey-text;
+      }
+    }
+  }
+  .body-hotel{
+    .big-photo{
+      width: 100%;
+      min-height: 250px;
+    }
+    #gallery-widget{
+      margin: 15px 0px;
+      .gallery-item{
+        margin-right: -2px;
+        img{
+          width: 49px;
+          height: 40px;
+          display: inline-block;
+          padding: 1px;
+          &:hover{
+            border: 1px solid $blue-shadow-color;
+            padding: 0px;
+          }
+        }
+      }
+    }
+    .description{
+      text-align: left;
+    }
+  }
+  .body-tour{
+    #map-canvas{
+      min-height: 250px;
+    }
+    .fields {
+      padding: 0px;
+      text-align: left;
+      .field {
+        color: $grey-text;
+        font-size: 0.8em;
+      }
+      .value {
+        font-weight: 600;
+        color: $grey-dark;
+        font-size: 0.9em;
+        position: absolute;
+        right: 0px;
+        margin-top: 2px;
+      }
+      &.left{
+        padding-right: 15px;
+      }
+      &.right{
+        padding-left: 15px;
+      }
+      .company{
+        .field, .value{
+          display: inline-block;
+          text-align: center;
+        }
+      }
     }
   }
 }
