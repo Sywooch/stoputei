@@ -250,4 +250,8 @@ $(function(){
             $('[name="GetTourForm[beach_line][]"]:first').prop('checked', false).closest('.checkbox-one').removeClass('any-check not-any-check');
         }
     });
+
+    $(document).on('change', '#gettourform-letter_filter [name="GetTourForm[letter_filter][]"]', function(){
+        getHotelList();
+    });
 });

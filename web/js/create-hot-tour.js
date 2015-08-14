@@ -240,4 +240,8 @@ $(function(){
             getHotelListForHotTour();
     });
 
+    $(document).on('change', '#createhottourform-letter_filter [name="CreateHotTourForm[letter_filter][]"]', function(){
+        getHotelListForHotTour();
+    });
+
 });

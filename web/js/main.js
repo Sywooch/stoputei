@@ -138,6 +138,8 @@ $(function(){
             tab_class = 'hot-tour';
         }else if(tab == 'tour-from-user'){
             tab_class = 'manager-response';
+        }else{
+            tab_class = '';
         }
         var tab_current_hotel = $('#'+tab+' .full-hotel-information').attr('data-current-hotel');
         if(typeof tab_current_hotel != 'undefined'){
@@ -216,6 +218,8 @@ $(function(){
             tab_class = 'user-offers';
         } else if(tab == 'hot-tour'){
             tab_class = 'user-hot-tours';
+        } else{
+            tab_class = '';
         }
         $('.main-tab-container:not([data-tab-class="'+tab_class+'"]) .full-tour-information').empty();
         var current_tour_id = $('.main-tab-container[data-tab-class="'+tab_class+'"] .full-tour-information').attr('data-current-tour');

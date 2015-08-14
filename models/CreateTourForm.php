@@ -49,6 +49,7 @@ class CreateTourForm extends Model
     public $from_tour_id;
     public $is_hot_tour;
     public $hotel_star;
+    public $letter_filter;
 
     /**
      * @return array the validation rules.
@@ -61,6 +62,7 @@ class CreateTourForm extends Model
             [['hotel_id', 'oil_tax', 'visa', 'voyage_through_city_there', 'voyage_through_city_from_there'], 'default', 'value' => null],
             [['adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count', 'tour_cost', 'night_count', 'user_id', 'from_tour_id', 'room_view', 'beach_line', 'hotel_type', 'room_type', 'location', 'nutrition', 'hotel_star'], 'integer'],
             ['stars', 'each', 'rule' => ['in', 'range' => [400, 401, 402, 403, 404]]],
+            ['letter_filter', 'each', 'rule' => ['in', 'range' => ['a', 'b', 'c', 'd']]],
             ['flight_included', 'default', 'value' => 1],
             [['add_payment', 'tickets_exist', 'charge_manager', 'medicine_insurance', 'voyage_from_there', 'voyage_there', 'room_view', 'beach_line', 'hotel_type', 'room_type', 'location', 'nutrition', 'hotel_star'], 'default', 'value' => 0],
             ['from_date', 'required', 'message' => Yii::t('app','Field "From date" must be date type.'), 'when' => function ($model) {
@@ -121,7 +123,8 @@ class CreateTourForm extends Model
             'tickets_exist' => Yii::t('app', 'Tickets exist'),
             'medicine_insurance' => Yii::t('app', 'Medicine insurance'),
             'charge_manager' => Yii::t('app', 'Manager\'s charge'),
-            'tour_cost' => Yii::t('app', 'Tour cost')
+            'tour_cost' => Yii::t('app', 'Tour cost'),
+            'letter_filter' => Yii::t('app', 'Letter filter')
         ];
     }
 }

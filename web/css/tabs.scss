@@ -242,6 +242,11 @@
                 margin-left: 0px;
               }
             }
+            #gettourform-letter_filter, #createhottourform-letter_filter, #createtourform-letter_filter{
+              .checkbox-one{
+                padding: 0px;
+              }
+            }
           }
           #gettourform-night_min, #gettourform-night_max {
             max-width: 120px;

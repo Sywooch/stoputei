@@ -48,6 +48,71 @@ use dosamigos\datepicker\DatePicker;
                 $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
                 return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox']);
             }]);?>
+
+            <!--LETTER FILTER-->
+            <?= $form->field($GetTourForm, 'letter_filter')->checkboxList(['a' => '', 'b' => '', 'c' => '', 'd' => '',
+                'e' => '', 'f' => '', 'g' => '', 'h' => '', 'i' => '', 'j' => '', 'k' => '', 'l' => '', 'm' => '', 'n' => '', 'o' => '',
+                'p' => '', 'q' => '', 'r' => '', 's' => '', 't' => '', 'u' => '', 'v' => '', 'w' => '', 'x' => '', 'y' => '', 'z' => ''],
+                ['item' => function($index, $label, $name, $checked, $value){
+                    if($value == 'a'){
+                        $span = Html::tag('span', 'A', ['class' => 'line-name']);
+                    }elseif($value == 'b'){
+                        $span = Html::tag('span', 'B', ['class' => 'line-name']);
+                    }elseif($value == 'c'){
+                        $span = Html::tag('span', 'C', ['class' => 'line-name']);
+                    }elseif($value == 'd'){
+                        $span = Html::tag('span', 'D', ['class' => 'line-name']);
+                    }elseif($value == 'e'){
+                        $span = Html::tag('span', 'E', ['class' => 'line-name']);
+                    }elseif($value == 'f'){
+                        $span = Html::tag('span', 'F', ['class' => 'line-name']);
+                    }elseif($value == 'g'){
+                        $span = Html::tag('span', 'G', ['class' => 'line-name']);
+                    }elseif($value == 'h'){
+                        $span = Html::tag('span', 'H', ['class' => 'line-name']);
+                    }elseif($value == 'i'){
+                        $span = Html::tag('span', 'I', ['class' => 'line-name']);
+                    }elseif($value == 'j'){
+                        $span = Html::tag('span', 'J', ['class' => 'line-name']);
+                    }elseif($value == 'k'){
+                        $span = Html::tag('span', 'K', ['class' => 'line-name']);
+                    }elseif($value == 'l'){
+                        $span = Html::tag('span', 'L', ['class' => 'line-name']);
+                    }elseif($value == 'm'){
+                        $span = Html::tag('span', 'M', ['class' => 'line-name']);
+                    }elseif($value == 'n'){
+                        $span = Html::tag('span', 'N', ['class' => 'line-name']);
+                    }elseif($value == 'o'){
+                        $span = Html::tag('span', 'O', ['class' => 'line-name']);
+                    }elseif($value == 'p'){
+                        $span = Html::tag('span', 'P', ['class' => 'line-name']);
+                    }elseif($value == 'q'){
+                        $span = Html::tag('span', 'Q', ['class' => 'line-name']);
+                    }elseif($value == 'r'){
+                        $span = Html::tag('span', 'R', ['class' => 'line-name']);
+                    }elseif($value == 's'){
+                        $span = Html::tag('span', 'S', ['class' => 'line-name']);
+                    }elseif($value == 't'){
+                        $span = Html::tag('span', 'T', ['class' => 'line-name']);
+                    }elseif($value == 'u'){
+                        $span = Html::tag('span', 'U', ['class' => 'line-name']);
+                    }elseif($value == 'v'){
+                        $span = Html::tag('span', 'V', ['class' => 'line-name']);
+                    }elseif($value == 'w'){
+                        $span = Html::tag('span', 'W', ['class' => 'line-name']);
+                    }elseif($value == 'x'){
+                        $span = Html::tag('span', 'X', ['class' => 'line-name']);
+                    }elseif($value == 'y'){
+                        $span = Html::tag('span', 'Y', ['class' => 'line-name']);
+                    }elseif($value == 'z'){
+                        $span = Html::tag('span', 'Z', ['class' => 'line-name']);
+                    }
+                    $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
+                    return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type col-xs-2']);
+                }]);?>
+            <!--END LETTER FILTER-->
+
+
             <?= $form->field($GetTourForm, 'nutrition')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){

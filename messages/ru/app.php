@@ -222,5 +222,6 @@ return [
     '{n,nights}' => '{n} ночей',
     'Insurance not included' => 'не включена',
     'Insurance included' => 'включена',
-    'Location' => 'Размещение'
+    'Location' => 'Размещение',
+    'Letter filter' => 'Поиск по буквам'
 ];

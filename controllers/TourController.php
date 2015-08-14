@@ -122,8 +122,16 @@ class TourController extends Controller
             if($model->load(Yii::$app->request->get())){
                 $filter_type = 'user-type';
                 $query = [];
+                $query1 = [];
                 if(!empty($model->stars)){
                     $query['star_id'] = $model->stars;
+                }
+                if(!empty($model->letter_filter)){
+                    foreach($model->letter_filter as $letter){
+                        $query1[] = $letter.'%';
+                    }
+                }else{
+                    $query1[] = '%';
                 }
                 if(!empty($model->hotel_id[0])){
                     $hotels = Hotel::find()->where([
@@ -133,8 +141,8 @@ class TourController extends Controller
                 }else{
                     $hotels = Hotel::find()->where([
                         'country_id' => $model->destination,
-                        'resort_id' => $model->resort
-                    ])->andWhere($query)->select('id, hotel_id, hotel_rate, name, country_name, resort, star_id')->all();
+                        'resort_id' => $model->resort,
+                    ])->andWhere($query)->andWhere(['OR like', 'name', $query1, false])->select('id, hotel_id, hotel_rate, name, country_name, resort, star_id')->all();
                 }
 
                 if($hotels){
@@ -167,9 +175,19 @@ class TourController extends Controller
         if(Yii::$app->request->isAjax) {
             if($model->load(Yii::$app->request->get())){
                 $query = [];
+                $query1= [];
                 if(!empty($model->stars)){
                     $query['star_id'] = $model->stars;
                 }
+
+                if(!empty($model->letter_filter)){
+                    foreach($model->letter_filter as $letter){
+                        $query1[] = $letter.'%';
+                    }
+                }else{
+                    $query1[] = '%';
+                }
+
                 if(!empty($model->hotel_id[0])){
                     $hotels = Hotel::find()->where([
                         'country_id' => $model->destination,
@@ -179,7 +197,7 @@ class TourController extends Controller
                     $hotels = Hotel::find()->where([
                         'country_id' => $model->destination,
                         'resort_id' => $model->resort
-                    ])->andWhere($query)->select('id, hotel_id, hotel_rate, name, country_name, resort, star_id')->all();
+                    ])->andWhere($query)->andWhere(['OR like', 'name', $query1, false])->select('id, hotel_id, hotel_rate, name, country_name, resort, star_id')->all();
                 }
 
                 if($hotels){

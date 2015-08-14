@@ -31,6 +31,7 @@ class GetTourForm extends Model
     public $to_date;
     public $budget;
     public $add_info;
+    public $letter_filter;
 
     /**
      * @return array the validation rules.
@@ -47,6 +48,7 @@ class GetTourForm extends Model
             ['nutrition', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3, 4, 5, 6, 7]]],
             ['beach_line', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3]]],
             ['room_type', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]]],
+            ['letter_filter', 'each', 'rule' => ['in', 'range' => ['a', 'b', 'c', 'd']]],
             [['budget', 'night_max'], 'integer'],
             [['budget', 'hotel_type'], 'default', 'value' => 0],
             ['from_date', 'compare', 'compareAttribute' => 'to_date', 'operator'=>'<'],
@@ -86,7 +88,8 @@ class GetTourForm extends Model
             'from_date' => Yii::t('app', 'Flight to since'),
             'to_date' => Yii::t('app', 'Flight to until'),
             'budget' => Yii::t('app', 'Budget'),
-            'add_info' => Yii::t('app', 'Add information')
+            'add_info' => Yii::t('app', 'Add information'),
+            'letter_filter' => Yii::t('app', 'Letter filter'),
         ];
     }
 }

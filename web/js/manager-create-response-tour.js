@@ -278,4 +278,10 @@ $(function(){
         returnToUserTourList();
     });
 
+
+
+    $(document).on('change', '#createtourform-letter_filter [name="CreateTourForm[letter_filter][]"]', function(){
+        getHotelListForResponseTour();
+    });
+
 });
