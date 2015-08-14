@@ -197,10 +197,12 @@ if($tour->to_date) {
                     </div>
                     <br>
 
+                    <?php if(!is_null($tour->departCityThere)):?>
                     <div>
                         <span class="field"><?=Yii::t('app', 'Depart city there');?> : </span>
                         <span class="value"><?=$tour->departCityThere->name;?></span>
                     </div>
+                    <?php endif;?>
                     <div>
                         <span class="field"><?=Yii::t('app', 'From date');?> : </span>
                         <span class="value"><?=$from_date;?></span>
