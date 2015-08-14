@@ -53,7 +53,7 @@ switch($tour->hotel->star_id){
         <span class="count"><?=Yii::t('app', 'Offer').' № '.$tour->id;?></span>
         <span class="created"><?=$created;?></span>
         <?php if($tour->hotel):?>
-            <div class="hotel-title">
+            <div class="hotel-title tour-full-info-user" data-tour-id="<?=$tour->id;?>">
                 <?=$tour->hotel->name;?>
                 <span class="hotel-rate">(<?= Yii::t('app', 'Rate').'  '.$tour->hotel->hotel_rate;?>)</span>
                 <span class="hotel-star"><?=$star;?></span>

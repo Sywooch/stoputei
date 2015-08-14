@@ -17,6 +17,13 @@
         margin-left: 10px;
         font-weight: 300;
       }
+      .hotel-title{
+        cursor: pointer;
+        color: $site-color-light;
+        &:hover{
+          color: $site-color;
+        }
+      }
       .response{
         margin-left: 5px;
         .glyphicon-ok-circle{
