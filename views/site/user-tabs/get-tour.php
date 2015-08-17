@@ -52,7 +52,8 @@ use dosamigos\datepicker\DatePicker;
             <!--LETTER FILTER-->
             <?= $form->field($GetTourForm, 'letter_filter')->checkboxList(['a' => '', 'b' => '', 'c' => '', 'd' => '',
                 'e' => '', 'f' => '', 'g' => '', 'h' => '', 'i' => '', 'j' => '', 'k' => '', 'l' => '', 'm' => '', 'n' => '', 'o' => '',
-                'p' => '', 'q' => '', 'r' => '', 's' => '', 't' => '', 'u' => '', 'v' => '', 'w' => '', 'x' => '', 'y' => '', 'z' => ''],
+                'p' => '', 'q' => '', 'r' => '', 's' => '', 't' => '', 'u' => '', 'v' => '', 'w' => '', 'x' => '', 'y' => '', 'z' => '',
+                '1' => '', '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => '', '8' => '', '9' => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 'a'){
                         $span = Html::tag('span', 'A', ['class' => 'line-name']);
@@ -106,6 +107,26 @@ use dosamigos\datepicker\DatePicker;
                         $span = Html::tag('span', 'Y', ['class' => 'line-name']);
                     }elseif($value == 'z'){
                         $span = Html::tag('span', 'Z', ['class' => 'line-name']);
+                    }elseif($value == '0'){
+                        $span = Html::tag('span', '0', ['class' => 'line-name']);
+                    }elseif($value == '1'){
+                        $span = Html::tag('span', '1', ['class' => 'line-name']);
+                    }elseif($value == '2'){
+                        $span = Html::tag('span', '2', ['class' => 'line-name']);
+                    }elseif($value == '3'){
+                        $span = Html::tag('span', '3', ['class' => 'line-name']);
+                    }elseif($value == '4'){
+                        $span = Html::tag('span', '4', ['class' => 'line-name']);
+                    }elseif($value == '5'){
+                        $span = Html::tag('span', '5', ['class' => 'line-name']);
+                    }elseif($value == '6'){
+                        $span = Html::tag('span', '6', ['class' => 'line-name']);
+                    }elseif($value == '7'){
+                        $span = Html::tag('span', '7', ['class' => 'line-name']);
+                    }elseif($value == '8'){
+                        $span = Html::tag('span', '8', ['class' => 'line-name']);
+                    }elseif($value == '9'){
+                        $span = Html::tag('span', '9', ['class' => 'line-name']);
                     }
                     $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type col-xs-2']);

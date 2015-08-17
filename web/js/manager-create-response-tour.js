@@ -281,6 +281,7 @@ $(function(){
 
 
     $(document).on('change', '#createtourform-letter_filter [name="CreateTourForm[letter_filter][]"]', function(){
+        $(this).closest('.checkbox-one').toggleClass('active');
         getHotelListForResponseTour();
     });
 

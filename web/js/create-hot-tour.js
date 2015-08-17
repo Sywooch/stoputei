@@ -241,6 +241,7 @@ $(function(){
     });
 
     $(document).on('change', '#createhottourform-letter_filter [name="CreateHotTourForm[letter_filter][]"]', function(){
+        $(this).closest('.checkbox-one').toggleClass('active');
         getHotelListForHotTour();
     });
 

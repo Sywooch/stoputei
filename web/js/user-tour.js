@@ -252,6 +252,7 @@ $(function(){
     });
 
     $(document).on('change', '#gettourform-letter_filter [name="GetTourForm[letter_filter][]"]', function(){
+        $(this).closest('.checkbox-one').toggleClass('active');
         getHotelList();
     });
 });
