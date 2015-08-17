@@ -53,7 +53,7 @@ switch($tour->hotel->star_id){
         <span class="count"><?=Yii::t('app', 'Offer').' № '.$tour->id;?></span>
         <span class="created"><?=$created;?></span>
         <?php if($tour->hotel):?>
-            <div class="hotel-title tour-full-info-user" data-tour-id="<?=$tour->id;?>">
+            <div class="hotel-title <?=(Yii::$app->user->identity->role == 1)?'tour-full-info-user':'tour-full-info-manager';?>" data-tour-id="<?=$tour->id;?>">
                 <?=$tour->hotel->name;?>
                 <span class="hotel-rate">(<?= Yii::t('app', 'Rate').'  '.$tour->hotel->hotel_rate;?>)</span>
                 <span class="hotel-star"><?=$star;?></span>
@@ -97,7 +97,7 @@ switch($tour->hotel->star_id){
         <div><span class="describe"><?=Yii::t('app', 'Room type');?></span> : <span class="data"><?= Yii::t('app', \app\models\TourResponse::getRoomName($tour->room_view));?></span></div>
     </div>
     <div class="col-xs-2 buttons">
-        <a href="#" class="<?=(Yii::$app->user->identity->role == 1)?'tour-full-info-user':'tour-more-info tour-full-info-manager';?> btn btn-primary" data-tour-id="<?=$tour->id;?>" data-filter-type="<?=$filter_type;?>"><?= Yii::t('app', 'More');?></a>
+        <a href="#" class="<?=(Yii::$app->user->identity->role == 1)?'tour-full-info-user':'tour-full-info-manager';?> btn btn-primary" data-tour-id="<?=$tour->id;?>" data-filter-type="<?=$filter_type;?>"><?= Yii::t('app', 'More');?></a>
         <span class="tour-cost">
             <?=$tour->tour_cost;?>
         </span>

@@ -56,7 +56,7 @@
     transition: all $middle-speed ease-in;
   }
   .filter-tour, .filter-flights, .manager-offers, .manager-hot-tours, .user-hot-tours, .user-favourite-tours {
-    .back-to-main, .back-to-main-from-tour{
+    .back-to-main, .back-to-main-from-tour, .back-to-main-from-tour-manager, .back-to-main-from-user-get-tour{
       visibility: hidden;
       width: 30px;
       height: 100px;
@@ -352,12 +352,10 @@
         transition: all $middle-speed ease-in;
         text-align: center;
         .full-tour-information{
-          margin-left: 1000px;
-          opacity: 0;
-          transition: all $middle-speed ease-in;
+          //opacity: 0;
+          //transition: all $middle-speed ease-in;
           &.show{
-            opacity: 1;
-            margin-left: 0px;
+            //opacity: 1;
           }
         }
       }

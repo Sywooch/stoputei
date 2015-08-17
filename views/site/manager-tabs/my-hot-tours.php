@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <div class="row manager-hot-tours">
-    <span class="back-to-main" data-tab-class="manager-hot-tours">
+    <span class="back-to-main-from-tour-manager" data-tab-class="manager-hot-tours">
         <i class="glyphicon glyphicon-menu-right hide"></i>
     </span>
     <div class="main-tab-container manager-hot-tours-tab-container col-xs-12" data-tab-class="manager-hot-tours">

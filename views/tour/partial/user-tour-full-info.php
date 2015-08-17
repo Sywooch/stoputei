@@ -96,7 +96,7 @@ if(!empty($tour->nutritions)){
             <div class="field">
                 <span class="describe"><?=Yii::t('app', 'Depart city');?> : </span>
                 <span class="value">
-                    <?php if(!is_null($tour->depart_city_id)):?>
+                    <?php if(!is_null($tour->departCity)):?>
                         <?=$tour->departCity->name;?>
                     <?php else:?>
                         <?= Yii::t('app', 'Not selected');?>

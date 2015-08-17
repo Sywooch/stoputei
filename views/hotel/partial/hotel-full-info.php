@@ -129,7 +129,23 @@ if(!empty($photos)){
                     <?php endif;?>
                 </div>
             </div>
-            <div class="col-xs-6"></div>
+            <div class="col-xs-4">
+                <?php if(!empty($hotel->facilities)):?>
+                    <ul class="hotel-facilities">
+                        <?php foreach($hotel->facilities as $facility):?>
+                            <li>
+                                <i class="glyphicon glyphicon-tag"></i>
+                                <?=$facility->name;?>
+                                <?php if(!empty($facility->hint)):?>
+                                    <span class="hint">
+                                        ( <?=$facility->hint;?> )
+                                    </span>
+                                <?php endif;?>
+                            </li>
+                        <?php endforeach;?>
+                    </ul>
+                <?php endif;?>
+            </div>
         </div>
     </div>
 </div>

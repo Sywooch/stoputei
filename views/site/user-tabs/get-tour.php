@@ -5,7 +5,7 @@ use yii\helpers\Url;
 use dosamigos\datepicker\DatePicker;
 ?>
 <div class="row filter-tour">
-    <span class="back-to-main">
+    <span class="back-to-main-from-user-get-tour" data-tab-class="get-tour">
         <i class="glyphicon glyphicon-menu-right hide"></i>
     </span>
     <div class="main-tab-container get-tour-tab-container col-xs-12" data-tab-class="get-tour">
@@ -253,8 +253,8 @@ use dosamigos\datepicker\DatePicker;
     <div class="col-md-3 right-data">
         TOP HOTELS
     </div>
-        <div class="col-xs-12 full-hotel-information close-tab" data-tab-class="get-tour">
-            dcdscd
-        </div>
+    </div>
+    <div class="col-xs-12 full-hotel-information close-tab" data-tab-class="get-tour">
+
     </div>
 </div>
