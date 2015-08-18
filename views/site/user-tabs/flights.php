@@ -154,7 +154,7 @@ use dosamigos\datepicker\DatePicker;
         TOP HOTELS
     </div>
     </div>
-    <div class="col-xs-12 full-flights-information close-tab" data-tab-class="user-flights">
+    <div class="col-xs-12 full-flights-information close-tab hide" data-tab-class="user-flights">
 
     </div>
 </div>

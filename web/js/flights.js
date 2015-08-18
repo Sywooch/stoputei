@@ -322,7 +322,7 @@ $(function(){
             $('.back-to-main-from-user-flight[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').removeClass('hide');
             $('.main-tab-container[data-tab-class="'+tab_class+'"]').addClass('implicit');
             if(data.status == 'ok'){
-                $('.full-flights-information').removeClass('close-tab').addClass('open-tab').html(data.flight);
+                $('.full-flights-information').removeClass('close-tab hide').addClass('open-tab').html(data.flight);
             }else{
                 $('.full-flights-information').removeClass('close-tab').addClass('open-tab').text(data.message);
             }
@@ -335,7 +335,7 @@ $(function(){
         var tab_class = $(this).attr('data-tab-class');
         $('.back-to-main-from-user-flight[data-tab-class="'+tab_class+'"]').removeClass('open');
         $('.back-to-main-from-user-flight[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').addClass('hide');
-        $('.full-flights-information').addClass('close-tab').removeClass('open-tab');
+        $('.full-flights-information').addClass('close-tab hide').removeClass('open-tab');
         //$('.right-data').show();
         $('.main-tab-container[data-tab-class="'+tab_class+'"]').removeClass('implicit');
     });

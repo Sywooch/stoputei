@@ -154,8 +154,8 @@ class FlightController extends Controller
                 $managerFlight->adult_count_under_24 = $model->adult_count_under_24;
                 $managerFlight->children_under_12_amount = $model->children_under_12_amount;
                 $managerFlight->children_under_2_amount = $model->children_under_2_amount;
-                $managerFlight->charter_flight = $model->charter_flight;
                 $managerFlight->regular_flight = $model->regular_flight;
+                $managerFlight->flight_class = $model->flight_class;
                 $managerFlight->user_id = $model->user_id;
                 $managerFlight->from_flight_id = $model->from_flight_id;
                 $managerFlight->flight_cost = $model->flight_cost;
@@ -236,10 +236,13 @@ class FlightController extends Controller
                 $userFlight = UserFlight::findOne($ManagerFlightForm->from_flight_id);
                 $ManagerFlightForm = new ManagerFlightForm();
                 $departCity = new DepartCity();
+                $country = new Country();
                 $departCityDropdown = $departCity->regionDropdown();
                 $dropdownDestination = [$userFlight->country_id => $userFlight->country->name];
                 $dropdownResort = [$userFlight->city_id => $userFlight->city->name];
                 $ManagerFlightForm->way_ticket = $userFlight->way_ticket;
+
+                $departCountryDropdown = $country->destinationDropdown(Yii::$app->params['depart_countries']);
 
                 $response = [
                     'status' => 'ok',
@@ -248,7 +251,9 @@ class FlightController extends Controller
                         'dropdownDestination' => $dropdownDestination,
                         'dropdownResort' => $dropdownResort,
                         'dropdownDepartCityFrom' => $departCityDropdown,
-                        'departCityDropdown' => $departCityDropdown
+                        'departCityDropdown' => $departCityDropdown,
+                        'departCountryDropdown' => $departCountryDropdown,
+                        'dropdownDepartCountry' => $departCountryDropdown
                     ]),
                     'tab_name' => Yii::t('app', 'Creating flight')
                 ];

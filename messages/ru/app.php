@@ -187,6 +187,7 @@ return [
     'Creating flight' => 'Создание авиабилета',
     'Flight start time' => 'Время вылета',
     'Flight end time' => 'Время вылета обратно',
+    'City docking' => 'Город стыковки',
     'Date docking' => 'Время стыковки',
     'Charter flight' => 'Чартерный рейс',
     'Regular flight' => 'Регулярный рейс',
@@ -223,5 +224,9 @@ return [
     'Insurance not included' => 'не включена',
     'Insurance included' => 'включена',
     'Location' => 'Размещение',
-    'Letter filter' => 'Поиск по буквам'
+    'Letter filter' => 'Поиск по буквам',
+    'Flight information' => 'Информация о перелете',
+    'Charter' => 'Чартерный',
+    'Regular' => 'Регулярный',
+    'Flight type' => 'Рейс'
 ];

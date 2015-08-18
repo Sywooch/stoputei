@@ -68,3 +68,40 @@
     }
   }
 }
+
+.full-flight{
+  .flight-info{
+    box-shadow: $grey-shadow;
+    border: 1px solid $grey-light;
+    .header {
+      text-align: center;
+      font-weight: 300;
+      .number{
+        color: $grey-text;
+      }
+      .created {
+        font-size: 1.2em;
+      }
+    }
+    .title{
+      text-align: center;
+      border-bottom: 1px solid $grey-border;
+    }
+    .number{
+      font-size: 1.2em;
+    }
+    .group-field{
+      margin-bottom: 30px;
+      .field {
+        color: $grey-dark;
+        font-weight: 300;
+      }
+      .value {
+        font-weight: 600;
+        color: $grey-dark;
+        font-size: 1.2em;
+        margin-top: 2px;
+      }
+    }
+  }
+}

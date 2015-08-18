@@ -104,19 +104,28 @@ use dosamigos\datetimepicker\DateTimePicker;
 <?= $form->field($ManagerFlightForm, 'children_under_12_amount')->input('text', ['disabled' => true]);?>
 <?= $form->field($ManagerFlightForm, 'children_under_2_amount')->input('text', ['disabled' => true]);?>
 
-<?= $form->field($ManagerFlightForm, 'flight_class')->checkboxList([1 => '', 2 => ''],
+<?= $form->field($ManagerFlightForm, 'flight_class')->radioList([0 => '', 1 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
-        if($value == 1){
+        if($value == 0){
             $span = Html::tag('span', Yii::t('app','Economy class'), ['class' => 'line-name']);
-        }elseif($value == 2){
+        }elseif($value == 1){
             $span = Html::tag('span', Yii::t('app','Business class'), ['class' => 'line-name']);
         }
-        $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
+        $checkbox = Html::radio($name, $checked, ['value' => $value]);
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
     }]);?>
 
-<?= $form->field($ManagerFlightForm, 'charter_flight')->checkbox();?>
-<?= $form->field($ManagerFlightForm, 'regular_flight')->checkbox();?>
+<?= $form->field($ManagerFlightForm, 'regular_flight')->radioList([0 => '', 1 => ''],
+    ['item' => function($index, $label, $name, $checked, $value){
+        if($value == 0){
+            $span = Html::tag('span', Yii::t('app','Charter'), ['class' => 'line-name']);
+        }elseif($value == 1){
+            $span = Html::tag('span', Yii::t('app','Regular'), ['class' => 'line-name']);
+        }
+        $checkbox = Html::radio($name, $checked, ['value' => $value]);
+        return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
+    }]);?>
+
 <?= $form->field($ManagerFlightForm, 'flight_cost')->input('number', ['min' => 0, 'max' => 99000, 'step' => 100]);?>
 
 <?= $form->field($ManagerFlightForm, 'user_id')->hiddenInput()->label('');?>

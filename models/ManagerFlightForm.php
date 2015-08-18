@@ -32,7 +32,6 @@ class ManagerFlightForm extends Model
     public $children_under_12_amount;
     public $children_under_2_amount;
     public $flight_class;
-    public $charter_flight;
     public $regular_flight;
     public $user_id;
     public $from_flight_id;
@@ -44,8 +43,8 @@ class ManagerFlightForm extends Model
     public function rules()
     {
         return [
-            [['destination', 'resort', 'depart_city_to', 'date_city_to', 'flight_cost', 'flight_class'], 'required'],
-            [['charter_flight', 'regular_flight', 'adult_count_under_24', 'children_under_12_amount', 'children_under_2_amount', 'voyage_is_direct_from', 'voyage_is_direct_to', 'voyage_direct_to', 'voyage_direct_from', 'tickets_exist'], 'default', 'value' => 0],
+            [['destination', 'resort', 'depart_city_to', 'date_city_to', 'flight_class', 'regular_flight'], 'required'],
+            [['regular_flight', 'adult_count_under_24', 'children_under_12_amount', 'children_under_2_amount', 'voyage_is_direct_from', 'voyage_is_direct_to', 'voyage_direct_to', 'voyage_direct_from', 'tickets_exist'], 'default', 'value' => 0],
             [['way_ticket', 'adult_count_senior_24'], 'default', 'value' => 1],
             [['depart_city_from', 'date_city_from'], 'required', 'message' => Yii::t('app','{attribute} must be checked.'), 'when' => function ($model) {
                 return $model->way_ticket == 2;
@@ -58,7 +57,6 @@ class ManagerFlightForm extends Model
                 return $('[name=\"ManagerFlightForm[way_ticket]\"]').val() == 2;
             }"],
             [['date_docking_to_hours', 'date_docking_to_minutes', 'date_docking_from_hours', 'date_docking_from_minutes', 'user_id', 'from_flight_id', 'date_city_to'], 'default', 'value' => null],
-            ['flight_class', 'each', 'rule' => ['in', 'range' => [1, 2]]],
             [['tickets_exist'], 'default', 'value' => 1]
         ];
     }
@@ -90,8 +88,7 @@ class ManagerFlightForm extends Model
             'children_under_12_amount' => Yii::t('app', 'Amount of children (under 12 years old)'),
             'children_under_2_amount' => Yii::t('app', 'Amount of children (under 2 years old)'),
             'flight_class' => Yii::t('app', 'Flight class'),
-            'charter_flight' => Yii::t('app', 'Charter flight'),
-            'regular_flight' => Yii::t('app', 'Regular flight'),
+            'regular_flight' => Yii::t('app', 'Flight type'),
             'tickets_exist' => Yii::t('app', 'Tickets exist'),
             'flight_cost' => Yii::t('app', 'Flight cost')
         ];
