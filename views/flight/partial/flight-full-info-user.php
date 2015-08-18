@@ -72,7 +72,9 @@ $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
             <div class="group-field">
                 <div>
                     <span class="field"><?=Yii::t('app','Depart city to');?> : </span>
-                    <span class="value"><?=$flight->departCity->name;?></span>
+                    <?php if(!is_null($flight->departCity)):?>
+                        <span class="value"><?=$flight->departCity->name;?></span>
+                    <?php endif;?>
                 </div>
                 <div>
                     <span class="value"><?=$depart_to_date;?></span>
