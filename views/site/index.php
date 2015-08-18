@@ -70,7 +70,9 @@ $this->title = 'StoPutei';
         <?= Html::a('', Url::toRoute(['tour/ajax-get-user-hot-tours-list']), ['class' => 'ajax-get-user-hot-tours-list']);?>
         <?= Html::a('', Url::toRoute(['tour/ajax-get-user-favourites-tours-list']), ['class' => 'ajax-get-user-favourites-tours-list']);?>
         <?= Html::a('', Url::toRoute(['tour/ajax-order-tours-list']), ['class' => 'ajax-order-tours-list']);?>
+        <?= Html::a('', Url::toRoute(['flight/ajax-order-flights-list-user']), ['class' => 'ajax-order-flights-list-user']);?>
         <?= Html::a('', Url::toRoute(['tour/ajax-tour-full-info']), ['class' => 'ajax-tour-full-info']);?>
         <?= Html::a('', Url::toRoute(['hotel/ajax-show-hotel-full-info']), ['class' => 'ajax-show-hotel-full-info']);?>
+        <?= Html::a('', Url::toRoute(['flight/ajax-show-flight-full-info-user']), ['class' => 'ajax-show-flight-full-info']);?>
     </div>
 </div>

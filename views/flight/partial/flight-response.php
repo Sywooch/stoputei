@@ -2,7 +2,7 @@
 $date_city_to = new DateTime($flight->date_city_to);
 $date_to = $date_city_to->format('d.m.Y H:i');
 ?>
-<div class="col-xs-12 flight-wrapper">
+<div class="col-xs-12 flight-wrapper" data-flight-id="<?=$flight->id;?>">
     <div class="col-xs-12 header">
         <span class="count"><?=Yii::t('app', 'Offer').' № '.$flight->id;?>
         </span><span class="created"><?=date('d.m.Y H:i', $flight->created_at);?></span>
@@ -37,7 +37,7 @@ $date_to = $date_city_to->format('d.m.Y H:i');
 
         </div>
         <div class="col-xs-2 buttons">
-            <a href="#" class="more-flight-response-info btn btn-primary" data-flight-id="<?=$flight->id;?>"><?= Yii::t('app', 'More');?></a>
+            <a href="<?=\yii\helpers\Url::to(['flight/ajax-show-flight-full-info-user', 'id' => $flight->id]);?>" class="more-flight-response-info-user btn btn-primary" data-flight-id="<?=$flight->id;?>"><?= Yii::t('app', 'More');?></a>
         </div>
     </div>
 </div>

@@ -5,6 +5,9 @@ use yii\helpers\Url;
 use dosamigos\datepicker\DatePicker;
 ?>
 <div class="row filter-tour">
+    <span class="back-to-main-from-user-flight" data-tab-class="user-flights">
+        <i class="glyphicon glyphicon-menu-right hide"></i>
+    </span>
     <div class="main-tab-container user-flights-tab-container col-xs-12" data-tab-class="user-flights">
     <div class="col-md-9 left-data">
         <div class="col-md-4 filter flight-container overflow-list">
@@ -132,7 +135,18 @@ use dosamigos\datepicker\DatePicker;
         <div class="col-md-8 flights-container overflow-list">
             <div class="loader-bg hide"><img src="/images/loader.gif"></div>
             <div id="flight-response">
-                <?=$userFlights;?>
+                <?= Html::dropDownList('order-flight-list', 'id', [
+                    //'a-to-z' => Yii::t('app','From A to Z'),
+                    //'z-to-a' => Yii::t('app','From Z to A'),
+                    '' => Yii::t('app','Order by'),
+                    'cheap-to-expensive' => Yii::t('app','From cheap to expensive'),
+                    'expensive-to-cheap' => Yii::t('app','From expensive to cheap'),
+                    'new-to-old' => Yii::t('app','From new to old'),
+                    'old-to-new' => Yii::t('app','From old to new')
+                ], ['class' => 'form-control col-xs-7']) ?>
+                <div class="list-data">
+                    <?=$userFlights;?>
+                </div>
             </div>
         </div>
     </div>

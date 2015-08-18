@@ -20,7 +20,7 @@ $date_city_from_until = date('d.m.Y', strtotime($flight->date_city_from_until));
 $flightResponse = new FlightResponse();
 $responseCount = $flightResponse->hasResponse($flight->id);
 ?>
-<div class="col-xs-12 flight-wrapper">
+<div class="col-xs-12 flight-wrapper" data-flight-id="<?=$flight->id;?>">
     <div class="col-xs-12 header">
         <span class="count"><?=Yii::t('app', 'Order').' № '.$flight->id;?>
         </span><span class="created"><?=date('d.m.Y H:i:s', $flight->created_at);?></span>

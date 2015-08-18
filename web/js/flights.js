@@ -306,4 +306,38 @@ $(function(){
         filterFlightList();
     });
 
+
+
+
+
+    //show FLIGHT information, hide filter (USER)
+    $(document).on('click', '.more-flight-response-info-user', function(e){
+        e.preventDefault();
+        var tab_class = $(this).closest('.main-tab-container').attr('data-tab-class');
+        //var hotel_id = $(this).attr('data-flight-id');
+        var url = $(this).attr('href');
+        $.get(url).done(function(response){
+            var data = $.parseJSON(response);
+            $('.back-to-main-from-user-flight[data-tab-class="'+tab_class+'"]').addClass('open');
+            $('.back-to-main-from-user-flight[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').removeClass('hide');
+            $('.main-tab-container[data-tab-class="'+tab_class+'"]').addClass('implicit');
+            if(data.status == 'ok'){
+                $('.full-flights-information').removeClass('close-tab').addClass('open-tab').html(data.flight);
+            }else{
+                $('.full-flights-information').removeClass('close-tab').addClass('open-tab').text(data.message);
+            }
+        });
+    });
+
+    //show filter, hide flight information (USER)
+    $(document).on('click', '.back-to-main-from-user-flight', function(e){
+        e.preventDefault();
+        var tab_class = $(this).attr('data-tab-class');
+        $('.back-to-main-from-user-flight[data-tab-class="'+tab_class+'"]').removeClass('open');
+        $('.back-to-main-from-user-flight[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').addClass('hide');
+        $('.full-flights-information').addClass('close-tab').removeClass('open-tab');
+        //$('.right-data').show();
+        $('.main-tab-container[data-tab-class="'+tab_class+'"]').removeClass('implicit');
+    });
+
 });

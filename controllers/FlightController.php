@@ -310,4 +310,105 @@ class FlightController extends Controller
             }
         }
     }
+
+    //order flights list USER
+    public function actionAjaxOrderFlightsListUser(){
+        if(Yii::$app->request->isAjax) {
+            $order_by = Yii::$app->request->getQueryParam('order_by', null);
+            $ids = Yii::$app->request->getQueryParam('ids', null);
+            if(!is_null($order_by)){
+                $query = '';
+                switch($order_by){
+                    case 'cheap-to-expensive':
+                        $query .= 'flight_cost asc';
+                        break;
+                    case 'expensive-to-cheap':
+                        $query .= 'flight_cost desc';
+                        break;
+                    case 'new-to-old':
+                        $query .= 'created_at desc';
+                        break;
+                    case 'old-to-new':
+                        $query .= 'created_at asc';
+                        break;
+                }
+                $flightList = FlightResponse::find()->where([
+                    'id' => $ids
+                ])->orderBy($query)->all();
+                $response = [
+                    'status' => 'ok',
+                    'ids' => Yii::$app->request->get(),
+                    'order_by' => $order_by,
+                    'tourList' => $this->renderAjax('//flight/partial/user-flight-response-list', ['flights' => $flightList]),
+                ];
+            }else{
+                $response = [
+                    'status' => 'error',
+                    'message' => Yii::t('app','Error')
+                ];
+            }
+            echo Json::encode($response);
+            Yii::$app->end();
+        }
+    }
+
+    //order flights list MANAGER
+    public function actionAjaxOrderFlightsListManager(){
+        if(Yii::$app->request->isAjax) {
+            $order_by = Yii::$app->request->getQueryParam('order_by', null);
+            $ids = Yii::$app->request->getQueryParam('ids', null);
+            if(!is_null($order_by)){
+                $query = '';
+                switch($order_by){
+                    case 'new-to-old':
+                        $query .= 'created_at desc';
+                        break;
+                    case 'old-to-new':
+                        $query .= 'created_at asc';
+                        break;
+                    default:
+                        $query .= 'created_at asc';
+                        break;
+                }
+                $flightList = UserFlight::find()->where([
+                    'id' => $ids
+                ])->orderBy($query)->all();
+                $response = [
+                    'status' => 'ok',
+                    'ids' => Yii::$app->request->get(),
+                    'order_by' => $order_by,
+                    'tourList' => $this->renderAjax('//flight/partial/user-flight-list', ['flights' => $flightList]),
+                ];
+            }else{
+                $response = [
+                    'status' => 'error',
+                    'message' => Yii::t('app','Error')
+                ];
+            }
+            echo Json::encode($response);
+            Yii::$app->end();
+        }
+    }
+
+    public function actionAjaxShowFlightFullInfoUser(){
+        if(Yii::$app->request->isAjax) {
+            $id = Yii::$app->request->getQueryParam('id', null);
+            if(!is_null($id)){
+                $flight = FlightResponse::findOne($id);
+                $response = [
+                    'status' => 'ok',
+                    'flight' => $this->renderAjax('partial/flight-full-info-user', ['flight' => $flight]),
+                    'message' => Yii::t('app', 'Flight was found.')
+                ];
+            }else{
+                $response = [
+                    'status' => 'error',
+                    'flight' => '',
+                    'message' => Yii::t('app', 'Flight was not found.')
+                ];
+            }
+            echo Json::encode($response);
+            Yii::$app->end();
+        }
+    }
 }
