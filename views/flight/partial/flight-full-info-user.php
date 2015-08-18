@@ -82,7 +82,9 @@ $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
                 <?php if($flight->voyage_is_direct_to == 1):?>
                     <div>
                         <span class="field"><?=Yii::t('app','Voyage is not direct');?> : </span>
-                        <span class="value"><?=$flight->voyageCityTo->name;?></span>
+                        <?php if(!is_null($flight->voyageCityTo)):?>
+                            <span class="value"><?=$flight->voyageCityTo->name;?></span>
+                        <?php endif;?>
                     </div>
                     <div>
                         <span class="field"><?=Yii::t('app','Date docking');?> : </span>
@@ -99,7 +101,9 @@ $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
                 <?php if($flight->voyage_is_direct_from == 1 and $flight->way_ticket == 2):?>
                     <div>
                         <span class="field"><?=Yii::t('app','Depart city from');?> : </span>
-                        <span class="value"><?=$flight->voyageCityFrom->name;?></span>
+                        <?php if(!is_null($flight->voyageCityFrom)):?>
+                            <span class="value"><?=$flight->voyageCityFrom->name;?></span>
+                        <?php endif;?>
                     </div>
                     <div>
                         <span class="value"><?=$depart_to_from;?></span>
