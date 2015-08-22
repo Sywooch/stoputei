@@ -16,7 +16,7 @@ if(!count($photos)){
     }
 }
 foreach($photos as $key => $one){
-    $photos_show[] = '/'.$one;
+    $photos_show[] = $key;
     if($key == $stop_photo){break;};
 }
 $star = '';
@@ -54,7 +54,9 @@ $role = (Yii::$app->user->identity->role==1)?'user':'manager';
         <div class="col-xs-6 images">
             <?php if(count($photos)):?>
                 <?php foreach($photos_show as $img):?>
-                    <img src="<?=$img;?>" class="img-responsive hotel-img">
+                    <a href="<?='/uploads/hotel/images/big/'.$hotel->hotel_id.'/'.$img.'.jpg';?>" class="preview" title="<?=$hotel->name;?>">
+                        <img src="<?='/uploads/hotel/images/small/'.$hotel->hotel_id.'/'.$img.'.jpg';?>" class="img-responsive hotel-img" alt="gallery thumbnail">
+                    </a>
                 <?php endforeach;?>
             <?php else:?>
                 <?php foreach($empty_photos as $img):?>

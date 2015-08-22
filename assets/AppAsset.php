@@ -32,6 +32,7 @@ class AppAsset extends AssetBundle
         'js/manager-hot-tours.js',
         'js/user-hot-tours.js',
         'js/user-favourites.js',
+        'js/image-tooltip.js'
     ];
     public $images = [];
     public $depends = [

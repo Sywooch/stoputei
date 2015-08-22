@@ -34,7 +34,7 @@ if(!empty($tour->categories)){
     }
     $hotel_categories = implode(',', $hotel_categories);
 }else{
-    $hotel_categories = '';
+    $hotel_categories = '1*,2*,3*,4*,5*';
 }
 //hotel's room type
 if(!empty($tour->rooms)){
@@ -46,6 +46,16 @@ if(!empty($tour->rooms)){
 }else{
     $hotel_rooms = '';
 }
+//hotel's nutrition
+if(!empty($tour->nutritions)){
+    $hotel_nutritions = [];
+    foreach($tour->nutritions as $one){
+        $hotel_nutritions[] = '<span class="value">'.\app\models\UserTour::getNutritionName($one->nutrition_id).'</span>';
+    }
+    $hotel_nutritions = implode(',', $hotel_nutritions);
+}else{
+    $hotel_nutritions = Yii::t('app', 'Any nutrition');
+}
 //hotel's beach line
 if(!empty($tour->beachLine)){
     $hotel_beach_lines = [];
@@ -54,7 +64,7 @@ if(!empty($tour->beachLine)){
     }
     $hotel_beach_lines = implode(',', $hotel_beach_lines);
 }else{
-    $hotel_beach_lines = '';
+    $hotel_beach_lines = Yii::t('app', 'Any line');
 }
 //hotel's beach line
 if(!empty($tour->nutritions)){
@@ -73,10 +83,12 @@ if(!empty($tour->nutritions)){
         <span><?=$date;?></span>
     </div>
     <div class="col-xs-12 body">
-        <div class="field">
-            <span class="describe"><?=Yii::t('app', 'Budget');?> : </span>
-            <span class="value"><?=$tour->budget;?></span>
-        </div>
+        <?php if($tour->budget > 0):?>
+            <div class="field">
+                <span class="describe"><?=Yii::t('app', 'Budget');?> : </span>
+                <span class="value"><?=$tour->budget;?></span>
+            </div>
+        <?php endif;?>
         <div class="field">
             <span class="describe"><?=Yii::t('app', 'Destination');?> : </span>
             <span class="value"><?=$tour->country->name;?></span>
@@ -171,6 +183,14 @@ if(!empty($tour->nutritions)){
                 <span class="value"><?=Yii::t('app', 'Not selected');?></span>
             </div>
         <?php endif;?>
+        <div class="field">
+            <span class="describe"><?=Yii::t('app', 'Nutrition');?> : </span>
+            <?= $hotel_nutritions;?>
+        </div>
+        <div class="field">
+            <span class="describe"><?=Yii::t('app', 'Beach line');?> : </span>
+            <?= $hotel_beach_lines;?>
+        </div>
 
         <br>
 
@@ -184,28 +204,7 @@ if(!empty($tour->nutritions)){
         <div class="field">
             <span class="describe"><?=Yii::t('app', 'Hotel type');?> : </span>
             <span class="value">
-                <?php
-                switch($tour->hotel_type){
-                    case 0:
-                        echo Yii::t('app', 'Any type');
-                        break;
-                    case 1:
-                        echo Yii::t('app', 'Teen');
-                        break;
-                    case 2:
-                        echo Yii::t('app', 'Family type');
-                        break;
-                    case 3:
-                        echo Yii::t('app', 'Urban');
-                        break;
-                    case 4:
-                        echo Yii::t('app', 'Health');
-                        break;
-                    default:
-                        echo Yii::t('app', 'Any type');
-                        break;
-                }
-                ?>
+                <?= \app\models\UserTour::getHotelType($tour->hotel_type);?>
             </span>
         </div>
         <div class="field">

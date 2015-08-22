@@ -14,15 +14,16 @@ $(function(){
     });
 
     //change fields after add hotel to filter
-    function addHotelToFilter(){
-        var hotel_star = $(this).attr('data-hotel-star');
-        $('.field-gettourform-hotel_type, .field-gettourform-beach_line, .field-gettourform-stars').addClass('disabled');
-        $('[name="GetTourForm[beach_line]"]').attr('disabled', 'disabled').attr('checked', false);
+    function addHotelToFilter(hotel_star){
+        var hotel_star = hotel_star;
+        $('.field-gettourform-hotel_type, .field-gettourform-beach_line, .field-gettourform-stars, #gettourform-budget').addClass('disabled');
+        $('[name="GetTourForm[beach_line][]"]').attr('disabled', 'disabled').attr('checked', false);
         $('[name="GetTourForm[hotel_type]"]').attr('disabled', 'disabled').attr('checked', false);
         $('#gettourform-stars [name="GetTourForm[stars][]"]').attr('disabled', 'disabled').prop('checked', false);
         $('#gettourform-stars [name="GetTourForm[stars][]"]').filter(function () {
             return $(this).val() == hotel_star;
         }).prop('checked', true);
+        $('#gettourform-budget').attr('disabled', 'disabled').val('');
     }
     function removeHotelFromFilter(){
         $('.field-gettourform-hotel_type, .field-gettourform-beach_line, .field-gettourform-stars').removeClass('disabled');
@@ -31,6 +32,7 @@ $(function(){
         $('#gettourform-room_type [name="GetTourForm[room_type][]"]').attr('disabled', false).prop('checked', false);
         $('#gettourform-nutrition [name="GetTourForm[nutrition][]"]').attr('disabled', false).prop('checked', false);
         $('#gettourform-stars [name="GetTourForm[stars][]"]').attr('disabled', false).prop('checked', false);
+        $('#gettourform-budget').removeAttr('disabled');
     }
 
     //get a tour on ajax(destination)
@@ -80,6 +82,7 @@ $(function(){
                 $('.offers-tab.tab-badge.get-tour').text(data.count);
             }
         });
+        imagePreview();
     }
 
     //create route to autocomplete
@@ -144,6 +147,7 @@ $(function(){
         e.preventDefault();
         var hotel_id = $(this).attr('data-hotel-id');
         var hotel_name = $(this).attr('data-hotel-name');
+        var hotel_star = $(this).attr('data-hotel-star');
         var option = '<option value="'+hotel_id+'">'+hotel_name+'</option>';
             $('#gettourform-hotel_id').html(option);
             $("#gettourform-hotel_id option").filter(function () {
@@ -155,7 +159,7 @@ $(function(){
                 $('[data-toggle="tooltip"]').tooltip();
             }
         getHotelList();
-        addHotelToFilter();
+        addHotelToFilter(hotel_star);
     });
 
     //submit user tour form

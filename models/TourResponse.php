@@ -40,6 +40,11 @@ class TourResponse extends ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'manager_id']);
     }
 
+    public function getRooms(){
+        return $this->hasMany(HotelCategory::className(), ['category_id' => 'star_id'])
+            ->viaTable(UserTourCategories::tableName(), ['tour_id' => 'id']);
+    }
+
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
