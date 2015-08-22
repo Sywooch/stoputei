@@ -27,7 +27,7 @@ if($tour->hotel_id){
     }
 }
 //hotel's categories
-if(!empty($tour->categories)){
+if($tour->categories){
     $hotel_categories = [];
     foreach($tour->categories as $one){
         $hotel_categories[] = Yii::t('app', $one->hint);
