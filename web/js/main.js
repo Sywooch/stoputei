@@ -191,6 +191,8 @@ $(function(){
         var tour_id = $(this).attr('data-tour-id');
         var main_container = $(this).closest('.main-tab-container');
         var tab_class = main_container.attr('data-tab-class');
+        main_container.closest('[name="order-tour-list"]').hide();
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').addClass('hidden-select');
         //clear tour full info in close tab
         $('.full-tour-information:not([data-tab-class="'+tab_class+'"])').empty();
         $('.full-hotel-information:not([data-tab-class="'+tab_class+'"])').empty();
@@ -231,6 +233,7 @@ $(function(){
         var current_tour_id = $('.main-tab-container[data-tab-class="'+tab_class+'"] .full-tour-information').attr('data-current-tour');
 
         if(typeof current_tour_id != 'undefined'){
+            $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').addClass('hidden');
             var url = $('.ajax-tour-full-info').attr('href');
             //add tour full info in ipening tab container
             $.get(url, {'tour_id' : current_tour_id}).done(function(response){
@@ -247,6 +250,8 @@ $(function(){
                     $('.main-tab-container[data-tab-class="'+tab_class+'"] .right-data .full-tour-information').addClass('show col-xs-12').removeClass('col-xs-9').delay(1000).html(data.tour);
                     //$('.main-tab-container[data-tab-class="'+tab_class+'"] .full-tour-information').html(data.tour);
                 }else{
+
+                    $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').removeClass('hidden-select');
                     $('.main-tab-container[data-tab-class="'+tab_class+'"] .full-tour-information').text(data.message);
                 }
             });
@@ -259,7 +264,7 @@ $(function(){
         var tab_class = $(this).attr('data-tab-class');
         $('.back-to-main-from-tour[data-tab-class="'+tab_class+'"]').removeClass('open');
         $('.back-to-main-from-tour[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').addClass('hide');
-
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').removeClass('hidden-select');
         //hide full tour information
         $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data').removeClass('col-xs-3 small-left').addClass('col-md-9').removeAttr('data-current-tour');
         $('.main-tab-container[data-tab-class="'+tab_class+'"] .left-data .'+tab_class+':first').removeClass('close-left').addClass('col-md-4');
@@ -279,6 +284,7 @@ $(function(){
         var tab_class = $(this).closest('.main-tab-container').attr('data-tab-class');
         var tour_id = $(this).attr('data-tour-id');
         var url = $('.ajax-tour-full-info').attr('href');
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').addClass('hidden-select');
         $.get(url,{'tour_id' : tour_id}).done(function(response){
             var data = $.parseJSON(response);
             $('.back-to-main-from-tour-manager[data-tab-class="'+tab_class+'"]').addClass('open');
@@ -302,6 +308,7 @@ $(function(){
         var tab_class = $(this).attr('data-tab-class');
         $('.back-to-main-from-tour-manager[data-tab-class="'+tab_class+'"]').removeClass('open');
         $('.back-to-main-from-tour-manager[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').addClass('hide');
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').removeClass('hidden-select');
         //$('.filter-tour .left-data').removeClass('implicit');
         //$('.filter-tour .right-data').removeClass('col-xs-12').addClass('col-md-3');
         $('.full-tour-information[data-tab-class="'+tab_class+'"]').addClass('close-tab').removeClass('open-tab').removeAttr('data-current-tour').empty();
@@ -324,6 +331,7 @@ $(function(){
         }
         var tab_current_tour = $('#'+tab+' .full-tour-information').attr('data-current-tour');
         if(typeof tab_current_tour != 'undefined'){
+            $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').addClass('hidden-select');
             $.get(url,{'tour_id': tab_current_tour}).done(function(response){
                 var data = $.parseJSON(response);
                 $('.back-to-main-from-tour-manager[data-tab-class="'+tab_class+'"]').addClass('open');
@@ -334,6 +342,7 @@ $(function(){
                     $('.full-hotel-information:not([data-tab-class="'+tab_class+'"])').addClass('close-tab').removeClass('open-tab').empty();
                     $('.full-tour-information[data-tab-class="'+tab_class+'"]').removeClass('close-tab').addClass('open-tab').attr('data-current-tour', tab_current_tour).html(data.tour);
                 }else{
+                    $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').removeClass('hidden-select');
                     $('.full-tour-information:not([data-tab-class="'+tab_class+'"])').addClass('close-tab').removeClass('open-tab').empty();
                     $('.full-hotel-information:not([data-tab-class="'+tab_class+'"])').addClass('close-tab').removeClass('open-tab').empty();
                     $('.full-tour-information[data-tab-class="'+tab_class+'"]').removeClass('close-tab').addClass('open-tab').text(data.message);
@@ -350,6 +359,7 @@ $(function(){
         var tab_class = $(this).closest('.main-tab-container').attr('data-tab-class');
         var hotel_id = $(this).attr('data-hotel-id');
         var url = $('.ajax-show-hotel-full-info').attr('href');
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').addClass('hidden-select');
         $.get(url,{'hotel_id': hotel_id}).done(function(response){
             var data = $.parseJSON(response);
             $('.back-to-main-from-user-get-tour[data-tab-class="'+tab_class+'"]').addClass('open');
@@ -371,6 +381,7 @@ $(function(){
     $(document).on('click', '.back-to-main-from-user-get-tour', function(e){
         e.preventDefault();
         var tab_class = $(this).attr('data-tab-class');
+        $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').removeClass('hidden-select');
         $('.back-to-main-from-user-get-tour[data-tab-class="'+tab_class+'"]').removeClass('open');
         $('.back-to-main-from-user-get-tour[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').addClass('hide');
         //$('.filter-tour .left-data').removeClass('implicit');
@@ -392,6 +403,7 @@ $(function(){
         }
         var tab_current_hotel = $('#'+tab+' .full-hotel-information').attr('data-current-hotel');
         if(typeof tab_current_hotel != 'undefined'){
+            $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').addClass('hidden-select');
             $.get(url,{'hotel_id': tab_current_hotel}).done(function(response){
                 var data = $.parseJSON(response);
                 $('.back-to-main-from-user-get-tour[data-tab-class="'+tab_class+'"]').addClass('open');

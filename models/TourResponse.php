@@ -45,6 +45,10 @@ class TourResponse extends ActiveRecord
             ->viaTable(UserTourCategories::tableName(), ['tour_id' => 'id']);
     }
 
+    public function getTestimonials(){
+        return $this->hasMany(HotelComment::className(), ['hotel_id' => 'hotel_id']);
+    }
+
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {

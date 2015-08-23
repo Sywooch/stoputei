@@ -40,7 +40,7 @@ use yii\helpers\Url;
                         'expensive-to-cheap' => Yii::t('app','From expensive to cheap'),
                         'new-to-old' => Yii::t('app','From new to old'),
                         'old-to-new' => Yii::t('app','From old to new')
-                    ], ['class' => 'form-control col-xs-7']) ?>
+                    ], ['class' => 'form-control col-xs-7 order-list']) ?>
                     <div class="list-data">
                     <?=$myOffers;?>
                     </div>

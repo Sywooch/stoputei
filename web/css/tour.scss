@@ -130,6 +130,14 @@
       .people{
         display: none;
       }
+      .tour-info{
+        display: none;
+      }
+      .body{
+        .hotel-photo{
+          width: 100%;
+        }
+      }
     }
   }
 }
@@ -220,6 +228,35 @@
     }
     .description{
       text-align: left;
+    }
+    .nav-tabs-tour{
+      li{
+        a{
+          color: $grey-text;
+        }
+        &.active{
+          a {
+            background: $grey-light;
+            color: #000000;
+          }
+        }
+      }
+    }
+    .testimonial{
+      margin-bottom: 15px;
+      border: $light-grey-border;
+      .header{
+        background: $grey;
+        .date{
+          color: #ffffff;
+          float: right;
+        }
+      }
+      .body{
+        font-size: 0.85em;
+        line-height: 12px;
+        text-align: justify;
+      }
     }
   }
   .body-tour{

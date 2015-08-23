@@ -168,6 +168,18 @@
       text-align: justify;
       font-size: 0.95em;
       font-weight: 300;
+      .field {
+        color: $grey-text;
+        font-size: 0.85em;
+      }
+      .value {
+        font-weight: 600;
+        color: $grey-dark;
+        font-size: 1em;
+        position: absolute;
+        right: 0px;
+        margin-top: 0px;
+      }
     }
     .hotel-facilities{
       list-style: none;

@@ -95,7 +95,7 @@ if($tour->to_date) {
         document.body.appendChild(script1);
     }
 
-    loadScript();
+    setTimeout(loadScript, 1000);
 </script>
 <div class="tour-full-info">
     <div class="row">
@@ -132,12 +132,43 @@ if($tour->to_date) {
                     'id' => 'gallery-widget'
                 ]);?>
             </div>
-            <div class="col-xs-12 description">
-                <?php if(!empty($tour->hotel->description)):?>
-                    <?= $tour->hotel->description;?>
-                <?php else:?>
-                    <?= Yii::t('app', 'Hotel description coming soon.');?>
-                <?php endif;?>
+            <div class="col-xs-12">
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs-tour" role="tablist">
+                        <li role="presentation" class="active col-xs-6"><a href="#description" aria-controls="description" role="tab" data-toggle="tab"><?= Yii::t('app', 'Description');?></a></li>
+                        <li role="presentation" class="col-xs-6"><a href="#testimonials" aria-controls="testimonials" role="tab" data-toggle="tab"><?= Yii::t('app', 'Testimonials');?> (<?=count($tour->testimonials);?>)</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="description">
+                            <?php if(!empty($tour->hotel->description)):?>
+                                <?= $tour->hotel->description;?>
+                            <?php else:?>
+                                <?= Yii::t('app', 'Hotel description coming soon.');?>
+                            <?php endif;?>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="testimonials">
+                            <?php if(!empty($tour->testimonials)):?>
+                                <?php foreach($tour->testimonials as $testimonial):?>
+                                <div class="testimonial">
+                                    <div class="header col-xs-12">
+                                        <span class="name"><?=$testimonial->user_name;?></span>
+                                        <span class="date"><?=$testimonial->start_rest_formatted;?></span>
+                                    </div>
+                                    <div class="body">
+                                        <?= (!empty($testimonial->negative))?$testimonial->negative:$testimonial->positive;?>
+                                    </div>
+                                </div>
+                                <?php endforeach;?>
+                            <?php else:?>
+                                <?= Yii::t('app', 'Testimonials are absent.');?>
+                            <?php endif;?>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 

@@ -127,6 +127,53 @@ if(!empty($photos)){
                     <?php else:?>
                         <?= Yii::t('app', 'Hotel description coming soon.');?>
                     <?php endif;?>
+                    <div>
+                        <div>
+                            <span class="field"><?=Yii::t('app','Hotel\'s site');?> : </span>
+                            <span class="value"><?=(!empty($hotel->site)?$hotel->site:'---');?></span>
+                        </div>
+                        <div>
+                            <span class="field"><?=Yii::t('app','Hotel\'s email');?> : </span>
+                            <?php if(!empty($hotel->email)):?>
+                                <span class="value">
+                                    <a href="mailto:<?=$hotel->email;?>"><?=$hotel->email;?></a>
+                            <?php else:?>
+                                <span class="value">---</span>
+                            <?php endif;?>
+                        </div>
+                        <div>
+                            <span class="field"><?=Yii::t('app','Hotel\'s phone');?> : </span>
+                            <span class="value"><?=(!empty($hotel->phone)?$hotel->phone:'---');?></span>
+                        </div>
+                        <div>
+                            <span class="field"><?=Yii::t('app','Hotel\'s fax');?> : </span>
+                            <span class="value"><?=(!empty($hotel->fax)?$hotel->fax:'---');?></span>
+                        </div>
+                        <div>
+                            <span class="field"><?=Yii::t('app','Building date');?> : </span>
+                            <span class="value"><?=(!empty($hotel->building_date)?$hotel->building_date. Yii::t('app','year'):'---');?></span>
+                        </div>
+                        <div>
+                            <span class="field"><?=Yii::t('app','Renovation date');?> : </span>
+                            <span class="value"><?=(!empty($hotel->renovation)?$hotel->renovation. Yii::t('app','year'):'---');?></span>
+                        </div>
+                        <div>
+                            <span class="field"><?=Yii::t('app','Rooms amount');?> : </span>
+                            <span class="value"><?=(!empty($hotel->rooms_count)?$hotel->rooms_count:'---');?></span>
+                        </div>
+                        <div>
+                            <span class="field"><?=Yii::t('app','Hotel\'s area');?> : </span>
+                            <span class="value"><?=(!empty($hotel->area)?$hotel->area. Yii::t('app','m2'):'---');?></span>
+                        </div>
+                        <div>
+                            <span class="field"><?=Yii::t('app','Airport distance');?> : </span>
+                            <span class="value"><?=(!empty($hotel->airport_distance)?$hotel->airport_distance. Yii::t('app','Km'):'---');?></span>
+                        </div>
+                        <div>
+                            <span class="field"><?=Yii::t('app','City centre distance');?> : </span>
+                            <span class="value"><?=(!empty($hotel->city_center_distance)?$hotel->city_center_distance. Yii::t('app','Km'):'---');?></span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-xs-4">
