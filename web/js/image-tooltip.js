@@ -21,7 +21,6 @@ this.imagePreview = function(){
 	$(document).on({
 		mouseenter: function(e) {
 			console.log(this);
-			$('html, body').css('overflow-y','hidden');
 			this.t = this.title;
 			this.title = "";
 			var c = (this.t != "") ? "<br/>" + this.t : "";
@@ -35,7 +34,6 @@ this.imagePreview = function(){
 			console.log('tooltip : '+this.title);
 		},
 		mouseleave: function(e) {
-			$('html, body').css('overflow','');
 			this.title = this.t;
 			$("#preview").remove();
 		}
