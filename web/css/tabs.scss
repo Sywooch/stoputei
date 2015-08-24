@@ -290,6 +290,13 @@
               pointer-events: none;
             }
           }
+          .form-control{
+            &.disabled{
+              background: $grey-light;
+              cursor: not-allowed;
+              pointer-events: none;
+            }
+          }
         }
         .hotels-container, .user-tour-container, .flights-container, .manager-flight-container, .user-offer-list, .manager-hot-tour-container, .manager-offers {
           overflow-y: auto;

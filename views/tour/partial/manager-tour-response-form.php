@@ -242,9 +242,10 @@ use yii\helpers\Url;
         $checkbox = Html::radio($name, $checked, ['value' => $value]);
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
     }]);?>
-<?= $form->field($CreateTourForm, 'adult_amount')->input('text', ['disabled' => true]);?>
-<?= $form->field($CreateTourForm, 'children_under_12_amount')->input('text', ['disabled' => true]);?>
-<?= $form->field($CreateTourForm, 'children_under_2_amount')->input('text', ['disabled' => true]);?>
+
+<?= $form->field($CreateTourForm, 'adult_amount')->input('text', ['class' => 'form-control disabled']);?>
+<?= $form->field($CreateTourForm, 'children_under_12_amount')->input('text', ['class' => 'form-control disabled']);?>
+<?= $form->field($CreateTourForm, 'children_under_2_amount')->input('text', ['class' => 'form-control disabled']);?>
 <?= $form->field($CreateTourForm, 'room_count')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => $CreateTourForm->room_count]);?>
 <?= $form->field($CreateTourForm, 'flight_included')->checkbox(['disabled' => true]);?>
 
