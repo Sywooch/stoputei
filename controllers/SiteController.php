@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\City;
 use app\models\ManagerHotTourForm;
 use app\models\ManagerOffersForm;
 use app\models\UserFavouriteForm;
@@ -78,6 +79,7 @@ class SiteController extends Controller
                 $userFavouriteForm = new UserFavouriteForm();
                 $country = new Country();
                 $departCity = new DepartCity();
+                $city = new City();
                 $flightsUserResponse = FlightResponse::find()->where([
                     'user_id' => Yii::$app->user->identity->getId()
                 ])->all();
@@ -97,6 +99,7 @@ class SiteController extends Controller
                 $destinationDropdown = $country->destinationDropdown();
                 $departCountryDropdown = $country->destinationDropdown(\Yii::$app->params['depart_countries']);
                 $departCityDropdown = $departCity->regionDropdown();
+                $cityDropdown = $city->destinationCityDropdown();
                 $GetTourForm->flight_included = 1;
 
                 return $this->render('index',
@@ -109,6 +112,7 @@ class SiteController extends Controller
                         'userFavouriteForm' => $userFavouriteForm,
                         'destinationDropdown' => $destinationDropdown,
                         'departCityDropdown' => $departCityDropdown,
+                        'cityDropdown' => $cityDropdown,
                         'flightsUserResponse' => $flightsUserResponse,
                         'tourUserResponse' => $tourUserResponse,
                         'departCountryDropdown' => $departCountryDropdown,

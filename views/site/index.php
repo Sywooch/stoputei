@@ -30,7 +30,7 @@ $this->title = 'StoPutei';
                         'tourUserResponse' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $tourUserResponse]),
                         'destinationDropdown' => $destinationDropdown,
                         'TourOffersForm' => $TourOffersForm,
-                        'departCityDropdown' => $departCityDropdown
+                        'cityDropdown' => $cityDropdown,
                     ]);?>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="flights">

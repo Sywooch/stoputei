@@ -2,7 +2,7 @@ $(function(){
     /*####################  FLIGHTS ##################*/
     //dropdown list with resorts for user after country change
     $(document).on('change', '#userflightform-destination', function(){
-        var destination = $(this).val();
+        var destination = ($(this).val() != '')?$(this).val():'all';
         $('.flight-container .loader-bg').removeClass('hide');
         var resort_url = $('.ajax-resort-for-filter').attr('href');
         $.get(resort_url,{'country_id':destination}).done(function(response){

@@ -136,8 +136,9 @@ if($tour->to_date) {
                 <div>
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs-tour" role="tablist">
-                        <li role="presentation" class="active col-xs-6"><a href="#description" aria-controls="description" role="tab" data-toggle="tab"><?= Yii::t('app', 'Description');?></a></li>
-                        <li role="presentation" class="col-xs-6"><a href="#testimonials" aria-controls="testimonials" role="tab" data-toggle="tab"><?= Yii::t('app', 'Testimonials');?> (<?=count($tour->testimonials);?>)</a></li>
+                        <li role="presentation" class="active col-xs-4"><a href="#description" aria-controls="description" role="tab" data-toggle="tab"><?= Yii::t('app', 'Description');?></a></li>
+                        <li role="presentation" class="col-xs-4"><a href="#testimonials" aria-controls="testimonials" role="tab" data-toggle="tab"><?= Yii::t('app', 'Testimonials');?> (<?=count($tour->testimonials);?>)</a></li>
+                        <li role="presentation" class="col-xs-4"><a href="#facilities" aria-controls="facilities" role="tab" data-toggle="tab"><?= Yii::t('app', 'Facilities');?> (<?=count($tour->hotel->facilities);?>)</a></li>
                     </ul>
 
                     <!-- Tab panes -->
@@ -164,6 +165,25 @@ if($tour->to_date) {
                                 <?php endforeach;?>
                             <?php else:?>
                                 <?= Yii::t('app', 'Testimonials are absent.');?>
+                            <?php endif;?>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="facilities">
+                            <?php if(!empty($tour->hotel->facilities)):?>
+                                <ul class="hotel-facilities">
+                                    <?php foreach($tour->hotel->facilities as $facility):?>
+                                        <li>
+                                            <i class="glyphicon glyphicon-tag"></i>
+                                            <?=$facility->name;?>
+                                            <?php if(!empty($facility->hint)):?>
+                                                <span class="hint">
+                                            ( <?=$facility->hint;?> )
+                                        </span>
+                                            <?php endif;?>
+                                        </li>
+                                    <?php endforeach;?>
+                                </ul>
+                            <?php else:?>
+                                <?= Yii::t('app', 'Hotel hasn\'t facilities.');?>
                             <?php endif;?>
                         </div>
                     </div>

@@ -50,8 +50,12 @@ class TourController extends Controller
     public function actionAjaxResortsDropdownForFilter(){
         if(Yii::$app->request->isAjax) {
             $country_id = \Yii::$app->request->getQueryParam('country_id', null);
-            $country = Country::findOne($country_id);
-            $cities = $country->cities;
+            if($country_id == 'all') {
+                $cities = [];
+            }else{
+                $country = Country::findOne($country_id);
+                $cities = $country->cities;
+            }
             $list[] = [
                 'city_id' => '',
                 'city_name' => Yii::t('app', 'All resorts')
@@ -572,11 +576,20 @@ class TourController extends Controller
         if(Yii::$app->request->isAjax) {
             if ($model->load(Yii::$app->request->get())) {
                 $query = [];
-                if(!empty($model->destination)){
+                /*if(!empty($model->destination)){
                     $query['country_id'] = $model->destination;
                 }
-                if(!empty($model->hotel_id)){
-                    $query['hotel_id'] = $model->hotel_id;
+                if(!empty($model->resort)){
+                    $query['city_id'] = $model->resort;
+                }
+                if($model->night_count != 0){
+                    $query['night_count'] = $model->night_count;
+                }
+                if(!empty($model->depart_city)){
+                    $query['depart_city_there'] = $model->depart_city;
+                }*/
+                if(!empty($model->destination)){
+                    $query['country_id'] = $model->destination;
                 }
                 if(!empty($model->resort)){
                     $query['city_id'] = $model->resort;
@@ -587,6 +600,9 @@ class TourController extends Controller
                 if(!empty($model->depart_city)){
                     $query['depart_city_there'] = $model->depart_city;
                 }
+                if(!empty($model->stars)){
+                    $query['hotel_star'] = $model->stars;
+                }
                 $tourResponses = TourResponse::find()->where([
                     'user_id' => Yii::$app->user->identity->getId()
                 ])->andWhere($query)->all();
@@ -596,13 +612,15 @@ class TourController extends Controller
                         'status' => 'ok',
                         'model' => $model,
                         'tours' => $this->renderAjax('partial/tour-response-list', ['tours' => $tourResponses]),
-                        'count' => count($tourResponses)
+                        'count' => count($tourResponses),
+                        'stars' => $model->stars
                     ];
                 }else{
                     $response = [
                         'status' => 'error',
                         'message' => Yii::t('app', 'Hotels not found. Please, change search params.'),
-                        'count' => 0
+                        'count' => 0,
+                        'stars' => $model->stars
                     ];
                 }
                 echo Json::encode($response);

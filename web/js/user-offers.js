@@ -2,7 +2,7 @@ $(function(){
     //##################### USER OFFERS ######################
     //filter user's offers
     $(document).on('change', '#touroffersform-destination', function(){
-        var destination = $(this).val();
+        var destination = ($(this).val() != '')?$(this).val():'all';
         var resort_url = $('.ajax-resort-for-filter').attr('href');
         $.get(resort_url,{'country_id':destination}).done(function(response){
             var data = $.parseJSON(response);
@@ -24,13 +24,14 @@ $(function(){
             var data = $.parseJSON(response);
             $('.user-offer-list .loader-bg').addClass('hide');
             if(data.status == 'ok') {
-                console.log(data.tours);
                 console.log(data.model);
+                console.log(data.stars);
                 $('#user-tour-response-list .list-data').html(data.tours);
                 $('.offers-tab.tab-badge.user-offers').text(data.count);
             }else{
                 $('#user-tour-response-list .list-data').html(data.message);
                 $('.offers-tab.tab-badge.user-offers').text(data.count);
+                console.log(data.stars);
             }
         });
     }

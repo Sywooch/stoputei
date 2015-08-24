@@ -23,7 +23,7 @@ use dosamigos\datepicker\DatePicker;
 
             <?= $form->field($UserFlightForm, 'destination')->dropDownList($destinationDropdown,['prompt' => Yii::t('app','All destinations')]);?>
 
-            <?= $form->field($UserFlightForm, 'resort')->dropDownList([],['prompt' => Yii::t('app','All resorts')]);?>
+            <?= $form->field($UserFlightForm, 'resort')->dropDownList([],['prompt' => Yii::t('app','All cities')]);?>
 
             <?= $form->field($UserFlightForm, 'depart_country')->dropDownList($departCountryDropdown,['prompt' => Yii::t('app','Choose destination')]);?>
             <?= $form->field($UserFlightForm, 'depart_city')->dropDownList([],['prompt' => Yii::t('app','Choose destination')]);?>
