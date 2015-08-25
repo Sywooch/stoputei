@@ -15,9 +15,9 @@ class City extends ActiveRecord
     }
     public function destinationCityDropdown($countries = null){
         if(is_null($countries)) {
-            $cities = self::find()->all();
+            $cities = self::find()->orderBy('name')->all();
         }else{
-            $cities = self::find()->where(['country_id' => $countries])->all();
+            $cities = self::find()->where(['country_id' => $countries])->orderBy('name')->all();
         }
         $list = [];
         foreach($cities as $key => $city){
