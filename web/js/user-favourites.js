@@ -2,15 +2,17 @@ $(function(){
    $(document).on('click', '#user-tour-response-list .add-to-favourite, #user-hot-tours-response .add-to-favourite', function(e){
        e.preventDefault();
        var url = $(this).attr('href');
+       var tour_id = $(this).attr('data-tour-id');
+       $('.favourite-user-tour[data-tour-id="'+tour_id+'"]').replaceWith('<img src="/images/loader.gif" class="replace-loader">');
        $.post(url).done(function(response){
            var data = $.parseJSON(response);
            if(data.status == 'ok'){
                $('.badge.offers-tab.tab-badge.favourites-tours').text(data.count);
                if(data.action == 'add'){
                    $('#user-favourite-tours-response .list-data').prepend(data.tour);
-                    $('.favourite-user-tour[data-tour-id="'+data.tour_id+'"]').addClass('glyphicon-heart favourite').removeClass('glyphicon-heart-empty');
+                   $('.replace-loader').replaceWith('<span class="favourite-user-tour glyphicon glyphicon-heart favourite" data-tour-id="'+tour_id+'"></span>');
                }else if(data.action == 'delete'){
-                   $('.favourite-user-tour[data-tour-id="'+data.tour_id+'"]').removeClass('glyphicon-heart favourite').addClass('glyphicon-heart-empty');
+                   $('.replace-loader').replaceWith('<span class="favourite-user-tour glyphicon glyphicon-heart-empty" data-tour-id="'+tour_id+'"></span>');
                    $('#user-favourite-tours-response .user-tour-wrapper[data-tour-id="'+data.tour_id+'"]').remove();
                }
            }else{

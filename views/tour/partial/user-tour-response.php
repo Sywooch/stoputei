@@ -64,7 +64,7 @@ switch($tour_title){
 <div class="user-tour-wrapper col-xs-12" data-tour-id="<?=$tour->id;?>">
     <div class="col-xs-12 header-info">
         <?php if($filter_type == 'user-response'):?>
-            <a href="<?=\yii\helpers\Url::to(['tour/add-to-favourite', 'tour_id' => $tour->id]);?>" class="add-to-favourite">
+            <a href="<?=\yii\helpers\Url::to(['tour/add-to-favourite', 'tour_id' => $tour->id]);?>" class="add-to-favourite" data-tour-id="<?=$tour->id;?>">
                 <span class="favourite-user-tour glyphicon <?=$favourite_class;?>" data-tour-id="<?=$tour->id;?>"></span>
             </a>
         <?php endif;?>
