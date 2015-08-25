@@ -4,7 +4,7 @@ $date_to = $date_city_to->format('d.m.Y H:i');
 ?>
 <div class="col-xs-12 flight-wrapper" data-flight-id="<?=$flight->id;?>">
     <div class="col-xs-12 header">
-        <span class="count"><?=Yii::t('app', 'Offer').' № '.$flight->id;?>
+        <span class="count"><?=Yii::t('app', 'Ticket').' № '.$flight->id;?>
         </span><span class="created"><?=date('d.m.Y H:i', $flight->created_at);?></span>
     </div>
     <div class="col-xs-12 body">

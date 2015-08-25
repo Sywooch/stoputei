@@ -167,13 +167,15 @@ $(function(){
     $(document).on('change', '[name="order-tour-list"]', function(){
         var value = $(this).val();
         var container_id = $(this).closest('div').attr('id');
+        var type = $(this).attr('data-type');
+        alert(type);
         $(this).closest('.loader-bg').removeClass('hide');
         var data = [];
             $('#'+container_id+' .user-tour-wrapper').each(function(){
                 data.push($(this).attr('data-tour-id'));
             });
         var url = $('.ajax-order-tours-list').attr('href');
-        $.get(url, {'ids': data, 'order_by': value}).done(function(response){
+        $.get(url, {'ids': data, 'order_by': value, 'type': type}).done(function(response){
             $(this).closest('.loader-bg').addClass('hide');
             var data = $.parseJSON(response);
             if(data.status == 'ok'){

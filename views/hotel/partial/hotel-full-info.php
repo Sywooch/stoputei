@@ -151,11 +151,11 @@ if(!empty($photos)){
                         </div>
                         <div>
                             <span class="field"><?=Yii::t('app','Building date');?> : </span>
-                            <span class="value"><?=(!empty($hotel->building_date)?$hotel->building_date. Yii::t('app','year'):'---');?></span>
+                            <span class="value"><?=(!empty($hotel->building_date)?$hotel->building_date:'---');?></span>
                         </div>
                         <div>
                             <span class="field"><?=Yii::t('app','Renovation date');?> : </span>
-                            <span class="value"><?=(!empty($hotel->renovation)?$hotel->renovation. Yii::t('app','year'):'---');?></span>
+                            <span class="value"><?=(!empty($hotel->renovation)?$hotel->renovation:'---');?></span>
                         </div>
                         <div>
                             <span class="field"><?=Yii::t('app','Rooms amount');?> : </span>

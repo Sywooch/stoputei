@@ -63,21 +63,21 @@ class UserTour extends ActiveRecord
     public static function getNutritionName($nutrition){
         switch($nutrition){
             case 0:
-                return \Yii::t('app', 'Any nutrition');
-            case 1:
                 return \Yii::t('app', 'RO');
-            case 2:
+            case 1:
                 return \Yii::t('app', 'BB');
-            case 3:
+            case 2:
                 return \Yii::t('app', 'HB');
-            case 4:
+            case 3:
                 return \Yii::t('app', 'HB+');
-            case 5:
+            case 4:
                 return \Yii::t('app', 'FB+');
-            case 6:
+            case 5:
                 return \Yii::t('app', 'AL');
-            case 7:
+            case 6:
                 return \Yii::t('app', 'UAL');
+            case 7:
+                return \Yii::t('app', 'Soft AL');
             default:
                 return \Yii::t('app', 'Any nutrition');
         }

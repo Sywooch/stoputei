@@ -20,7 +20,7 @@ switch($flight->flight_class){
 ?>
 <div class="col-xs-12 user-flight-full-info">
     <div class="col-xs-12 header">
-        <span><?=Yii::t('app', 'Order').' № '.$flight->id;?></span>
+        <span><?=Yii::t('app', 'Ticket').' № '.$flight->id;?></span>
         <span><?=$date;?></span>
     </div>
     <div class="col-xs-12 body">
@@ -60,7 +60,7 @@ switch($flight->flight_class){
 
         <div class="field">
             <span class="describe"><?=Yii::t('app', 'Depart city to');?> : </span>
-            <span class="value"><?=$flight->departCity->name;?></span>
+            <span class="value"><?=($flight->departCity)?$flight->departCity->name:'---';?></span>
         </div>
         <div class="field">
             <span class="describe"><?=Yii::t('app', 'Since');?> </span>

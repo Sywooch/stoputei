@@ -611,7 +611,7 @@ class TourController extends Controller
                     $response = [
                         'status' => 'ok',
                         'model' => $model,
-                        'tours' => $this->renderAjax('partial/tour-response-list', ['tours' => $tourResponses]),
+                        'tours' => $this->renderAjax('partial/tour-response-list', ['tours' => $tourResponses, 'tour_title' => 'offer']),
                         'count' => count($tourResponses),
                         'stars' => $model->stars
                     ];
@@ -921,7 +921,7 @@ class TourController extends Controller
                     $response = [
                         'status' => 'ok',
                         'action' => 'add',
-                        'tour' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $userFavouriteTour]),
+                        'tour' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $userFavouriteTour, 'tour_title' => 'user-favourites']),
                         'tour_id' => $tour_id,
                         'count' => $userFavourite->find()->where(['user_id' => Yii::$app->user->identity->getId()])->count()
                     ];
@@ -942,6 +942,7 @@ class TourController extends Controller
         if(Yii::$app->request->isAjax) {
             $order_by = Yii::$app->request->getQueryParam('order_by', null);
             $ids = Yii::$app->request->getQueryParam('ids', null);
+            $type = Yii::$app->request->getQueryParam('type', null);
             if(!is_null($order_by)){
                 $query = '';
                 switch($order_by){
@@ -965,7 +966,7 @@ class TourController extends Controller
                     'status' => 'ok',
                     'ids' => Yii::$app->request->get(),
                     'order_by' => $order_by,
-                    'tourList' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $tourList]),
+                    'tourList' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $tourList, 'tour_title' => $type]),
                 ];
             }else{
                 $response = [

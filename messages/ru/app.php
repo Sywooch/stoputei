@@ -98,7 +98,7 @@ return [
     'Club' => 'Club',
     'Room type' => 'Номер',
     'Depart city' => 'Вылет из',
-    'Depart country' => 'Страна вылета',
+    'Depart country' => 'Страна пересадки',
     'Amount of nights' => 'Количество ночей',
     'From' => 'от',
     'Since' => 'с',
@@ -249,6 +249,7 @@ return [
     'Rooms amount' => 'Количество номеров',
     'Airport distance' => 'Расстояние до аэропорта',
     'City centre distance' => 'Расстояние до аэропорта',
-    'Hotel hasn\'t facilities' => 'Список удобств отеля пока не доступен.',
-    'Facilities' => 'Удобства'
+    'Hotel hasn\'t facilities.' => 'Список удобств отеля пока не доступен.',
+    'Facilities' => 'Удобства',
+    'Ticket' => 'Билет'
 ];
