@@ -42,6 +42,24 @@ switch($tour->hotel->star_id){
         $star .= '<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i>';
         break;
 }
+$tour_name = '';
+switch($tour_title){
+    case 'user-favourites':
+        $tour_name .= Yii::t('app', 'Favourite tour');
+        break;
+    case 'user-hot-tour':
+        $tour_name .= Yii::t('app', 'Hot tour');
+        break;
+    case 'my-offer':
+        $tour_name .= Yii::t('app', 'My offer');
+        break;
+    case 'my-hot-tour':
+        $tour_name .= Yii::t('app', 'My hot tour');
+        break;
+    default:
+        $tour_name .= Yii::t('app', 'Offer');
+        break;
+}
 ?>
 <div class="user-tour-wrapper col-xs-12" data-tour-id="<?=$tour->id;?>">
     <div class="col-xs-12 header-info">
@@ -50,7 +68,7 @@ switch($tour->hotel->star_id){
                 <span class="favourite-user-tour glyphicon <?=$favourite_class;?>" data-tour-id="<?=$tour->id;?>"></span>
             </a>
         <?php endif;?>
-        <span class="count"><?=Yii::t('app', 'Offer').' № '.$tour->id;?></span>
+        <span class="count"><?=$tour_name.' № '.$tour->id;?></span>
         <span class="created"><?=$created;?></span>
         <?php if($tour->hotel):?>
             <div class="hotel-title <?=(Yii::$app->user->identity->role == 1)?'tour-full-info-user':'tour-full-info-manager';?>" data-tour-id="<?=$tour->id;?>">

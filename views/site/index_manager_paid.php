@@ -47,14 +47,14 @@ $this->title = 'StoPutei';
                     <?=$this->render('manager-tabs/my-offers',[
                         'ManagerOffersForm' => $ManagerOffersForm,
                         'dropdownDestination' => $destinationDropdown,
-                        'myOffers' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $myOffers]),
+                        'myOffers' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $myOffers, 'tour_title' => 'my-offer']),
                     ]);?>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="my-hot-tours">
                     <?=$this->render('manager-tabs/my-hot-tours',[
                         'ManagerHotTourForm' => $ManagerHotTourForm,
                         'dropdownDestination' => $destinationDropdown,
-                        'myHotTours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $myHotTours]),
+                        'myHotTours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $myHotTours, 'tour_title' => 'my-hot-tour']),
                     ]);?>
                 </div>
             </div>

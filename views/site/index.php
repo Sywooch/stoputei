@@ -27,7 +27,7 @@ $this->title = 'StoPutei';
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="offers">
                     <?=$this->render('user-tabs/offers', [
-                        'tourUserResponse' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $tourUserResponse]),
+                        'tourUserResponse' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $tourUserResponse, 'tour_title' => 'offer']),
                         'destinationDropdown' => $destinationDropdown,
                         'TourOffersForm' => $TourOffersForm,
                         'cityDropdown' => $cityDropdown,
@@ -46,14 +46,14 @@ $this->title = 'StoPutei';
                     <?=$this->render('user-tabs/favourites',[
                         'UserFavouriteForm' => $userFavouriteForm,
                         'destinationDropdown' => $destinationDropdown,
-                        'userFavouriteToursList' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $userFavouriteTours]),
+                        'userFavouriteToursList' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $userFavouriteTours, 'tour_title' => 'user-favourites']),
                     ]);?>
                 </div>
                 <div role="tabpanel" class="tab-pane fade in active" id="hot-tour">
                     <?=$this->render('user-tabs/hot-tour',[
                         'UserHotTourForm' => $UserHotTourForm,
                         'destinationDropdown' => $destinationDropdown,
-                        'userHotToursList' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $userHotTours]),
+                        'userHotToursList' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $userHotTours, 'tour_title' => 'user-hot-tour']),
                     ]);?>
                 </div>
             </div>

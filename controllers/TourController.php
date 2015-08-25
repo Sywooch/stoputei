@@ -739,7 +739,7 @@ class TourController extends Controller
                 if($managerOffers){
                     $response = [
                         'status' => 'ok',
-                        'tours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $managerOffers]),
+                        'tours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $managerOffers, 'tour_title' => 'my-offer']),
                         'count' => count($managerOffers)
                     ];
                 }else{
@@ -786,7 +786,7 @@ class TourController extends Controller
                 if($managerOffers){
                     $response = [
                         'status' => 'ok',
-                        'tours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $managerOffers]),
+                        'tours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $managerOffers, 'tour_title' => 'my-hot-tour']),
                         'count' => count($managerOffers)
                     ];
                 }else{
@@ -830,7 +830,7 @@ class TourController extends Controller
                 if($userHotTours){
                     $response = [
                         'status' => 'ok',
-                        'tours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $userHotTours]),
+                        'tours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $userHotTours, 'tour_title' => 'user-hot-tour']),
                         'count' => count($userHotTours)
                     ];
                 }else{
@@ -875,7 +875,7 @@ class TourController extends Controller
                 if($userFavouriteTours){
                     $response = [
                         'status' => 'ok',
-                        'tours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $userFavouriteTours]),
+                        'tours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $userFavouriteTours, 'tour_title' => 'user-favourites']),
                         'count' => count($userFavouriteTours)
                     ];
                 }else{
