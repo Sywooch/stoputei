@@ -14,6 +14,7 @@ class ManagerHotTourForm extends Model
     public $resort;
     public $hotel;
     public $hotel_id;
+    public $id;
 
     /**
      * @return array the validation rules.
@@ -21,7 +22,7 @@ class ManagerHotTourForm extends Model
     public function rules()
     {
         return [
-            [['destination', 'resort', 'hotel_id'], 'default', 'value' => null]
+            [['destination', 'resort', 'hotel_id', 'id'], 'default', 'value' => null]
         ];
     }
 
@@ -31,6 +32,7 @@ class ManagerHotTourForm extends Model
             'destination' => Yii::t('app', 'Destination'),
             'resort' => Yii::t('app', 'Resort'),
             'hotel' => Yii::t('app', 'Hotel'),
+            'id' => Yii::t('app', 'Tour\s number'),
         ];
     }
 }

@@ -37,4 +37,23 @@ $(function(){
             }
         });
     }
+
+
+    $(document).on('input', '#managerhottourform-id', function(){
+        var tour_id = $(this).val();
+        var url = $('.ajax-get-manager-hot-tours-list-by-id').attr('href');
+        $('.manager-hot-tours .loader-bg').removeClass('hide');
+        $.get(url, {'tour_id': tour_id}).done(function(response){
+            var data = $.parseJSON(response);
+            $('.manager-hot-tours .loader-bg').addClass('hide');
+            console.log(data.model);
+            if(data.status == 'ok') {
+                $('#manager-hot-tours-response .list-data').html(data.tours);
+                $('.offers-tab.tab-badge.manager-hot-tours').text(data.count);
+            }else{
+                $('#manager-hot-tours-response .list-data').html(data.message);
+                $('.offers-tab.tab-badge.manager-hot-tours').text(data.count);
+            }
+        });
+    });
 });

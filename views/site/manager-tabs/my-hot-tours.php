@@ -23,9 +23,7 @@ use yii\helpers\Url;
 
                 <?= $form->field($ManagerHotTourForm, 'resort')->dropDownList([],['prompt' => Yii::t('app','All resorts')]);?>
 
-                <?= $form->field($ManagerHotTourForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 manager-hot-tour-response">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-manager-hot-tour"></i></div><div class="col-xs-11 col-xs-offset-1">{error}</div>'])->input('text') ?>
-
-                <?= $form->field($ManagerHotTourForm, 'hotel_id')->dropDownList([], ['multiple' => true])->label('');?>
+                <?= $form->field($ManagerHotTourForm, 'id');?>
 
                 <?php ActiveForm::end();?>
             </div>

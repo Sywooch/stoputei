@@ -576,18 +576,6 @@ class TourController extends Controller
         if(Yii::$app->request->isAjax) {
             if ($model->load(Yii::$app->request->get())) {
                 $query = [];
-                /*if(!empty($model->destination)){
-                    $query['country_id'] = $model->destination;
-                }
-                if(!empty($model->resort)){
-                    $query['city_id'] = $model->resort;
-                }
-                if($model->night_count != 0){
-                    $query['night_count'] = $model->night_count;
-                }
-                if(!empty($model->depart_city)){
-                    $query['depart_city_there'] = $model->depart_city;
-                }*/
                 if(!empty($model->destination)){
                     $query['country_id'] = $model->destination;
                 }
@@ -998,5 +986,79 @@ class TourController extends Controller
         }
         echo Json::encode($response);
         Yii::$app->end();
+    }
+
+    public function actionAjaxGetManagerOffersListById(){
+        if(Yii::$app->request->isAjax) {
+            $tour_id = Yii::$app->request->getQueryParam('tour_id', null);
+            if(!is_null($tour_id)){
+                if($tour_id != '') {
+                    $tourList = TourResponse::find()->where(['manager_id' => Yii::$app->user->identity->getId(), 'is_hot_tour' => 0])->andWhere(['OR like', 'id', $tour_id, false])->all();
+                }else{
+                    $tourList = TourResponse::find()->where(['manager_id' => Yii::$app->user->identity->getId(), 'is_hot_tour' => 0])->all();
+                }
+                if($tourList) {
+                    $response = [
+                        'status' => 'ok',
+                        'tours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $tourList, 'tour_title' => 'my-offer']),
+                        'message' => Yii::t('app', 'Tour was found.'),
+                        'count' => count($tourList)
+                    ];
+                }else{
+                    $response = [
+                        'status' => 'error',
+                        'tours' => '',
+                        'message' => Yii::t('app', 'Tour was not found.'),
+                        'count' => 0
+                    ];
+                }
+            }else{
+                $response = [
+                    'status' => 'error',
+                    'tours' => '',
+                    'message' => Yii::t('app', 'Tour was not found.'),
+                    'count' => 0
+                ];
+            }
+            echo Json::encode($response);
+            Yii::$app->end();
+        }
+    }
+
+    public function actionAjaxGetManagerHotToursListById(){
+        if(Yii::$app->request->isAjax) {
+            $tour_id = Yii::$app->request->getQueryParam('tour_id', null);
+            if(!is_null($tour_id)){
+                if($tour_id != '') {
+                    $tourList = TourResponse::find()->where(['manager_id' => Yii::$app->user->identity->getId(), 'is_hot_tour' => 1])->andWhere(['OR like', 'id', $tour_id, false])->all();
+                }else{
+                    $tourList = TourResponse::find()->where(['manager_id' => Yii::$app->user->identity->getId(), 'is_hot_tour' => 1])->all();
+                }
+                if($tourList) {
+                    $response = [
+                        'status' => 'ok',
+                        'tours' => $this->renderAjax('//tour/partial/tour-response-list', ['tours' => $tourList, 'tour_title' => 'my-hot-tour']),
+                        'message' => Yii::t('app', 'Tour was found.'),
+                        'count' => count($tourList)
+                    ];
+                }else{
+                    $response = [
+                        'status' => 'error',
+                        'tours' => '',
+                        'message' => Yii::t('app', 'Tour was not found.'),
+                        'count' => 0
+                    ];
+                }
+            }else{
+                $response = [
+                    'status' => 'error',
+                    'tours' => '',
+                    'message' => Yii::t('app', 'Tour was not found.'),
+                    'count' => 0
+                ];
+            }
+            echo Json::encode($response);
+            Yii::$app->end();
+        }
     }
 }
