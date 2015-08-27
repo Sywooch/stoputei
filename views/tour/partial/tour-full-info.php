@@ -323,7 +323,7 @@ if($tour->to_date) {
                 </div>
                 <br>
 
-                <?php if($tour->add_payment == 1):?>
+                <?php if(($tour->visa) != 0 or ($tour->oil_tax != 0)):?>
                     <div>
                         <span class="field"><?=Yii::t('app', 'Visa');?> : </span>
                         <span class="value"><?=$tour->visa;?></span>
