@@ -14,6 +14,7 @@ use yii\helpers\Url;
                 'id' => 'manager-hot-tour-create-form',
                 'action' => Url::toRoute(['tour/create-hot-tour-manager']),
                 'options' => ['class' => 'form-horizontal'],
+                'enableClientValidation' => false,
                 'fieldConfig' => [
                     'template' => "{label}\n<div class=\"col-xs-11 col-xs-offset-1 \">{input}</div>\n<div class=\"col-xs-11 col-xs-offset-1\">{error}</div>",
                     'labelOptions' => ['class' => 'col-xs-11 col-xs-offset-1 control-label label-get-tour'],
@@ -133,21 +134,21 @@ use yii\helpers\Url;
             <?= $form->field($CreateHotTourForm, 'nutrition')->radioList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){
-                        $span = Html::tag('span', Yii::t('app','Any nutrition'), ['class' => 'type-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Any nutrition')]);
-                    }elseif($value == 1){
                         $span = Html::tag('span', Yii::t('app','RO'), ['class' => 'type-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Room only')]);
-                    }elseif($value == 2){
+                    }elseif($value == 1){
                         $span = Html::tag('span', Yii::t('app','BB'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Bed & Breakfast')]);
-                    }elseif($value == 3){
+                    }elseif($value == 2){
                         $span = Html::tag('span', Yii::t('app','HB'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Half Board (Breakfast and Dinner normally)')]);
-                    }elseif($value == 4){
+                    }elseif($value == 3){
                         $span = Html::tag('span', Yii::t('app','HB+'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Half Board plus')]);
-                    }elseif($value == 5){
+                    }elseif($value == 4){
                         $span = Html::tag('span', Yii::t('app','FB+'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Full Board plus')]);
-                    }elseif($value == 6){
+                    }elseif($value == 5){
                         $span = Html::tag('span', Yii::t('app','AL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'All Inclusive')]);
-                    }elseif($value == 7){
+                    }elseif($value == 6){
                         $span = Html::tag('span', Yii::t('app','UAL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Ultra All Inclusive')]);
+                    }elseif($value == 7){
+                        $span = Html::tag('span', Yii::t('app','SAL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Soft All Inclusive')]);
                     }
                     $checkbox = Html::radio($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);
@@ -168,11 +169,9 @@ use yii\helpers\Url;
                     $checkbox = Html::radio($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);
                 }]);?>
-            <?= $form->field($CreateHotTourForm, 'room_type')->radioList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => '', 8 => '', 9 => '', 10 => '', 11 => '', 12 => ''],
+            <?= $form->field($CreateHotTourForm, 'room_type')->radioList([1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => '', 8 => '', 9 => '', 10 => '', 11 => '', 12 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
-                    if($value == 0){
-                        $span = Html::tag('span', Yii::t('app','Any type'), ['class' => 'type-name']);
-                    }elseif($value == 1){
+                    if($value == 1){
                         $span = Html::tag('span', Yii::t('app','Standart'), ['class' => 'type-name']);
                     }elseif($value == 2){
                         $span = Html::tag('span', Yii::t('app','Family'), ['class' => 'line-name']);
@@ -201,16 +200,18 @@ use yii\helpers\Url;
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);
                 }]);?>
 
-            <?= $form->field($CreateHotTourForm, 'hotel_type')->radioList([0 => '', 1 => '', 2 => '', 3 => ''],
+            <?= $form->field($CreateHotTourForm, 'hotel_type')->radioList([0 => '', 1 => '', 2 => '', 3 => '', 4 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){
                         $span = Html::tag('span', Yii::t('app','Teen'), ['class' => 'type-name']);
                     }elseif($value == 1){
-                        $span = Html::tag('span', Yii::t('app','Family'), ['class' => 'line-name']);
+                        $span = Html::tag('span', Yii::t('app','Family type'), ['class' => 'line-name']);
                     }elseif($value == 2){
                         $span = Html::tag('span', Yii::t('app','Urban'), ['class' => 'line-name']);
                     }elseif($value == 3){
                         $span = Html::tag('span', Yii::t('app','Health'), ['class' => 'line-name']);
+                    }elseif($value == 4){
+                        $span = Html::tag('span', Yii::t('app','For everyone'), ['class' => 'line-name']);
                     }
                     $checkbox = Html::radio($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
@@ -235,7 +236,7 @@ use yii\helpers\Url;
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);
                 }]);?>
 
-            <?= $form->field($CreateHotTourForm, 'room_view')->radioList([0 => '', 1 => '', 2 => '', 3 => ''],
+            <?= $form->field($CreateHotTourForm, 'room_view')->radioList([0 => '', 1 => '', 2 => '', 3 => '', 4 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){
                         $span = Html::tag('span', Yii::t('app','Land view'), ['class' => 'type-name']);
@@ -245,13 +246,13 @@ use yii\helpers\Url;
                         $span = Html::tag('span', Yii::t('app','Pool view'), ['class' => 'line-name']);
                     }elseif($value == 3){
                         $span = Html::tag('span', Yii::t('app','Garden view'), ['class' => 'line-name']);
+                    }elseif($value == 4){
+                        $span = Html::tag('span', Yii::t('app','Other view'), ['class' => 'line-name']);
                     }
                     $checkbox = Html::radio($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
                 }]);?>
             <?= $form->field($CreateHotTourForm, 'adult_amount')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => 1]);?>
-            <?= $form->field($CreateHotTourForm, 'children_under_12_amount')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => '']);?>
-            <?= $form->field($CreateHotTourForm, 'children_under_2_amount')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => '']);?>
             <?= $form->field($CreateHotTourForm, 'room_count')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => '']);?>
             <?= $form->field($CreateHotTourForm, 'flight_included')->checkbox();?>
 
@@ -307,6 +308,17 @@ use yii\helpers\Url;
                     $checkbox = Html::radio($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
                 }]);?>
+
+            <?= $form->field($CreateHotTourForm, 'deadline')->widget(\yii\jui\DatePicker::classname(), [
+                'language' => Yii::$app->language,
+                'dateFormat' => 'yyyy-MM-dd',
+                'options' => [
+                    'placeholder' =>  Yii::t('app', date('Y-M-d')),
+                    'id' => 'deadline_tour'
+                ]
+            ]) ?>
+
+
             <?php $CreateHotTourForm->medicine_insurance = 1;?>
             <?= $form->field($CreateHotTourForm, 'medicine_insurance')->checkbox();?>
             <?= $form->field($CreateHotTourForm, 'charge_manager')->checkbox();?>

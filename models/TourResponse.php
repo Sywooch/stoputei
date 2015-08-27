@@ -112,8 +112,6 @@ class TourResponse extends ActiveRecord
 
     public static function getRoomName($room){
         switch($room){
-            case 0:
-                return \Yii::t('app', 'Any type');
             case 1:
                 return \Yii::t('app', 'Standart');
             case 2:
@@ -153,6 +151,8 @@ class TourResponse extends ActiveRecord
                 return \Yii::t('app', 'Urban');
             case 3:
                 return \Yii::t('app', 'Health');
+            case 4:
+                return \Yii::t('app', 'For everyone');
             default:
                 return \Yii::t('app', 'Any type');
         }
@@ -168,6 +168,8 @@ class TourResponse extends ActiveRecord
                 return \Yii::t('app', 'Pool view');
             case 3:
                 return \Yii::t('app', 'Garden view');
+            case 4:
+                return \Yii::t('app', 'Other view');
             default:
                 return \Yii::t('app', 'Any type');
         }

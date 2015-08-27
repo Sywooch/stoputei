@@ -252,5 +252,7 @@ return [
     'Hotel hasn\'t facilities.' => 'Список удобств отеля пока не доступен.',
     'Facilities' => 'Удобства',
     'Ticket' => 'Билет',
-    'Tour\s number' => 'Номер тура'
+    'Tour\s number' => 'Номер тура',
+    'For everyone' => 'Подойдет всем',
+    'Tour\'s deadline' => 'Тур актуален до'
 ];

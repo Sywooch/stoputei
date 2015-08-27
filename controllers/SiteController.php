@@ -82,14 +82,14 @@ class SiteController extends Controller
                 $city = new City();
                 $flightsUserResponse = FlightResponse::find()->where([
                     'user_id' => Yii::$app->user->identity->getId()
-                ])->all();
+                ])->orderBy('created_at DESC')->all();
                 $tourUserResponse = TourResponse::find()->where([
                     'user_id' => Yii::$app->user->identity->getId()
-                ])->all();
+                ])->orderBy('created_at DESC')->all();
                 $userHotTours = TourResponse::find()->where([
                     'region_manager_id' => Yii::$app->user->identity->region_id,
                     'is_hot_tour' => 1
-                ])->all();
+                ])->orderBy('created_at DESC')->all();
                 $userFavouritesIds = Yii::$app->user->identity->favourites;
                 $favouritesIds = [];
                 foreach($userFavouritesIds as $one){
@@ -133,18 +133,18 @@ class SiteController extends Controller
                     $departCountryDropdown = $country->destinationDropdown(\Yii::$app->params['depart_countries']);
                     $userTours = UserTour::find()->where([
                         'region_owner_id' => Yii::$app->user->identity->region_id
-                    ])->all();
+                    ])->orderBy('created_at DESC')->all();
                     $userFlights = UserFlight::find()->where([
                         'region_owner_id' => Yii::$app->user->identity->region_id
-                    ])->all();
+                    ])->orderBy('created_at DESC')->all();
                     $myOffers = TourResponse::find()->where([
                         'manager_id' => Yii::$app->user->identity->getId(),
                         'is_hot_tour' => 0
-                    ])->all();
+                    ])->orderBy('created_at DESC')->all();
                     $myHotTours = TourResponse::find()->where([
                         'manager_id' => Yii::$app->user->identity->getId(),
                         'is_hot_tour' => 1
-                    ])->all();
+                    ])->orderBy('created_at DESC')->all();
                     return $this->render('index_manager_paid',
                         [
                             'email' => Yii::$app->user->identity->email,

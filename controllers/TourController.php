@@ -469,6 +469,7 @@ class TourController extends Controller
                 $tourResponse->visa = $model->visa;
                 $tourResponse->oil_tax = $model->oil_tax;
                 $tourResponse->tickets_exist = $model->tickets_exist;
+                $tourResponse->deadline = $model->deadline;
                 $tourResponse->medicine_insurance = $model->medicine_insurance;
                 $tourResponse->charge_manager = $model->charge_manager;
                 $tourResponse->tour_cost = $model->tour_cost;
@@ -653,6 +654,7 @@ class TourController extends Controller
                 $tourResponse->visa = $model->visa;
                 $tourResponse->oil_tax = $model->oil_tax;
                 $tourResponse->tickets_exist = $model->tickets_exist;
+                $tourResponse->deadline = $model->deadline;
                 $tourResponse->medicine_insurance = $model->medicine_insurance;
                 $tourResponse->charge_manager = $model->charge_manager;
                 $tourResponse->tour_cost = $model->tour_cost;
@@ -1055,6 +1057,36 @@ class TourController extends Controller
                     'tours' => '',
                     'message' => Yii::t('app', 'Tour was not found.'),
                     'count' => 0
+                ];
+            }
+            echo Json::encode($response);
+            Yii::$app->end();
+        }
+    }
+
+    public function actionRemoveHotTour(){
+        if(Yii::$app->request->isAjax) {
+            $tour_id = Yii::$app->request->getQueryParam('tour_id', null);
+            if(!is_null($tour_id)){
+                if(TourResponse::findOne($tour_id)->delete()) {
+                    $response = [
+                        'status' => 'ok',
+                        'message' => Yii::t('app', 'Tour was found.'),
+                        'count' => TourResponse::find()->where([
+                            'manager_id' => Yii::$app->user->identity->getId(),
+                            'is_hot_tour' => 1
+                        ])->count()
+                    ];
+                }else{
+                    $response = [
+                        'status' => 'error',
+                        'message' => Yii::t('app', 'Tour was not found.')
+                    ];
+                }
+            }else{
+                $response = [
+                    'status' => 'error',
+                    'message' => Yii::t('app', 'Tour was not found.')
                 ];
             }
             echo Json::encode($response);

@@ -70,6 +70,11 @@ switch($tour_title){
         <?php endif;?>
         <span class="count"><?=$tour_name.' № '.$tour->id;?></span>
         <span class="created"><?=$created;?></span>
+        <?php if($tour_title == 'my-hot-tour'):?>
+            <a href="<?=\yii\helpers\Url::to(['tour/remove-hot-tour', 'tour_id' => $tour->id]);?>" class="remove-hot-tour" data-tour-id="<?=$tour->id;?>">
+                <span class="glyphicon glyphicon-trash"></span>
+            </a>
+        <?php endif;?>
         <?php if($tour->hotel):?>
             <div class="hotel-title <?=(Yii::$app->user->identity->role == 1)?'tour-full-info-user':'tour-full-info-manager';?>" data-tour-id="<?=$tour->id;?>">
                 <?=$tour->hotel->name;?>

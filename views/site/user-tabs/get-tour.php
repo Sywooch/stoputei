@@ -13,6 +13,7 @@ use dosamigos\datepicker\DatePicker;
         <div class="col-md-4 filter tour-container overflow-list">
             <?php $form = ActiveForm::begin([
                 'id' => 'get-tour-form',
+                'enableClientValidation' => false,
                 'action' => Url::toRoute(['tour/submit-tour-user']),
                 'options' => ['class' => 'form-horizontal'],
                 'fieldConfig' => [

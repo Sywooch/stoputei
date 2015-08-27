@@ -56,4 +56,20 @@ $(function(){
             }
         });
     });
+
+    $(document).on('click', '#manager-hot-tours-response .remove-hot-tour', function(e){
+        e.preventDefault();
+        var tour_id = $(this).attr('data-tour-id');
+        var url = $(this).attr('href');
+        $('.remove-hot-tour[data-tour-id="'+tour_id+'"]').replaceWith('<img src="/images/loader.gif" class="replace-loader remove-hot-tour">');
+        $.post(url).done(function(response){
+            var data = $.parseJSON(response);
+            if(data.status == 'ok'){
+                $('#manager-hot-tours-response .user-tour-wrapper[data-tour-id="'+tour_id+'"]').fadeOut('slow');
+                $('.offers-tab.tab-badge.manager-hot-tours').text(data.count);
+            }else{
+                alert(data.message);
+            }
+        });
+    })
 });

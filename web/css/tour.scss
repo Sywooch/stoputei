@@ -66,6 +66,15 @@
         height: 20px;
         position: absolute;
         margin-left: -22px;
+        &.remove-hot-tour{
+          margin-left: 0px;
+        }
+      }
+      .remove-hot-tour{
+        position: absolute;
+        right: -10px;
+        color: $red;
+        font-size: 1.2em;
       }
     }
 
@@ -249,20 +258,24 @@
         }
       }
     }
-    .testimonial{
-      margin-bottom: 15px;
-      border: $light-grey-border;
-      .header{
-        background: $grey;
-        .date{
-          color: #ffffff;
-          float: right;
+    #testimonials {
+      overflow-y: scroll;
+      max-height: 300px;
+      .testimonial {
+        margin-bottom: 15px;
+        border: $light-grey-border;
+        .header {
+          background: $grey;
+          .date {
+            color: #ffffff;
+            float: right;
+          }
         }
-      }
-      .body{
-        font-size: 0.85em;
-        line-height: 12px;
-        text-align: justify;
+        .body {
+          font-size: 0.85em;
+          line-height: 12px;
+          text-align: justify;
+        }
       }
     }
 

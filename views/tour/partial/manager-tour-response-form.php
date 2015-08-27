@@ -162,11 +162,9 @@ use yii\helpers\Url;
         $checkbox = Html::radio($name, $checked, ['value' => $value]);
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);
     }]);?>
-<?= $form->field($CreateTourForm, 'room_type')->radioList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => '', 8 => '', 9 => '', 10 => '', 11 => '', 12 => ''],
+<?= $form->field($CreateTourForm, 'room_type')->radioList([1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => '', 8 => '', 9 => '', 10 => '', 11 => '', 12 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
-        if($value == 0){
-            $span = Html::tag('span', Yii::t('app','Any type'), ['class' => 'type-name']);
-        }elseif($value == 1){
+        if($value == 1){
             $span = Html::tag('span', Yii::t('app','Standart'), ['class' => 'type-name']);
         }elseif($value == 2){
             $span = Html::tag('span', Yii::t('app','Family'), ['class' => 'line-name']);
@@ -195,16 +193,18 @@ use yii\helpers\Url;
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);
     }]);?>
 
-<?= $form->field($CreateTourForm, 'hotel_type')->radioList([0 => '', 1 => '', 2 => '', 3 => ''],
+<?= $form->field($CreateTourForm, 'hotel_type')->radioList([0 => '', 1 => '', 2 => '', 3 => '', 4 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
         if($value == 0){
             $span = Html::tag('span', Yii::t('app','Teen'), ['class' => 'type-name']);
         }elseif($value == 1){
-            $span = Html::tag('span', Yii::t('app','Family'), ['class' => 'line-name']);
+            $span = Html::tag('span', Yii::t('app','Family type'), ['class' => 'line-name']);
         }elseif($value == 2){
             $span = Html::tag('span', Yii::t('app','Urban'), ['class' => 'line-name']);
         }elseif($value == 3){
             $span = Html::tag('span', Yii::t('app','Health'), ['class' => 'line-name']);
+        }elseif($value == 4){
+            $span = Html::tag('span', Yii::t('app','For everyone'), ['class' => 'line-name']);
         }
         $checkbox = Html::radio($name, $checked, ['value' => $value]);
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
@@ -230,7 +230,7 @@ use yii\helpers\Url;
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);
     }]);?>
 
-<?= $form->field($CreateTourForm, 'room_view')->radioList([0 => '', 1 => '', 2 => '', 3 => ''],
+<?= $form->field($CreateTourForm, 'room_view')->radioList([0 => '', 1 => '', 2 => '', 3 => '', 4 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
         if($value == 0){
             $span = Html::tag('span', Yii::t('app','Land view'), ['class' => 'type-name']);
@@ -240,6 +240,8 @@ use yii\helpers\Url;
             $span = Html::tag('span', Yii::t('app','Pool view'), ['class' => 'line-name']);
         }elseif($value == 3){
             $span = Html::tag('span', Yii::t('app','Garden view'), ['class' => 'line-name']);
+        }elseif($value == 4){
+            $span = Html::tag('span', Yii::t('app','Other view'), ['class' => 'line-name']);
         }
         $checkbox = Html::radio($name, $checked, ['value' => $value]);
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
