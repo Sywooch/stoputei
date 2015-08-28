@@ -42,8 +42,8 @@ switch($tour->hotel->star_id){
         $star .= '<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i>';
         break;
 }
-$tour_name = '';
-switch($tour_title){
+$tour_name = ($tour->is_hot_tour == 1)?Yii::t('app', 'Hot tour'):Yii::t('app', 'Offer');
+/*switch($tour_title){
     case 'user-favourites':
         $tour_name .= Yii::t('app', 'Favourite tour');
         break;
@@ -59,7 +59,7 @@ switch($tour_title){
     default:
         $tour_name .= Yii::t('app', 'Offer');
         break;
-}
+}*/
 ?>
 <div class="user-tour-wrapper col-xs-12" data-tour-id="<?=$tour->id;?>">
     <div class="col-xs-12 header-info">

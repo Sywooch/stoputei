@@ -51,7 +51,7 @@ use dosamigos\datepicker\DatePicker;
             }]);?>
 
             <!--LETTER FILTER-->
-            <?= $form->field($GetTourForm, 'letter_filter')->checkboxList(['a' => '', 'b' => '', 'c' => '', 'd' => '',
+            <!--<?php echo $form->field($GetTourForm, 'letter_filter')->checkboxList(['a' => '', 'b' => '', 'c' => '', 'd' => '',
                 'e' => '', 'f' => '', 'g' => '', 'h' => '', 'i' => '', 'j' => '', 'k' => '', 'l' => '', 'm' => '', 'n' => '', 'o' => '',
                 'p' => '', 'q' => '', 'r' => '', 's' => '', 't' => '', 'u' => '', 'v' => '', 'w' => '', 'x' => '', 'y' => '', 'z' => '',
                 '1' => '', '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => '', '8' => '', '9' => ''],
@@ -131,7 +131,7 @@ use dosamigos\datepicker\DatePicker;
                     }
                     $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type col-xs-2']);
-                }]);?>
+                }]);?>-->
             <!--END LETTER FILTER-->
 
 
@@ -187,7 +187,8 @@ use dosamigos\datepicker\DatePicker;
                     $checkbox = Html::radio($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
                 }]);?>
-             <?= $form->field($GetTourForm, 'night_max')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => 1]);?>
+             <?= $form->field($GetTourForm, 'night_min')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => 1]);?>
+             <?= $form->field($GetTourForm, 'night_max')->input('number', ['min' => 1, 'max' => 21, 'step' => 1, 'value' => 1]);?>
              <?= $form->field($GetTourForm, 'room_type')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => '', 8 => '', 9 => '', 10 => '', 11 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){
@@ -235,7 +236,7 @@ use dosamigos\datepicker\DatePicker;
                         'autoclose' => true,
                         'format' => 'yyyy-m-d',
                         'todayHighlight' => true,
-                        'startDate' => date('Y-M-d', strtotime('today')),
+                        //'startDate' => date('Y-M-d', strtotime('today')),
                     ]
                 ]);?>
 
@@ -247,7 +248,7 @@ use dosamigos\datepicker\DatePicker;
                         'autoclose' => true,
                         'format' => 'yyyy-m-d',
                         'todayHighlight' => true,
-                        'startDate' => date('Y-M-d', strtotime('+2 days'))
+                        //'startDate' => date('Y-M-d', strtotime('+2 days'))
                     ]
                 ]);?>
 

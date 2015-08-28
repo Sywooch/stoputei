@@ -21,6 +21,7 @@ class GetTourForm extends Model
     public $room_type;
     public $depart_country;
     public $depart_city;
+    public $night_min;
     public $night_max;
     public $adult_amount;
     public $children_under_12_amount;
@@ -39,7 +40,7 @@ class GetTourForm extends Model
     public function rules()
     {
         return [
-            [['destination', 'resort', 'nutrition', 'night_max', 'adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count'], 'required'],
+            [['destination', 'resort', 'nutrition', 'night_min', 'night_max', 'adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count'], 'required'],
             ['add_info', 'string', 'max' => 255],
             ['flight_included', 'boolean'],
             ['hotel_id', 'safe'],
@@ -79,7 +80,8 @@ class GetTourForm extends Model
             'room_type' => Yii::t('app', 'Room type'),
             'depart_city' => Yii::t('app', 'Depart city'),
             'depart_country' => Yii::t('app', 'Depart country'),
-            'night_max' => Yii::t('app', 'Night count'),
+            'night_min' => Yii::t('app', 'Night count min'),
+            'night_max' => Yii::t('app', 'Night count max'),
             'adult_amount' => Yii::t('app', 'Amount of adult'),
             'children_under_12_amount' => Yii::t('app', 'Amount of children (under 12 years old)'),
             'children_under_2_amount' => Yii::t('app', 'Amount of children (under 2 years old)'),

@@ -98,7 +98,8 @@ return [
     'Club' => 'Club',
     'Room type' => 'Номер',
     'Depart city' => 'Вылет из',
-    'Depart country' => 'Страна пересадки',
+    'Depart country' => 'Страна вылета',
+    'Depart country through' => 'Страна пересадки',
     'Amount of nights' => 'Количество ночей',
     'From' => 'от',
     'Since' => 'с',
@@ -254,5 +255,7 @@ return [
     'Ticket' => 'Билет',
     'Tour\s number' => 'Номер тура',
     'For everyone' => 'Подойдет всем',
-    'Tour\'s deadline' => 'Тур актуален до'
+    'Tour\'s deadline' => 'Тур актуален до',
+    'Night count min' => 'Минимальное количество ночей',
+    'Night count max' => 'Максимальное количество ночей',
 ];

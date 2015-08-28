@@ -233,6 +233,7 @@ class TourController extends Controller
                 $userTour->resort_id = $model->resort;
                 $userTour->hotel_id = $model->hotel_id[0];
                 $userTour->depart_city_id = $model->depart_city;
+                $userTour->night_min = $model->night_min;
                 $userTour->night_max = $model->night_max;
                 $userTour->hotel_type = $model->hotel_type;
                 $userTour->adult_amount = $model->adult_amount;
@@ -511,7 +512,7 @@ class TourController extends Controller
             $GetTourForm->flight_included = 1;
             $country = new Country();
             $departCity = new DepartCity();
-            $destinationDropdown = $country->destinationDropdown();
+            $destinationDropdown = $country->destinationDropdown(\Yii::$app->params['depart_countries']);
             $departCityDropdown = $departCity->regionDropdown();
             $departCountryDropdown = $destinationDropdown;
             $response = [
