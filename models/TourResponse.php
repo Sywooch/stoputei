@@ -89,7 +89,7 @@ class TourResponse extends ActiveRecord
             case 7:
                 return \Yii::t('app', 'Soft AL');
             default:
-                return \Yii::t('app', 'Any nutrition');
+                return \Yii::t('app', 'RO');
         }
     }
 
@@ -105,8 +105,6 @@ class TourResponse extends ActiveRecord
                 return \Yii::t('app', 'QTRL');
             default:
                 return \Yii::t('app', 'SGL');
-            default:
-                return \Yii::t('app', 'Any type');
         }
     }
 
@@ -137,7 +135,7 @@ class TourResponse extends ActiveRecord
             case 12:
                 return \Yii::t('app', 'Eco');
             default:
-                return \Yii::t('app', 'Any type');
+                return \Yii::t('app', 'Standart');
         }
     }
 
@@ -171,7 +169,7 @@ class TourResponse extends ActiveRecord
             case 4:
                 return \Yii::t('app', 'Other view');
             default:
-                return \Yii::t('app', 'Any type');
+                return \Yii::t('app', 'Sea view');
         }
     }
 
@@ -191,6 +189,21 @@ class TourResponse extends ActiveRecord
                 return \Yii::t('app', 'Other');
             default:
                 return \Yii::t('app', 'Other');
+        }
+    }
+
+    public static function getExactlyDate($date){
+        switch($date){
+            case 0:
+                return \Yii::t('app', 'Exactly date');
+            case 1:
+                return \Yii::t('app', '+-1 day');
+            case 2:
+                return \Yii::t('app', '+-2 days');
+            case 3:
+                return \Yii::t('app', '+-3 days');
+            default:
+                return \Yii::t('app', '+-3 days');
         }
     }
 }

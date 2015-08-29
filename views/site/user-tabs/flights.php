@@ -40,17 +40,7 @@ use dosamigos\datepicker\DatePicker;
                 ]
             ]);?>
 
-            <?= $form->field($UserFlightForm, 'date_city_to_until')->widget(
-                DatePicker::className(), [
-                'inline' => false,
-                'options' => ['placeholder' => Yii::t('app', date('Y-M-d'))],
-                'clientOptions' => [
-                    'autoclose' => true,
-                    'format' => 'yyyy-m-d',
-                    'todayHighlight' => true,
-                    'startDate' => date('Y-M-d', strtotime('+2 days'))
-                ]
-            ]);?>
+            <?= $form->field($UserFlightForm, 'exactly_date_to_since')->dropDownList([0 => Yii::t('app', 'Exactly date'), 1 => Yii::t('app', '+-1 day'), 2 => Yii::t('app', '+-2 days'), 3 => Yii::t('app', '+-3 days')]);?>
 
             <?= $form->field($UserFlightForm, 'date_city_from_since')->widget(
                 DatePicker::className(), [
@@ -66,21 +56,7 @@ use dosamigos\datepicker\DatePicker;
                     'startDate' => date('Y-M-d', strtotime('today')),
                 ]
             ]);?>
-
-            <?= $form->field($UserFlightForm, 'date_city_from_until')->widget(
-                DatePicker::className(), [
-                'inline' => false,
-                'options' => [
-                    'placeholder' => Yii::t('app', date('Y-M-d')),
-                    'disabled' => true
-                ],
-                'clientOptions' => [
-                    'autoclose' => true,
-                    'format' => 'yyyy-m-d',
-                    'todayHighlight' => true,
-                    'startDate' => date('Y-M-d', strtotime('+2 days'))
-                ]
-            ]);?>
+            <?= $form->field($UserFlightForm, 'exactly_date_from_since')->dropDownList([0 => Yii::t('app', 'Exactly date'), 1 => Yii::t('app', '+-1 day'), 2 => Yii::t('app', '+-2 days'), 3 => Yii::t('app', '+-3 days')]);?>
 
             <?= $form->field($UserFlightForm, 'way_ticket')->radioList([1 => '', 2 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){

@@ -14,9 +14,7 @@ switch($flight->flight_class){
 }
 $flight_way = ($flight->way_ticket == 1)?Yii::t('app', 'One way'):Yii::t('app', 'Two way');
 $date_city_to_since = date('d.m.Y', strtotime($flight->date_city_to_since));
-$date_city_to_until = date('d.m.Y', strtotime($flight->date_city_to_until));
 $date_city_from_since = date('d.m.Y', strtotime($flight->date_city_from_since));
-$date_city_from_until = date('d.m.Y', strtotime($flight->date_city_from_until));
 $flightResponse = new FlightResponse();
 $responseCount = $flightResponse->hasResponse($flight->id);
 ?>
@@ -56,14 +54,14 @@ $responseCount = $flightResponse->hasResponse($flight->id);
             </div>
             <div>
                 <span class="describe"><?=Yii::t('app', 'Since');?> </span><span class="value"><?=$date_city_to_since;?></span>
-                <span class="describe"><?=Yii::t('app', 'Until');?> </span><span class="value"><?=$date_city_to_until;?></span>
+                <span class="value"><?=\app\models\UserFlight::getExactlyDate($flight->exactly_date_to_since);?></span>
             </div>
             <div>
                 <span class="describe"><?=Yii::t('app', 'Depart city from');?> : </span>
             </div>
             <div>
                 <span class="describe"><?=Yii::t('app', 'Since');?> </span><span class="value"><?=$date_city_from_since;?></span>
-                <span class="describe"><?=Yii::t('app', 'Until');?> </span><span class="value"><?=$date_city_from_until;?></span>
+                <span class="value"><?=\app\models\UserFlight::getExactlyDate($flight->exactly_date_from_since);?></span>
             </div>
         </div>
         <div class="col-xs-2 buttons">

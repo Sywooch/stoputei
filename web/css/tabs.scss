@@ -235,6 +235,14 @@
               width: 100%;
               padding: 5px;
             }
+            &.field-gettourform-nights{
+              padding-left: 15px;
+              label{
+                &.nights {
+                  padding: 0px;
+                }
+              }
+            }
           }
           .form-group {
             .checkbox-one {
@@ -378,6 +386,11 @@
           //transition: all $middle-speed ease-in;
           &.show{
             //opacity: 1;
+          }
+          .reload-tour{
+            width: 100px;
+            top: 25%;
+            position: absolute;
           }
         }
       }

@@ -198,6 +198,9 @@ $(function(){
         //clear tour full info in close tab
         $('.full-tour-information:not([data-tab-class="'+tab_class+'"])').empty();
         $('.full-hotel-information:not([data-tab-class="'+tab_class+'"])').empty();
+
+        //reload tab
+        $('.full-tour-information[data-tab-class="'+tab_class+'"]').empty().html('<img src="/images/loader.gif" class="reload-tour"/>');
         $.get(url, {'tour_id' : tour_id}).done(function(response){
             $('.back-to-main-from-tour[data-tab-class="'+tab_class+'"]').addClass('open');
             $('.back-to-main-from-tour[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').removeClass('hide');

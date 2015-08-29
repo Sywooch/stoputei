@@ -29,10 +29,10 @@ class GetTourForm extends Model
     public $room_count;
     public $flight_included;
     public $from_date;
-    public $to_date;
     public $budget;
     public $add_info;
     public $letter_filter;
+    public $exactly_date;
 
     /**
      * @return array the validation rules.
@@ -51,14 +51,13 @@ class GetTourForm extends Model
             ['room_type', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]]],
             ['letter_filter', 'each', 'rule' => ['in', 'range' => ['a', 'b', 'c', 'd']]],
             [['budget', 'night_max'], 'integer'],
-            [['budget', 'hotel_type'], 'default', 'value' => 0],
-            ['from_date', 'compare', 'compareAttribute' => 'to_date', 'operator'=>'<'],
+            [['budget', 'hotel_type', 'exactly_date'], 'default', 'value' => 0],
             ['stars', 'required',  'message' => Yii::t('app','{attribute} must be checked.'), 'when' => function ($model) {
                 return $model->hotel_id == '';
             }, 'whenClient' => "function (attribute, value) {
                 return $('[name=\"GetTourForm[hotel_id]\"]').val() == '';
             }"],
-            [['from_date', 'to_date', 'depart_city'], 'required',  'message' => Yii::t('app','{attribute} can not be blank.'), 'when' => function ($model) {
+            [['from_date', 'depart_city'], 'required',  'message' => Yii::t('app','{attribute} can not be blank.'), 'when' => function ($model) {
                 return $model->flight_included == 1;
             }, 'whenClient' => "function (attribute, value) {
                 return $('[name=\"GetTourForm[flight_included]\"]').val() == 1;
@@ -88,10 +87,10 @@ class GetTourForm extends Model
             'room_count' => Yii::t('app', 'Amount of room'),
             'flight_included' => Yii::t('app', 'Flight included'),
             'from_date' => Yii::t('app', 'Flight to since'),
-            'to_date' => Yii::t('app', 'Flight to until'),
             'budget' => Yii::t('app', 'Budget'),
             'add_info' => Yii::t('app', 'Add information'),
             'letter_filter' => Yii::t('app', 'Letter filter'),
+            'exactly_date' => Yii::t('app', ''),
         ];
     }
 }

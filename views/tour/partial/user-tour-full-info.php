@@ -3,9 +3,6 @@ $date = date(('d.m.Y H:i:s'), $tour->created_at);
 if($tour->from_date) {
     $from_date = date('d.m.Y', strtotime($tour->from_date));
 }
-if($tour->to_date) {
-    $to_date = date('d.m.Y', strtotime($tour->to_date));
-}
 if($tour->hotel_id){
     $hotel_category = '';
     switch($tour->hotel->star_id){
@@ -118,8 +115,7 @@ if(!empty($tour->nutritions)){
             <div class="field">
                 <span class="describe"><?=Yii::t('app', 'Since');?> </span>
                 <span class="value"><?=$from_date;?></span>
-                <span class="describe"><?=Yii::t('app', 'Until');?> </span>
-                <span class="value"><?=$to_date;?></span>
+                <span class="value">(<?=\app\models\UserTour::getExactlyDate($tour->exactly_date);?>)</span>
             </div>
         <?php else :?>
             <div class="field">

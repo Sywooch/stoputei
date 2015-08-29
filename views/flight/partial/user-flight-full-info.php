@@ -1,9 +1,7 @@
 <?php
 $date = date(('d.m.Y H:i:s'), $flight->created_at);
 $date_city_to_since = date('d.m.Y', strtotime($flight->date_city_to_since));
-$date_city_to_until = date('d.m.Y', strtotime($flight->date_city_to_until));
 $date_city_from_since = date('d.m.Y', strtotime($flight->date_city_from_since));
-$date_city_from_until = date('d.m.Y', strtotime($flight->date_city_from_until));
 $flight_way = ($flight->way_ticket == 1)?Yii::t('app', 'One way'):Yii::t('app', 'Two way');
 $flight_class = '';
 switch($flight->flight_class){
@@ -65,8 +63,7 @@ switch($flight->flight_class){
         <div class="field">
             <span class="describe"><?=Yii::t('app', 'Since');?> </span>
             <span class="value"><?=$date_city_to_since;?></span>
-            <span class="describe"><?=Yii::t('app', 'Until');?> </span>
-            <span class="value"><?=$date_city_to_until;?></span>
+            <span class="value">(<?=\app\models\UserFlight::getExactlyDate($flight->exactly_date_to_since);?>)</span>
         </div>
 
         <div class="field">
@@ -75,8 +72,7 @@ switch($flight->flight_class){
         <div class="field">
             <span class="describe"><?=Yii::t('app', 'Since');?> </span>
             <span class="value"><?=$date_city_from_since;?></span>
-            <span class="describe"><?=Yii::t('app', 'Until');?> </span>
-            <span class="value"><?=$date_city_from_until;?></span>
+            <span class="value">(<?=\app\models\UserFlight::getExactlyDate($flight->exactly_date_from_since);?>)</span>
         </div>
 
         <?php if($flight->regular_flight == 1):?>

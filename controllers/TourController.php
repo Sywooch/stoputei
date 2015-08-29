@@ -242,7 +242,7 @@ class TourController extends Controller
                 $userTour->room_count = $model->room_count;
                 $userTour->flight_included = $model->flight_included;
                 $userTour->from_date = $model->from_date;
-                $userTour->to_date = $model->to_date;
+                $userTour->exactly_date = $model->exactly_date;
                 $userTour->budget = $model->budget;
                 $userTour->add_info = $model->add_info;
                 $userTour->owner_id = Yii::$app->user->identity->getId();
@@ -407,7 +407,7 @@ class TourController extends Controller
         if(Yii::$app->request->isAjax) {
             $userTours = UserTour::find()->where([
                 'region_owner_id' => Yii::$app->user->identity->region_id
-            ])->select('id, country_id, resort_id, hotel_id, created_at, adult_amount, children_under_12_amount, children_under_2_amount')->all();
+            ])->select('id, country_id, resort_id, hotel_id, created_at, adult_amount, children_under_12_amount, children_under_2_amount')->orderBy('created_at DESC')->all();
             if ($userTours) {
                 $createTourForm = new CreateTourForm();
                 $response = [
@@ -512,7 +512,8 @@ class TourController extends Controller
             $GetTourForm->flight_included = 1;
             $country = new Country();
             $departCity = new DepartCity();
-            $destinationDropdown = $country->destinationDropdown(\Yii::$app->params['depart_countries']);
+            $destinationCustomDropdown = $country->destinationDropdown(\Yii::$app->params['depart_countries']);
+            $destinationDropdown = $country->destinationDropdown();
             $departCityDropdown = $departCity->regionDropdown();
             $departCountryDropdown = $destinationDropdown;
             $response = [
@@ -522,7 +523,8 @@ class TourController extends Controller
                     'GetTourForm' => $GetTourForm,
                     'departCityDropdown' => $departCityDropdown,
                     'resortDropdown' => [],
-                    'departCountryDropdown' => $departCountryDropdown
+                    'departCountryDropdown' => $departCountryDropdown,
+                    'destinationCustomDropdown' => $destinationCustomDropdown
                 ])
             ];
             echo Json::encode($response);

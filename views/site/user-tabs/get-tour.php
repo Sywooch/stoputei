@@ -187,8 +187,11 @@ use dosamigos\datepicker\DatePicker;
                     $checkbox = Html::radio($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
                 }]);?>
-             <?= $form->field($GetTourForm, 'night_min')->input('number', ['min' => 1, 'max' => 10, 'step' => 1, 'value' => 1]);?>
-             <?= $form->field($GetTourForm, 'night_max')->input('number', ['min' => 1, 'max' => 21, 'step' => 1, 'value' => 1]);?>
+            <div class="form-group field-gettourform-nights">
+                <label class="col-xs-11 col-xs-offset-1 control-label label-get-tour nights"><?=Yii::t('app', 'Night count');?></label>
+                 <?= $form->field($GetTourForm, 'night_min')->dropDownList([1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6, 7 => 7, 8 => 8, 9 => 9, 10 => 10, 11 => 11, 12 => 12, 13 => 13, 14 => 14, 15 => 15, 16 => 16, 17 => 17, 18 => 18, 19 => 19, 20 => 20, 21 => 21]);?>
+                 <?= $form->field($GetTourForm, 'night_max')->dropDownList([1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6, 7 => 7, 8 => 8, 9 => 9, 10 => 10, 11 => 11, 12 => 12, 13 => 13, 14 => 14, 15 => 15, 16 => 16, 17 => 17, 18 => 18, 19 => 19, 20 => 20, 21 => 21]);?>
+             </div>
              <?= $form->field($GetTourForm, 'room_type')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => '', 8 => '', 9 => '', 10 => '', 11 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){
@@ -239,18 +242,7 @@ use dosamigos\datepicker\DatePicker;
                         //'startDate' => date('Y-M-d', strtotime('today')),
                     ]
                 ]);?>
-
-                <?= $form->field($GetTourForm, 'to_date')->widget(
-                    DatePicker::className(), [
-                    'inline' => false,
-                    'options' => ['placeholder' => Yii::t('app', date('Y-M-d'))],
-                    'clientOptions' => [
-                        'autoclose' => true,
-                        'format' => 'yyyy-m-d',
-                        'todayHighlight' => true,
-                        //'startDate' => date('Y-M-d', strtotime('+2 days'))
-                    ]
-                ]);?>
+            <?= $form->field($GetTourForm, 'exactly_date')->dropDownList([0 => Yii::t('app', 'Exactly date'), 1 => Yii::t('app', '+-1 day'), 2 => Yii::t('app', '+-2 days'), 3 => Yii::t('app', '+-3 days')]);?>
 
             <?= $form->field($GetTourForm, 'budget')->input('number', ['min' => 0, 'max' => 99000000, 'step' => 1000, 'value' => '']);?>
 

@@ -35,4 +35,19 @@ class UserFlight extends ActiveRecord
         }
         return false;
     }
+
+    public static function getExactlyDate($date){
+        switch($date){
+            case 0:
+                return \Yii::t('app', 'Exactly date');
+            case 1:
+                return \Yii::t('app', '+-1 day');
+            case 2:
+                return \Yii::t('app', '+-2 days');
+            case 3:
+                return \Yii::t('app', '+-3 days');
+            default:
+                return \Yii::t('app', '+-3 days');
+        }
+    }
 }

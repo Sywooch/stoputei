@@ -28,9 +28,9 @@ class FlightController extends Controller
                 $userFlight->way_ticket = $model->way_ticket;
                 $userFlight->depart_city_id = $model->depart_city;
                 $userFlight->date_city_to_since = $model->date_city_to_since;
-                $userFlight->date_city_to_until = $model->date_city_to_until;
+                $userFlight->exactly_date_to_since = $model->exactly_date_to_since;
                 $userFlight->date_city_from_since = $model->date_city_from_since;
-                $userFlight->date_city_from_until = $model->date_city_from_until;
+                $userFlight->exactly_date_from_since = $model->exactly_date_from_since;
                 $userFlight->adult_count_senior_24 = $model->adult_count_senior_24;
                 $userFlight->adult_count_under_24 = $model->adult_count_under_24;
                 $userFlight->children_under_12_amount = $model->children_under_12_amount;

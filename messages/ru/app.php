@@ -256,6 +256,11 @@ return [
     'Tour\s number' => 'Номер тура',
     'For everyone' => 'Подойдет всем',
     'Tour\'s deadline' => 'Тур актуален до',
-    'Night count min' => 'Минимальное количество ночей',
-    'Night count max' => 'Максимальное количество ночей',
+    'Night count min' => 'от',
+    'Night count max' => 'до',
+    'Tour cost' => 'Стоимость тура',
+    'Exactly date' => 'Точная дата',
+    '+-1 day' => '+-1 день',
+    '+-2 days' => '+-2 дня',
+    '+-3 days' => '+-3 дня'
 ];

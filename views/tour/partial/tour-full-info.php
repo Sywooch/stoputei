@@ -102,7 +102,7 @@ if($tour->to_date) {
         <div class="header col-xs-12">
             <div class="col-xs-6">
                 <span class="offer-number">
-                    <?=Yii::t('app', 'Order').' № '.$tour->id;?>
+                    <?=($tour->is_hot_tour == 1)?Yii::t('app', 'Hot tour'):Yii::t('app', 'Offer');?> № <?=$tour->id;?>
                 </span>
                 <span class="created">
                     <?=$date;?>
@@ -120,6 +120,11 @@ if($tour->to_date) {
                 </span>
                 <span class="rate">
                     <?= Yii::t('app', 'Rate');?> : <?=$tour->hotel->hotel_rate;?>
+                </span>
+            </div>
+            <div class="col-xs-6">
+                <span class="rate">
+                <?=Yii::t('app', 'Tour cost');?> : <?=$tour->tour_cost;?>
                 </span>
             </div>
         </div>
@@ -202,10 +207,6 @@ if($tour->to_date) {
                 <div>
                     <span class="field"><?=Yii::t('app', 'Resort');?> : </span>
                     <span class="value"><?=$tour->city->name;?></span>
-                </div>
-                <div>
-                    <span class="field"><?=Yii::t('app', 'Hotel');?> : </span>
-                    <span class="value"><?=$tour->hotel->name;?></span>
                 </div>
                 <div>
                     <span class="field"><?=Yii::t('app', 'Hotel type');?> : </span>
