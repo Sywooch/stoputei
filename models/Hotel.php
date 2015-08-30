@@ -13,6 +13,10 @@ class Hotel extends ActiveRecord
         return $this->hasMany(UserTour::className(), ['hotel_id' => 'hotel_id']);
     }
 
+    public function getTestimonials(){
+        return $this->hasMany(HotelComment::className(), ['hotel_id' => 'hotel_id']);
+    }
+
     public function getFacilities(){
         return $this->hasMany(Facility::className(), ['id' => 'facility_id'])
             ->viaTable(HotelFacilities::tableName(), ['hotel_id' => 'hotel_id']);

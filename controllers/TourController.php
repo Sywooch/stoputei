@@ -999,9 +999,9 @@ class TourController extends Controller
             $tour_id = Yii::$app->request->getQueryParam('tour_id', null);
             if(!is_null($tour_id)){
                 if($tour_id != '') {
-                    $tourList = TourResponse::find()->where(['manager_id' => Yii::$app->user->identity->getId(), 'is_hot_tour' => 0])->andWhere(['OR like', 'id', $tour_id, false])->all();
+                    $tourList = TourResponse::find()->where(['manager_id' => Yii::$app->user->identity->getId(), 'is_hot_tour' => 0, 'id' => $tour_id])->orderBy('created_at DESC')->all();
                 }else{
-                    $tourList = TourResponse::find()->where(['manager_id' => Yii::$app->user->identity->getId(), 'is_hot_tour' => 0])->all();
+                    $tourList = TourResponse::find()->where(['manager_id' => Yii::$app->user->identity->getId(), 'is_hot_tour' => 0])->orderBy('created_at DESC')->all();
                 }
                 if($tourList) {
                     $response = [
@@ -1036,9 +1036,9 @@ class TourController extends Controller
             $tour_id = Yii::$app->request->getQueryParam('tour_id', null);
             if(!is_null($tour_id)){
                 if($tour_id != '') {
-                    $tourList = TourResponse::find()->where(['manager_id' => Yii::$app->user->identity->getId(), 'is_hot_tour' => 1])->andWhere(['OR like', 'id', $tour_id, false])->all();
+                    $tourList = TourResponse::find()->where(['manager_id' => Yii::$app->user->identity->getId(), 'is_hot_tour' => 1, 'id' => $tour_id])->orderBy('created_at DESC')->all();
                 }else{
-                    $tourList = TourResponse::find()->where(['manager_id' => Yii::$app->user->identity->getId(), 'is_hot_tour' => 1])->all();
+                    $tourList = TourResponse::find()->where(['manager_id' => Yii::$app->user->identity->getId(), 'is_hot_tour' => 1])->orderBy('created_at DESC')->all();
                 }
                 if($tourList) {
                     $response = [

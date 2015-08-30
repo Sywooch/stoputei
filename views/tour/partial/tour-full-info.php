@@ -364,6 +364,9 @@ if($tour->to_date) {
                     <?=$tour->owner->company_name;?>
                 </div>
                 <div class="col-xs-12">
+                    <?=$tour->owner->email;?>
+                </div>
+                <div class="col-xs-12">
                     <?=$tour->owner->company_phone;?>
                 </div>
                 <?php if(!is_null($tour->owner->company_address)):?>

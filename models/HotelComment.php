@@ -9,6 +9,10 @@ class HotelComment extends ActiveRecord
         return 'hotel_comment';
     }
 
+    public function getHotel(){
+        return $this->hasOne(Hotel::className(), ['hotel_id' => 'hotel_id']);
+    }
+
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {

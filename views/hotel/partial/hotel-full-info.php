@@ -177,21 +177,56 @@ if(!empty($photos)){
                 </div>
             </div>
             <div class="col-xs-4">
-                <?php if(!empty($hotel->facilities)):?>
-                    <ul class="hotel-facilities">
-                        <?php foreach($hotel->facilities as $facility):?>
-                            <li>
-                                <i class="glyphicon glyphicon-tag"></i>
-                                <?=$facility->name;?>
-                                <?php if(!empty($facility->hint)):?>
-                                    <span class="hint">
-                                        ( <?=$facility->hint;?> )
-                                    </span>
+                <div class="col-xs-12">
+                    <div>
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs-hotel" role="tablist">
+                            <li role="presentation" class="active col-xs-6"><a href="#testimonials" aria-controls="testimonials" role="tab" data-toggle="tab"><?= Yii::t('app', 'Testimonials');?> (<?=count($hotel->testimonials);?>)</a></li>
+                            <li role="presentation" class="col-xs-6"><a href="#facilities" aria-controls="facilities" role="tab" data-toggle="tab"><?= Yii::t('app', 'Facilities');?> (<?=count($hotel->facilities);?>)</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="testimonials">
+                                <?php if(!empty($hotel->testimonials)):?>
+                                    <?php foreach($hotel->testimonials as $testimonial):?>
+                                        <div class="testimonial">
+                                            <div class="header col-xs-12">
+                                                <span class="name"><?=$testimonial->user_name;?></span>
+                                                <span class="date"><?=$testimonial->start_rest_formatted;?></span>
+                                            </div>
+                                            <div class="body">
+                                                <?= (!empty($testimonial->negative))?$testimonial->negative:$testimonial->positive;?>
+                                            </div>
+                                        </div>
+                                    <?php endforeach;?>
+                                <?php else:?>
+                                    <?= Yii::t('app', 'Testimonials are absent.');?>
                                 <?php endif;?>
-                            </li>
-                        <?php endforeach;?>
-                    </ul>
-                <?php endif;?>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="facilities">
+                                <?php if(!empty($hotel->facilities)):?>
+                                    <ul class="hotel-facilities">
+                                        <?php foreach($hotel->facilities as $facility):?>
+                                            <li>
+                                                <i class="glyphicon glyphicon-tag"></i>
+                                                <?=$facility->name;?>
+                                                <?php if(!empty($facility->hint)):?>
+                                                    <span class="hint">
+                                            ( <?=$facility->hint;?> )
+                                        </span>
+                                                <?php endif;?>
+                                            </li>
+                                        <?php endforeach;?>
+                                    </ul>
+                                <?php else:?>
+                                    <?= Yii::t('app', 'Hotel hasn\'t facilities.');?>
+                                <?php endif;?>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>

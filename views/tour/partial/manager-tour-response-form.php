@@ -17,12 +17,16 @@ use yii\helpers\Url;
 
 <?= $form->field($CreateTourForm, 'resort')->dropDownList($dropdownResort);?>
 
-<?= $form->field($CreateTourForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 create-tour-response">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name-manager"></i></div><div class="col-xs-11 col-xs-offset-1">{error}</div>'])->input('text') ?>
-
+<?php if(!empty($dropdownHotel)):?>
+    <?= $form->field($CreateTourForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 create-tour-response">{input}</div><div class="col-xs-11 col-xs-offset-1">{error}</div>'])->input('text', ['disabled' => "disabled"]) ?>
+<?php else:?>
+    <?= $form->field($CreateTourForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 create-tour-response">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name-manager"></i></div><div class="col-xs-11 col-xs-offset-1">{error}</div>'])->input('text') ?>
+<?php endif;?>
 <?= $form->field($CreateTourForm, 'hotel_id')->dropDownList($dropdownHotel, ['multiple' => true])->label('');?>
 
 <?= $form->field($CreateTourForm, 'hotel_star')->hiddenInput()->label('');?>
 
+<?php if(!empty($dropdownHotel)):?>
 <?= $form->field($CreateTourForm, 'stars')->checkboxList([404 => '', 403 => '', 402 => '', 401 => '', 400 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
         if($value == 404){
@@ -36,9 +40,27 @@ use yii\helpers\Url;
         }elseif($value == 400){
             $span = Html::tag('span', '<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i>', ['class' => 'star']);
         }
-        $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
+        $checkbox = Html::checkbox($name, $checked, ['value' => $value, 'disabled' => 'disabled']);
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox']);
     }]);?>
+<?php else:?>
+    <?= $form->field($CreateTourForm, 'stars')->checkboxList([404 => '', 403 => '', 402 => '', 401 => '', 400 => ''],
+        ['item' => function($index, $label, $name, $checked, $value){
+            if($value == 404){
+                $span = Html::tag('span', '<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i>', ['class' => 'star']);
+            }elseif($value == 403){
+                $span = Html::tag('span', '<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star-empty"></i>', ['class' => 'star']);
+            }elseif($value == 402){
+                $span = Html::tag('span', '<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i>', ['class' => 'star']);
+            }elseif($value == 401){
+                $span = Html::tag('span', '<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i>', ['class' => 'star']);
+            }elseif($value == 400){
+                $span = Html::tag('span', '<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i><i class="glyphicon glyphicon-star-empty"></i>', ['class' => 'star']);
+            }
+            $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
+            return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox']);
+        }]);?>
+<?php endif;?>
 
     <!--LETTER FILTER-->
 <!--<?= $form->field($CreateTourForm, 'letter_filter')->checkboxList(['a' => '', 'b' => '', 'c' => '', 'd' => '',
