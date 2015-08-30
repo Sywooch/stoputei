@@ -203,6 +203,7 @@ return [
     'Date docking (minutes)' => 'Время стыковки (минут)',
     'Date start' => 'Дата вылета',
     'Date end' => 'Дата вылета',
+    'Date end from' => 'Дата вылета обратно',
     'Payment is absent' => 'Отсутствуют',
     'Is absent' => 'Отсутствует',
     'Create one more hot tour' => 'Создать еще один горящий тур',
@@ -262,5 +263,6 @@ return [
     'Exactly date' => 'Точная дата',
     '+-1 day' => '+-1 день',
     '+-2 days' => '+-2 дня',
-    '+-3 days' => '+-3 дня'
+    '+-3 days' => '+-3 дня',
+    'Submit Offer' => 'Отправить предложение'
 ];

@@ -165,7 +165,7 @@ if(!empty($tour->nutritions)){
         <div class="field">
             <span class="describe"><?=Yii::t('app', 'Amount of room');?> : </span>
             <span class="value">
-                <?= $tour->room_count;?>
+                <?= ($tour->room_count == 0)?1:$tour->room_count;?>
             </span>
         </div>
         <?php if(!empty($tour->rooms)):?>
@@ -192,6 +192,9 @@ if(!empty($tour->nutritions)){
 
         <div class="field">
             <span class="describe"><?=Yii::t('app', 'Night count');?> : </span>
+            <span class="describe"><?=Yii::t('app', 'From');?></span>
+            <span class="value"><?=$tour->night_min;?></span>
+            <span class="describe"><?=Yii::t('app', 'To');?> </span>
             <span class="value"><?=$tour->night_max;?></span>
         </div>
 

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\City;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\Json;
@@ -74,11 +75,13 @@ class FlightController extends Controller
                 $ManagerFlightForm = new ManagerFlightForm();
                 $departCity = new DepartCity();
                 $country = new Country();
+                $city = new City();
+                $country_cities = $city->destinationCityDropdown($userFlight->country_id);
                 $dropdownDepartCountry = $country->destinationDropdown();
                 $departCountryDropdown = $country->destinationDropdown(Yii::$app->params['depart_countries']);
                 $departCityDropdown = $departCity->regionDropdown();
                 $dropdownDestination = [$userFlight->country_id => $userFlight->country->name];
-                $dropdownResort = [$userFlight->city_id => $userFlight->city->name];
+                $dropdownResort = $country_cities;
                 $ManagerFlightForm->user_id = $userFlight->owner_id;
                 $ManagerFlightForm->from_flight_id = $userFlight->id;
                 $ManagerFlightForm->voyage_is_direct_to = 1;

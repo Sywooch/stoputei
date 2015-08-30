@@ -41,7 +41,7 @@ use yii\helpers\Url;
     }]);?>
 
     <!--LETTER FILTER-->
-<?= $form->field($CreateTourForm, 'letter_filter')->checkboxList(['a' => '', 'b' => '', 'c' => '', 'd' => '',
+<!--<?= $form->field($CreateTourForm, 'letter_filter')->checkboxList(['a' => '', 'b' => '', 'c' => '', 'd' => '',
     'e' => '', 'f' => '', 'g' => '', 'h' => '', 'i' => '', 'j' => '', 'k' => '', 'l' => '', 'm' => '', 'n' => '', 'o' => '',
     'p' => '', 'q' => '', 'r' => '', 's' => '', 't' => '', 'u' => '', 'v' => '', 'w' => '', 'x' => '', 'y' => '', 'z' => '',
     '1' => '', '2' => '', '3' => '', '4' => '', '5' => '', '6' => '', '7' => '', '8' => '', '9' => ''],
@@ -121,7 +121,7 @@ use yii\helpers\Url;
         }
         $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type col-xs-2']);
-    }]);?>
+    }]);?>-->
     <!--END LETTER FILTER-->
 
 <?= $form->field($CreateTourForm, 'nutrition')->radioList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => ''],
@@ -250,12 +250,12 @@ use yii\helpers\Url;
 <?= $form->field($CreateTourForm, 'adult_amount')->input('text', ['class' => 'form-control disabled']);?>
 <?= $form->field($CreateTourForm, 'children_under_12_amount')->input('text', ['class' => 'form-control disabled']);?>
 <?= $form->field($CreateTourForm, 'children_under_2_amount')->input('text', ['class' => 'form-control disabled']);?>
-<?= $form->field($CreateTourForm, 'room_count')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => $CreateTourForm->room_count]);?>
+<?= $form->field($CreateTourForm, 'room_count')->dropDownList([1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6, 7 => 7, 8 => 8, 9 => 9, 10 => 10, 11 => 11, 12 => 12, 13 => 13, 14 => 14, 15 => 15, 16 => 16, 17 => 17, 18 => 18, 19 => 19, 20 => 20, 21 => 21]);?>
 <?= $form->field($CreateTourForm, 'flight_included')->checkbox(['disabled' => true]);?>
 
 <div class="flight-included <?=($CreateTourForm->flight_included==0)?'hide':'';?>">
-    <?= $form->field($CreateTourForm, 'depart_country_there')->dropDownList($dropdownDestination);?>
-    <?= $form->field($CreateTourForm, 'depart_city_there')->dropDownList($destinationCityDropdown);?>
+    <!--<?= $form->field($CreateTourForm, 'depart_country_there')->dropDownList($dropdownDestination);?>
+    <?= $form->field($CreateTourForm, 'depart_city_there')->dropDownList($destinationCityDropdown);?>-->
     <?= $form->field($CreateTourForm, 'from_date')->widget(
         \dosamigos\datepicker\DatePicker::className(), [
         'inline' => false,
@@ -269,10 +269,10 @@ use yii\helpers\Url;
     ]);?>
 
     <?= $form->field($CreateTourForm, 'voyage_there')->checkbox();?>
-    <div class="voyage_through_there">
+    <!--<div class="voyage_through_there">
         <?= $form->field($CreateTourForm, 'voyage_through_city_there')->dropDownList($departCityThereDropdown);?>
     </div>
-    <?= $form->field($CreateTourForm, 'depart_city_from_there')->dropDownList($dropdownResort);?>
+    <?= $form->field($CreateTourForm, 'depart_city_from_there')->dropDownList($dropdownResort);?>-->
 
     <?= $form->field($CreateTourForm, 'to_date')->widget(
         \dosamigos\datepicker\DatePicker::className(), [
@@ -286,9 +286,9 @@ use yii\helpers\Url;
         ]
     ]);?>
     <?= $form->field($CreateTourForm, 'voyage_from_there')->checkbox();?>
-    <div class="voyage_through_from_there">
+    <!--<div class="voyage_through_from_there">
         <?= $form->field($CreateTourForm, 'voyage_through_city_from_there')->dropDownList($destinationCityDropdown);?>
-    </div>
+    </div>-->
 </div>
 
     <div>
@@ -320,7 +320,7 @@ use yii\helpers\Url;
 
 <div class="form-group">
     <div class="col-xs-11 col-xs-offset-1">
-        <?= Html::submitButton(Yii::t('app','Create a tour'), ['class' => 'btn btn-success col-xs-12', 'name' => 'create-tour-button', 'id' => 'create-tour-response']) ?>
+        <?= Html::submitButton(Yii::t('app','Submit Offer'), ['class' => 'btn btn-success col-xs-12', 'name' => 'create-tour-button', 'id' => 'create-tour-response']) ?>
     </div>
 </div>
 

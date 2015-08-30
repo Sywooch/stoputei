@@ -356,6 +356,7 @@ class TourController extends Controller
                 $createTourForm->from_tour_id = $userTour->id;
                 $createTourForm->flight_included = $userTour->flight_included;
                 $createTourForm->adult_amount = $userTour->adult_amount;
+                $createTourForm->room_count = $userTour->room_count;
                 $createTourForm->children_under_12_amount = $userTour->children_under_12_amount;
                 $createTourForm->children_under_2_amount = $userTour->children_under_2_amount;
                 $destinationCityDropdown = $city->destinationCityDropdown($userTour->country_id);

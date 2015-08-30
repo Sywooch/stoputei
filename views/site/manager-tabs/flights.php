@@ -11,7 +11,7 @@ use yii\helpers\Url;
         <div class="col-md-8 manager-flight-container overflow-list">
             <div class="loader-bg hide"><img src="/images/loader.gif"></div>
             <div id="manager-flight-response">
-                <?= Html::dropDownList('order-flight-list', 'id', [
+                <!--<?= Html::dropDownList('order-flight-list', 'id', [
                     //'a-to-z' => Yii::t('app','From A to Z'),
                     //'z-to-a' => Yii::t('app','From Z to A'),
                     '' => Yii::t('app','Order by'),
@@ -19,7 +19,7 @@ use yii\helpers\Url;
                     //'expensive-to-cheap' => Yii::t('app','From expensive to cheap'),
                     'new-to-old' => Yii::t('app','From new to old'),
                     'old-to-new' => Yii::t('app','From old to new')
-                ], ['class' => 'form-control col-xs-7 order-list']) ?>
+                ], ['class' => 'form-control col-xs-7 order-list']) ?>-->
                 <div class="list-data">
                     <?=$userFlights;?>
                 </div>

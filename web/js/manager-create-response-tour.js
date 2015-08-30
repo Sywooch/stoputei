@@ -136,7 +136,7 @@ $(function(){
                 console.log(data);
                 $('.right-data .main-data').hide();
                 $('#right-data-response').html(data.html);
-                $('a[href="#tour-from-user"]').text(data.tab_name);
+                //$('a[href="#tour-from-user"]').text(data.tab_name);
                 $('#user-tour-response .list-data').empty().html(data.hotels);
                 $('[data-toggle="tooltip"]').tooltip();
                 $('.create-tour').removeClass('inactive').empty().html(data.form);
