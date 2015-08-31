@@ -33,14 +33,14 @@ class UserFlightForm extends Model
     {
         return [
             [['destination', 'resort', 'depart_city', 'date_city_to_since', 'adult_count_senior_24'], 'required'],
-            ['date_city_to_since', 'compare', 'compareAttribute' => 'date_city_from_since', 'operator'=>'<'],
+            //['date_city_to_since', 'compare', 'compareAttribute' => 'date_city_from_since', 'operator'=>'<'],
             [['flight_class', 'regular_flight', 'way_ticket', 'adult_count_under_24', 'children_under_12_amount', 'children_under_2_amount', 'exactly_date_to_since', 'exactly_date_from_since'], 'default', 'value' => 0],
             [['way_ticket'], 'default', 'value' => 1],
-            /*[['date_city_from_since', 'date_city_from_until'], 'required', 'message' => Yii::t('app','{attribute} must be checked.'), 'when' => function ($model) {
+            [['date_city_from_since', 'date_city_from_until'], 'required', 'message' => Yii::t('app','{attribute} must be checked.'), 'when' => function ($model) {
                 return $model->way_ticket == 2;
             }, 'whenClient' => "function (attribute, value) {
                 return $('[name=\"ManagerFlightForm[way_ticket]\"]').val() == 2;
-            }"],*/
+            }"],
             [['date_city_from_since', 'depart_country'], 'default', 'value' => null]
         ];
     }
