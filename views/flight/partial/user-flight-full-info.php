@@ -56,24 +56,24 @@ switch($flight->flight_class){
             <span class="value"><?=$flight_class;?></span>
         </div>
 
+        <?php if($flight->departCity):?>
         <div class="field">
             <span class="describe"><?=Yii::t('app', 'Depart city to');?> : </span>
-            <span class="value"><?=($flight->departCity)?$flight->departCity->name:'---';?></span>
+            <span class="value"><?=$flight->departCity->name;?></span>
         </div>
+        <?php endif;?>
+
         <div class="field">
-            <span class="describe"><?=Yii::t('app', 'Since');?> </span>
             <span class="value"><?=$date_city_to_since;?></span>
             <span class="value">(<?=\app\models\UserFlight::getExactlyDate($flight->exactly_date_to_since);?>)</span>
         </div>
 
+        <?php if($flight->way_ticket == 2):?>
         <div class="field">
-            <span class="describe"><?=Yii::t('app', 'Depart city from');?></span>
-        </div>
-        <div class="field">
-            <span class="describe"><?=Yii::t('app', 'Since');?> </span>
             <span class="value"><?=$date_city_from_since;?></span>
             <span class="value">(<?=\app\models\UserFlight::getExactlyDate($flight->exactly_date_from_since);?>)</span>
         </div>
+        <?php endif;?>
 
         <?php if($flight->regular_flight == 1):?>
             <div class="field">

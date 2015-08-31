@@ -256,7 +256,7 @@ if($tour->to_date) {
                     </div>
                     <?php endif;?>
                     <div>
-                        <span class="field"><?=Yii::t('app', 'From date');?> : </span>
+                        <span class="field"><?=Yii::t('app', 'Flight start time');?> : </span>
                         <span class="value"><?=$from_date;?></span>
                     </div>
 
@@ -276,7 +276,7 @@ if($tour->to_date) {
                     </div>
                     <?php endif;?>
                     <div>
-                        <span class="field"><?=Yii::t('app', 'To date');?> : </span>
+                        <span class="field"><?=Yii::t('app', 'Flight start time');?> : </span>
                         <span class="value"><?=$to_date;?></span>
                     </div>
                     <?php if(!is_null($tour->voyage_from_there)):?>

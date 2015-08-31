@@ -19,19 +19,23 @@ class FlightResponse extends ActiveRecord
     }
 
     public function getDepartCity(){
-        return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_to_id']);
+        return $this->hasOne(City::className(), ['city_id' => 'depart_city_to_id']);
     }
 
     public function getDepartCityFrom(){
-        return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_from_id']);
+        return $this->hasOne(City::className(), ['city_id' => 'depart_city_from_id']);
     }
 
     public function getVoyageCityTo(){
-        return $this->hasOne(DepartCity::className(), ['city_id' => 'voyage_direct_to_id']);
+        return $this->hasOne(City::className(), ['city_id' => 'voyage_direct_to_id']);
     }
 
     public function getVoyageCityFrom(){
-        return $this->hasOne(DepartCity::className(), ['city_id' => 'voyage_direct_from_id']);
+        return $this->hasOne(City::className(), ['city_id' => 'voyage_direct_from_id']);
+    }
+
+    public function getOwner(){
+        return $this->hasOne(User::className(), ['id' => 'manager_id']);
     }
 
     public function beforeSave($insert)

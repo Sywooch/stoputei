@@ -42,6 +42,7 @@ $(function(){
         var tour_id = $(this).val();
         var url = $('.ajax-get-manager-offers-list-by-id').attr('href');
         $('.manager-offers .loader-bg').removeClass('hide');
+        $('#manager-offers-response .list-data').empty();
         $.get(url, {'tour_id': tour_id}).done(function(response){
             var data = $.parseJSON(response);
             $('.manager-offers .loader-bg').addClass('hide');

@@ -21,19 +21,19 @@ class TourResponse extends ActiveRecord
     }
 
     public function getDepartCityThere(){
-        return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_there']);
+        return $this->hasOne(City::className(), ['city_id' => 'depart_city_there']);
     }
 
     public function getDepartCityFromThere(){
-        return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_from_there']);
+        return $this->hasOne(City::className(), ['city_id' => 'depart_city_from_there']);
     }
 
     public function getVoyageThroughCityThere(){
-        return $this->hasOne(DepartCity::className(), ['city_id' => 'voyage_through_city_there']);
+        return $this->hasOne(City::className(), ['city_id' => 'voyage_through_city_there']);
     }
 
     public function getVoyageThroughCityFromThere(){
-        return $this->hasOne(DepartCity::className(), ['city_id' => 'voyage_through_city_from_there']);
+        return $this->hasOne(City::className(), ['city_id' => 'voyage_through_city_from_there']);
     }
 
     public function getOwner(){

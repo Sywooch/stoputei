@@ -28,7 +28,7 @@ this.imagePreview = function(){
 			$("#preview")
 				.css("top",(e.pageY) + "px")
 				.css("left",(e.pageX) + "px")
-				.addClass('tooltip-image')
+				.addClass("tooltip-image")
 				.fadeIn("fast");
 
 			console.log('tooltip : '+this.title);
@@ -45,7 +45,7 @@ this.imagePreview = function(){
 		$("#preview")
 			.css("top",(e.pageY - xOffset) + "px")
 			.css("left",(e.pageX + yOffset) + "px")
-			.removeClass('tooltip-image');
+			.removeClass("tooltip-image");
 	});
 
 	$(document).on('click', "a.preview", function(e){

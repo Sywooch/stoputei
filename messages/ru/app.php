@@ -15,6 +15,7 @@ return [
     'Please fill out the following fields to login' => 'Пожалуйста, заполните поля формы для входа на сайт',
     'Please fill out the following fields to registration' => 'Пожалуйста, заполните поля формы для регистрации на сайте',
     'Email' => 'Электронный адрес',
+    'email' => 'email',
     'Email has already been taken' => 'Данный электронный адрес уже существует',
     'Password' => 'Пароль',
     'Confirm Password' => 'Повторить пароль',
@@ -176,9 +177,9 @@ return [
     'Two way' => 'В обе стороны',
     'Depart city to' => 'Вылет туда из',
     'Depart city from' => 'Вылет обратно',
-    'Flight to since' => 'Вылет туда с',
+    'Flight to since' => 'Вылет туда',
     'Flight to until' => 'Вылет туда по',
-    'Flight from since' => 'Вылет обратно с',
+    'Flight from since' => 'Вылет обратно',
     'Flight from until' => 'Вылет обратно по',
     'Flight class' => 'Класс',
     'Any class' => 'Любой',
@@ -264,5 +265,6 @@ return [
     '+-1 day' => '+-1 день',
     '+-2 days' => '+-2 дня',
     '+-3 days' => '+-3 дня',
-    'Submit Offer' => 'Отправить предложение'
+    'Submit Offer' => 'Отправить предложение',
+    'Phone' => 'Телефон'
 ];

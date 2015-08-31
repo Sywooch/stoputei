@@ -57,10 +57,7 @@ $responseCount = $flightResponse->hasResponse($flight->id);
                 <span class="value"><?=\app\models\UserFlight::getExactlyDate($flight->exactly_date_to_since);?></span>
             </div>
             <div>
-                <span class="describe"><?=Yii::t('app', 'Depart city from');?> : </span>
-            </div>
-            <div>
-                <span class="describe"><?=Yii::t('app', 'Since');?> </span><span class="value"><?=$date_city_from_since;?></span>
+                <span class="describe"><?=Yii::t('app', 'Until');?> </span><span class="value"><?=$date_city_from_since;?></span>
                 <span class="value"><?=\app\models\UserFlight::getExactlyDate($flight->exactly_date_from_since);?></span>
             </div>
         </div>

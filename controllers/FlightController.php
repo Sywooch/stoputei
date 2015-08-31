@@ -220,7 +220,7 @@ class FlightController extends Controller
         if(Yii::$app->request->isAjax) {
             $userFlights = UserFlight::find()->where([
                 'region_owner_id' => Yii::$app->user->identity->region_id
-            ])->all();
+            ])->orderBy('created_at DESC')->all();
             $response = [
                     'status' => 'ok',
                     'form' => $this->renderAjax('partial/manager-flight-response-form-empty'),

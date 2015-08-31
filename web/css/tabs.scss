@@ -97,6 +97,7 @@
           visibility: hidden;
         }
         .filter, .create-tour, .create-flight {
+          padding: 0px;
           &.inactive {
             &:after {
               content: '';
@@ -306,7 +307,9 @@
             }
           }
         }
-        .hotels-container, .user-tour-container, .flights-container, .manager-flight-container, .user-offer-list, .manager-hot-tour-container, .manager-offers {
+        .hotels-container, .user-tour-container, .flights-container,
+        .manager-flight-container, .user-offer-list, .manager-hot-tour-container,
+        .manager-offers, .manager-hot-tours {
           overflow-y: auto;
           transition: all $middle-speed ease-in;
           &::-webkit-scrollbar {

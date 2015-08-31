@@ -17,6 +17,7 @@ $(function(){
                 $('.offers-tab.tab-badge.get-tour').text(data.count);
             }
         });
+        imagePreview();
     }
 
     var autocomplete_url_manager = $('.ajax-hotel-autocomplete-manager').attr('href');
@@ -58,6 +59,8 @@ $(function(){
     $(document).on('click', '.remove-hotel-name-manager', function(){
         $('#createtourform-hotel_id').val('');
         $('#createtourform-hotel').val('').removeAttr('data-toggle title data-original-title');
+        $('.field-gettourform-stars').removeClass('disabled');
+        $('#createtourform-stars [name="CreateTourForm[stars][]"]').attr('disabled', false).prop('checked', false);
         getHotelListForResponseTour();
     });
 
@@ -72,6 +75,7 @@ $(function(){
         e.preventDefault();
         var hotel_id = $(this).attr('data-hotel-id');
         var hotel_name = $(this).attr('data-hotel-name');
+        var hotel_star = $(this).attr('data-hotel-star');
         var option = '<option value="'+hotel_id+'">'+hotel_name+'</option>';
         if($(this).hasClass('manager')){
             $('#createtourform-hotel_id').html(option);
@@ -79,6 +83,12 @@ $(function(){
                 return $(this).val() == hotel_id;
             }).attr('selected', true);
             $('#createtourform-hotel').val(hotel_name);
+            $('.field-gettourform-stars').addClass('disabled');
+            $('#createtourform-stars [name="CreateTourForm[stars][]"]').attr('disabled', 'disabled').prop('checked', false);
+            $('#createtourform-stars [name="CreateTourForm[stars][]"]').filter(function () {
+                return $(this).val() == hotel_star;
+            }).prop('checked', true);
+            $('[data-toggle="tooltip"]').tooltip();
             getHotelListForResponseTour();
         }
     });
@@ -120,6 +130,7 @@ $(function(){
                 $('.offers-tab.tab-badge').text(data.count);
             }
         });
+        imagePreview();
     }
 
     //open user's tour with full information

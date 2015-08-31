@@ -125,6 +125,21 @@ $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
                     <?php endif;?>
                 </div>
             </div>
+
+            <div class="group-field">
+                <div>
+                    <span class="field"><?=Yii::t('app','Company name');?> : </span><br>
+                    <span class="value"><?=$flight->owner->company_name;?></span>
+                </div>
+                <div>
+                    <span class="field"><?=Yii::t('app','Company address');?> : </span><br>
+                    <span class="value"><?=($flight->owner->company_address)?$flight->owner->company_address:Yii::t('app','Is absent');?></span>
+                </div>
+                <div>
+                    <span class="field"><?=Yii::t('app','Email');?> : </span><br>
+                    <a href="mailto:<?=$flight->owner->email;?>" <span class="value"><?=$flight->owner->email;?></span>
+                </div>
+            </div>
         </div>
         <div class="col-xs-4 company-info">
 

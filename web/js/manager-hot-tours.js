@@ -24,6 +24,7 @@ $(function(){
         var url = $('.ajax-get-manager-hot-tours-list').attr('href');
         var data = $('#manager-hot-tours-form').serialize();
         $('.manager-hot-tours .loader-bg').removeClass('hide');
+        $('#manager-hot-tours-response .list-data').empty();
         $.get(url, data).done(function(response){
             var data = $.parseJSON(response);
             $('.manager-hot-tours .loader-bg').addClass('hide');

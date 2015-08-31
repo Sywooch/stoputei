@@ -87,7 +87,8 @@ $(function(){
     });
 
     //open user's tour with full information
-    $(document).on('click', '.more-flight-info', function(){
+    $(document).on('click', '.more-flight-info', function(e){
+        e.preventDefault();
         var url = $('.ajax-user-flight-full-info').attr('href');
         var user_flight_id = $(this).attr('data-flight-id');
         $('.manager-flight-container .loader-bg').removeClass('hide');

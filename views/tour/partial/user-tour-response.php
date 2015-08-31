@@ -96,8 +96,6 @@ $tour_name = ($tour->is_hot_tour == 1)?Yii::t('app', 'Hot tour'):Yii::t('app', '
             <div class="data"><?=$tour->city->name;?></div>
             <?php if(!is_null($tour->departCityThere)):?>
                 <div><span class="describe"><?=Yii::t('app', 'Depart city there');?></span> : <span class="data"><?= $tour->departCityThere->name;?></span></div>
-            <?php else:?>
-                <div><span class="describe"><?=Yii::t('app', 'Depart city there');?></span> : <span class="data"> --- </span></div>
             <?php endif;?>
             <?php if($tour->flight_included==1):?>
                 <div class="data"><?=$flight_included;?></div>

@@ -11,6 +11,7 @@ $(function(){
             if(data.status == 'ok') {
                 $('#create-hot-tour-response').html(data.html);
                 $('.offers-tab.tab-badge.create-hot-tour').text(data.count);
+                imagePreview();
             }else{
                 $('#create-hot-tour-response').text(data.message);
                 $('.offers-tab.tab-badge.create-hot-tour').text(data.count);
