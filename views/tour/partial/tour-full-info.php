@@ -249,18 +249,15 @@ if($tour->to_date) {
                     </div>
                     <br>
 
+                    <!--Flight to-->
                     <?php if(!is_null($tour->departCityThere)):?>
                     <div>
                         <span class="field"><?=Yii::t('app', 'Depart city there');?> : </span>
                         <span class="value"><?=$tour->departCityThere->name;?></span>
                     </div>
                     <?php endif;?>
-                    <div>
-                        <span class="field"><?=Yii::t('app', 'Flight start time');?> : </span>
-                        <span class="value"><?=$from_date;?></span>
-                    </div>
 
-                    <?php if(!is_null($tour->voyage_there)):?>
+                    <?php if($tour->voyage_there == 0):?>
                         <?php if(!is_null($tour->voyageThroughCityThere)):?>
                         <div>
                             <span class="field"><?=Yii::t('app', 'Voyage through');?> : </span>
@@ -268,18 +265,20 @@ if($tour->to_date) {
                         </div>
                         <?php endif;?>
                     <?php endif;?>
+                    <div>
+                        <span class="field"><?=Yii::t('app', 'Flight start time');?> : </span>
+                        <span class="value"><?=$from_date;?></span>
+                    </div>
+                    <!--Flight to-->
 
+                    <!--Flight from-->
                     <?php if(!is_null($tour->departCityFromThere)):?>
                     <div>
                         <span class="field"><?=Yii::t('app', 'Depart city from there');?> : </span>
                         <span class="value"><?=$tour->departCityFromThere->name;?></span>
                     </div>
                     <?php endif;?>
-                    <div>
-                        <span class="field"><?=Yii::t('app', 'Flight start time');?> : </span>
-                        <span class="value"><?=$to_date;?></span>
-                    </div>
-                    <?php if(!is_null($tour->voyage_from_there)):?>
+                    <?php if($tour->voyage_from_there == 0):?>
                         <?php if(!is_null($tour->voyageThroughCityFromThere)):?>
                         <div>
                             <span class="field"><?=Yii::t('app', 'Voyage through');?> : </span>
@@ -287,6 +286,11 @@ if($tour->to_date) {
                         </div>
                         <?php endif;?>
                     <?php endif;?>
+                    <div>
+                        <span class="field"><?=Yii::t('app', 'Flight start time');?> : </span>
+                        <span class="value"><?=$to_date;?></span>
+                    </div>
+                    <!--Flight from-->
                 <?php else:?>
                     <div>
                         <span class="field"><?=Yii::t('app', 'Flight');?> : </span>

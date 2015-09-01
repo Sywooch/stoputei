@@ -194,6 +194,7 @@ return [
     'Flight start time' => 'Время вылета',
     'Flight end time' => 'Время вылета обратно',
     'City docking' => 'Город стыковки',
+    'Airport location' => 'Город вылета',
     'Date docking' => 'Время стыковки',
     'Charter flight' => 'Чартерный рейс',
     'Regular flight' => 'Регулярный рейс',
