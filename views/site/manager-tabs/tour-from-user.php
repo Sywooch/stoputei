@@ -22,7 +22,7 @@ use yii\helpers\Url;
     </div>
     <div class="col-md-3 right-data">
         <div class="main-data">
-            Statistics
+            <?= \app\components\ManagerTourStatisticsWidget::widget();?>
         </div>
         <div id="right-data-response">
 

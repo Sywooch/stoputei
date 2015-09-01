@@ -1,0 +1,21 @@
+.widget-manager-stat{
+  padding: 0px;
+  box-shadow: $grey-shadow;
+  form {
+    .form-group {
+      margin-bottom: 0;
+      input, select {
+        border-radius: 0px;
+      }
+      .control-label{
+        font-size: 0.8em;
+        color: $grey-text;
+        text-align: left;
+      }
+      .value-field{
+        font-size: 1.8em;
+        color: $green;
+      }
+    }
+  }
+}

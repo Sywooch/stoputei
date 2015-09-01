@@ -266,5 +266,13 @@ return [
     '+-2 days' => '+-2 дня',
     '+-3 days' => '+-3 дня',
     'Submit Offer' => 'Отправить предложение',
-    'Phone' => 'Телефон'
+    'Phone' => 'Телефон',
+    'Amount of user\'s tour per period' => 'Количество запросов на тур за период',
+    'Amount of manager\'s response tour per period' => 'Количество моих предложений на тур за период',
+    'Amount of manager\'s hot tour per period' => 'Количество моих горящих предложений за период',
+    'Request count destination' => 'Количество запросов по направлениям',
+    'All period' => 'За весь период',
+    'Per day' => 'За сутки',
+    'Per week' => 'За неделю',
+    'Per month' => 'За месяц'
 ];
