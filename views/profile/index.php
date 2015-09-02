@@ -25,8 +25,8 @@ use yii\bootstrap\Alert;
             'action' => Url::toRoute(['profile/index']),
             'options' => ['class' => 'form-horizontal'],
             'fieldConfig' => [
-                'template' => "{label}\n<div class=\"col-xs-6 col-xs-offset-2  col-sm-6 col-sm-offset-2\">{input}</div>\n<div class=\"col-xs-6 col-xs-offset-2  col-sm-6 col-sm-offset-2\">{error}</div>",
-                'labelOptions' => ['class' => 'col-xs-6 col-xs-offset-2  col-sm-6 col-sm-offset-2 control-label label-edit-profile'],
+                'template' => "{label}\n<div class=\"col-xs-6 col-xs-offset-2\">{input}</div>\n<div class=\"col-xs-6 col-xs-offset-2\">{error}</div>",
+                'labelOptions' => ['class' => 'col-xs-6 col-xs-offset-2 control-label label-edit-profile'],
             ],
         ]); ?>
 
@@ -53,8 +53,8 @@ use yii\bootstrap\Alert;
         <?php endif;?>
         <?= $form->field($model, 'role')->hiddenInput()->label('');?>
 
-        <div class="form-group">
-            <div class="col-xs-8 col-xs-offset-2  col-sm-6 col-sm-offset-3">
+        <div class="form-group buttons-action">
+            <div class="col-xs-6 col-xs-offset-2">
                 <?= Html::submitButton(Yii::t('app','Edit profile'), ['class' => 'btn btn-success col-xs-5', 'name' => 'edit-profile-button']) ?>
                 <?= Html::a(Yii::t('app','Back to offers'), Url::toRoute(['/']), ['class' => 'btn btn-info col-xs-5 pull-right']);?>
             </div>
