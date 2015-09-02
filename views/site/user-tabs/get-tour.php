@@ -242,7 +242,7 @@ use dosamigos\datepicker\DatePicker;
                         //'startDate' => date('Y-M-d', strtotime('today')),
                     ]
                 ]);?>
-            <?= $form->field($GetTourForm, 'exactly_date')->dropDownList([0 => Yii::t('app', 'Exactly date'), 1 => Yii::t('app', '+-1 day'), 2 => Yii::t('app', '+-2 days'), 3 => Yii::t('app', '+-3 days')]);?>
+            <?= $form->field($GetTourForm, 'exactly_date')->dropDownList([0 => Yii::t('app', 'Exactly date'), 1 => Yii::t('app', 'Closest date')]);?>
 
             <?= $form->field($GetTourForm, 'budget')->input('number', ['min' => 0, 'max' => 99000000, 'step' => 1000, 'value' => '']);?>
 

@@ -115,7 +115,7 @@ if(!empty($tour->nutritions)){
             <div class="field">
                 <span class="describe"><?=Yii::t('app', 'Since');?> </span>
                 <span class="value"><?=$from_date;?></span>
-                <span class="value">(<?=\app\models\UserTour::getExactlyDate($tour->exactly_date);?>)</span>
+                <span class="value">(<?=\app\models\UserTour::getExactlyDateGetTour($tour->exactly_date);?>)</span>
             </div>
         <?php else :?>
             <div class="field">

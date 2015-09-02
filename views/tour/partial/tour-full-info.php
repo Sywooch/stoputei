@@ -247,6 +247,17 @@ if($tour->to_date) {
                         <span class="field"><?=Yii::t('app', 'Flight');?> : </span>
                         <span class="value"><?=Yii::t('app', 'Included');?></span>
                     </div>
+                    <?php if($tour->is_hot_tour == 1):?>
+                        <?php if($tour->voyage_there == 1):?>
+                            <div>
+                                <span class="value"><?=Yii::t('app', 'Voyage is not direct');?></span>
+                            </div>
+                        <?php else:?>
+                            <div>
+                                <span class="value"><?=Yii::t('app', 'Voyage');?></span>
+                            </div>
+                        <?php endif;?>
+                    <?php endif;?>
                     <br>
 
                     <!--Flight to-->

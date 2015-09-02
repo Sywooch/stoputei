@@ -263,6 +263,7 @@ return [
     'Night count max' => 'до',
     'Tour cost' => 'Стоимость тура',
     'Exactly date' => 'Точная дата',
+    'Closest date' => 'Ближайщая дата',
     '+-1 day' => '+-1 день',
     '+-2 days' => '+-2 дня',
     '+-3 days' => '+-3 дня',

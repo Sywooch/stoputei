@@ -631,6 +631,7 @@ class TourController extends Controller
                 $tourResponse->city_id = $model->resort;
                 if(!empty($model->hotel_id[0])) {
                     $tourResponse->hotel_id = $model->hotel_id[0];
+                    $tourResponse->hotel_star = Hotel::findOne($model->hotel_id[0])->star_id;
                 }else{
                     $tourResponse->hotel_id = null;
                 }

@@ -196,4 +196,15 @@ class UserTour extends ActiveRecord
                 return \Yii::t('app', '+-3 days');
         }
     }
+
+    public static function getExactlyDateGetTour($date){
+        switch($date){
+            case 0:
+                return \Yii::t('app', 'Exactly date');
+            case 1:
+                return \Yii::t('app', 'Closest date');
+            default:
+                return \Yii::t('app', 'Exactly date');
+        }
+    }
 }

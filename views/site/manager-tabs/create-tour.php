@@ -269,12 +269,22 @@ use yii\helpers\Url;
                     ]
                 ]) ?>
 
-                <?= $form->field($CreateHotTourForm, 'voyage_there')->checkbox();?>
-                <div class="voyage_through_there">
+                <?= $form->field($CreateHotTourForm, 'voyage_there')->radioList([0 => '', 1 => ''],
+                    ['item' => function($index, $label, $name, $checked, $value){
+                        if($value == 0){
+                            $checked = true;
+                            $span = Html::tag('span', Yii::t('app','Voyage'), ['class' => 'type-name']);
+                        }elseif($value == 1){
+                            $span = Html::tag('span', Yii::t('app','Voyage is not direct'), ['class' => 'line-name']);
+                        }
+                        $checkbox = Html::radio($name, $checked, ['value' => $value]);
+                        return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
+                    }])->label('');?>
+                <!--<div class="voyage_through_there">
                     <?= $form->field($CreateHotTourForm, 'voyage_through_city_there')->dropDownList($departCityThereDropdown);?>
                 </div>
                 <?= $form->field($CreateHotTourForm, 'depart_country_from')->dropDownList($dropdownDestination,['prompt' => Yii::t('app','Choose destination')]);?>
-                <?= $form->field($CreateHotTourForm, 'depart_city_from_there')->dropDownList([]);?>
+                <?= $form->field($CreateHotTourForm, 'depart_city_from_there')->dropDownList([]);?>-->
 
                 <?= $form->field($CreateHotTourForm, 'to_date')->widget(\yii\jui\DatePicker::classname(), [
                     'language' => Yii::$app->language,
@@ -285,10 +295,10 @@ use yii\helpers\Url;
                     ]
                 ]) ?>
 
-                <?= $form->field($CreateHotTourForm, 'voyage_from_there')->checkbox();?>
+                <!--<?= $form->field($CreateHotTourForm, 'voyage_from_there')->checkbox();?>
                 <div class="voyage_through_from_there">
                     <?= $form->field($CreateHotTourForm, 'voyage_through_city_from_there')->dropDownList($departCityThereDropdown);?>
-                </div>
+                </div>-->
             </div>
             <div>
                 <label class="col-xs-11 col-xs-offset-1 control-label label-add-paymnet" for="createhottourform-add-payment"><?=Yii::t('app', 'Add payment');?></label>

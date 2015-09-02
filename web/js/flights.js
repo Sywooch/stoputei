@@ -42,7 +42,8 @@ $(function(){
             for (var i in data) {
                 select_resort += '<option value="'+data[i].city_id+'">'+data[i].city_name+'</option>';
             }
-            $('#managerflightform-voyage_direct_to').html(select_resort);
+            console.log(select_resort);
+            $('#managerflightform-voyage_direct_to_id').html(select_resort);
         });
     });
 
@@ -57,7 +58,7 @@ $(function(){
             for (var i in data) {
                 select_resort += '<option value="'+data[i].city_id+'">'+data[i].city_name+'</option>';
             }
-            $('#managerflightform-voyage_direct_from').html(select_resort);
+            $('#managerflightform-voyage_direct_from_id').html(select_resort);
         });
     });
 
