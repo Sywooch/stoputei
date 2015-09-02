@@ -276,5 +276,16 @@ return [
     'All period' => 'За весь период',
     'Per day' => 'За сутки',
     'Per week' => 'За неделю',
-    'Per month' => 'За месяц'
+    'Per month' => 'За месяц',
+    'Receive newsletter about new tour\'s offer' => 'Получать рассылку о новых предложениях по турам',
+    'Receive newsletter about new hot tour\'s offer' => 'Получать рассылку о новых горящих турах',
+    'Receive newsletter about new flight\'s offer' => 'Получать рассылку о новых предложениях по авиабилетам',
+    'Receive newsletter about new users\'s requests' => 'Получать рассылку о новых запросах по турам',
+    'Receive newsletter about new flight\'s flights' => 'Получать рассылку о новых запросах по авиабилетам',
+    'Edit account information' => 'Редактирование информации о пользователе',
+    'Edit profile' => 'Редактировать профиль',
+    'Profile information has been changed successful.' => 'Инфромация профиля успешно обновлена.',
+    'Back to offers' => 'Вернуться к предложениям',
+    'Editing' => 'Редактирование',
+    'Locked' => 'Заблокировано'
 ];

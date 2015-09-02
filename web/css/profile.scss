@@ -1,0 +1,55 @@
+.profile{
+  &.edit{
+    .title {
+      padding-left: 8px;
+      h1 {
+        font-size: 1.5em;
+        color: $site-color;
+        font-weight: 300;
+      }
+    }
+    form{
+      .control-label{
+        text-align: left;
+        font-weight: 300;
+        font-size: 1.2em;
+      }
+      .form-group{
+        margin-bottom: -35px;
+        input[type="text"], input[type="email"], input[type="password"], select{
+          border-radius: 0px;
+          min-height: 40px;
+          box-shadow: none;
+          &:active, &:focus{
+            border: 1px solid $site-color-light;
+            background: $grey-extra-light;
+          }
+          &:disabled{
+            background: $grey-light;
+            color: $red;
+          }
+        }
+        &.required, &.field-profileeditform-company_name, &.field-profileeditform-company_city,
+        &.field-profileeditform-company_phone{
+          label{
+            &:after{
+              content: '  *';
+              color: $red;
+            }
+          }
+        }
+      }
+      .bootstrap-switch{
+        position: relative;
+        right: -30px;
+        top: -13px;
+      }
+      button{
+        border-radius: 0px;
+      }
+      a{
+        border-radius: 0px;
+      }
+    }
+  }
+}

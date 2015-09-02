@@ -2,12 +2,6 @@
 
 namespace app\controllers;
 
-use app\models\City;
-use app\models\ManagerHotTourForm;
-use app\models\ManagerOffersForm;
-use app\models\UserFavouriteForm;
-use app\models\UserHotTourForm;
-use app\models\UserTourFavourites;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -29,7 +23,12 @@ use app\models\TourResponse;
 use app\models\FlightResponse;
 use app\models\TourOffersForm;
 use app\models\CreateHotTourForm;
-
+use app\models\City;
+use app\models\ManagerHotTourForm;
+use app\models\ManagerOffersForm;
+use app\models\UserFavouriteForm;
+use app\models\UserHotTourForm;
+use app\models\UserTourFavourites;
 class SiteController extends Controller
 {
     public function behaviors()

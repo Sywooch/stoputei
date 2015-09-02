@@ -7,7 +7,7 @@ class City extends ActiveRecord
 {
 
     public function getCountry(){
-        return $this->hasOne(Country::className(), ['city_id' => 'country_id']);
+        return $this->hasOne(Country::className(), ['country_id' => 'country_id']);
     }
 
     public function getUserTours(){

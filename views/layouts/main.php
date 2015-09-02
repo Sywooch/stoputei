@@ -47,7 +47,7 @@ $header_css = (in_array(Yii::$app->controller->action->id, ['login','registratio
                         ) :
                         ['label' =>   Yii::$app->user->identity->email,
                             'items' => [
-                                ['label' => Yii::t('app','Edit profile'), 'url' => ['#']],
+                                ['label' => Yii::t('app','Edit profile'), 'url' => ['/profile/index']],
                                 '<li class="divider"></li>',
                                 ['label' => Yii::t('app','Settings'), 'url' => ['#']],
                                 '<li class="divider"></li>',

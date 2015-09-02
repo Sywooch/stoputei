@@ -19,7 +19,8 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        'css/main.scss'
+        'css/main.scss',
+        'css/bootstrap-switch.css'
     ];
     public $js = [
         'js/main.js',
@@ -34,6 +35,8 @@ class AppAsset extends AssetBundle
         'js/user-favourites.js',
         'js/image-tooltip.js',
         'js/manager-statistics.js',
+        'js/profile.js',
+        'js/bootstrap-switch.js',
     ];
     public $images = [];
     public $depends = [

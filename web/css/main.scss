@@ -4,11 +4,13 @@ $site-color-hover: #000097;
 $site-color-light: rgba(0, 0, 255, 0.65);
 $grey: #b1b1b1;
 $grey-light: #d0d0d0;
+$grey-extra-light: #f0f0f0;
 $grey-dark: #3c3c3c;
 $grey-text: rgb(147, 146, 146);
 $grey-light-text: rgb(165, 164, 164);
 $red: #a94442;
 $green: #5cb85c;
+$green-light: #7cec7c;
 $yellow-light: #ffe577;
 $yellow-dirty: #edd98b;
 $yellow-dirty-hover: #bba76b;
@@ -46,6 +48,7 @@ $fast-speed: 0.5s;
 @import "tour";
 @import "flight";
 @import "stat";
+@import "profile";
 
 //fonts
 @import url(http://fonts.googleapis.com/css?family=Exo+2:400,300,700&subset=latin,cyrillic);
@@ -225,6 +228,15 @@ body {
         min-width: 400px;
         height: auto;
       }
+    }
+  }
+  .flash{
+    &.success{
+      color: $green;
+      font-size: 1.2em;
+      font-weight: 600;
+      padding: 15px;
+      background: $green-light;
     }
   }
 }
