@@ -20,14 +20,14 @@ $(function(){
                 $('input[name="ProfileEditForm[password]"]').removeAttr('disabled');
                 $('input[name="ProfileEditForm[password_repeat]"]').removeAttr('disabled');
             }else {
-                $('input[name="ProfileEditForm[' + type + ']"').removeAttr('disabled');
+                $('input[name="ProfileEditForm[' + type + ']"]').removeAttr('disabled');
             }
         }else{
             if(type == 'password'){
                 $('input[name="ProfileEditForm[password]"]').attr('disabled', true);
                 $('input[name="ProfileEditForm[password_repeat]"]').attr('disabled', true);
             }else {
-                $('input[name="ProfileEditForm[' + type + ']"').attr('disabled', true);
+                $('input[name="ProfileEditForm[' + type + ']"]').attr('disabled', true);
             }
         }
     });
