@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\FlightResponse;
+use app\models\ManagerStatisticsFlightForm;
 use app\models\ManagerStatisticsTourForm;
+use app\models\UserFlight;
 use Yii;
 use yii\helpers\Json;
 use yii\helpers\Url;
@@ -74,7 +77,62 @@ class StatisticController extends Controller
             }else{
                 $response = [
                     'status' => 'error',
-                    'message' => 'Request data is empty222',
+                    'message' => 'Request data is empty',
+                    'count' => 0
+                ];
+            }
+            echo Json::encode($response);
+            Yii::$app->end();
+        }
+    }
+
+    public function actionGetManagerFlightStatistic(){
+        if(Yii::$app->request->isAjax) {
+            $model = new ManagerStatisticsFlightForm();
+            if($model->load(Yii::$app->request->get())){
+
+                //period for user's request
+                if($model->request_flight_count != 0) {
+                    $period_request = time() - $model->request_flight_count;
+                }else{
+                    $period_request = 0;
+                }
+                $query_request = 'created_at >= '.$period_request;
+
+                //period for manager's response
+                if($model->response_flight_count != 0) {
+                    $period_response = time() - $model->response_flight_count;
+                }else{
+                    $period_response = 0;
+                }
+                $query_response = 'created_at >= '.$period_response;
+
+                $flight_count_all = UserFlight::find()->where([
+                    'region_owner_id' => Yii::$app->user->identity->region_id,
+                    'country_id' => $model->country_id
+                ])->count();
+
+                $flight_count_request = UserFlight::find()->where([
+                    'region_owner_id' => Yii::$app->user->identity->region_id,
+                    'country_id' => $model->country_id
+                ])->andWhere($query_request)->count();
+
+                $flight_count_response = FlightResponse::find()->where([
+                    'manager_id' => Yii::$app->user->identity->getId(),
+                    'country_id' => $model->country_id
+                ])->andWhere($query_response)->count();
+
+                $response = [
+                    'status' => 'ok',
+                    'message' => 'Flight was found',
+                    'count_all' => $flight_count_all,
+                    'count_requests' => $flight_count_request,
+                    'count_responses' => $flight_count_response
+                ];
+            }else{
+                $response = [
+                    'status' => 'error',
+                    'message' => 'Request data is empty',
                     'count' => 0
                 ];
             }

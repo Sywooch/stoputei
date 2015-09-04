@@ -371,10 +371,14 @@ class TourController extends Controller
                     ])->all();
                     $dropdownHotel = [$userTour->hotel_id => $userTour->hotel->name];
                 }else{
+                    $stars = [];
+                    foreach($userTour->categories as $star){
+                        $stars[] = $star->star_id;
+                    }
                     $hotels = Hotel::find()->where([
                         'country_id' => $userTour->country_id,
                         'resort_id' => $userTour->resort_id,
-                        //'star_id' => $userTour->stars
+                        'star_id' => $stars
                     ])->all();
                     $dropdownHotel = [];
                 }

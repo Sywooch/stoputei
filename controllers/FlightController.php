@@ -144,8 +144,8 @@ class FlightController extends Controller
                 $managerFlight->depart_city_from_id = $model->depart_city_from;
                 $managerFlight->voyage_is_direct_to = $model->voyage_is_direct_to;
                 $managerFlight->voyage_is_direct_from = $model->voyage_is_direct_from;
-                $managerFlight->voyage_direct_to_id = $model->voyage_direct_to;
-                $managerFlight->voyage_direct_from_id = $model->voyage_direct_from;
+                $managerFlight->voyage_direct_to_id = $model->voyage_direct_to_id;
+                $managerFlight->voyage_direct_from_id = $model->voyage_direct_from_id;
                 $managerFlight->date_city_to = $model->date_city_to;
                 $managerFlight->date_city_from = $model->date_city_from;
                 $managerFlight->date_docking_to_hours = $model->date_docking_to_hours;

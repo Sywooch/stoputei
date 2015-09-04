@@ -13,12 +13,14 @@ $(function(){
     });
 
     $("[name='bootstrap-switch-checkbox']").bootstrapSwitch();
-    $('input[name="bootstrap-switch-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+    $('input[name="bootstrap-switch-checkbox"], select').on('switchChange.bootstrapSwitch', function(event, state) {
         var type = $(this).attr('data-type');
         if(state) {
             if(type == 'password'){
                 $('input[name="ProfileEditForm[password]"]').removeAttr('disabled');
                 $('input[name="ProfileEditForm[password_repeat]"]').removeAttr('disabled');
+            }else if(type == 'region_id'){
+                $('[name="ProfileEditForm[region_id]"]').removeAttr('disabled');
             }else {
                 $('input[name="ProfileEditForm[' + type + ']"]').removeAttr('disabled');
             }
@@ -26,6 +28,8 @@ $(function(){
             if(type == 'password'){
                 $('input[name="ProfileEditForm[password]"]').attr('disabled', true);
                 $('input[name="ProfileEditForm[password_repeat]"]').attr('disabled', true);
+            }else if(type == 'region_id'){
+                $('[name="ProfileEditForm[region_id]"]').attr('disabled', true);
             }else {
                 $('input[name="ProfileEditForm[' + type + ']"]').attr('disabled', true);
             }
