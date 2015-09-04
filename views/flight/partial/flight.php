@@ -56,10 +56,12 @@ $responseCount = $flightResponse->hasResponse($flight->id);
                 <span class="describe"><?=Yii::t('app', 'Since');?> </span><span class="value"><?=$date_city_to_since;?></span>
                 <span class="value"><?=\app\models\UserFlight::getExactlyDate($flight->exactly_date_to_since);?></span>
             </div>
+            <?php if($flight->way_ticket == 2):?>
             <div>
                 <span class="describe"><?=Yii::t('app', 'Until');?> </span><span class="value"><?=$date_city_from_since;?></span>
                 <span class="value"><?=\app\models\UserFlight::getExactlyDate($flight->exactly_date_from_since);?></span>
             </div>
+            <?php endif;?>
         </div>
         <div class="col-xs-2 buttons">
             <a href="#" class="more-flight-info btn btn-primary" data-flight-id="<?=$flight->id;?>"><?= Yii::t('app', 'More');?></a>
