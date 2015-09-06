@@ -8,6 +8,15 @@ class TourResponse extends ActiveRecord
         return 'tour_response';
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'country_id' => \Yii::t('app','Country'),
+            'city_id' => \Yii::t('app', 'Resort'),
+            'hotel_id' => \Yii::t('app', 'Hotel'),
+        ];
+    }
+
     public function getCountry(){
         return $this->hasOne(Country::className(), ['country_id' => 'country_id']);
     }

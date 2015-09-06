@@ -36,7 +36,7 @@ class ProfileController extends Controller
         $model = new ProfileEditForm();
         $model->email = Yii::$app->user->identity->email;
         $model->role = Yii::$app->user->identity->role;
-        if($model->role == 2) {
+        if($model->role == 2 or $model->role == 3) {
             $model->company_name = Yii::$app->user->identity->company_name;
             $model->company_city = Yii::$app->user->identity->company_city;
             $model->company_phone = Yii::$app->user->identity->company_phone;
@@ -63,7 +63,7 @@ class ProfileController extends Controller
                 $user->setPassword($model->password);
             }
             $user->region_id = $model->region_id;
-            if($model->role == 2) {
+            if($model->role == 2 or $model->role == 3) {
                 $user->company_name = $model->company_name;
                 $user->company_city = $model->company_city;
                 $user->company_phone = $model->company_phone;

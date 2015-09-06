@@ -10,6 +10,17 @@ class UserTour extends ActiveRecord
         return 'user_tour';
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'country_id' => \Yii::t('app','Country'),
+            'country.name' => \Yii::t('app','Country'),
+            'resort_id' => \Yii::t('app', 'Resort'),
+            'city.name' => \Yii::t('app', 'Resort'),
+            'night_max' => \Yii::t('app', 'Night count'),
+        ];
+    }
+
     public function getCountry(){
         return $this->hasOne(Country::className(), ['country_id' => 'country_id']);
     }

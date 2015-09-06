@@ -1,0 +1,26 @@
+.admin-panel{
+  .label{
+    &.custom{
+      border-radius: 0px;
+      padding: 5px 10px;
+      font-size: 0.9em;
+      font-weight: 300;
+    }
+  }
+  .navbar-admin{
+    .navbar-nav{
+      li{
+        a{
+          &.active{
+            background: $site-color-light;
+            color: #ffffff;
+          }
+          &:hover{
+            background: $grey-text;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}

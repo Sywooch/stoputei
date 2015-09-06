@@ -289,5 +289,16 @@ return [
     'Profile information has been changed successful.' => 'Инфромация профиля успешно обновлена.',
     'Back to offers' => 'Вернуться к предложениям',
     'Editing' => 'Редактирование',
-    'Locked' => 'Заблокировано'
+    'Locked' => 'Заблокировано',
+    'Admin panel' => 'Админ панель',
+    'Role admin' => 'Роль',
+    'Created at admin' => 'Зарегистрирован',
+    'Last enter' => 'Последний вход',
+    'tourist' => 'турист',
+    'manager' => 'туроператор',
+    'admin' => 'администратор',
+    'Users' => 'Пользователи',
+    'Tour requests' => 'Запросы туров',
+    'Tour responses' => 'Предложения туров',
+    'Email management' => 'Управление почтой'
 ];

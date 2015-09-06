@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use app\models\City;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
@@ -26,7 +27,12 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'email' => \Yii::t('app','Email'),
-            'password' => \Yii::t('app', 'Password')
+            'password' => \Yii::t('app', 'Password'),
+            'role' => \Yii::t('app', 'Role admin'),
+            'region_id' => \Yii::t('app', 'Region'),
+            'city.name' => \Yii::t('app', 'Region'),
+            'created_at' => \Yii::t('app', 'Created at admin'),
+            'updated_at' => \Yii::t('app', 'Last enter'),
         ];
     }
 
@@ -170,5 +176,9 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 
     public function getFavourites(){
         return $this->hasMany(UserTourFavourites::className(), ['user_id' => 'id']);
+    }
+
+    public function getCity(){
+        return $this->hasOne(City::className(), ['city_id' => 'region_id']);
     }
 }

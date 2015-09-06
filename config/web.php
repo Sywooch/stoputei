@@ -74,6 +74,13 @@ $config = [
         'db' => require(__DIR__ . '/db.php'),
     ],
 
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            // ... other configurations for the module ...
+        ],
+    ],
+
     'on beforeAction' => function ($event) {
         $afterRequest = new \app\components\AfterRequest();
         $afterRequest->setUserLocale();

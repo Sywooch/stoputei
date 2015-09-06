@@ -29,6 +29,8 @@ use app\models\ManagerOffersForm;
 use app\models\UserFavouriteForm;
 use app\models\UserHotTourForm;
 use app\models\UserTourFavourites;
+use yii\db\Expression;
+
 class SiteController extends Controller
 {
     public function behaviors()
@@ -119,6 +121,7 @@ class SiteController extends Controller
                         'userFavouriteTours' => $userFavouriteTours
                     ]);
             case 2:
+            case 3:
                 if((Yii::$app->user->identity->single_region_paid == 1) or (Yii::$app->user->identity->multiple_region_paid == 1)) {
                     $CreateTourForm = new CreateTourForm();
                     $CreateHotTourForm = new CreateHotTourForm();
@@ -179,6 +182,9 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) and $model->validate()) {
             if($user->getVerifyCode($model->email)) {
                 if($user->isApproved($model->email)){
+                    $userCurrent = $user->findByEmail($model->email);
+                    $userCurrent->updated_at = new Expression('NOW()');
+                    $userCurrent->save();
                     $model->login();
                     return $this->goBack();
                 }else{
