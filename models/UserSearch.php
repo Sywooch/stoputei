@@ -59,6 +59,10 @@ class UserSearch extends User
             'asc' => ['city.name' => SORT_ASC],
             'desc' => ['city.name' => SORT_DESC],
         ];
+        $dataProvider->sort->attributes['role'] = [
+            'asc' => ['role' => SORT_ASC],
+            'desc' => ['role' => SORT_DESC],
+        ];
 
         // load the search form data and validate
         if (!($this->load($params) && $this->validate())) {
