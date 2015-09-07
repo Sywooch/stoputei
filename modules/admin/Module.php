@@ -10,9 +10,7 @@ class Module extends \yii\base\Module
         $this->params['foo'] = 'bar';
         // ...  other initialization code ...
         if(\Yii::$app->user->identity->role != 3){
-            if(\Yii::$app->user->identity->role != 3){
-                return $this->goHome();
-            }
+            throw new \yii\web\HttpException(400);
         }
     }
 }
