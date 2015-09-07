@@ -38,6 +38,18 @@ use yii\helpers\Html;
                     return $date->format('d.m.Y H:i');
                 }
             ],
+
+            [
+                'attribute' => Yii::t('app', 'Actions'),
+                'format' => 'html',
+                'value' => function($model){
+                    $actions = '';
+                    $actions .= Html::a(Html::tag('span', '', ['class' => 'glyphicon glyphicon-eye-open view']), \yii\helpers\Url::toRoute(['/admin/user/view', 'id' => $model->id]), ['class' => 'actions col-xs-4']);
+                    $actions .= Html::a(Html::tag('span', '', ['class' => 'glyphicon glyphicon-pencil edit']), \yii\helpers\Url::toRoute(['/admin/user/edit', 'id' => $model->id]), ['class' => 'actions col-xs-4']);
+                    $actions .= Html::a(Html::tag('span', '', ['class' => 'glyphicon glyphicon-trash delete']), \yii\helpers\Url::toRoute(['/admin/user/delete', 'id' => $model->id]), ['class' => 'actions col-xs-4']);
+                    return $actions;
+                }
+            ],
         ],
     ]);
     ?>

@@ -23,4 +23,16 @@
       }
     }
   }
+  .actions{
+    padding: 0px 3px;
+    .view{
+      color: $site-color;
+    }
+    .edit{
+      color: $gold;
+    }
+    .delete{
+      color: $red;
+    }
+  }
 }

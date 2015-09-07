@@ -18,6 +18,7 @@ class UserTour extends ActiveRecord
             'resort_id' => \Yii::t('app', 'Resort'),
             'city.name' => \Yii::t('app', 'Resort'),
             'night_max' => \Yii::t('app', 'Night count'),
+            'created_at' => \Yii::t('app', 'Tour created'),
         ];
     }
 

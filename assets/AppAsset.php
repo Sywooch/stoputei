@@ -37,6 +37,7 @@ class AppAsset extends AssetBundle
         'js/manager-statistics.js',
         'js/profile.js',
         'js/bootstrap-switch.js',
+        'js/admin.js',
     ];
     public $images = [];
     public $depends = [

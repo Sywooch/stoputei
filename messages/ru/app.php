@@ -300,5 +300,7 @@ return [
     'Users' => 'Пользователи',
     'Tour requests' => 'Запросы туров',
     'Tour responses' => 'Предложения туров',
-    'Email management' => 'Управление почтой'
+    'Email management' => 'Управление почтой',
+    'Tour created' => 'Тур создан',
+    'Actions' => 'Действия'
 ];

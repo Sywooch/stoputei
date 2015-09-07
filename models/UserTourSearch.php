@@ -11,7 +11,7 @@ class UserTourSearch extends UserTour
     {
         // only fields in rules() are searchable
         return [
-            [['id'], 'integer'],
+            [['id', 'created_at'], 'integer'],
             [['country_id', 'resort_id', 'hotel_id', 'city.name', 'country.name'], 'safe'],
         ];
     }
@@ -40,16 +40,15 @@ class UserTourSearch extends UserTour
             ],
             'sort' => [
                 'defaultOrder' => [
-                    'id' => SORT_ASC,
-                    'country_id' => SORT_ASC,
-                    'resort_id' => SORT_DESC,
-                    'hotel_id' => SORT_ASC
+                    'created_at' => SORT_DESC,
+
                 ],
                 'attributes' => [
                     'id',
                     'country_id',
                     'resort_id',
-                    'hotel_id'
+                    'hotel_id',
+                    'created_at'
                 ],
             ],
         ]);
