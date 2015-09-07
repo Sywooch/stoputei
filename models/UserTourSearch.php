@@ -11,8 +11,9 @@ class UserTourSearch extends UserTour
     {
         // only fields in rules() are searchable
         return [
-            [['id', 'created_at'], 'integer'],
+            [['id'], 'integer'],
             [['country_id', 'resort_id', 'hotel_id', 'city.name', 'country.name'], 'safe'],
+            //[['created_at'], 'date', 'format'=>'d.m']
         ];
     }
 
