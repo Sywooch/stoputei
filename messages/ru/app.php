@@ -17,6 +17,7 @@ return [
     'Email' => 'Электронный адрес',
     'email' => 'email',
     'Email has already been taken' => 'Данный электронный адрес уже существует',
+    'Country has already been taken' => 'Указанная страна уже существует',
     'Password' => 'Пароль',
     'Confirm Password' => 'Повторить пароль',
     'Remember Me' => 'Запомнить меня',
@@ -302,5 +303,11 @@ return [
     'Tour responses' => 'Предложения туров',
     'Email management' => 'Управление почтой',
     'Tour created' => 'Тур создан',
-    'Actions' => 'Действия'
+    'Actions' => 'Действия',
+    'Payments' => 'Настройки оплат',
+    'Create payment' => 'Создать оплату',
+    'Single region cost' => 'Услуга "Разблокировать аккаунт"',
+    'Multiple region cost' => 'Услуга "Вся страна"',
+    'Back to list' => 'Вернуться к списку',
+    'Create new payment' => 'Создать новую оплату'
 ];

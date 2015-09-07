@@ -19,6 +19,9 @@ use yii\helpers\Html;
                     <li>
                         <?= Html::a(Yii::t('app', 'Email management'), Url::toRoute(['/admin/board/emails']), ['class' => ' '.$active_link_emails]);?>
                     </li>
+                    <li>
+                        <?= Html::a(Yii::t('app', 'Payments'), Url::toRoute(['/admin/board/payments']), ['class' => ' '.$active_link_payments]);?>
+                    </li>
                 </ul>
             </div>
         </div>

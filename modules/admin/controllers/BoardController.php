@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\modules\admin\models\PaymentSearch;
 use app\models\TourResponse;
 use app\models\User;
 use app\models\UserSearch;
@@ -55,5 +56,15 @@ class BoardController extends Controller
 
     public function actionEmails(){
         return $this->render('emails');
+    }
+
+    public function actionPayments(){
+        $paymentSearch = new PaymentSearch();
+        $dataProvider = $paymentSearch->search(Yii::$app->request->get());
+
+        return $this->render('payments',[
+            'provider' => $dataProvider,
+            'searchModel' => $paymentSearch,
+        ]);
     }
 }
