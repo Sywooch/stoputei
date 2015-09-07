@@ -23,6 +23,12 @@ use yii\helpers\Html;
                 }
             ],
             [
+                'attribute' => 'company_phone',
+                'value' => function($model){
+                    return $model->company_phone;
+                }
+            ],
+            [
                 'attribute' => 'updated_at',
                 'value' => function($model){
                     $date = new DateTime($model->updated_at);
