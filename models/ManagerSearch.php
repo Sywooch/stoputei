@@ -5,7 +5,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
-class UserSearch extends User
+class ManagerSearch extends User
 {
     public function rules()
     {
@@ -30,7 +30,7 @@ class UserSearch extends User
 
     public function search($params)
     {
-        $query = User::find()->where(['role' => 1]);
+        $query = User::find()->where(['role' => 2]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

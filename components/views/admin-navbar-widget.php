@@ -8,6 +8,9 @@ use yii\helpers\Html;
             <div class="row">
                 <ul class="nav navbar-nav">
                     <li>
+                        <?= Html::a(Yii::t('app', 'Managers'), Url::toRoute(['/admin/board/managers']), ['class' => ' '.$active_link_managers]);?>
+                    </li>
+                    <li>
                         <?= Html::a(Yii::t('app', 'Users'), Url::toRoute(['/admin/board/users']), ['class' => ' '.$active_link_users]);?>
                     </li>
                     <li>

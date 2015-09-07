@@ -33,6 +33,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             'city.name' => \Yii::t('app', 'Region'),
             'created_at' => \Yii::t('app', 'Created at admin'),
             'updated_at' => \Yii::t('app', 'Last enter'),
+            'company_name' => \Yii::t('app', 'Company name'),
         ];
     }
 

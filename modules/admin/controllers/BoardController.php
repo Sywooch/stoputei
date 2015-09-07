@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\ManagerSearch;
 use app\modules\admin\models\PaymentSearch;
 use app\models\TourResponse;
 use app\models\User;
@@ -21,6 +22,16 @@ class BoardController extends Controller
         return $this->render('users',[
            'provider' => $dataProvider,
            'searchModel' => $userSearch,
+        ]);
+    }
+
+    public function actionManagers(){
+        $userSearch = new ManagerSearch();
+        $dataProvider = $userSearch->search(Yii::$app->request->get());
+
+        return $this->render('managers',[
+            'provider' => $dataProvider,
+            'searchModel' => $userSearch,
         ]);
     }
 

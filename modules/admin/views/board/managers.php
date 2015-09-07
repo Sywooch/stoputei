@@ -3,7 +3,7 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 ?>
 <div class="admin-panel">
-    <?= \app\components\AdminNavbarWidget::widget(['active_link' => 'users']);?>
+    <?= \app\components\AdminNavbarWidget::widget(['active_link' => 'managers']);?>
     <?php
     echo GridView::widget([
         'dataProvider' => $provider,
@@ -14,6 +14,12 @@ use yii\helpers\Html;
                 'attribute' => 'city.name',
                 'value' => function($model){
                     return $model->city->name.'( '.$model->city->country->name.' )';
+                }
+            ],
+            [
+                'attribute' => 'company_name',
+                'value' => function($model){
+                    return $model->company_name;
                 }
             ],
             [
