@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <div class="row user-hot-tours">
-    <span class="back-to-main-from-tour" data-tab-class="user-hot-tours">
+    <span class="back-to-main back-to-main-from-tour" data-tab-class="user-hot-tours">
         <i class="glyphicon glyphicon-menu-right hide"></i>
     </span>
     <div class="main-tab-container user-hot-tours-tab-container col-xs-12" data-tab-class="user-hot-tours">
@@ -49,7 +49,7 @@ use yii\helpers\Url;
         </div>
         <div class="col-md-3 right-data">
             <div class="main-data">
-                Statistics
+                <?= \app\components\TopHotelsWidget::widget(['page' => 'user-hot-tours']);?>
             </div>
             <div id="right-data-response-user-hot-tours">
 
@@ -58,5 +58,8 @@ use yii\helpers\Url;
 
             </div>
         </div>
+    </div>
+    <div class="col-xs-12 full-hotel-information close-tab" data-tab-class="user-hot-tours">
+
     </div>
 </div>

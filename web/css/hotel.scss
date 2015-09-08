@@ -250,3 +250,49 @@
     }
   }
 }
+
+.top-hotels{
+  padding: 0px;
+  .hotel-top-wrapper{
+    box-shadow: $grey-shadow;
+    margin-bottom: 10px;
+    text-align: left;
+    padding-bottom: 5px;
+    .name{
+      font-size: 1.1em;
+      padding: 0px;
+    }
+    .left{
+      padding-left: 0px;
+      .stars{
+        .glyphicon-star {
+          color: $gold;
+        }
+        .glyphicon-star-empty{
+          color: $grey-text;
+        }
+      }
+      .photo{
+        text-align: center;
+        .empty-img{
+          font-size: 3em;
+        }
+      }
+    }
+    .right{
+      padding: 0px;
+      .country{
+        font-size: 0.8em;
+        color: $grey-text;
+      }
+      .city{
+        font-size: 0.9em;
+        font-size: $grey-dark;
+      }
+      a{
+        border-radius: 0px;
+        margin-top: 10px;
+      }
+    }
+  }
+}

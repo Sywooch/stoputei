@@ -367,8 +367,8 @@ $(function(){
         $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').addClass('hidden-select');
         $.get(url,{'hotel_id': hotel_id}).done(function(response){
             var data = $.parseJSON(response);
-            $('.back-to-main-from-user-get-tour[data-tab-class="'+tab_class+'"]').addClass('open');
-            $('.back-to-main-from-user-get-tour[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').removeClass('hide');
+            $('.back-to-main[data-tab-class="'+tab_class+'"]').addClass('open');
+            $('.back-to-main[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').removeClass('hide');
             $('.main-tab-container[data-tab-class="'+tab_class+'"]').addClass('implicit');
             if(data.status == 'ok'){
                 $('.full-hotel-information:not([data-tab-class="'+tab_class+'"])').addClass('close-tab').removeClass('open-tab').empty();
@@ -403,6 +403,8 @@ $(function(){
         //alert(tab);
         if(tab == 'get-tour'){
             tab_class = 'get-tour';
+        }else if(tab == 'hot-tour'){
+            tab_class = 'user-hot-tours';
         }else{
             tab_class = '';
         }
@@ -411,8 +413,8 @@ $(function(){
             $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').addClass('hidden-select');
             $.get(url,{'hotel_id': tab_current_hotel}).done(function(response){
                 var data = $.parseJSON(response);
-                $('.back-to-main-from-user-get-tour[data-tab-class="'+tab_class+'"]').addClass('open');
-                $('.back-to-main-from-user-get-tour[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').removeClass('hide');
+                $('.back-to-main[data-tab-class="'+tab_class+'"]').addClass('open');
+                $('.back-to-main[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').removeClass('hide');
                 $('.main-tab-container[data-tab-class="'+tab_class+'"]').addClass('implicit');
                 if(data.status == 'ok'){
                     $('.full-hotel-information:not([data-tab-class="'+tab_class+'"])').addClass('close-tab').removeClass('open-tab').empty();
