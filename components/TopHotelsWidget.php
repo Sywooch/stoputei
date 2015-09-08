@@ -33,8 +33,12 @@ class TopHotelsWidget extends Widget
             ->queryAll();
         $ids = array_merge($hotels_requests_arr, $hotels_responses_arr);
 
-        foreach($ids as $one){
-            $ids_new[$one['hotel_id']] = $one['value_occurrence'];
+        if(!empty($ids)) {
+            foreach ($ids as $one) {
+                $ids_new[$one['hotel_id']] = $one['value_occurrence'];
+            }
+        }else{
+            $ids_new = [];
         }
         arsort($ids_new);
         $hotels_ids = [];
