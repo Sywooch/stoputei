@@ -13,7 +13,11 @@ class TourResponse extends ActiveRecord
         return [
             'country_id' => \Yii::t('app','Country'),
             'city_id' => \Yii::t('app', 'Resort'),
+            'city.name' => \Yii::t('app', 'Resort'),
+            'country.name' => \Yii::t('app', 'Country'),
             'hotel_id' => \Yii::t('app', 'Hotel'),
+            'hotel.name' => \Yii::t('app', 'Hotel'),
+            'region_manager_id' => \Yii::t('app', 'Manager region'),
         ];
     }
 

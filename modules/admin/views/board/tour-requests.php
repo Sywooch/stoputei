@@ -9,7 +9,6 @@ use yii\helpers\Html;
         'dataProvider' => $provider,
         'filterModel' => $searchModel,
         'columns' => [
-            'id',
             [
                 'attribute' => 'country.name',
                 'value' => function($model){
@@ -23,9 +22,9 @@ use yii\helpers\Html;
                 }
             ],
             [
-                'attribute' => 'night_max',
+                'attribute' => 'budget',
                 'value' => function($model){
-                    return $model->night_max;
+                    return $model->budget;
                 }
             ],
             [

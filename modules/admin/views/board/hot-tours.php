@@ -3,7 +3,7 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 ?>
 <div class="admin-panel">
-    <?= \app\components\AdminNavbarWidget::widget(['active_link' => 'tour_responses']);?>
+    <?= \app\components\AdminNavbarWidget::widget(['active_link' => 'hot_tours']);?>
     <?php
     echo GridView::widget([
         'dataProvider' => $provider,

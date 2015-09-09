@@ -5,21 +5,22 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
-class ManagerSearch extends User
+class HotToursSearch extends TourResponse
 {
     public function rules()
     {
         // only fields in rules() are searchable
         return [
             [['id'], 'integer'],
-            [['email', 'city.name', 'company_city'], 'safe'],
+            [['country_id', 'city_id', 'hotel.name', 'city.name', 'country.name'], 'safe'],
+            //[['created_at'], 'date', 'format'=>'d.m']
         ];
     }
 
     public function attributes()
     {
         // add related fields to searchable attributes
-        return array_merge(parent::attributes(), ['city.name']);
+        return array_merge(parent::attributes(), ['hotel.name', 'city.name', 'country.name']);
     }
 
     public function scenarios()
@@ -30,7 +31,7 @@ class ManagerSearch extends User
 
     public function search($params)
     {
-        $query = User::find()->where(['role' => 2]);
+        $query = TourResponse::find()->where(['is_hot_tour' => 1]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -40,37 +41,47 @@ class ManagerSearch extends User
             ],
             'sort' => [
                 'defaultOrder' => [
-                    'id' => SORT_ASC,
-                    'email' => SORT_ASC,
-                    'region_id' => SORT_ASC
+                    'created_at' => SORT_DESC,
+
                 ],
                 'attributes' => [
                     'id',
-                    'email',
-                    'region_id',
-                    'company_city'
+                    'country_id',
+                    'city_id',
+                    'hotel_id',
+                    'created_at',
+                    'region_manager_id'
                 ],
             ],
         ]);
 
         $query->joinWith(['city']);
-
-
+        $query->joinWith(['country']);
+        $query->joinWith(['hotel']);
+        $query->joinWith(['owner']);
         $dataProvider->sort->attributes['city.name'] = [
             'asc' => ['city.name' => SORT_ASC],
             'desc' => ['city.name' => SORT_DESC],
+        ];
+        $dataProvider->sort->attributes['country.name'] = [
+            'asc' => ['country.name' => SORT_ASC],
+            'desc' => ['country.name' => SORT_DESC],
+        ];
+        $dataProvider->sort->attributes['hotel.name'] = [
+            'asc' => ['hotel.name' => SORT_ASC],
+            'desc' => ['hotel.name' => SORT_DESC],
         ];
 
         // load the search form data and validate
         if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
-        // adjust the query by adding the filters
-        $query->andFilterWhere(['id' => $this->id]);
-        $query->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'company_city', $this->company_city])
-            ->andFilterWhere(['like', 'city.name', $this->getAttribute('city.name')]);
 
+        // adjust the query by adding the filters
+        $query->andFilterWhere(['id' => $this->id, 'hotel_id' => $this->hotel_id]);
+        $query->andFilterWhere(['like', 'country.name', $this->getAttribute('country.name')])
+            ->andFilterWhere(['like', 'hotel.name', $this->getAttribute('hotel.name')])
+            ->andFilterWhere(['like', 'city.name', $this->getAttribute('city.name')]);
 
         return $dataProvider;
     }

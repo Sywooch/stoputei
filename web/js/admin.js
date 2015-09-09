@@ -1,5 +1,5 @@
 $(function(){
-    $('.admin-panel .actions').on('click', function(e){
+    $('.admin-panel .actions.delete').on('click', function(e){
         e.preventDefault();
     })
 });

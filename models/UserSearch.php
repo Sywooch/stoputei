@@ -47,7 +47,9 @@ class UserSearch extends User
                 'attributes' => [
                     'id',
                     'email',
-                    'region_id'
+                    'region_id',
+                    'updated_at',
+                    'approved'
                 ],
             ],
         ]);

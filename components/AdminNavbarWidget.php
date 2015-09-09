@@ -10,8 +10,10 @@ class AdminNavbarWidget extends Widget
     public $active_link_managers;
     public $active_link_tour_requests;
     public $active_link_tour_responses;
+    public $hot_tours;
     public $active_link_emails;
     public $active_link_payments;
+    public $active_link_periods;
 
     public function init()
     {
@@ -21,7 +23,9 @@ class AdminNavbarWidget extends Widget
         $this->active_link_emails = '';
         $this->active_link_tour_requests = '';
         $this->active_link_tour_responses = '';
+        $this->hot_tours = '';
         $this->active_link_payments = '';
+        $this->active_link_periods = '';
 
         switch($this->active_link){
             case 'users':
@@ -36,11 +40,17 @@ class AdminNavbarWidget extends Widget
             case 'tour_responses':
                 $this->active_link_tour_responses = 'active';
                 break;
+            case 'hot_tours':
+                $this->hot_tours = 'active';
+                break;
             case 'email':
                 $this->active_link_emails = 'active';
                 break;
             case 'payments':
                 $this->active_link_payments = 'active';
+                break;
+            case 'periods':
+                $this->active_link_periods = 'active';
                 break;
         }
     }
@@ -53,7 +63,9 @@ class AdminNavbarWidget extends Widget
             'active_link_emails' => $this->active_link_emails,
             'active_link_tour_requests' => $this->active_link_tour_requests,
             'active_link_tour_responses' => $this->active_link_tour_responses,
+            'active_link_hot_tours' => $this->hot_tours,
             'active_link_payments' => $this->active_link_payments,
+            'active_link_periods' => $this->active_link_periods,
         ]);
     }
 }

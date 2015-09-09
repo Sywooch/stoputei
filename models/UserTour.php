@@ -19,6 +19,7 @@ class UserTour extends ActiveRecord
             'city.name' => \Yii::t('app', 'Resort'),
             'night_max' => \Yii::t('app', 'Night count'),
             'created_at' => \Yii::t('app', 'Tour created'),
+            'budget' => \Yii::t('app', 'Budget'),
         ];
     }
 

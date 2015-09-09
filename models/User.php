@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\modules\admin\models\Email;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
@@ -30,11 +31,15 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             'password' => \Yii::t('app', 'Password'),
             'role' => \Yii::t('app', 'Role admin'),
             'region_id' => \Yii::t('app', 'Region'),
-            'city.name' => \Yii::t('app', 'Region'),
+            'city.name' => \Yii::t('app', 'Which region'),
             'created_at' => \Yii::t('app', 'Created at admin'),
             'updated_at' => \Yii::t('app', 'Last enter'),
             'company_name' => \Yii::t('app', 'Company name'),
             'company_phone' => \Yii::t('app', 'Phone'),
+            'company_city' => \Yii::t('app', 'City'),
+            'single_region_paid' => \Yii::t('app', 'Payment "Region"'),
+            'multiple_region_paid' => \Yii::t('app', 'Payment "Country"'),
+            'approved' => \Yii::t('app', 'Approved'),
         ];
     }
 
@@ -182,5 +187,9 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 
     public function getCity(){
         return $this->hasOne(City::className(), ['city_id' => 'region_id']);
+    }
+
+    public function getAdminEmails(){
+        return $this->hasOne(Email::className(), ['user_id' => 'id']);
     }
 }

@@ -35,7 +35,6 @@
       color: $red;
     }
   }
-  .payments{
     .edit, .new{
       .title {
         padding-left: 8px;
@@ -67,7 +66,8 @@
             }
           }
           &.required, &.field-profileeditform-company_name, &.field-profileeditform-company_city,
-          &.field-profileeditform-company_phone{
+          &.field-profileeditform-company_phone, &.field-usereditform-company_name,
+          &.field-usereditform-company_city{
             label{
               &:after{
                 content: '  *';
@@ -77,6 +77,16 @@
           }
           &.buttons-action{
             margin-bottom: 0px;
+          }
+          [type="radio"]{
+            margin-left: 10px;
+            position: relative;
+            top: 4px;
+          }
+          [type="radio"]{
+            margin-left: 10px;
+            position: relative;
+            top: 4px;
           }
         }
         .bootstrap-switch{
@@ -92,10 +102,22 @@
         }
       }
     }
-  }
   .actions-header{
     a{
       border-radius: 0px;
+    }
+  }
+  .glyphicon-ok{
+    color: $green;
+  }
+  .glyphicon-remove{
+    color: $red;
+  }
+  .emails{
+    [type="checkbox"]{
+      margin-right: 10px;
+      position: relative;
+      top: 1px;
     }
   }
 }

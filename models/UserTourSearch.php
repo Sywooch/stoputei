@@ -49,7 +49,8 @@ class UserTourSearch extends UserTour
                     'country_id',
                     'resort_id',
                     'hotel_id',
-                    'created_at'
+                    'created_at',
+                    'budget'
                 ],
             ],
         ]);
