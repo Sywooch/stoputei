@@ -329,5 +329,9 @@ return [
     'Time cycles was updated successful.' => 'Временные циклы были успешно обновлены.',
     'Tour request time life' => 'Жизнь запроса тура(в часах)',
     'Tour response time life' => 'Жизнь ответа на запрос ТУРА(в часах)',
-    'Flight response time life' => 'Жизнь ответа на запрос АВИАБИЛЕТА(в часах)'
+    'Flight response time life' => 'Жизнь ответа на запрос АВИАБИЛЕТА(в часах)',
+    'Title of page' => 'Заголовок страницы',
+    'Body of page' => 'Контент страницы',
+    'About "Editing"' => 'О компании "Редактирование"',
+    'Edit' => 'Редактировать'
 ];

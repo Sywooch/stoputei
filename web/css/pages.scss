@@ -1,0 +1,12 @@
+.page{
+  form{
+    .form-group{
+      .control-label{
+        text-align: left;
+      }
+      [type="submit"]{
+        border-radius: 0px;
+      }
+    }
+  }
+}

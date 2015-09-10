@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\PageEditForm;
+use app\models\Pages;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -292,5 +294,32 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionAboutEdit()
+    {
+        if(Yii::$app->user->identity->role != 3){
+            throw new \yii\web\HttpException(400);
+        }
+        $pageEditForm = new PageEditForm();
+        $page = Pages::find()->where(['name' => 'about'])->one();
+        $pageEditForm->title = $page->title;
+        $pageEditForm->body = $page->body;
+        if ($pageEditForm->load(Yii::$app->request->post()) and $pageEditForm->validate()){
+            $page->title = $pageEditForm->title;
+            $page->body = $pageEditForm->body;
+            if($page->save()){
+                Yii::$app->session->setFlash('success', 'SUCCESS');
+                return $this->redirect(['/site/about']);
+            }else{
+                return $this->render('about-edit', [
+                    'model' => $pageEditForm
+                ]);
+            }
+        }else {
+            return $this->render('about-edit', [
+                'model' => $pageEditForm
+            ]);
+        }
     }
 }

@@ -32,7 +32,7 @@ use yii\helpers\Html;
 
             <div class="form-group buttons-action">
                 <div class="col-xs-12">
-                    <?= Html::submitButton(Yii::t('app','Editing'), ['class' => 'btn btn-success col-xs-3', 'name' => 'edit-emails-button']) ?>
+                    <?= Html::submitButton(Yii::t('app','Edit'), ['class' => 'btn btn-success col-xs-3', 'name' => 'edit-emails-button']) ?>
                 </div>
             </div>
 
