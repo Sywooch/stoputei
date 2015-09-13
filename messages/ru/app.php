@@ -333,5 +333,17 @@ return [
     'Title of page' => 'Заголовок страницы',
     'Body of page' => 'Контент страницы',
     'About "Editing"' => 'О компании "Редактирование"',
-    'Edit' => 'Редактировать'
+    'Edit' => 'Редактировать',
+    'Your name' => 'Ваше имя',
+    'Your valid email' => 'Ваш корректный электронный адрес',
+    'Mail\'s subject' => 'Тема письма',
+    'Mail\'s body' => 'Письмо',
+    'Verification Code' => 'Подтвердите, что вы не робот',
+    'If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.' => 'Если у вас есть предложения, пожалуйста, заполните поля формы ниже.',
+    'Thank you for contacting us. We will respond to you as soon as possible.' => 'Спасибо, что связались с нами. Мы ответим вам как только это будет возможно.',
+    'Contact' => 'Связаться с нами',
+    'Submit' => 'Отправить',
+    'Back to main page' => 'Вернутся на гллавную',
+    'Submit one more mail' => 'Отправить еще одно письмо',
+    'New Letter from contact form' => 'Новое письмо от пользователей Сайта "СтоПутей"'
 ];

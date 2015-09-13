@@ -280,9 +280,9 @@ class SiteController extends Controller
     public function actionContact()
     {
         $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-
+            CustomMailer::sendContactForm('contact', Yii::t('app', 'New Letter from contact form') , null, $model->email, ['email' => $model->email, 'name' => $model->name, 'subject' => $model->subject, 'body' => $model->body]);
             return $this->refresh();
         } else {
             return $this->render('contact', [
@@ -309,7 +309,7 @@ class SiteController extends Controller
             $page->title = $pageEditForm->title;
             $page->body = $pageEditForm->body;
             if($page->save()){
-                Yii::$app->session->setFlash('success', 'SUCCESS');
+                Yii::$app->session->setFlash('successAbout', 'SUCCESS');
                 return $this->redirect(['/site/about']);
             }else{
                 return $this->render('about-edit', [
@@ -318,6 +318,38 @@ class SiteController extends Controller
             }
         }else {
             return $this->render('about-edit', [
+                'model' => $pageEditForm
+            ]);
+        }
+    }
+
+    public function actionFaq()
+    {
+        return $this->render('faq');
+    }
+
+    public function actionFaqEdit()
+    {
+        if(Yii::$app->user->identity->role != 3){
+            throw new \yii\web\HttpException(400);
+        }
+        $pageEditForm = new PageEditForm();
+        $page = Pages::find()->where(['name' => 'faq'])->one();
+        $pageEditForm->title = $page->title;
+        $pageEditForm->body = $page->body;
+        if ($pageEditForm->load(Yii::$app->request->post()) and $pageEditForm->validate()){
+            $page->title = $pageEditForm->title;
+            $page->body = $pageEditForm->body;
+            if($page->save()){
+                Yii::$app->session->setFlash('successFAQ', 'SUCCESS');
+                return $this->redirect(['/site/faq']);
+            }else{
+                return $this->render('faq-edit', [
+                    'model' => $pageEditForm
+                ]);
+            }
+        }else {
+            return $this->render('faq-edit', [
                 'model' => $pageEditForm
             ]);
         }

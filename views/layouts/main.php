@@ -38,8 +38,9 @@ $header_css = (in_array(Yii::$app->controller->action->id, ['login','registratio
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right custom-header'],
                 'items' => [
-                    ['label' => Yii::t('app','Contacts'), 'url' => ['#']],
+                    ['label' => Yii::t('app','Contacts'), 'url' => ['/site/contact']],
                     ['label' => Yii::t('app','About'), 'url' => ['/site/about']],
+                    ['label' => Yii::t('app','FAQ'), 'url' => ['/site/faq']],
                     Yii::$app->user->isGuest ?
                         ((Yii::$app->controller->action->id == 'login')?
                             ['label' => Yii::t('app','Sign up'), 'url' => ['/site/registration']]:

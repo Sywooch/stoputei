@@ -37,7 +37,11 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'name' => Yii::t('app', 'Your name'),
+            'email' => Yii::t('app', 'Your valid email'),
+            'subject' => Yii::t('app', 'Mail\'s subject'),
+            'body' => Yii::t('app', 'Mail\'s body'),
+            'verifyCode' => Yii::t('app', 'Verification Code'),
         ];
     }
 
