@@ -253,60 +253,62 @@ body {
       border-radius: 0px;
     }
   }
-  form{
-    .form-group{
-      margin-bottom: -35px;
-      .control-label{
-        text-align: left;
-        font-weight: 300;
-        font-size: 1.2em;
-      }
-      input[type="text"], input[type="email"], input[type="password"], select{
-        border-radius: 0px;
-        min-height: 40px;
-        box-shadow: none;
-        &:active, &:focus{
-          border: 1px solid $site-color-light;
-          background: $grey-extra-light;
+  .static-page {
+    form {
+      .form-group {
+        margin-bottom: -35px;
+        .control-label {
+          text-align: left;
+          font-weight: 300;
+          font-size: 1.2em;
         }
-        &:disabled{
-          background: $grey-light;
-          color: $red;
-        }
-      }
-      &.required{
-        label{
-          &:after{
-            content: '  *';
+        input[type="text"], input[type="email"], input[type="password"], select {
+          border-radius: 0px;
+          min-height: 40px;
+          box-shadow: none;
+          &:active, &:focus {
+            border: 1px solid $site-color-light;
+            background: $grey-extra-light;
+          }
+          &:disabled {
+            background: $grey-light;
             color: $red;
           }
         }
-      }
-      &.buttons-action{
-        margin-bottom: 0px;
+        &.required {
+          label {
+            &:after {
+              content: '  *';
+              color: $red;
+            }
+          }
+        }
+        &.buttons-action {
+          margin-bottom: 0px;
 
-        button{
-          border-radius: 0px;
+          button {
+            border-radius: 0px;
+          }
+          a {
+            border-radius: 0px;
+          }
         }
-        a{
-          border-radius: 0px;
+        [type="radio"] {
+          margin-left: 10px;
+          position: relative;
+          top: 4px;
+        }
+        [type="radio"] {
+          margin-left: 10px;
+          position: relative;
+          top: 4px;
         }
       }
-      [type="radio"]{
-        margin-left: 10px;
+      .bootstrap-switch {
         position: relative;
-        top: 4px;
+        right: -30px;
+        top: -13px;
       }
-      [type="radio"]{
-        margin-left: 10px;
-        position: relative;
-        top: 4px;
-      }
-    }
-    .bootstrap-switch{
-      position: relative;
-      right: -30px;
-      top: -13px;
     }
   }
 }

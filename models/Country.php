@@ -17,6 +17,10 @@ class Country extends ActiveRecord
         return $this->hasMany(UserTour::className(), ['country_id' => 'id']);
     }
 
+    public function getCurrency(){
+        return $this->hasOne(Currency::className(), ['country_id' => 'country_id']);
+    }
+
     public function destinationDropdown($countries = null){
         if(is_null($countries)) {
             $countries = self::find()->all();

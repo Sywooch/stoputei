@@ -24,7 +24,11 @@ use yii\helpers\Html;
             [
                 'attribute' => 'budget',
                 'value' => function($model){
-                    return $model->budget;
+                    if(in_array($model->owner->city->country->country_id, Yii::$app->params['depart_countries'])) {
+                        return $model->budget . ' ' . $model->owner->city->country->currency->name;
+                    }else{
+                        return $model->budget . ' USD';
+                    }
                 }
             ],
             [

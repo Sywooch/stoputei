@@ -39,6 +39,10 @@ class UserTour extends ActiveRecord
         return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_id']);
     }
 
+    public function getOwner(){
+        return $this->hasOne(User::className(), ['id' => 'owner_id']);
+    }
+
     public function getCategories(){
         return $this->hasMany(HotelCategory::className(), ['star_id' => 'category_id'])
             ->viaTable(UserTourCategories::tableName(), ['tour_id' => 'id']);

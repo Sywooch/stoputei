@@ -10,8 +10,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php if($page = Pages::find()->where(['name' => 'faq'])->one()):?>
         <h1>
             <?= Html::encode($page->title) ?>
-            <?php if(Yii::$app->user->identity->role == 3):?>
-                <?=Html::a(Html::tag('span', '', ['class' => 'glyphicon glyphicon-pencil']), \yii\helpers\Url::toRoute(['/site/faq-edit']), ['class' => '']);?>
+            <?php if(!Yii::$app->user->isGuest):?>
+                <?php if(Yii::$app->user->identity->role == 3):?>
+                    <?=Html::a(Html::tag('span', '', ['class' => 'glyphicon glyphicon-pencil']), \yii\helpers\Url::toRoute(['/site/faq-edit']), ['class' => '']);?>
+                <?php endif;?>
             <?php endif;?>
         </h1>
         <div>
@@ -20,8 +22,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php else:?>
         <h1>
             <?= Html::encode($this->title) ?>
-            <?php if(Yii::$app->user->identity->role == 3):?>
-                <?=Html::a(Html::tag('span', '', ['class' => 'glyphicon glyphicon-pencil']), \yii\helpers\Url::toRoute(['/site/faq-edit']), ['class' => '']);?>
+            <?php if(!Yii::$app->user->isGuest):?>
+                <?php if(Yii::$app->user->identity->role == 3):?>
+                    <?=Html::a(Html::tag('span', '', ['class' => 'glyphicon glyphicon-pencil']), \yii\helpers\Url::toRoute(['/site/faq-edit']), ['class' => '']);?>
+                <?php endif;?>
             <?php endif;?>
         </h1>
         <p>

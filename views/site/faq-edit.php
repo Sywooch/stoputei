@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 $this->title = Yii::t('app','FAQ "Editing"');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-about page">
+<div class="site-about page static-page">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin([
