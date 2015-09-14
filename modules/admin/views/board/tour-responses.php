@@ -12,7 +12,7 @@ use yii\helpers\Html;
             [
                 'attribute' => 'city.name',
                 'value' => function($model){
-                    return $model->city->name.'('.$model->city->country->name.')';
+                    return $model->city->name.' ('.$model->city->country->name.')';
                 }
             ],
             [
@@ -24,7 +24,7 @@ use yii\helpers\Html;
             [
                 'attribute' => 'region.name',
                 'value' => function($model){
-                    return $model->owner->city->name;
+                    return $model->region->name.' ('.$model->region->country->name.')';
                 }
             ],
             [
