@@ -185,7 +185,7 @@ class SiteController extends Controller
             if($user->getVerifyCode($model->email)) {
                 if($user->isApproved($model->email)){
                     $userCurrent = $user->findByEmail($model->email);
-                    if($userCurrent->active == 1) {
+                    if($userCurrent->active == 0) {
                         $userCurrent->updated_at = new Expression('NOW()');
                         $userCurrent->active = 1;
                         $userCurrent->save();
