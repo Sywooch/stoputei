@@ -31,6 +31,10 @@ $verify_success = Yii::$app->request->get('verify_success', null);
         <p class="col-xs-offset-1 success-field"><?=Yii::t('app', 'Your account was successfully confirmed.');?></p>
     <?php endif;?>
 
+    <?php if(!empty($another_device)):?>
+        <p class="col-xs-offset-1 success-field"><?=Yii::t('app', 'Your account was opened on another device.');?></p>
+    <?php endif;?>
+
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'options' => ['class' => 'form-horizontal'],

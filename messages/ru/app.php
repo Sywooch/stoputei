@@ -52,6 +52,7 @@ return [
     'Follow this link to verify your account' => 'Перейдите по ссылке, чтобы активировать аккаунт.',
     'Your account was successfully confirmed.' => 'Ваш аккаунт был успешно подтвержден.',
     'Your account has been not approved by Administration.' => 'Ваш аккаунт еще не был утвержден Администрацией.',
+    'Your account was opened on another device.' => 'Вы уже зашли в аккаунт на другом устройстве.',
     'Site home page' => 'Домашняя страница',
     'Get a tour' => 'Отправить запрос',
     'Take a tour' => 'Запрос тура',

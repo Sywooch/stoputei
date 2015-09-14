@@ -42,9 +42,10 @@ use yii\bootstrap\Alert;
                 }
             ],
             [
-                'attribute' => 'company_city',
+                'attribute' => 'created_at',
                 'value' => function($model){
-                    return $model->company_city;
+                    $date = new DateTime($model->created_at);
+                    return $date->format('d.m.Y H:i');
                 }
             ],
             [
