@@ -10,15 +10,9 @@ use yii\helpers\Html;
         'filterModel' => $searchModel,
         'columns' => [
             [
-                'attribute' => 'country.name',
-                'value' => function($model){
-                    return $model->country->name;
-                }
-            ],
-            [
                 'attribute' => 'city.name',
                 'value' => function($model){
-                    return $model->city->name;
+                    return $model->city->name.'('.$model->city->country->name.')';
                 }
             ],
             [
@@ -28,9 +22,25 @@ use yii\helpers\Html;
                 }
             ],
             [
-                'attribute' => 'region_manager_id',
+                'attribute' => 'region.name',
                 'value' => function($model){
                     return $model->owner->city->name;
+                }
+            ],
+            [
+                'attribute' => 'tour_cost',
+                'value' => function($model){
+                    if(in_array($model->owner->city->country->country_id, Yii::$app->params['depart_countries'])) {
+                        return $model->tour_cost . ' ' . $model->owner->city->country->currency->name;
+                    }else{
+                        return $model->tour_cost . ' USD';
+                    }
+                }
+            ],
+            [
+                'attribute' => 'created_at',
+                'value' => function($model){
+                    return date('d.m.Y H:i', $model->created_at);
                 }
             ],
         ],

@@ -127,7 +127,7 @@ use dosamigos\datepicker\DatePicker;
         </div>
     </div>
     <div class="col-md-3 right-data">
-        TOP HOTELS
+        <?= \app\components\TopHotelsWidget::widget(['page' => 'user-hot-tours']);?>
     </div>
     </div>
     <div class="col-xs-12 full-flights-information close-tab hide" data-tab-class="user-flights">

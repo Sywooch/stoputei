@@ -18,6 +18,9 @@ class TourResponse extends ActiveRecord
             'hotel_id' => \Yii::t('app', 'Hotel'),
             'hotel.name' => \Yii::t('app', 'Hotel'),
             'region_manager_id' => \Yii::t('app', 'Manager region'),
+            'region.name' => \Yii::t('app', 'Which region'),
+            'tour_cost' => \Yii::t('app', 'Budget'),
+            'created_at' => \Yii::t('app', 'Tour created'),
         ];
     }
 
@@ -51,6 +54,10 @@ class TourResponse extends ActiveRecord
 
     public function getOwner(){
         return $this->hasOne(User::className(), ['id' => 'manager_id']);
+    }
+
+    public function getRegion(){
+        return $this->hasOne(City::className(), ['city_id' => 'region_manager_id'])->from(['region' => 'city']);
     }
 
     public function getRooms(){

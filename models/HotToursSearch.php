@@ -12,7 +12,7 @@ class HotToursSearch extends TourResponse
         // only fields in rules() are searchable
         return [
             [['id'], 'integer'],
-            [['country_id', 'city_id', 'hotel.name', 'city.name', 'country.name'], 'safe'],
+            [['country_id', 'city_id', 'hotel.name', 'city.name', 'region.name'], 'safe'],
             //[['created_at'], 'date', 'format'=>'d.m']
         ];
     }
@@ -20,7 +20,7 @@ class HotToursSearch extends TourResponse
     public function attributes()
     {
         // add related fields to searchable attributes
-        return array_merge(parent::attributes(), ['hotel.name', 'city.name', 'country.name']);
+        return array_merge(parent::attributes(), ['hotel.name', 'city.name', 'region.name']);
     }
 
     public function scenarios()
@@ -50,22 +50,22 @@ class HotToursSearch extends TourResponse
                     'city_id',
                     'hotel_id',
                     'created_at',
-                    'region_manager_id'
+                    'tour_cost'
                 ],
             ],
         ]);
 
         $query->joinWith(['city']);
-        $query->joinWith(['country']);
+        $query->joinWith(['region']);
         $query->joinWith(['hotel']);
         $query->joinWith(['owner']);
         $dataProvider->sort->attributes['city.name'] = [
             'asc' => ['city.name' => SORT_ASC],
             'desc' => ['city.name' => SORT_DESC],
         ];
-        $dataProvider->sort->attributes['country.name'] = [
-            'asc' => ['country.name' => SORT_ASC],
-            'desc' => ['country.name' => SORT_DESC],
+        $dataProvider->sort->attributes['region.name'] = [
+            'asc' => ['region.name' => SORT_ASC],
+            'desc' => ['region.name' => SORT_DESC],
         ];
         $dataProvider->sort->attributes['hotel.name'] = [
             'asc' => ['hotel.name' => SORT_ASC],
@@ -79,7 +79,7 @@ class HotToursSearch extends TourResponse
 
         // adjust the query by adding the filters
         $query->andFilterWhere(['id' => $this->id, 'hotel_id' => $this->hotel_id]);
-        $query->andFilterWhere(['like', 'country.name', $this->getAttribute('country.name')])
+        $query->andFilterWhere(['like', 'region.name', $this->getAttribute('region.name')])
             ->andFilterWhere(['like', 'hotel.name', $this->getAttribute('hotel.name')])
             ->andFilterWhere(['like', 'city.name', $this->getAttribute('city.name')]);
 

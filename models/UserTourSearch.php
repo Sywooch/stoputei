@@ -12,7 +12,7 @@ class UserTourSearch extends UserTour
         // only fields in rules() are searchable
         return [
             [['id'], 'integer'],
-            [['country_id', 'resort_id', 'hotel_id', 'city.name', 'country.name'], 'safe'],
+            [['country_id', 'resort_id', 'hotel_id', 'city.name', 'region.name'], 'safe'],
             //[['created_at'], 'date', 'format'=>'d.m']
         ];
     }
@@ -20,7 +20,7 @@ class UserTourSearch extends UserTour
     public function attributes()
     {
         // add related fields to searchable attributes
-        return array_merge(parent::attributes(), ['city.name', 'country.name']);
+        return array_merge(parent::attributes(), ['city.name', 'region.name']);
     }
 
     public function scenarios()
@@ -56,14 +56,14 @@ class UserTourSearch extends UserTour
         ]);
 
         $query->joinWith(['city']);
-        $query->joinWith(['country']);
+        $query->joinWith(['region']);
         $dataProvider->sort->attributes['city.name'] = [
             'asc' => ['city.name' => SORT_ASC],
             'desc' => ['city.name' => SORT_DESC],
         ];
-        $dataProvider->sort->attributes['country.name'] = [
-            'asc' => ['country.name' => SORT_ASC],
-            'desc' => ['country.name' => SORT_DESC],
+        $dataProvider->sort->attributes['region.name'] = [
+            'asc' => ['region.name' => SORT_ASC],
+            'desc' => ['region.name' => SORT_DESC],
         ];
 
         // load the search form data and validate
@@ -73,8 +73,8 @@ class UserTourSearch extends UserTour
 
         // adjust the query by adding the filters
         $query->andFilterWhere(['id' => $this->id]);
-        $query->andFilterWhere(['like', 'country.name', $this->getAttribute('country.name')])
-            ->andFilterWhere(['like', 'city.name', $this->getAttribute('city.name')]);
+        $query->andFilterWhere(['like', 'city.name', $this->getAttribute('city.name')])
+            ->andFilterWhere(['like', 'region.name', $this->getAttribute('region.name')]);
 
         return $dataProvider;
     }

@@ -15,6 +15,7 @@ class UserTour extends ActiveRecord
         return [
             'country_id' => \Yii::t('app','Country'),
             'country.name' => \Yii::t('app','Country'),
+            'region.name' => \Yii::t('app', 'Which region'),
             'resort_id' => \Yii::t('app', 'Resort'),
             'city.name' => \Yii::t('app', 'Resort'),
             'night_max' => \Yii::t('app', 'Night count'),
@@ -41,6 +42,10 @@ class UserTour extends ActiveRecord
 
     public function getOwner(){
         return $this->hasOne(User::className(), ['id' => 'owner_id']);
+    }
+
+    public function getRegion(){
+        return $this->hasOne(City::className(), ['city_id' => 'region_owner_id'])->from(['region' => 'city']);
     }
 
     public function getCategories(){

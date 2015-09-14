@@ -71,7 +71,7 @@ use dosamigos\datepicker\DatePicker;
     </div>
     <div class="col-md-3 right-data">
         <div class="main-data">
-            TOP HOTELS
+            <?= \app\components\TopHotelsWidget::widget(['page' => 'user-hot-tours']);?>
         </div>
         <div id="right-data-response-offers">
 

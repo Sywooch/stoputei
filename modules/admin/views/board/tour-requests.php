@@ -10,15 +10,15 @@ use yii\helpers\Html;
         'filterModel' => $searchModel,
         'columns' => [
             [
-                'attribute' => 'country.name',
+                'attribute' => 'city.name',
                 'value' => function($model){
-                    return $model->country->name;
+                    return $model->city->name.'('.$model->city->country->name.')';
                 }
             ],
             [
-                'attribute' => 'city.name',
+                'attribute' => 'region.name',
                 'value' => function($model){
-                    return $model->city->name;
+                    return $model->owner->city->name;
                 }
             ],
             [
