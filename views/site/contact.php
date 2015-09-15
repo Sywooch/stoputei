@@ -11,7 +11,7 @@ use yii\helpers\Url;
 $this->title = Yii::t('app', 'Contact');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-contact">
+<div class="site-contact static-page">
     <div class="col-xs-12">
         <h1 class="col-xs-6 col-xs-offset-2"><?= Html::encode($this->title) ?></h1>
 

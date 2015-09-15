@@ -340,7 +340,7 @@ return [
     'Mail\'s subject' => 'Тема письма',
     'Mail\'s body' => 'Письмо',
     'Verification Code' => 'Подтвердите, что вы не робот',
-    'If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.' => 'Если у вас есть предложения, пожалуйста, заполните поля формы ниже.',
+    'If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.' => 'Если у вас есть предложения или вопросы, пожалуйста, заполните поля формы ниже.',
     'Thank you for contacting us. We will respond to you as soon as possible.' => 'Спасибо, что связались с нами. Мы ответим вам как только это будет возможно.',
     'Contact' => 'Связаться с нами',
     'Submit' => 'Отправить',
