@@ -52,7 +52,7 @@ $header_css = (in_array(Yii::$app->controller->action->id, ['login','registratio
                                 '<li class="divider"></li>',
                                 (Yii::$app->user->identity->role == 3)?
                                     ['label' => Yii::t('app','Admin panel'), 'url' => ['/admin/board/managers']]:'',
-                                ['label' => Yii::t('app','Settings'), 'url' => ['#']],
+                                //['label' => Yii::t('app','Settings'), 'url' => ['#']],
                                 '<li class="divider"></li>',
                                 ['label' => Yii::t('app','Logout'),
                                     'url' => ['/site/logout'],
