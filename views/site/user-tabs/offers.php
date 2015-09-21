@@ -5,7 +5,7 @@ use yii\helpers\Url;
 use dosamigos\datepicker\DatePicker;
 ?>
 <div class="row filter-tour">
-    <span class="back-to-main-from-tour" data-tab-class="user-offers">
+    <span class="back-to-main back-to-main-from-tour" data-tab-class="user-offers">
         <span class="text"><?=Yii::t('app', 'Close tab');?></span>
     </span>
     <div class="main-tab-container user-offers-tab-container col-xs-12" data-tab-class="user-offers">
@@ -80,5 +80,8 @@ use dosamigos\datepicker\DatePicker;
 
         </div>
     </div>
+    </div>
+    <div class="col-xs-12 full-hotel-information close-tab" data-tab-class="user-offers">
+
     </div>
 </div>

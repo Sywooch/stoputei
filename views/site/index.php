@@ -9,9 +9,9 @@ $this->title = 'StoPutei';
         <div class="col-xs-12" id="control-tabs">
             <ul class="nav nav-tabs user" role="tablist">
                 <li role="presentation"><a href="#get-tour" aria-controls="get-tour" role="tab" data-toggle="tab" class="hotel"><?=Yii::t('app','Take a tour');?></a><span class="badge offers-tab tab-badge get-tour"></span></li>
-                <li role="presentation"><a href="#offers" aria-controls="offers" role="tab" data-toggle="tab" class="tour"><?=Yii::t('app','Offers');?></a><span class="badge offers-tab tab-badge user-offers"><?=count($tourUserResponse);?></span></li>
-                <li role="presentation"><a href="#flights" aria-controls="flights" role="tab" data-toggle="tab"><?=Yii::t('app','Flights');?></a><span class="badge offers-tab tab-badge flights"><?=count($flightsUserResponse);?></span></li>
-                <li role="presentation"><a href="#favourites" aria-controls="favourites" role="tab" data-toggle="tab" class="tour"><?=Yii::t('app','Favourites');?></a><span class="badge offers-tab tab-badge favourites-tours"><?=count($userFavouriteTours);?></span></li>
+                <li role="presentation"><a href="#offers" aria-controls="offers" role="tab" data-toggle="tab" class="tour hotel"><?=Yii::t('app','Offers');?></a><span class="badge offers-tab tab-badge user-offers"><?=count($tourUserResponse);?></span></li>
+                <li role="presentation"><a href="#flights" aria-controls="flights" role="tab" data-toggle="tab" class="hotel"><?=Yii::t('app','Flights');?></a><span class="badge offers-tab tab-badge flights"><?=count($flightsUserResponse);?></span></li>
+                <li role="presentation"><a href="#favourites" aria-controls="favourites" role="tab" data-toggle="tab" class="tour hotel"><?=Yii::t('app','Favourites');?></a><span class="badge offers-tab tab-badge favourites-tours"><?=count($userFavouriteTours);?></span></li>
                 <li role="presentation" class="active"><a href="#hot-tour" aria-controls="hot-tour" role="tab" data-toggle="tab" class="tour hotel"><?=Yii::t('app','Hot tours');?></a><span class="badge offers-tab tab-badge hot-tours"><?=count($userHotTours);?></span></li>
             </ul>
 

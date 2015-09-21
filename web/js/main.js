@@ -411,6 +411,12 @@ $(function(){
             tab_class = 'get-tour';
         }else if(tab == 'hot-tour'){
             tab_class = 'user-hot-tours';
+        }else if(tab == 'offers'){
+            tab_class = 'user-offers';
+        }else if(tab == 'flights'){
+            tab_class = 'user-flights';
+        }else if(tab == 'favourites'){
+            tab_class = 'user-favourite-tours';
         }else{
             tab_class = '';
         }
