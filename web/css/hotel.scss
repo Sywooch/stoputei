@@ -116,6 +116,7 @@
     }
     .right{
       font-size: 1.4em;
+      padding: 5px 28px 0px;
       .rate-field{
         font-weight: 300;
       }
@@ -125,6 +126,9 @@
         top: 2px;
         position: relative;
       }
+    }
+    .progress{
+      background: $grey-light;
     }
   }
   .main-content{
@@ -280,6 +284,10 @@
         text-align: center;
         .empty-img{
           font-size: 3em;
+        }
+        img{
+          width: 100px;
+          height: 80px;
         }
       }
     }

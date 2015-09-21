@@ -7,6 +7,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'language'=> 'en',
+    'defaultRoute' => '/site/welcome',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -29,12 +30,21 @@ $config = [
             // for the mailer to send real emails.
             //'useFileTransport' => false,
         ],
+        'liqpay' => [
+            'class' => 'app\components\LiqPay',
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['error', 'warning', 'info'],
+                ],
+
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'categories' => ['liqpay'],
+                    'logFile' => 'app\web\liqpay.txt',
                 ],
             ],
         ],
@@ -43,6 +53,7 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
+                'main' => 'site/index',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
             ],

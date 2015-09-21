@@ -101,12 +101,16 @@ if(!empty($photos)){
                 </span>
             </span>
             <span class="col-xs-4 right">
-                <span class="rate-field">
-                    <?= Yii::t('app', 'Hotel rate');?> :
-                </span>
-                <span class="rate-value">
-                    <?=$hotel->hotel_rate;?>
-                </span>
+                  <?= \yii\bootstrap\Progress::widget([
+                      'percent' => $hotel->hotel_rate*10,
+                      'label' => Yii::t('app', 'Hotel rate').': '.$hotel->hotel_rate.'/10',
+                      'options' => [
+                          'class' => 'progress-striped'
+                      ],
+                      'barOptions' => [
+                          'class' => 'progress-bar-success'
+                      ],
+                    ]);?>
             </span>
         </div>
         <div class="main-content col-xs-12">
@@ -130,7 +134,8 @@ if(!empty($photos)){
                     <div>
                         <div>
                             <span class="field"><?=Yii::t('app','Hotel\'s site');?> : </span>
-                            <span class="value"><?=(!empty($hotel->site)?$hotel->site:'---');?></span>
+                            <span class="value">
+                                <?=(!empty($hotel->site)?'<a href="'.$hotel->site.'" target="_blank">'.$hotel->name.'</a>':'---');?></span>
                         </div>
                         <div>
                             <span class="field"><?=Yii::t('app','Hotel\'s email');?> : </span>
@@ -206,19 +211,19 @@ if(!empty($photos)){
                             </div>
                             <div role="tabpanel" class="tab-pane" id="facilities">
                                 <?php if(!empty($hotel->facilities)):?>
-                                    <ul class="hotel-facilities">
-                                        <?php foreach($hotel->facilities as $facility):?>
-                                            <li>
-                                                <i class="glyphicon glyphicon-tag"></i>
-                                                <?=$facility->name;?>
-                                                <?php if(!empty($facility->hint)):?>
-                                                    <span class="hint">
-                                            ( <?=$facility->hint;?> )
-                                        </span>
-                                                <?php endif;?>
-                                            </li>
-                                        <?php endforeach;?>
-                                    </ul>
+                                    <?php $group_arr = array();
+                                        foreach($hotel->facilities as $key => $facility) {
+                                            $group_arr[$facility['category_type']][] = $facility['name'];
+                                        }
+                                    $new_group_arr = array_keys($group_arr);
+                                    foreach($new_group_arr as $key => $one){
+                                        echo '<div class="col-xs-6"><span class="stoputei-icon '.$one.'"></span>';
+                                        foreach($group_arr[$one] as $fac){
+                                            echo '<div>'.$fac.'</div>';
+                                        }
+                                        echo '</div>';
+                                    }
+                                 ;?>
                                 <?php else:?>
                                     <?= Yii::t('app', 'Hotel hasn\'t facilities.');?>
                                 <?php endif;?>

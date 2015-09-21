@@ -29,6 +29,7 @@ use yii\helpers\Html;
             <?= $form->field($model, 'tour_request_life');?>
             <?= $form->field($model, 'tour_response_life');?>
             <?= $form->field($model, 'flight_response_life');?>
+            <?= $form->field($model, 'flight_request_life');?>
 
             <div class="form-group buttons-action">
                 <div class="col-xs-12">

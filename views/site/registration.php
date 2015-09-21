@@ -12,9 +12,6 @@ $this->title = Yii::t('app','Sign up');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="bg-wrap registration">
-    <img src="/images/bg-registration.jpg">
-</div>
 <div class="site-registration">
     <h1 class="col-xs-offset-1"><?= Yii::t('app','Sign up');?></h1>
 

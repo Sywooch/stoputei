@@ -116,10 +116,12 @@ class BoardController extends Controller
         $model->tour_request_life = $adminTimeCycles->tour_request_life;
         $model->tour_response_life = $adminTimeCycles->tour_response_life;
         $model->flight_response_life = $adminTimeCycles->flight_response_life;
+        $model->flight_request_life = $adminTimeCycles->flight_request_life;
         if ($model->load(Yii::$app->request->post()) and $model->validate()) {
             $adminTimeCycles->tour_request_life = $model->tour_request_life;
             $adminTimeCycles->tour_response_life = $model->tour_response_life;
             $adminTimeCycles->flight_response_life = $model->flight_response_life;
+            $adminTimeCycles->flight_request_life = $model->flight_request_life;
             if($adminTimeCycles->save()) {
                 Yii::$app->session->setFlash('success', 'SUCCESS');
                 return $this->redirect('/admin/board/periods');

@@ -1,24 +1,35 @@
 #control-tabs{
   .nav-tabs{
     box-shadow: $nav-light-grey-border;
+    margin-top: -7px;
     li{
       width: 15%;
+      background: $site-color-light;
       a{
         text-align: center;
         font-size: 1.2em;
-        color: $grey-light-text;
+        color: #ffffff;
         border-radius: 0;
+        background: $site-color-light;
+        &:hover{
+          background: $site-color-hover;
+          border: 1px solid $site-color-hover;
+        }
       }
       &.active{
+        background: #ffffff;
         a{
-          color: $grey-dark;
+          color: $site-color-light;
           font-weight: 600;
-          background: $grey-light;
+          background: #ffffff;
+          &:hover{
+            border: 1px solid #ffffff;
+          }
         }
         .tab-badge{
           opacity: 1;
-          top: -6px;
-          right: -8px;
+          top: 4px;
+          right: 6px;
         }
       }
       .tab-badge{
@@ -40,12 +51,12 @@
     overflow: hidden;
   }
   .overflow-list{
-    overflow-y: scroll;
+    overflow-y: auto;
     &::-webkit-scrollbar {
       width: 6px;
     }
     &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+      -webkit-box-shadow: inset 0 0 6px white;
       border-radius: 0px;
     }
     &::-webkit-scrollbar-thumb {
@@ -60,9 +71,9 @@
     .back-to-main-from-user-get-tour, .back-to-main-from-user-flight{
       visibility: hidden;
       width: 30px;
-      height: 100px;
+      height: 160px;
       position: absolute;
-      top: 100px;
+      top: 38px;
       background: $site-color-light;
       left: -15px;
       z-index: 100;
@@ -71,11 +82,32 @@
       color: white;
       box-shadow: 2px 0px 2px 0px $blue-shadow-color;
       cursor: pointer;
+      border-bottom-right-radius: 30px;
+      border-top-right-radius: 30px;
       &:hover{
         background: $site-color-hover;
       }
       &.open{
         visibility: visible;
+        .text{
+          display: block;
+          margin-top: 50px;
+          font-size: 1.4em;
+          /* Safari */
+          -webkit-transform: rotate(-90deg);
+
+          /* Firefox */
+          -moz-transform: rotate(-90deg);
+
+          /* IE */
+          -ms-transform: rotate(-90deg);
+
+          /* Opera */
+          -o-transform: rotate(-90deg);
+
+          /* Internet Explorer */
+          filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+        }
       }
       .glyphicon{
         font-size: 2em;
@@ -92,6 +124,12 @@
         padding: 0px;
         margin-left: -20px;
         transition: all $middle-speed ease-in;
+        .overflow-list{
+          &:first-child{
+            background: $grey-light;
+            padding-right: 0px;
+          }
+        }
         &.implicit {
           margin-left: -5000px;
           visibility: hidden;

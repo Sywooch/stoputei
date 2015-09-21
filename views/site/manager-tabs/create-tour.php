@@ -5,7 +5,7 @@ use yii\helpers\Url;
 ?>
 <div class="row filter-tour">
     <span class="back-to-main" data-tab-class="hot-tour">
-        <i class="glyphicon glyphicon-menu-right hide"></i>
+        <span class="text"><?=Yii::t('app', 'Close tab');?></span>
     </span>
     <div class="main-tab-container create-hot-tour-tab-container col-xs-12" data-tab-class="hot-tour">
     <div class="col-md-9 left-data">

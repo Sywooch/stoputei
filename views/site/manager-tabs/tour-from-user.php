@@ -4,7 +4,7 @@ use yii\helpers\Url;
 ?>
 <div class="row filter-tour">
     <span class="back-to-main" data-tab-class="manager-response">
-        <i class="glyphicon glyphicon-menu-right hide"></i>
+        <span class="text"><?=Yii::t('app', 'Close tab');?></span>
     </span>
     <div class="main-tab-container tour-from-user-tab-container col-xs-12" data-tab-class="manager-response">
     <div class="col-md-9 left-data">

@@ -19,7 +19,8 @@ class Hotel extends ActiveRecord
 
     public function getFacilities(){
         return $this->hasMany(Facility::className(), ['id' => 'facility_id'])
-            ->viaTable(HotelFacilities::tableName(), ['hotel_id' => 'hotel_id']);
+            ->viaTable(HotelFacilities::tableName(), ['hotel_id' => 'hotel_id'])
+            ->orderBy(['category_type' => SORT_ASC]);
     }
 
     public function updateDescription($id, $description = null){

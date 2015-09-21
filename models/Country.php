@@ -2,6 +2,7 @@
 namespace app\models;
 
 use yii\db\ActiveRecord;
+use app\modules\admin\models\Payment;
 
 class Country extends ActiveRecord
 {
@@ -19,6 +20,10 @@ class Country extends ActiveRecord
 
     public function getCurrency(){
         return $this->hasOne(Currency::className(), ['country_id' => 'country_id']);
+    }
+
+    public function getBill(){
+        return $this->hasOne(Payment::className(), ['country_id' => 'country_id']);
     }
 
     public function destinationDropdown($countries = null){

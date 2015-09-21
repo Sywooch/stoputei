@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Hotel;
 use app\models\PageEditForm;
 use app\models\Pages;
 use Yii;
@@ -35,6 +36,8 @@ use yii\db\Expression;
 
 class SiteController extends Controller
 {
+    //public $defaultAction = 'welcome';
+
     public function behaviors()
     {
         return [
@@ -43,7 +46,7 @@ class SiteController extends Controller
                 'only' => ['logout', 'index'],
                 'rules' => [
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'payment'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -69,6 +72,10 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+
+    public function actionWelcome(){
+        return $this->render('welcome');
     }
 
     public function actionIndex()
@@ -190,7 +197,7 @@ class SiteController extends Controller
                         $userCurrent->active = 1;
                         $userCurrent->save();
                         $model->login();
-                        return $this->goBack();
+                        return $this->redirect(['/site/index']);
                     }else{
                         return $this->render('login', [
                             'model' => $model,
@@ -364,5 +371,9 @@ class SiteController extends Controller
                 'model' => $pageEditForm
             ]);
         }
+    }
+
+    public function actionPayment(){
+        return $this->render('payment');
     }
 }

@@ -13,6 +13,7 @@ class TimeCyclesForm extends Model
     public $tour_request_life;
     public $tour_response_life;
     public $flight_response_life;
+    public $flight_request_life;
 
     /**
      * @return array the validation rules.
@@ -20,7 +21,7 @@ class TimeCyclesForm extends Model
     public function rules()
     {
         return [
-            [['tour_request_life', 'tour_response_life', 'flight_response_life'], 'integer']
+            [['tour_request_life', 'tour_response_life', 'flight_response_life', 'flight_request_life'], 'integer']
         ];
     }
 
@@ -30,6 +31,7 @@ class TimeCyclesForm extends Model
             'tour_request_life' => Yii::t('app', 'Tour request time life'),
             'tour_response_life' => Yii::t('app', 'Tour response time life'),
             'flight_response_life' => Yii::t('app', 'Flight response time life'),
+            'flight_request_life' => Yii::t('app', 'Flight request time life'),
         ];
     }
 }

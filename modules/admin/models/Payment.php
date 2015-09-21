@@ -20,6 +20,7 @@ class Payment extends ActiveRecord
             'country.name' => Yii::t('app', 'Country'),
             'single_region_cost' => Yii::t('app', 'Single region cost'),
             'multiple_region_cost' => Yii::t('app', 'Multiple region cost'),
+            'currency' => Yii::t('app', 'Currency'),
         ];
     }
 

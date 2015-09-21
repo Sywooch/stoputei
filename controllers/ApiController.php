@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\LiqPay;
 use Yii;
 use yii\base\Exception;
 use yii\filters\AccessControl;
@@ -14,6 +15,13 @@ use app\models\Hotel;
 
 class ApiController extends Controller
 {
+
+    public function beforeAction($action) {
+        if($this->action->id == 'liqpay-callback') {
+            $this->enableCsrfValidation = false;
+        }
+        return parent::beforeAction($action);
+    }
 
     public function actionIndex()
     {
@@ -53,5 +61,18 @@ class ApiController extends Controller
         return $this->render('get_hotels', [
             'hotels' => $hotels
         ]);
+    }
+
+    public function actionLiqpayCallback(){
+        $signature = Yii::$app->request->post('signature');
+        $signature = json_encode($signature);
+
+        $file = 'liqpay-response.txt';
+        $fh = fopen($file, 'w') or die("can't open file");
+        fwrite($fh, json_encode($signature));
+        fclose($fh);
+
+        echo $signature;
+
     }
 }

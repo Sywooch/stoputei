@@ -17,6 +17,7 @@ class TimeCycles extends ActiveRecord
             'tour_request_life' => Yii::t('app', 'Tour request time life'),
             'tour_response_life' => Yii::t('app', 'Tour response time life'),
             'flight_response_life' => Yii::t('app', 'Flight response time life'),
+            'flight_request_life' => Yii::t('app', 'Flight request time life'),
         ];
     }
 

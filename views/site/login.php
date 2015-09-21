@@ -11,9 +11,6 @@ $this->title = Yii::t('app','Login');
 $this->params['breadcrumbs'][] = $this->title;
 $verify_success = Yii::$app->request->get('verify_success', null);
 ?>
-<div class="bg-wrap">
-    <img src="/images/bg-login.jpg">
-</div>
 <div class="site-login">
     <h1 class="col-xs-offset-1"><?= Yii::t('app','Login');?></h1>
 

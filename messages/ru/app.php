@@ -307,7 +307,7 @@ return [
     'Time cycles' => 'Временные циклы',
     'Tour created' => 'Тур создан',
     'Actions' => 'Действия',
-    'Payments' => 'Настройки оплат',
+    'Payments' => 'Оплаты',
     'Create payment' => 'Создать оплату',
     'Single region cost' => 'Услуга "Разблокировать аккаунт"',
     'Multiple region cost' => 'Услуга "Вся страна"',
@@ -331,6 +331,7 @@ return [
     'Tour request time life' => 'Жизнь запроса тура(в часах)',
     'Tour response time life' => 'Жизнь ответа на запрос ТУРА(в часах)',
     'Flight response time life' => 'Жизнь ответа на запрос АВИАБИЛЕТА(в часах)',
+    'Flight request time life' => 'Жизнь запроса АВИАБИЛЕТА(в часах)',
     'Title of page' => 'Заголовок страницы',
     'Body of page' => 'Контент страницы',
     'About "Editing"' => 'О компании "Редактирование"',
@@ -346,5 +347,9 @@ return [
     'Submit' => 'Отправить',
     'Back to main page' => 'Вернутся на гллавную',
     'Submit one more mail' => 'Отправить еще одно письмо',
-    'New Letter from contact form' => 'Новое письмо от пользователей Сайта "СтоПутей"'
+    'New Letter from contact form' => 'Новое письмо от пользователей Сайта "СтоПутей"',
+    'Cabinet' => 'Кабинет',
+    'Close tab' => 'Свернуть',
+    'Choose currency' => 'Выберите валюту',
+    'Currency' => 'Валюта'
 ];

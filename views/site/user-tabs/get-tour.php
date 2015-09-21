@@ -6,7 +6,7 @@ use dosamigos\datepicker\DatePicker;
 ?>
 <div class="row filter-tour">
     <span class="back-to-main back-to-main-from-user-get-tour" data-tab-class="get-tour">
-        <i class="glyphicon glyphicon-menu-right hide"></i>
+        <span class="text"><?=Yii::t('app', 'Close tab');?></span>
     </span>
     <div class="main-tab-container get-tour-tab-container col-xs-12" data-tab-class="get-tour">
     <div class="col-md-9 left-data">

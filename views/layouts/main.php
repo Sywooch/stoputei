@@ -10,7 +10,18 @@ use yii\bootstrap\ButtonDropdown;
 /* @var $content string */
 
 AppAsset::register($this);
-$header_css = (in_array(Yii::$app->controller->action->id, ['login','registration']))?'to-top':'';
+switch(Yii::$app->controller->action->id){
+    case 'login':
+    case 'registration':
+        $header_css = 'to-top';
+        break;
+    case 'welcome':
+        $header_css = 'welcome';
+        break;
+    default:
+        $header_css = '';
+        break;
+}
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -28,16 +39,17 @@ $header_css = (in_array(Yii::$app->controller->action->id, ['login','registratio
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => Yii::t('app','Stoputei'),
-                'brandUrl' => Yii::$app->homeUrl,
+                'brandLabel' => Html::img('/images/logo.png', ['class' => 'img-response main-logo']),
+                'brandUrl' => \yii\helpers\Url::to(['site/index']),
                 'options' => [
-                    'class' => 'navbar-inverse navbar-fixed-top '.$header_css,
-                    'id' => 'header-navbar'
+                    'class' => 'navbar-inverse navbar-fixed-top',
+                    'id' => 'header-navbar',
                 ],
             ]);
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right custom-header'],
                 'items' => [
+                    ['label' => Yii::$app->params['adminPhone'], 'class' => 'phone'],
                     ['label' => Yii::t('app','Contacts'), 'url' => ['/site/contact']],
                     ['label' => Yii::t('app','About'), 'url' => ['/site/about']],
                     ['label' => Yii::t('app','FAQ'), 'url' => ['/site/faq']],
@@ -46,14 +58,13 @@ $header_css = (in_array(Yii::$app->controller->action->id, ['login','registratio
                             ['label' => Yii::t('app','Sign up'), 'url' => ['/site/registration']]:
                             ['label' => Yii::t('app','Login'), 'url' => ['/site/login']]
                         ) :
-                        ['label' =>   Yii::$app->user->identity->email,
+                        ['label' =>   Yii::t('app', 'Cabinet').' № '.Yii::$app->user->identity->getId().'<br><span>'.Yii::$app->user->identity->city->name.'</span>',
                             'items' => [
                                 ['label' => Yii::t('app','Edit profile'), 'url' => ['/profile/index']],
-                                '<li class="divider"></li>',
                                 (Yii::$app->user->identity->role == 3)?
                                     ['label' => Yii::t('app','Admin panel'), 'url' => ['/admin/board/managers']]:'',
                                 //['label' => Yii::t('app','Settings'), 'url' => ['#']],
-                                '<li class="divider"></li>',
+
                                 ['label' => Yii::t('app','Logout'),
                                     'url' => ['/site/logout'],
                                     'linkOptions' => ['data-method' => 'post']
@@ -61,6 +72,7 @@ $header_css = (in_array(Yii::$app->controller->action->id, ['login','registratio
                             ]
                         ]
                 ],
+                'encodeLabels' => false
             ]);
             NavBar::end();
         ?>
@@ -75,6 +87,7 @@ $header_css = (in_array(Yii::$app->controller->action->id, ['login','registratio
             <p class="pull-left">&copy; <?=Yii::t('app','Stoputei');?> <?= date('Y') ?></p>
         </div>
     </footer>
+    <div class="global loader-bg hide"><img src="/images/loader.gif"></div>
     <div id="modal-container" class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-md">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove"></span></button>

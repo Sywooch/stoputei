@@ -8,14 +8,14 @@ use yii\helpers\Html;
         <div class="new">
             <?php $form = ActiveForm::begin([
                 'id' => 'admin-create-payment-form',
-                'action' => Url::toRoute(['/admin/payments/new']),
+                'action' => Url::toRoute(['/admin/payments/edit', 'id' => $payment->id]),
                 'options' => ['class' => 'form-horizontal'],
                 'fieldConfig' => [
                     'template' => "{label}\n<div class=\"col-xs-6 col-xs-offset-2 \">{input}</div>\n<div class=\"col-xs-6 col-xs-offset-2\">{error}</div>",
                     'labelOptions' => ['class' => 'col-xs-6 col-xs-offset-2 control-label label-payment'],
                 ],
             ]); ?>
-            <?= $form->field($paymentsForm, 'country_id')->dropDownList($countries,['prompt' => Yii::t('app','Choose country')]);?>
+            <?= $form->field($paymentsForm, 'country_id')->input('text', ['disabled' => true, 'value' => $payment->country->name]);?>
 
             <?= $form->field($paymentsForm, 'single_region_cost');?>
 
