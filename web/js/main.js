@@ -170,7 +170,6 @@ $(function(){
         var value = $(this).val();
         var container_id = $(this).closest('div').attr('id');
         var type = $(this).attr('data-type');
-        alert(type);
         $(this).closest('.loader-bg').removeClass('hide');
         var data = [];
             $('#'+container_id+' .user-tour-wrapper').each(function(){
