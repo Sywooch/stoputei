@@ -168,6 +168,12 @@ body {
               &:hover{
                 color: #ffffff;
               }
+              img{
+                width: 20px;
+                position: relative;
+                right: 7px;
+                bottom: 2px;
+              }
             }
           }
           .dropdown-menu{

@@ -58,7 +58,7 @@ switch(Yii::$app->controller->action->id){
                             ['label' => Yii::t('app','Sign up'), 'url' => ['/site/registration']]:
                             ['label' => Yii::t('app','Login'), 'url' => ['/site/login']]
                         ) :
-                        ['label' =>   Yii::t('app', 'Cabinet').' № '.Yii::$app->user->identity->getId().'<br><span>'.Yii::$app->user->identity->city->name.'</span>',
+                        ['label' =>   Yii::t('app', 'Cabinet').' № '.Yii::$app->user->identity->getId().'<br><span><img src="/images/flags/48/'.Yii::$app->user->identity->city->country->A2.'.png">'.Yii::$app->user->identity->city->name.'</span>',
                             'items' => [
                                 ['label' => Yii::t('app','Edit profile'), 'url' => ['/profile/index']],
                                 (Yii::$app->user->identity->role == 3)?
