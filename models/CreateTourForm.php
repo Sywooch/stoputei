@@ -58,7 +58,7 @@ class CreateTourForm extends Model
     public function rules()
     {
         return [
-            [['destination', 'resort', 'hotel', 'adult_amount', 'room_count', 'nutrition', 'location', 'room_type', 'room_view', 'tour_cost'], 'required'],
+            [['destination', 'resort', 'adult_amount', 'room_count', 'nutrition', 'location', 'room_type', 'room_view', 'tour_cost'], 'required'],
             [['stars', 'apartment'], 'default', 'value' => []],
             [['hotel_id', 'oil_tax', 'visa', 'voyage_through_city_there', 'voyage_through_city_from_there', 'deadline'], 'default', 'value' => null],
             [['adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count', 'tour_cost', 'night_count', 'user_id', 'from_tour_id', 'room_view', 'beach_line', 'hotel_type', 'room_type', 'location', 'nutrition', 'hotel_star'], 'integer'],
@@ -85,6 +85,11 @@ class CreateTourForm extends Model
                 return $model->flight_included == 1;
             }, 'whenClient' => "function (attribute, value) {
                 return $('[name=\"CreateTourForm[flight_included]\"]').val() == 1;
+            }"],
+            [['hotel'], 'required', 'when' => function ($model) {
+                return $model->hotel_id == null;
+            }, 'whenClient' => "function (attribute, value) {
+                return $('[name=\"CreateTourForm[hotel_id]\"]').val() == '';
             }"],
         ];
     }

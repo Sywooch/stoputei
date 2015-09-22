@@ -365,6 +365,7 @@ class TourController extends Controller
                 if(!empty($userTour->hotel_id)){
                     $createTourForm->hotel_id = $userTour->hotel_id;
                     $createTourForm->hotel = $userTour->hotel->name;
+                    $createTourForm->stars = $userTour->hotel->star_id;
                     $hotels = Hotel::find()->where([
                         'country_id' => $userTour->country_id,
                         'hotel_id' => $userTour->hotel_id
@@ -380,6 +381,7 @@ class TourController extends Controller
                         'resort_id' => $userTour->resort_id,
                         'star_id' => $stars
                     ])->all();
+                    $createTourForm->stars = $stars;
                     $dropdownHotel = [];
                 }
                 $response = [
