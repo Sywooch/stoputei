@@ -70,40 +70,49 @@
     .back-to-main, .back-to-main-from-tour, .back-to-main-from-tour-manager,
     .back-to-main-from-user-get-tour, .back-to-main-from-user-flight{
       visibility: hidden;
-      width: 30px;
+      /*width: 30px;
       height: 160px;
-      position: absolute;
-      top: 38px;
+      position: fixed;
+      left: 75px;
+      top: 107px;
       background: $site-color-light;
-      left: -15px;
       z-index: 100;
       vertical-align: middle;
       line-height: 110px;
-      color: white;
       box-shadow: 2px 0px 2px 0px $blue-shadow-color;
-      cursor: pointer;
       border-bottom-right-radius: 30px;
-      border-top-right-radius: 30px;
+      border-top-right-radius: 30px;*/
+      color: white;
+      cursor: pointer;
+      position: fixed;
+      width: 0px;
+      height: 220px;
+      border: 1px solid $site-color;
+      border-color: transparent $site-color transparent transparent;
+      border-width: 30px;
+      transform: rotate(180deg);
+      margin-left: -15px;
       &:hover{
-        background: $site-color-hover;
+        border-color: transparent $site-color-hover transparent transparent;
       }
       &.open{
         visibility: visible;
         .text{
           display: block;
-          margin-top: 50px;
-          font-size: 1.4em;
+          margin-top: 20px;
+          margin-left: 16px;
+          font-size: 1.35em;
           /* Safari */
-          -webkit-transform: rotate(-90deg);
+          -webkit-transform: rotate(-270deg);
 
           /* Firefox */
-          -moz-transform: rotate(-90deg);
+          -moz-transform: rotate(-270deg);
 
           /* IE */
-          -ms-transform: rotate(-90deg);
+          -ms-transform: rotate(-270deg);
 
           /* Opera */
-          -o-transform: rotate(-90deg);
+          -o-transform: rotate(-270deg);
 
           /* Internet Explorer */
           filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);

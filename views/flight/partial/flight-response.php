@@ -67,7 +67,7 @@ $date_to = $date_city_to->format('d.m.Y H:i');
             </div>
         </div>
         <div class="col-xs-2 buttons">
-            <div class="cost"><?=$flight->flight_cost;?></div>
+            <div class="cost"><?=$flight->flight_cost;?><span data-placement="bottom" data-toggle="tooltip" title="<?= $flight->owner->city->country->currency->hint;?>"> <?=$flight->owner->city->country->currency->name;?></span></div>
             <a href="<?=\yii\helpers\Url::to(['flight/ajax-show-flight-full-info-user', 'id' => $flight->id]);?>" class="more-flight-response-info-user btn btn-primary" data-flight-id="<?=$flight->id;?>"><?= Yii::t('app', 'More');?></a>
         </div>
     </div>

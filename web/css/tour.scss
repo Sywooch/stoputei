@@ -20,6 +20,8 @@
       .hotel-title{
         cursor: pointer;
         color: $site-color-light;
+        font-size: 1em;
+        font-weight: 600;
         &:hover{
           color: $site-color;
         }
@@ -43,6 +45,7 @@
         position: absolute;
         left: 0px;
         top: 34px;
+        font-size: 1.1em;
         .glyphicon-star-empty{
           color: $grey-text;
         }
@@ -93,6 +96,7 @@
         .hotel-img{
           width: 100px;
           height: 80px;
+          margin-top: 5px;
         }
       }
       .tour-info{
@@ -115,6 +119,7 @@
         color: $gold;
         font-weight: 600;
         font-size: 1.2em;
+        min-width: 100px;
       }
       .company-name{
         font-size: 0.8em;
@@ -132,12 +137,17 @@
 
     //small column
     &.small-column{
+      padding: 0px 15px;
       .header-info{
         .created{
           display: none;
         }
         .hotel-title{
           font-size: 0.9em;
+          max-width: 230px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
           .hotel-rate{
             display: none;
           }
@@ -197,9 +207,11 @@
   }
   .hotel-header{
     text-align: left;
+    margin-top: 10px;
     .name{
-      font-size: 1.2em;
-      font-weight: 300;
+      font-size: 1.1em;
+      font-weight: 600;
+      color: $site-color;
     }
     .rate{
       color: $green;
@@ -212,7 +224,8 @@
     .stars{
       position: absolute;
       left: 14px;
-      top: -6px;
+      top: -15px;
+      font-size: 1.2em;
       .glyphicon-star{
         color: $gold;
       }
@@ -259,8 +272,8 @@
         }
       }
     }
-    #testimonials {
-      overflow-y: scroll;
+    #testimonials, #facilities {
+      overflow-y: auto;
       max-height: 300px;
       .testimonial {
         margin-bottom: 15px;

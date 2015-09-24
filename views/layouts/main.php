@@ -49,7 +49,7 @@ switch(Yii::$app->controller->action->id){
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right custom-header'],
                 'items' => [
-                    ['label' => Yii::$app->params['adminPhone'], 'class' => 'phone'],
+                    ['label' => (Yii::$app->controller->action->id == 'welcome')?'':Yii::$app->params['adminPhone'], 'class' => 'phone'],
                     ['label' => Yii::t('app','Contacts'), 'url' => ['/site/contact']],
                     ['label' => Yii::t('app','About'), 'url' => ['/site/about']],
                     ['label' => Yii::t('app','FAQ'), 'url' => ['/site/faq']],

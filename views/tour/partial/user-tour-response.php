@@ -122,7 +122,7 @@ $tour_name = ($tour->is_hot_tour == 1)?Yii::t('app', 'Hot tour'):Yii::t('app', '
     <div class="col-xs-2 buttons">
         <a href="#" class="<?=(Yii::$app->user->identity->role == 1)?'tour-full-info-user':'tour-full-info-manager';?> btn btn-primary" data-tour-id="<?=$tour->id;?>" data-filter-type="<?=$filter_type;?>"><?= Yii::t('app', 'More');?></a>
         <span class="tour-cost">
-            <?=$tour->tour_cost;?>
+            <?=$tour->tour_cost;?> <span data-placement="bottom" data-toggle="tooltip" title="<?= $tour->owner->city->country->currency->hint;?>"><?= $tour->owner->city->country->currency->name;?></span>
         </span>
         <span class="company-name">
             <?=$tour->owner->company_name;?>
