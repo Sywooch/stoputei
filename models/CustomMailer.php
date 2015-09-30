@@ -14,7 +14,10 @@ class CustomMailer
             ->send();
     }
 
-    public static function sendContactForm($view = 'contact', $subject, $to = null, $from = null, $params = null){
+    public static function sendContactForm($view = 'contact', $subject = null, $to = null, $from = null, $params = null){
+        if(is_null($subject)){
+            $subject = \Yii::t('app', 'Mail from contact form');
+        }
         if(is_null($to)){
             $to = \Yii::$app->params['adminEmailContact'];
         }

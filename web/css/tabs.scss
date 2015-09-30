@@ -192,6 +192,12 @@
               float: left;
               margin-left: -3px;
             }
+            &.field-gettourform-budget {
+              .input-group-addon {
+                height: 34px;
+                width: 100%;
+              }
+            }
           }
           .voyage_is_direct_from, .voyage_is_direct_to {
             background: $grey-light;

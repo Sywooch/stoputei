@@ -244,7 +244,7 @@ use dosamigos\datepicker\DatePicker;
                 ]);?>
             <?= $form->field($GetTourForm, 'exactly_date')->dropDownList([0 => Yii::t('app', 'Exactly date'), 1 => Yii::t('app', 'Closest date')]);?>
 
-            <?= $form->field($GetTourForm, 'budget')->input('number', ['min' => 0, 'max' => 99000000, 'step' => 1000, 'value' => '']);?>
+            <?= $form->field($GetTourForm, 'budget', ['template' => "{label}\n<div class=\"col-xs-8 col-xs-offset-1 \">{input}</div>\n<div class=\"input-group-addon\">".Yii::$app->user->identity->city->country->currency->name."</div><div class=\"col-xs-8 col-xs-offset-1\">{error}</div>"])->input('number', ['min' => 0, 'max' => 99000000, 'step' => 1000, 'value' => '']);?>
 
             <?= $form->field($GetTourForm, 'add_info')->textarea(['class' => 'add-info', 'placeholder' => Yii::t('app', 'Max length - 200')]);?>
 
