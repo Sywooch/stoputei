@@ -196,7 +196,7 @@ $(function(){
         var tab_class = main_container.attr('data-tab-class');
         main_container.closest('[name="order-tour-list"]').hide();
         $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').addClass('hidden-select');
-        //clear tour full info in close tab
+        //clear tour full info in Rollback tab
         $('.full-tour-information:not([data-tab-class="'+tab_class+'"])').empty();
         $('.full-hotel-information:not([data-tab-class="'+tab_class+'"])').empty();
 

@@ -1,16 +1,17 @@
 #control-tabs{
+  padding: 0px;
   .nav-tabs{
     box-shadow: $nav-light-grey-border;
     margin-top: -7px;
     li{
       width: 20%;
-      background: $site-color-light;
+      background: $site-color;
       a{
         text-align: center;
         font-size: 1.2em;
         color: #ffffff;
         border-radius: 0;
-        background: $site-color-light;
+        background: $site-color;
         &:hover{
           background: $site-color-hover;
           border: 1px solid $site-color-hover;
@@ -19,7 +20,7 @@
       &.active{
         background: #ffffff;
         a{
-          color: $site-color-light;
+          color: $site-color;
           font-weight: 600;
           background: #ffffff;
           &:hover{
@@ -53,7 +54,7 @@
   .overflow-list{
     overflow-y: auto;
     &::-webkit-scrollbar {
-      width: 6px;
+      width: 10px;
     }
     &::-webkit-scrollbar-track {
       -webkit-box-shadow: inset 0 0 6px white;
@@ -91,7 +92,8 @@
       border-color: transparent $site-color transparent transparent;
       border-width: 30px;
       transform: rotate(180deg);
-      margin-left: -15px;
+      margin-left: 15px;
+      z-index: 100;
       &:hover{
         border-color: transparent $site-color-hover transparent transparent;
       }
@@ -117,9 +119,19 @@
           /* Internet Explorer */
           filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
         }
+        &.to-right{
+          margin-left: 295px;
+        }
       }
       .glyphicon{
         font-size: 2em;
+      }
+      &:before{
+        content: '';
+        position: absolute;
+        height: 500px;
+        width: 2px;
+        background: $site-color;
       }
     }
 
@@ -173,7 +185,10 @@
           overflow-x: hidden;
           .form-group {
             margin-bottom: 0;
-            input[type="text"], input[type="email"], input[type="password"], [type="submit"], select, [name="get-tour-button"], [type="number"], [name*="create-"], #gettourform-hotel_id {
+            input[type="text"], input[type="email"], input[type="password"], select, [name="get-tour-button"], [type="number"], [name*="create-"], #gettourform-hotel_id {
+              //border-radius: 0px;
+            }
+            [type="submit"]{
               border-radius: 0px;
             }
             &.required {
@@ -192,11 +207,16 @@
               float: left;
               margin-left: -3px;
             }
-            &.field-gettourform-budget {
-              .input-group-addon {
-                height: 34px;
-                width: 100%;
-              }
+            .input-group-addon {
+              height: 30px;
+              width: auto;
+            }
+            .form-control{
+              height: 30px;
+              padding: 0px 12px;
+            }
+            .control-label{
+              font-size: 0.85em;
             }
           }
           .voyage_is_direct_from, .voyage_is_direct_to {
@@ -207,7 +227,7 @@
             .remove-hotel-name-user-offer, .remove-hotel-manager-offers, .remove-hotel-manager-hot-tour, .remove-hotel-user-hot-tour{
               position: absolute;
               right: 20px;
-              top: 9px;
+              top: 8px;
               color: $grey-text;
               &:hover {
                 color: $red;
@@ -372,7 +392,7 @@
           overflow-y: auto;
           transition: all $middle-speed ease-in;
           &::-webkit-scrollbar {
-            width: 6px;
+            width: 10px;
           }
           &::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
@@ -396,12 +416,12 @@
             //min-height: $max-hotel-height;
             img {
               position: absolute;
-              width: 130px;
-              height: 130px;
+              width: 34px;
+              height: 34px;
               left: 50%;
               top: 50%;
-              margin-left: -65px;
-              margin-top: -65px;
+              margin-left: -17px;
+              margin-top: -17px;
             }
           }
         }

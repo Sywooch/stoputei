@@ -75,6 +75,9 @@ class SiteController extends Controller
     }
 
     public function actionWelcome(){
+        if(!Yii::$app->user->isGuest){
+            return $this->redirect(['/main']);
+        }
         return $this->render('welcome');
     }
 
@@ -192,9 +195,9 @@ class SiteController extends Controller
             if($user->getVerifyCode($model->email)) {
                 if($user->isApproved($model->email)){
                     $userCurrent = $user->findByEmail($model->email);
-                    if($userCurrent->active == 0) {
+                    if($userCurrent->active == 0 or $userCurrent->active == 1) {
                         $userCurrent->updated_at = new Expression('NOW()');
-                        $userCurrent->active = 1;
+                        $userCurrent->active = 0;
                         $userCurrent->save();
                         $model->login();
                         return $this->redirect(['/site/index']);

@@ -6,7 +6,7 @@ use dosamigos\datepicker\DatePicker;
 ?>
 <div class="row filter-tour">
     <span class="back-to-main back-to-main-from-user-flight" data-tab-class="user-flights">
-        <span class="text"><?=Yii::t('app', 'Close tab');?></span>
+        <span class="text"><?=Yii::t('app', 'Rollback');?></span>
     </span>
     <div class="main-tab-container user-flights-tab-container col-xs-12" data-tab-class="user-flights">
     <div class="col-md-9 left-data">

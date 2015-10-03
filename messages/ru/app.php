@@ -316,6 +316,9 @@ return [
     'Top hotel for all directions' => 'Топ отелей по всем направлениям',
     'Payment "Region"' => '"Регион"',
     'Payment "Country"' => '"Вся страна"',
+    'Payment package "Region"' => 'Услуга "Регион"',
+    'Payment package "Country"' => 'Услуга "Вся страна"',
+    'Payment package is absent.' => 'Нет подключенных услуг',
     'Which region' => 'Из какого региона',
     'Approved' => 'Утвержден',
     'Budget' => 'Бюджет',
@@ -349,7 +352,7 @@ return [
     'Submit one more mail' => 'Отправить еще одно письмо',
     'New Letter from contact form' => 'Новое письмо от пользователей Сайта "Stoputei"',
     'Cabinet' => 'Кабинет',
-    'Close tab' => 'Свернуть',
+    'Rollback' => 'Свернуть',
     'Choose currency' => 'Выберите валюту',
     'Currency' => 'Валюта',
     'Mail from contact form' => 'Письмо с формы контактов на "СтоПутей"'

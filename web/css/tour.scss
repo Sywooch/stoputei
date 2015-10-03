@@ -114,6 +114,9 @@
         border-radius: 0px;
         padding: 4px 10px;
         margin-bottom: 2px;
+        &.btn-primary{
+          @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
+        }
       }
       .tour-cost{
         color: $gold;
@@ -197,6 +200,7 @@
 .tour-full-info{
   .header{
     text-align: left;
+    margin-left: 20px;
     .offer-number{
       color: $grey-dark;
     }
@@ -208,6 +212,7 @@
   .hotel-header{
     text-align: left;
     margin-top: 10px;
+    margin-left: 20px;
     .name{
       font-size: 1.1em;
       font-weight: 600;

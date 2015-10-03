@@ -42,14 +42,14 @@ switch(Yii::$app->controller->action->id){
                 'brandLabel' => Html::img('/images/logo.png', ['class' => 'img-response main-logo']),
                 'brandUrl' => \yii\helpers\Url::to(['site/index']),
                 'options' => [
-                    'class' => 'navbar-inverse navbar-fixed-top',
+                    'class' => (Yii::$app->controller->action->id == 'welcome')?'navbar-inverse navbar-fixed-top welcome':'navbar-inverse navbar-fixed-top',
                     'id' => 'header-navbar',
                 ],
             ]);
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right custom-header'],
                 'items' => [
-                    ['label' => (Yii::$app->controller->action->id == 'welcome')?'':Yii::$app->params['adminPhone'], 'class' => 'phone'],
+                    ['label' => \app\components\PaymentPackage::widget()],
                     ['label' => Yii::t('app','Contacts'), 'url' => ['/site/contact']],
                     ['label' => Yii::t('app','About'), 'url' => ['/site/about']],
                     ['label' => Yii::t('app','FAQ'), 'url' => ['/site/faq']],
@@ -82,7 +82,7 @@ switch(Yii::$app->controller->action->id){
         </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer <?=(Yii::$app->controller->action->id == 'welcome')?'welcome':'';?>">
         <div class="container">
             <p class="pull-left">&copy; <?=Yii::t('app','Stoputei');?> <?= date('Y') ?></p>
         </div>

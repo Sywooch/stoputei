@@ -6,7 +6,7 @@ use dosamigos\datepicker\DatePicker;
 ?>
 <div class="row filter-tour">
     <span class="back-to-main back-to-main-from-user-get-tour" data-tab-class="get-tour">
-        <span class="text"><?=Yii::t('app', 'Close tab');?></span>
+        <span class="text"><?=Yii::t('app', 'Rollback');?></span>
     </span>
     <div class="main-tab-container get-tour-tab-container col-xs-12" data-tab-class="get-tour">
     <div class="col-md-9 left-data">
@@ -138,21 +138,21 @@ use dosamigos\datepicker\DatePicker;
             <?= $form->field($GetTourForm, 'nutrition')->checkboxList([0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){
-                        $span = Html::tag('span', Yii::t('app','RO'), ['class' => 'type-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Room only')]);
+                        $span = Html::tag('span', Yii::t('app','RO'), ['class' => 'type-name', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => Yii::t('app', 'Room only')]);
                     }elseif($value == 1){
-                        $span = Html::tag('span', Yii::t('app','BB'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Bed & Breakfast')]);
+                        $span = Html::tag('span', Yii::t('app','BB'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => Yii::t('app', 'Bed & Breakfast')]);
                     }elseif($value == 2){
-                        $span = Html::tag('span', Yii::t('app','HB'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Half Board (Breakfast and Dinner normally)')]);
+                        $span = Html::tag('span', Yii::t('app','HB'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => Yii::t('app', 'Half Board (Breakfast and Dinner normally)')]);
                     }elseif($value == 3){
-                        $span = Html::tag('span', Yii::t('app','HB+'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Half Board plus')]);
+                        $span = Html::tag('span', Yii::t('app','HB+'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => Yii::t('app', 'Half Board plus')]);
                     }elseif($value == 4){
-                        $span = Html::tag('span', Yii::t('app','FB+'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Full Board plus')]);
+                        $span = Html::tag('span', Yii::t('app','FB+'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => Yii::t('app', 'Full Board plus')]);
                     }elseif($value == 5){
-                        $span = Html::tag('span', Yii::t('app','AL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'All Inclusive')]);
+                        $span = Html::tag('span', Yii::t('app','AL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => Yii::t('app', 'All Inclusive')]);
                     }elseif($value == 6){
-                        $span = Html::tag('span', Yii::t('app','UAL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Ultra All Inclusive')]);
+                        $span = Html::tag('span', Yii::t('app','UAL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => Yii::t('app', 'Ultra All Inclusive')]);
                     }elseif($value == 7){
-                        $span = Html::tag('span', Yii::t('app','Soft AL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'title' => Yii::t('app', 'Soft All Inclusive')]);
+                        $span = Html::tag('span', Yii::t('app','Soft AL'), ['class' => 'line-name', 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => Yii::t('app', 'Soft All Inclusive')]);
                     }
                     $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);

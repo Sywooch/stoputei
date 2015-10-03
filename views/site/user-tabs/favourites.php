@@ -4,8 +4,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <div class="row user-favourite-tours">
-    <span class="back-to-main back-to-main-from-tour" data-tab-class="user-favourite-tours">
-        <span class="text"><?=Yii::t('app', 'Close tab');?></span>
+    <span class="back-to-main back-to-main-from-tour to-right" data-tab-class="user-favourite-tours">
+        <span class="text"><?=Yii::t('app', 'Rollback');?></span>
     </span>
     <div class="main-tab-container user-favourites-tours-tab-container col-xs-12" data-tab-class="user-favourite-tours">
         <div class="col-md-9 left-data">

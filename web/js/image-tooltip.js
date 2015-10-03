@@ -51,6 +51,4 @@ this.imagePreview = function(){
 	$(document).on('click', "a.preview", function(e){
 		e.preventDefault();
 	});
-
-	alert('here');
 };

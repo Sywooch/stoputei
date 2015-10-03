@@ -67,6 +67,9 @@
             border: 1px solid transparent;
             width: 100%;
           }
+          &.btn-primary{
+            @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
+          }
         }
       }
     }
@@ -100,6 +103,7 @@
       .hotel-name {
         color: $site-color-light;
         font-size: 1.4em;
+        margin-left: 12px;
       }
       .stars {
         position: absolute;
@@ -216,7 +220,7 @@
       }
     }
     #testimonials {
-      overflow-y: scroll;
+      overflow-y: auto;
       max-height: 650px;
       .testimonial {
         margin-bottom: 15px;
