@@ -131,6 +131,8 @@
         position: absolute;
         height: 500px;
         width: 2px;
+        right: -30px;
+        top: -200px;
         background: $site-color;
       }
     }
@@ -215,9 +217,12 @@
               height: 30px;
               padding: 0px 12px;
             }
-            .control-label{
-              font-size: 0.85em;
-            }
+          }
+          .control-label{
+            font-size: 0.85em;
+          }
+          label{
+            font-size: 0.85em;
           }
           .voyage_is_direct_from, .voyage_is_direct_to {
             background: $grey-light;

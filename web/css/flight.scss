@@ -40,6 +40,9 @@
     padding-left: 0px;
     a{
       border-radius: 0px;
+      &.btn-primary{
+        @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
+      }
     }
     .cost{
       font-size: 1.2em;
