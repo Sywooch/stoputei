@@ -355,5 +355,6 @@ return [
     'Rollback' => 'Свернуть',
     'Choose currency' => 'Выберите валюту',
     'Currency' => 'Валюта',
-    'Mail from contact form' => 'Письмо с формы контактов на "СтоПутей"'
+    'Mail from contact form' => 'Письмо с формы контактов на "СтоПутей"',
+    'Near underground' => 'Ближайщее метро'
 ];

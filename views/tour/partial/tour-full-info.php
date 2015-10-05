@@ -124,7 +124,7 @@ if($tour->to_date) {
             </div>
             <div class="col-xs-6">
                 <span class="rate">
-                <?=Yii::t('app', 'Tour cost');?> : <?=$tour->tour_cost;?>
+                <?=Yii::t('app', 'Tour cost');?> : <?=$tour->tour_cost;?> <?=$tour->owner->city->country->currency->name;?>
                 </span>
             </div>
         </div>
@@ -397,6 +397,7 @@ if($tour->to_date) {
 
                 <?php if(!is_null($tour->owner->company_underground)):?>
                 <div class="col-xs-12">
+                    <span><?=Yii::t('app', 'Near underground');?>:</span>
                     <?=$tour->owner->company_underground;?>
                 </div>
                 <?php endif;?>
