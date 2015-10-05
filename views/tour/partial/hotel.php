@@ -54,9 +54,11 @@ $role = (Yii::$app->user->identity->role==1)?'user':'manager';
         <div class="col-xs-6 images">
             <?php if(count($photos)):?>
                 <?php foreach($photos_show as $img):?>
+                    <img src="<?='/uploads/hotel/images/small/'.$hotel->hotel_id.'/'.$img.'.jpg';?>" class="img-responsive hotel-img" alt="gallery thumbnail">
+                    <!--
                     <a href="<?='/uploads/hotel/images/big/'.$hotel->hotel_id.'/'.$img.'.jpg';?>" class="preview" title="<?=$hotel->name;?>">
                         <img src="<?='/uploads/hotel/images/small/'.$hotel->hotel_id.'/'.$img.'.jpg';?>" class="img-responsive hotel-img" alt="gallery thumbnail">
-                    </a>
+                    </a>-->
                 <?php endforeach;?>
             <?php else:?>
                 <?php foreach($empty_photos as $img):?>

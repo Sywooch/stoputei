@@ -33,7 +33,7 @@ class AppAsset extends AssetBundle
         'js/manager-hot-tours.js',
         'js/user-hot-tours.js',
         'js/user-favourites.js',
-        'js/image-tooltip.js',
+        //'js/image-tooltip.js',
         'js/manager-statistics.js',
         'js/profile.js',
         'js/bootstrap-switch.js',

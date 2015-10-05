@@ -1,1 +1,1 @@
-<?= $type;?>
+<span class="license-top"><?= $type;?></span>

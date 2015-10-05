@@ -1,12 +1,20 @@
 .hotel-list-wrap{
-  padding: 5px 0px;
-  border-bottom: 1px solid $grey-light;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  border: $border-wrapper-in-list;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   .hotel-title{
     .name{
       display: block;
       font-size: 1.2em;
       font-weight: 300;
-      color: $grey-dark;
+      color: $site-color-light;
+      cursor: pointer;
+      &:hover{
+        color: $site-color;
+      }
     }
     .star{
       display: block;
@@ -308,6 +316,9 @@
       a{
         border-radius: 0px;
         margin-top: 10px;
+        &.btn-primary{
+          @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
+        }
       }
     }
   }

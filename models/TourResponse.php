@@ -103,10 +103,12 @@ class TourResponse extends ActiveRecord
             case 4:
                 return \Yii::t('app', 'FB+');
             case 5:
-                return \Yii::t('app', 'AL');
+                return \Yii::t('app', 'FB');
             case 6:
-                return \Yii::t('app', 'UAL');
+                return \Yii::t('app', 'AL');
             case 7:
+                return \Yii::t('app', 'UAL');
+            case 8:
                 return \Yii::t('app', 'Soft AL');
             default:
                 return \Yii::t('app', 'RO');
