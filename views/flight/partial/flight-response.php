@@ -2,7 +2,7 @@
 $date_city_to = new DateTime($flight->date_city_to);
 $date_to = $date_city_to->format('d.m.Y H:i');
 ?>
-<div class="col-xs-12 flight-wrapper" data-flight-id="<?=$flight->id;?>">
+<div class="col-xs-12 flight-wrapper padding" data-flight-id="<?=$flight->id;?>">
     <div class="col-xs-12 header">
         <span class="count"><?=Yii::t('app', 'Ticket').' № '.$flight->id;?>
         </span><span class="created"><?=date('d.m.Y H:i', $flight->created_at);?></span>
@@ -52,7 +52,7 @@ $date_to = $date_city_to->format('d.m.Y H:i');
                 </div>
             <?php endif;?>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-4 central">
             <div>
                 <span class="value"><?=$flight->owner->company_name;?></span>
             </div>

@@ -13,7 +13,7 @@ foreach($photos as $key => $one){
     if($key == $stop_photo){break;};
 }
 $empty_photo = '<span class="empty-img-offer"><i class="glyphicon glyphicon-camera"></i></span>';
-$created = date('d.m.Y H:i:s', $tour->created_at);
+$created = date('d.m.Y H:i', $tour->created_at);
 $flight_included = ($tour->flight_included==1)?Yii::t('app', 'Flight included'):Yii::t('app', 'Flight not included');
 if(Yii::$app->user->identity->role == 1){
     $filter_type = 'user-response';

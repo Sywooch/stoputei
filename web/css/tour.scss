@@ -6,18 +6,24 @@
     border-radius: 4px;
     margin-top: 5px;
     margin-bottom: 5px;
+    padding-bottom: 5px;
     &:nth-of-type(1){
-      margin-top: 20px;
+      margin-top: 5px;
     }
     .header-info{
       padding: 0px;
       .count{
-        font-size: 0.9em;
+        font-size: 0.75em;
         color: $grey-light-text;
+        position: absolute;
+        right: 100px;
       }
       .created{
-        margin-left: 10px;
         font-weight: 300;
+        font-size: 0.75em;
+        right: 16px;
+        position: absolute;
+        color: $grey-light-text;
       }
       .hotel-title{
         cursor: pointer;
@@ -112,14 +118,18 @@
         font-size: 0.8em;
         border-left: 2px solid $grey;
         padding-left: 5px;
+        padding-right: 5px;
+        border-right: 2px solid $grey;
       }
     }
 
     .buttons {
-      padding-left: 0px;
+      padding-left: 5px;
+      padding-right: 5px;
+      margin-top: 5px;
       .btn{
         border-radius: 0px;
-        padding: 4px 10px;
+        padding: 4px 5px;
         margin-bottom: 2px;
         &.btn-primary{
           @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
