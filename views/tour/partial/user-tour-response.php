@@ -70,7 +70,7 @@ $flight_data_from = date('d.m.Y H:m', strtotime($tour->from_date));
             </a>
         <?php endif;?>
         <span class="count"><?=$tour_name.' № '.$tour->id;?></span>
-        <span class="created"><?=$created;?></span>
+        <span class="created"><?=$created;?>(<?=Yii::t('app', 'capital time');?>)</span>
         <?php if($tour_title == 'my-hot-tour'):?>
             <a href="<?=\yii\helpers\Url::to(['tour/remove-hot-tour', 'tour_id' => $tour->id]);?>" class="remove-hot-tour" data-tour-id="<?=$tour->id;?>">
                 <span class="glyphicon glyphicon-trash"></span>

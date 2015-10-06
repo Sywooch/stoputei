@@ -60,5 +60,8 @@ if(!empty($photos)){
         <div>
             <?= Html::a(Yii::t('app', 'More'), '#', ['class' => (Yii::$app->user->identity->role == 1)?'more-hotel-info-user btn btn-primary':'more-hotel-info-manager btn btn-primary', 'data-tab-class' => $type, 'data-hotel-id' => $hotel->hotel_id]);?>
         </div>
+        <div class="rate">
+            <?=Yii::t('app', 'Rate').' '.$hotel->hotel_rate;?>
+        </div>
     </div>
 </div>

@@ -16,7 +16,7 @@
         font-size: 0.75em;
         color: $grey-light-text;
         position: absolute;
-        right: 100px;
+        right: 165px;
       }
       .created{
         font-weight: 300;
@@ -52,7 +52,7 @@
       .hotel-star{
         position: absolute;
         left: 0px;
-        top: 38px;
+        top: 18px;
         font-size: 1.1em;
         .glyphicon-star-empty{
           color: $grey-text;
@@ -159,7 +159,7 @@
     &.small-column{
       padding: 0px 8px;
       .header-info{
-        .created{
+        .created, .count{
           display: none;
         }
         .hotel-title{
@@ -184,9 +184,15 @@
           width: 100%;
         }
       }
-      a{
-        &.btn-primary {
-          padding: 4px 2px;
+      .buttons {
+        margin-left: -15px;
+        a {
+          &.btn-primary {
+            padding: 4px 2px;
+          }
+        }
+        .tour-cost{
+          display: block;
         }
       }
     }
@@ -233,7 +239,7 @@
   }
   .hotel-header{
     text-align: left;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 20px;
     .name{
       font-size: 1.2em;
@@ -251,7 +257,7 @@
     .stars{
       position: absolute;
       left: 14px;
-      top: -15px;
+      top: -19px;
       font-size: 1.2em;
       .glyphicon-star{
         color: $gold;

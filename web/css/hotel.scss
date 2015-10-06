@@ -63,7 +63,7 @@
         }
       }
       .buttons {
-        padding-left: 35px;
+        padding-left: 15px;
         .btn{
           border-radius: 0px;
           padding: 4px 10px;
@@ -76,6 +76,10 @@
             width: 100%;
           }
           &.btn-primary{
+            &:nth-of-type(2){
+              margin-top: 3px;
+            }
+            width: 100px;
             @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
           }
         }
@@ -271,13 +275,14 @@
   .main-title{
     padding: 0px;
     font-weight: 600;
+    border-bottom: 1px solid $grey;
   }
   padding: 0px;
   .hotel-top-wrapper{
-    box-shadow: $grey-shadow;
+    border-bottom: 1px solid $grey;
     margin-bottom: 10px;
     text-align: left;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     .name{
       font-size: 1.2em;
       padding: 0px;
@@ -306,16 +311,23 @@
     .right{
       padding: 0px;
       .country{
-        font-size: 0.8em;
-        color: $grey-text;
+        font-size: 0.9em;
+        color: $grey-dark;
       }
       .city{
         font-size: 0.9em;
+        color: $grey-dark;
+      }
+      .rate{
+        font-size: 1em;
         font-size: $grey-dark;
       }
       a{
         border-radius: 0px;
         margin-top: 10px;
+        height: 25px;
+        line-height: 12px;
+        font-size: 1em;
         &.btn-primary{
           @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
         }

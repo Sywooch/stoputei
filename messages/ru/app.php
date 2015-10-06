@@ -356,5 +356,6 @@ return [
     'Choose currency' => 'Выберите валюту',
     'Currency' => 'Валюта',
     'Mail from contact form' => 'Письмо с формы контактов на "СтоПутей"',
-    'Near underground' => 'Ближайщее метро'
+    'Near underground' => 'Ближайщее метро',
+    'capital time' => 'по столице'
 ];

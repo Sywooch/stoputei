@@ -9,7 +9,7 @@ use yii\helpers\Url;
     </span>
     <div class="main-tab-container user-hot-tours-tab-container col-xs-12" data-tab-class="user-hot-tours">
         <div class="col-md-9 left-data">
-            <div class="col-md-4 user-hot-tours overflow-list">
+            <div class="col-md-4 user-hot-tours overflow-list filter">
                 <?php $form = ActiveForm::begin([
                     'id' => 'user-hot-tours-form',
                     'action' => Url::toRoute(['/']),

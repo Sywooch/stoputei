@@ -122,7 +122,12 @@
           filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
         }
         &.to-right{
-          left: 355px;
+          left: 265px;
+          position: absolute;
+          top: 49px;
+          &:before{
+            height: 400px;
+          }
         }
       }
       .glyphicon{
@@ -161,6 +166,8 @@
           visibility: hidden;
         }
         .filter, .create-tour, .create-flight {
+          width: 270px;
+          margin-left: -10px;
           &.inactive {
             &:after {
               content: '';
@@ -189,6 +196,7 @@
           overflow-x: hidden;
           .form-group {
             margin-bottom: 0;
+            margin-top: -4px;
             input[type="text"], input[type="email"], input[type="password"], select, [name="get-tour-button"], [type="number"], [name*="create-"], #gettourform-hotel_id {
               //border-radius: 0px;
             }
@@ -270,7 +278,7 @@
             .star {
               position: absolute;
               margin-top: -4px;
-              font-size: 1.4em;
+              font-size: 1.8em;
               .glyphicon-star {
                 color: $gold;
               }
@@ -355,6 +363,53 @@
                   }
                 }
               }
+            }
+            .help-block{
+              margin-bottom: 0px;
+            }
+            select{
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              background-image: url("/images/select-arrow.png");
+              background-position: 98% 2px;
+              background-repeat: no-repeat;
+              &.int{
+                background-position: 98% -34px;
+                position: relative;
+                top: -21px;
+                left: 30px;
+                width: 59px;
+              }
+            }
+            &.field-gettourform-adult_amount, &.field-gettourform-children_under_12_amount,
+            &.field-gettourform-children_under_2_amount{
+              width: 163px;
+              margin-left: 0px;
+              display: inline-block;
+              float: left;
+              select{
+                width: 70px;
+                background-position: 98% -34px;
+              }
+            }
+            &.field-gettourform-adult_amount{
+              width: 107px;
+            }
+            #gettourform-room_count{
+              &.int{
+                left: 138px;
+              }
+            }
+            &.field-gettourform-night_min, &.field-gettourform-night_max{
+              top: 4px;
+            }
+            &.field-gettourform-room_type, &.field-gettourform-adult_amount, &.field-gettourform-children_under_12_amount,
+            &.field-gettourform-children_under_2_amount, &.field-gettourform-room_count, &.field-gettourform-flight_included,
+            &.field-gettourform-depart_country, &.field-gettourform-depart_city, &.field-gettourform-from_date,
+            &.field-gettourform-exactly_date, &.field-gettourform-budget, &.field-gettourform-add_info{
+              position: relative;
+              top: -22px;
             }
           }
           #gettourform-night_min, #gettourform-night_max {
