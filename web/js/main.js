@@ -205,7 +205,7 @@ $(function(){
         $('.global.loader-bg').removeClass('hide');
         $.get(url, {'tour_id' : tour_id}).done(function(response){
             $('.global.loader-bg').addClass('hide');
-            $('.back-to-main-from-tour[data-tab-class="'+tab_class+'"]').addClass('open');
+            $('.back-to-main-from-tour[data-tab-class="'+tab_class+'"]').addClass('open').addClass('to-right');
             $('.back-to-main-from-tour[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').removeClass('hide');
             var data = $.parseJSON(response);
             if(data.status == 'ok'){
@@ -372,7 +372,7 @@ $(function(){
         $.get(url,{'hotel_id': hotel_id}).done(function(response){
             $('.global.loader-bg').addClass('hide');
             var data = $.parseJSON(response);
-            $('.back-to-main[data-tab-class="'+tab_class+'"]').addClass('open');
+            $('.back-to-main[data-tab-class="'+tab_class+'"]').addClass('open').removeClass('to-right');
             $('.back-to-main[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').removeClass('hide');
             $('.main-tab-container[data-tab-class="'+tab_class+'"]').addClass('implicit');
             if(data.status == 'ok'){
