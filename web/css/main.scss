@@ -153,7 +153,10 @@ body {
           padding: 0px 35px;
           margin-top: 11px;
           margin-bottom: -12px;
-          font-size: 1.2em;
+          font-size: 0.89em;
+          text-transform: uppercase;
+          position: relative;
+          top: -15px;
           color: #ffffff;
           &:hover {
             color: $grey-light;
@@ -217,6 +220,9 @@ body {
                 margin-top: -9px;
                 margin-bottom: -9px;
                 color: $grey-dark;
+                position: relative;
+                top: 0px;
+                text-transform: inherit;
                 &:hover{
                   color: $site-color-hover;
                 }

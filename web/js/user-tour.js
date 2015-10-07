@@ -82,7 +82,7 @@ $(function(){
                 $('.offers-tab.tab-badge.get-tour').text(data.count);
             }
         });
-        imagePreview();
+        //imagePreview();
     }
 
     //create route to autocomplete

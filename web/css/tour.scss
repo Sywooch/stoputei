@@ -16,7 +16,7 @@
         font-size: 0.75em;
         color: $grey-light-text;
         position: absolute;
-        right: 165px;
+        right: 105px;
       }
       .created{
         font-weight: 300;
@@ -140,6 +140,9 @@
         font-weight: 600;
         font-size: 1.2em;
         min-width: 100px;
+        .currency{
+          font-size: 0.7em;
+        }
       }
       .company-name{
         font-size: 0.8em;

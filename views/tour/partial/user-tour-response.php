@@ -44,23 +44,6 @@ switch($tour->hotel->star_id){
 }
 $tour_name = ($tour->is_hot_tour == 1)?Yii::t('app', 'Hot tour'):Yii::t('app', 'Offer');
 $flight_data_from = date('d.m.Y H:m', strtotime($tour->from_date));
-/*switch($tour_title){
-    case 'user-favourites':
-        $tour_name .= Yii::t('app', 'Favourite tour');
-        break;
-    case 'user-hot-tour':
-        $tour_name .= Yii::t('app', 'Hot tour');
-        break;
-    case 'my-offer':
-        $tour_name .= Yii::t('app', 'My offer');
-        break;
-    case 'my-hot-tour':
-        $tour_name .= Yii::t('app', 'My hot tour');
-        break;
-    default:
-        $tour_name .= Yii::t('app', 'Offer');
-        break;
-}*/
 ?>
 <div class="user-tour-wrapper col-xs-12" data-tour-id="<?=$tour->id;?>">
     <div class="col-xs-12 header-info">
@@ -70,7 +53,7 @@ $flight_data_from = date('d.m.Y H:m', strtotime($tour->from_date));
             </a>
         <?php endif;?>
         <span class="count"><?=$tour_name.' № '.$tour->id;?></span>
-        <span class="created"><?=$created;?>(<?=Yii::t('app', 'capital time');?>)</span>
+        <span class="created"><?=$created;?></span>
         <?php if($tour_title == 'my-hot-tour'):?>
             <a href="<?=\yii\helpers\Url::to(['tour/remove-hot-tour', 'tour_id' => $tour->id]);?>" class="remove-hot-tour" data-tour-id="<?=$tour->id;?>">
                 <span class="glyphicon glyphicon-trash"></span>
@@ -79,7 +62,7 @@ $flight_data_from = date('d.m.Y H:m', strtotime($tour->from_date));
         <?php if($tour->hotel):?>
             <div class="hotel-title <?=(Yii::$app->user->identity->role == 1)?'tour-full-info-user':'tour-full-info-manager';?>" data-tour-id="<?=$tour->id;?>">
                 <?=$tour->hotel->name;?>
-                <span class="hotel-rate">(<?= Yii::t('app', 'Rate').'  '.$tour->hotel->hotel_rate;?>)</span>
+                <span class="hotel-rate"></span>
                 <span class="hotel-star"><?=$star;?></span>
             </div>
         <?php endif;?>
@@ -124,7 +107,7 @@ $flight_data_from = date('d.m.Y H:m', strtotime($tour->from_date));
     <div class="col-xs-2 buttons">
         <a href="#" class="<?=(Yii::$app->user->identity->role == 1)?'tour-full-info-user':'tour-full-info-manager';?> btn btn-primary" data-tour-id="<?=$tour->id;?>" data-filter-type="<?=$filter_type;?>"><?= Yii::t('app', 'More');?></a>
         <span class="tour-cost">
-            <?=$tour->tour_cost;?> <span data-placement="bottom" data-toggle="tooltip" title="<?= $tour->owner->city->country->currency->hint;?>"><?= $tour->owner->city->country->currency->name;?></span>
+            <?=$tour->tour_cost;?><br><span class="currency" data-placement="bottom" data-toggle="tooltip" title="<?= $tour->owner->city->country->currency->hint;?>"><?= $tour->owner->city->country->currency->name;?></span>
         </span>
         <span class="company-name">
             <?=$tour->owner->company_name;?>

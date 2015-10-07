@@ -17,7 +17,7 @@ $(function(){
                 $('.offers-tab.tab-badge.get-tour').text(data.count);
             }
         });
-        imagePreview();
+        //imagePreview();
     }
 
     var autocomplete_url_manager = $('.ajax-hotel-autocomplete-manager').attr('href');
@@ -130,7 +130,7 @@ $(function(){
                 $('.offers-tab.tab-badge').text(data.count);
             }
         });
-        imagePreview();
+        //imagePreview();
     }
 
     //open user's tour with full information
