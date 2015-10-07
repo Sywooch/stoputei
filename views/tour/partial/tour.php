@@ -28,6 +28,6 @@ $responseCount = $tourResponse->hasResponse($tour->id);
         <div><span class="describe"><?=Yii::t('app', 'Amount of children (under 2 years old)');?></span> : <span class="data"><?= $tour->children_under_2_amount;?></span></div>
     </div>
     <div class="col-xs-2 buttons">
-        <a href="#" class="tour-more-info btn btn-primary" data-tour-id="<?=$tour->id;?>"><?= Yii::t('app', 'More');?></a>
+        <a href="#" class="tour-more-info offers btn btn-primary" data-tour-id="<?=$tour->id;?>"><?= Yii::t('app', 'More');?></a>
     </div>
 </div>

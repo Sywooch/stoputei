@@ -5,6 +5,10 @@ $(function(){
     //set workplace height
     var windowH = $(window).height();
     $('.overflow-list').css('max-height', windowH+'px');
+    $(window).resize(function(){
+        var windowHResize = $(window).height();
+        $('.overflow-list').css('max-height', windowHResize+'px');
+    });
 
     //Allow only numbers in number input
     $(document).on('keydown', '[type="number"]', function(e){
