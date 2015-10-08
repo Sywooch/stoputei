@@ -106,7 +106,7 @@ $(function(){
                 $('.more-flight-info:not([data-flight-id="'+user_flight_id+'"])').text(data.unchecked);
                 $('.create-flight').removeClass('inactive');
                 $('.create-flight').html(data.form);
-                $('a[href="#flights"]').text(data.tab_name);
+                //$('a[href="#flights"]').text(data.tab_name);
                 $('#create-flight-response').removeClass('inactive');
                 $('[data-toggle="tooltip"]').tooltip();
             }else{
@@ -204,7 +204,7 @@ $(function(){
                 $('.user-flight-full-info').remove();
                 $('#create-tour-response').addClass('inactive');
                 $('#manager-flight-response').html(data.html);
-                $('a[href="#flights"]').text(data.tab_name);
+                //$('a[href="#flights"]').text(data.tab_name);
                 $('#modal-container').modal('hide');
                 $('[data-toggle="tooltip"]').tooltip();
             }else{
@@ -233,7 +233,7 @@ $(function(){
             $('.manager-flight-container .loader-bg').addClass('hide');
             if(data.status == 'ok') {
                 $('.create-flight').empty().html(data.form);
-                $('a[href="#flights"]').text(data.tab_name);
+                //$('a[href="#flights"]').text(data.tab_name);
                 $('#create-flight-response').removeClass('inactive');
                 $('[data-toggle="tooltip"]').tooltip();
             }else{
