@@ -1,5 +1,5 @@
 .flight-wrapper{
-  border: $border-wrapper-in-list;
+  box-shadow: $grey-shadow-tour-list;
   border-radius: 4px;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -51,6 +51,7 @@
   .buttons{
     padding-left: 5px;
     padding-right: 5px;
+    text-align: center;
     a{
       border-radius: 0px;
       &.btn-primary{
@@ -59,7 +60,7 @@
     }
     .cost{
       font-size: 1.2em;
-      color: $gold;
+      color: $cost;
       font-weight: 600;
       min-width: 100px;
     }

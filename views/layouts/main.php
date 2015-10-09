@@ -84,7 +84,7 @@ switch(Yii::$app->controller->action->id){
 
     <footer class="footer <?=(Yii::$app->controller->action->id == 'welcome')?'welcome':'';?>">
         <div class="container">
-            <p class="pull-left">&copy; <?=Yii::t('app','Stoputei');?> <?= date('Y') ?></p>
+            <p class="pull-left">&copy; <?=Yii::t('app','Stoputei');?> <?= date('Y') ?><span class="reserved"><?=Yii::t('app', 'All rights reserved');?></span></p>
         </div>
     </footer>
     <div class="global loader-bg hide"><img src="/images/loader.gif"></div>

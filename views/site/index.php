@@ -8,7 +8,7 @@ $this->title = 'StoPutei';
     <div class="row">
         <div class="col-xs-12" id="control-tabs">
             <ul class="nav nav-tabs user" role="tablist">
-                <li role="presentation"><span class="glyphicon glyphicon-list icon-tab"></span><a href="#get-tour" aria-controls="get-tour" role="tab" data-toggle="tab" class="hotel"><?=Yii::t('app','Take a tour');?></a><span class="badge offers-tab tab-badge get-tour"></span></li>
+                <li role="presentation"><span class="glyphicon glyphicon-globe icon-tab"></span><a href="#get-tour" aria-controls="get-tour" role="tab" data-toggle="tab" class="hotel"><?=Yii::t('app','Take a tour');?></a><span class="badge offers-tab tab-badge get-tour"></span></li>
                 <li role="presentation"><span class="glyphicon glyphicon-list-alt icon-tab"></span><a href="#offers" aria-controls="offers" role="tab" data-toggle="tab" class="tour hotel"><?=Yii::t('app','Offers');?></a><span class="badge offers-tab tab-badge user-offers"><?=count($tourUserResponse);?></span></li>
                 <li role="presentation"><span class="glyphicon glyphicon-plane icon-tab"></span><a href="#flights" aria-controls="flights" role="tab" data-toggle="tab" class="hotel"><?=Yii::t('app','Flights');?></a><span class="badge offers-tab tab-badge flights"><?=count($flightsUserResponse);?></span></li>
                 <li role="presentation"><span class="glyphicon glyphicon-heart-empty icon-tab"></span><a href="#favourites" aria-controls="favourites" role="tab" data-toggle="tab" class="tour hotel"><?=Yii::t('app','Favourites');?></a><span class="badge offers-tab tab-badge favourites-tours"><?=count($userFavouriteTours);?></span></li>

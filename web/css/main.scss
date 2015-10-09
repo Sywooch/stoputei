@@ -16,6 +16,7 @@ $yellow-light: #ffe577;
 $yellow-dirty: #edd98b;
 $yellow-dirty-hover: #bba76b;
 $gold: #ffda0c;
+$cost: #ff9200;
 $milk: rgba(255, 255, 255, 0.3);
 $yellow-top: #c5f498;
 
@@ -27,6 +28,7 @@ $border-wrapper-in-list: 2px solid $grey;
 
 //shadows
 $grey-shadow: 2px 5px 7px rgba(203, 203, 203, 0.5);
+$grey-shadow-tour-list: 2px 5px 7px rgba(151, 151, 151, 0.50);
 $dark-text-shadow: 1px 1px rgb(73, 72, 72);
 $blue-shadow-color: rgb(33, 33, 153);
 
@@ -140,8 +142,6 @@ body {
       li {
         &:first-child{
           a {
-            font-weight: 600;
-            font-size: 1.4em;
             margin-left: -35%;
             color: #ffffff;
             &:hover{
@@ -163,9 +163,9 @@ body {
           }
         }
         &.active {
-          border-bottom: 3px solid $site-color-hover;
+          border-bottom: 1px solid #ffffff;
           a {
-            background: $site-color-light;
+            background: transparent;
             color: white;
             &:hover {
               color: $site-color-hover;
@@ -363,6 +363,10 @@ body {
     }
   }
 
+  .reserved{
+    margin-left: 20px;
+  }
+
   #preview{
     &.tooltip-image{
       position: absolute;
@@ -527,8 +531,5 @@ body {
     &.other{
       background-position: -5px -324px;
     }
-  }
-  .license-top{
-    color: $yellow-top;
   }
 }

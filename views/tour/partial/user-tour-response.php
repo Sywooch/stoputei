@@ -105,10 +105,10 @@ $flight_data_from = date('d.m.Y H:m', strtotime($tour->from_date));
         <div><span class="describe"><?=Yii::t('app', 'Room type');?></span> : <span class="data"><?= Yii::t('app', \app\models\TourResponse::getRoomName($tour->room_view));?></span></div>
     </div>
     <div class="col-xs-2 buttons">
-        <a href="#" class="<?=(Yii::$app->user->identity->role == 1)?'tour-full-info-user':'tour-full-info-manager';?> btn btn-primary" data-tour-id="<?=$tour->id;?>" data-filter-type="<?=$filter_type;?>"><?= Yii::t('app', 'More');?></a>
         <span class="tour-cost">
             <?=$tour->tour_cost;?><br><span class="currency" data-placement="bottom" data-toggle="tooltip" title="<?= $tour->owner->city->country->currency->hint;?>"><?= $tour->owner->city->country->currency->name;?></span>
         </span>
+        <a href="#" class="<?=(Yii::$app->user->identity->role == 1)?'tour-full-info-user':'tour-full-info-manager';?> btn btn-primary" data-tour-id="<?=$tour->id;?>" data-filter-type="<?=$filter_type;?>"><?= Yii::t('app', 'More');?></a>
         <span class="company-name">
             <?=$tour->owner->company_name;?>
         </span>

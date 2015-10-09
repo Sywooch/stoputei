@@ -5,11 +5,12 @@
     <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
         <div class="text">
             <div class="big">
-                <p>Туры и авиабилеты</p>
-                <p>по всему миру!</p></div>
+                <p>Все Авиа и Тур Агенты здесь !</p>
+            </div>
 
             <div class="small">
-                <p>Все Авиа и Тур Агенты здесь !</p>
+                <p>Туры и авиабилеты</p>
+                <p>по всему миру!</p>
             </div>
         </div>
     </div>

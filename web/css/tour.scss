@@ -2,7 +2,7 @@
 #manager-hot-tours-response, #user-hot-tours-response, #user-favourite-tours-response{
   .user-tour-wrapper{
     padding-left: 10px;
-    border: $border-wrapper-in-list;
+    box-shadow: $grey-shadow-tour-list;
     border-radius: 4px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -127,6 +127,7 @@
       padding-left: 5px;
       padding-right: 5px;
       margin-top: 5px;
+      text-align: center;
       .offers{
         margin-top: 15px;
       }
@@ -139,7 +140,7 @@
         }
       }
       .tour-cost{
-        color: $gold;
+        color: $cost;
         font-weight: 600;
         font-size: 1.2em;
         min-width: 100px;
@@ -259,6 +260,9 @@
       position: absolute;
       top: 2px;
       font-size: 1.1em;
+      &.cost{
+        color: $site-color;
+      }
     }
     .stars{
       position: absolute;
