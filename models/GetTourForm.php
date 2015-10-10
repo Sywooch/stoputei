@@ -42,7 +42,6 @@ class GetTourForm extends Model
         return [
             [['destination', 'resort', 'nutrition', 'night_min', 'night_max', 'adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count'], 'required'],
             ['add_info', 'string', 'max' => 255],
-            ['flight_included', 'boolean'],
             ['hotel_id', 'safe'],
             [['hotel_id', 'beach_line'], 'default', 'value' => null],
             ['stars', 'each', 'rule' => ['in', 'range' => [400, 401, 402, 403, 404]]],
@@ -51,7 +50,7 @@ class GetTourForm extends Model
             ['room_type', 'each', 'rule' => ['in', 'range' => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]]],
             ['letter_filter', 'each', 'rule' => ['in', 'range' => ['a', 'b', 'c', 'd']]],
             [['budget', 'night_max'], 'integer'],
-            [['budget', 'hotel_type', 'exactly_date'], 'default', 'value' => 0],
+            [['budget', 'hotel_type', 'exactly_date', 'flight_included'], 'default', 'value' => 0],
             ['stars', 'required',  'message' => Yii::t('app','{attribute} must be checked.'), 'when' => function ($model) {
                 return $model->hotel_id == '';
             }, 'whenClient' => "function (attribute, value) {
