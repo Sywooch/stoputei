@@ -284,12 +284,13 @@ if($tour->to_date) {
 
                     <!--Flight from-->
                     <?php if(!is_null($tour->departCityFromThere)):?>
-                    <div>
-                        <span class="field"><?=Yii::t('app', 'Depart city from there');?> : </span>
-                        <span class="value"><?=$tour->departCityFromThere->name;?></span>
-                    </div>
+                    <!--<div>
+                        <span class="field"><?//=Yii::t('app', 'Depart city from there');?> : </span>
+                        <span class="value"><?//=$tour->departCityFromThere->name;?></span>
+                    </div>-->
                     <?php endif;?>
-                    <?php if($tour->voyage_from_there == 0):?>
+                    <!--not show-->
+                    <?php if(false or $tour->voyage_from_there == 0):?>
                         <?php if(!is_null($tour->voyageThroughCityFromThere)):?>
                         <div>
                             <span class="field"><?=Yii::t('app', 'Voyage through');?> : </span>

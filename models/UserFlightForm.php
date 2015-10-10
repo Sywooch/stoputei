@@ -24,7 +24,7 @@ class UserFlightForm extends Model
     public $children_under_12_amount;
     public $children_under_2_amount;
     public $flight_class;
-    public $regular_flight;
+    public $flight_types;
 
     /**
      * @return array the validation rules.
@@ -34,8 +34,9 @@ class UserFlightForm extends Model
         return [
             [['destination', 'resort', 'depart_city', 'date_city_to_since', 'adult_count_senior_24'], 'required'],
             //['date_city_to_since', 'compare', 'compareAttribute' => 'date_city_from_since', 'operator'=>'<'],
-            [['flight_class', 'regular_flight', 'way_ticket', 'adult_count_under_24', 'children_under_12_amount', 'children_under_2_amount', 'exactly_date_to_since', 'exactly_date_from_since'], 'default', 'value' => 0],
+            [['flight_class', 'way_ticket', 'adult_count_under_24', 'children_under_12_amount', 'children_under_2_amount', 'exactly_date_to_since', 'exactly_date_from_since'], 'default', 'value' => 0],
             [['way_ticket'], 'default', 'value' => 1],
+            ['flight_types', 'each', 'rule' => ['in', 'range' => [0, 1]]],
             [['date_city_to_since', 'date_city_from_since'], 'required', 'message' => Yii::t('app','{attribute} must be checked.'), 'when' => function ($model) {
                 return $model->way_ticket == 2;
             }, 'whenClient' => "function (attribute, value) {
@@ -70,7 +71,7 @@ class UserFlightForm extends Model
             'children_under_12_amount' => Yii::t('app', 'Amount of children (under 12 years old)'),
             'children_under_2_amount' => Yii::t('app', 'Amount of children (under 2 years old)'),
             'flight_class' => Yii::t('app', 'Flight class'),
-            'regular_flight' => Yii::t('app', 'Only regular flight'),
+            'flight_types' => Yii::t('app', 'Flight\'s type'),
         ];
     }
 }

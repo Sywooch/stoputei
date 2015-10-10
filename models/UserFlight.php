@@ -22,6 +22,11 @@ class UserFlight extends ActiveRecord
         return $this->hasOne(City::className(), ['city_id' => 'depart_city_id']);
     }
 
+    public function getTypes(){
+        return $this->hasMany(FlightTypes::className(), ['type_id' => 'type_id'])
+            ->viaTable(UserFlightTypes::tableName(), ['flight_id' => 'id']);
+    }
+
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
@@ -48,6 +53,17 @@ class UserFlight extends ActiveRecord
                 return \Yii::t('app', '+-3 days');
             default:
                 return \Yii::t('app', '+-3 days');
+        }
+    }
+
+    public static function getFlightType($type){
+        switch($type){
+            case 0:
+                return \Yii::t('app', 'Direct flight');
+            case 1:
+                return \Yii::t('app', 'Regular flight');
+            default:
+                return \Yii::t('app', 'Direct flight');
         }
     }
 }

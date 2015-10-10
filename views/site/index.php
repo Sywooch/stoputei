@@ -74,5 +74,6 @@ $this->title = 'StoPutei';
         <?= Html::a('', Url::toRoute(['tour/ajax-tour-full-info']), ['class' => 'ajax-tour-full-info']);?>
         <?= Html::a('', Url::toRoute(['hotel/ajax-show-hotel-full-info']), ['class' => 'ajax-show-hotel-full-info']);?>
         <?= Html::a('', Url::toRoute(['flight/ajax-show-flight-full-info-user']), ['class' => 'ajax-show-flight-full-info']);?>
+        <?= Html::a('', Url::toRoute(['flight/ajax-flight-list']), ['class' => 'ajax-flight-list']);?>
     </div>
 </div>

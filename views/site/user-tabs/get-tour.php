@@ -24,7 +24,7 @@ use dosamigos\datepicker\DatePicker;
 
             <?= $form->field($GetTourForm, 'destination')->dropDownList($destinationDropdown,['prompt' => Yii::t('app','Choose destination')]);?>
 
-            <?= $form->field($GetTourForm, 'resort')->dropDownList([],['prompt' => Yii::t('app','Choose destination')]);?>
+            <?= $form->field($GetTourForm, 'resort')->dropDownList([],['prompt' => Yii::t('app','Choose resort')]);?>
 
             <?= $form->field($GetTourForm, 'hotel', ['template' => '{label}<div class="col-xs-11 col-xs-offset-1 ">{input}<i class="glyphicon glyphicon-remove-circle remove-hotel-name-user-request"></i></div>'])->input('text') ?>
 
@@ -232,8 +232,8 @@ use dosamigos\datepicker\DatePicker;
             <?= $form->field($GetTourForm, 'room_count')->dropDownList([1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6, 7 => 7, 8 => 8, 9 => 9, 10 => 10, 11 => 11, 12 => 12, 13 => 13, 14 => 14, 15 => 15, 16 => 16, 17 => 17, 18 => 18, 19 => 19, 20 => 20, 21 => 21], ['class' => 'form-control int']);?>
             <?= $form->field($GetTourForm, 'flight_included')->checkbox();?>
 
-            <?= $form->field($GetTourForm, 'depart_country')->dropDownList($departCountryDropdown, ['prompt' => Yii::t('app','Choose destination')]);?>
-            <?= $form->field($GetTourForm, 'depart_city')->dropDownList([], ['prompt' => Yii::t('app','Choose destination')]);?>
+            <?= $form->field($GetTourForm, 'depart_country')->dropDownList($departCountryDropdown, ['prompt' => Yii::t('app','Choose country')]);?>
+            <?= $form->field($GetTourForm, 'depart_city')->dropDownList([], ['prompt' => Yii::t('app','Airport location')]);?>
 
                 <?= $form->field($GetTourForm, 'from_date')->widget(
                     DatePicker::className(), [
@@ -246,7 +246,7 @@ use dosamigos\datepicker\DatePicker;
                         //'startDate' => date('Y-M-d', strtotime('today')),
                     ]
                 ]);?>
-            <?= $form->field($GetTourForm, 'exactly_date')->dropDownList([0 => Yii::t('app', 'Exactly date'), 1 => Yii::t('app', 'Closest date')]);?>
+            <?= $form->field($GetTourForm, 'exactly_date')->dropDownList([0 => Yii::t('app', 'Exactly date'), 1 => Yii::t('app', 'Closest dates')]);?>
 
             <?= $form->field($GetTourForm, 'budget', ['template' => "{label}\n<div class=\"col-xs-8 col-xs-offset-1 \">{input}</div>\n<div class=\"input-group-addon\">".Yii::$app->user->identity->city->country->currency->name."</div><div class=\"col-xs-8 col-xs-offset-1\">{error}</div>"])->input('number', ['min' => 0, 'max' => 99000000, 'step' => 1000, 'value' => '']);?>
 

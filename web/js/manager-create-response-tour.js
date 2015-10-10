@@ -52,15 +52,13 @@ $(function(){
             $('[data-toggle="tooltip"]').tooltip();
         }
         $(this).hide();
+        offFilterFields()
         getHotelListForResponseTour();
     });
 
     //remove hotel name from hotel-name field
     $(document).on('click', '.remove-hotel-name-manager', function(){
-        $('#createtourform-hotel_id').val('');
-        $('#createtourform-hotel').val('').removeAttr('data-toggle title data-original-title');
-        $('.field-gettourform-stars').removeClass('disabled');
-        $('#createtourform-stars [name="CreateTourForm[stars][]"]').attr('disabled', false).prop('checked', false);
+        onFilterFields();
         getHotelListForResponseTour();
     });
 
@@ -78,16 +76,12 @@ $(function(){
         var hotel_star = $(this).attr('data-hotel-star');
         var option = '<option value="'+hotel_id+'">'+hotel_name+'</option>';
         if($(this).hasClass('manager')){
+            $('#createtourform-hotel').val(hotel_name);
             $('#createtourform-hotel_id').html(option);
             $("#createtourform-hotel_id option").filter(function () {
                 return $(this).val() == hotel_id;
             }).attr('selected', true);
-            $('#createtourform-hotel').val(hotel_name);
-            $('.field-gettourform-stars').addClass('disabled');
-            $('#createtourform-stars [name="CreateTourForm[stars][]"]').attr('disabled', 'disabled').prop('checked', false);
-            $('#createtourform-stars [name="CreateTourForm[stars][]"]').filter(function () {
-                return $(this).val() == hotel_star;
-            }).prop('checked', true);
+            offFilterFields(hotel_star);
             $('[data-toggle="tooltip"]').tooltip();
             getHotelListForResponseTour();
         }
@@ -296,5 +290,20 @@ $(function(){
         $(this).closest('.checkbox-one').toggleClass('active');
         getHotelListForResponseTour();
     });
+
+    function onFilterFields(){
+        $('#createtourform-hotel_id').val('');
+        $('#createtourform-hotel').val('').removeAttr('data-toggle title data-original-title');
+        $('.field-gettourform-stars').removeClass('disabled');
+        $('#createtourform-stars [name="CreateTourForm[stars][]"]').attr('disabled', false).prop('checked', false);
+    }
+
+    function offFilterFields(hotel_star){
+        $('.field-gettourform-stars').addClass('disabled');
+        $('#createtourform-stars [name="CreateTourForm[stars][]"]').attr('disabled', 'disabled').prop('checked', false);
+        $('#createtourform-stars [name="CreateTourForm[stars][]"]').filter(function () {
+            return $(this).val() == hotel_star;
+        }).prop('checked', true);
+    }
 
 });

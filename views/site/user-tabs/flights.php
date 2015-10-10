@@ -25,8 +25,20 @@ use dosamigos\datepicker\DatePicker;
 
             <?= $form->field($UserFlightForm, 'resort')->dropDownList([],['prompt' => Yii::t('app','All cities')]);?>
 
-            <?= $form->field($UserFlightForm, 'depart_country')->dropDownList($departCountryDropdown,['prompt' => Yii::t('app','Choose destination')]);?>
-            <?= $form->field($UserFlightForm, 'depart_city')->dropDownList([],['prompt' => Yii::t('app','Choose destination')]);?>
+            <?= $form->field($UserFlightForm, 'depart_country')->dropDownList($departCountryDropdown,['prompt' => Yii::t('app','Choose country')]);?>
+            <?= $form->field($UserFlightForm, 'depart_city')->dropDownList([],['prompt' => Yii::t('app','Departure town')]);?>
+
+            <?= $form->field($UserFlightForm, 'way_ticket')->radioList([1 => '', 2 => ''],
+                ['item' => function($index, $label, $name, $checked, $value){
+                    if($value == 1){
+                        $checked = true;
+                        $span = Html::tag('span', Yii::t('app','One way'), ['class' => 'line-name']);
+                    }elseif($value == 2){
+                        $span = Html::tag('span', Yii::t('app','Two way'), ['class' => 'type-name']);
+                    }
+                    $checkbox = Html::radio($name, $checked, ['value' => $value]);
+                    return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
+                }]);?>
 
             <?= $form->field($UserFlightForm, 'date_city_to_since')->widget(
                 DatePicker::className(), [
@@ -56,19 +68,7 @@ use dosamigos\datepicker\DatePicker;
                     'startDate' => date('Y-M-d', strtotime('today')),
                 ]
             ]);?>
-            <?= $form->field($UserFlightForm, 'exactly_date_from_since')->dropDownList([0 => Yii::t('app', 'Exactly date'), 1 => Yii::t('app', '+-1 day'), 2 => Yii::t('app', '+-2 days'), 3 => Yii::t('app', '+-3 days')]);?>
-
-            <?= $form->field($UserFlightForm, 'way_ticket')->radioList([1 => '', 2 => ''],
-                ['item' => function($index, $label, $name, $checked, $value){
-                    if($value == 1){
-                        $checked = true;
-                        $span = Html::tag('span', Yii::t('app','One way'), ['class' => 'line-name']);
-                    }elseif($value == 2){
-                        $span = Html::tag('span', Yii::t('app','Two way'), ['class' => 'type-name']);
-                    }
-                    $checkbox = Html::radio($name, $checked, ['value' => $value]);
-                    return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
-                }]);?>
+            <?= $form->field($UserFlightForm, 'exactly_date_from_since')->dropDownList([0 => Yii::t('app', 'Exactly date'), 1 => Yii::t('app', '+-1 day'), 2 => Yii::t('app', '+-2 days'), 3 => Yii::t('app', '+-3 days')],['disabled' => true]);?>
 
             <?= $form->field($UserFlightForm, 'adult_count_senior_24')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => '']);?>
             <?= $form->field($UserFlightForm, 'adult_count_under_24')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => '']);?>
@@ -89,14 +89,14 @@ use dosamigos\datepicker\DatePicker;
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
                 }]);?>
 
-            <?= $form->field($UserFlightForm, 'regular_flight')->radioList([0 => '', 1 => ''],
+            <?= $form->field($UserFlightForm, 'flight_types')->checkboxList([0 => '', 1 => ''],
                 ['item' => function($index, $label, $name, $checked, $value){
                     if($value == 0){
-                        $span = Html::tag('span', Yii::t('app','Only direct flight'), ['class' => 'line-name']);
+                        $span = Html::tag('span', Yii::t('app','Direct flight'), ['class' => 'line-name']);
                     }elseif($value == 1){
-                        $span = Html::tag('span', Yii::t('app','Only regular flight'), ['class' => 'line-name']);
+                        $span = Html::tag('span', Yii::t('app','Regular flight'), ['class' => 'line-name']);
                     }
-                    $checkbox = Html::radio($name, $checked, ['value' => $value]);
+                    $checkbox = Html::checkbox($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
                 }]);?>
 

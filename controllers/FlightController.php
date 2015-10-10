@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\City;
+use app\models\UserFlightTypes;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\Json;
@@ -37,10 +38,18 @@ class FlightController extends Controller
                 $userFlight->children_under_12_amount = $model->children_under_12_amount;
                 $userFlight->children_under_2_amount = $model->children_under_2_amount;
                 $userFlight->flight_class = $model->flight_class;
-                $userFlight->regular_flight = $model->regular_flight;
                 $userFlight->owner_id = Yii::$app->user->identity->getId();
                 $userFlight->region_owner_id = Yii::$app->user->identity->region_id;
                 if($userFlight->save()){
+                    if(!empty($model->flight_types)){
+                        foreach($model->flight_types as $type){
+                            $userFlightTypes = new UserFlightTypes();
+                            $userFlightTypes->flight_id = $userFlight->id;
+                            $userFlightTypes->type_id = $type;
+                            $userFlightTypes->save();
+                            unset($userFlightTypes);
+                        }
+                    }
                     $response = [
                         'status' => 'ok',
                         'popup' => '<div>'.Yii::t('app', "Congratulations! Request on flights was submitted successfully.").'</div><div class="modal-footer">
@@ -413,6 +422,36 @@ class FlightController extends Controller
                     'status' => 'error',
                     'flight' => '',
                     'message' => Yii::t('app', 'Flight was not found.')
+                ];
+            }
+            echo Json::encode($response);
+            Yii::$app->end();
+        }
+    }
+
+    public function actionAjaxFlightList()
+    {
+        $UserFlightForm = new UserFlightForm();
+        if (Yii::$app->request->isAjax) {
+
+            $userFlightList = FlightResponse::find()->where([
+                'user_id' => Yii::$app->user->identity->getId()
+            ])->all();
+            if($userFlightList){
+                $response = [
+                    'status' => 'ok',
+                    'list' => $this->renderAjax('partial/user-flight-response-list', ['flights' => $userFlightList]),
+                    'count' => count($userFlightList),
+                    'message' => '',
+                    'model' => $UserFlightForm
+                ];
+            }else{
+                $response = [
+                    'status' => 'error',
+                    'list' => '',
+                    'count' => 0,
+                    'message' => Yii::t('app', "Flights not found. Please, change search params."),
+                    'model' => $UserFlightForm
                 ];
             }
             echo Json::encode($response);

@@ -176,20 +176,38 @@ $(function(){
 
     //handling modal window USER FLIGHT (create one more)
     $(document).on('click', '.create-one-more-flight, .to-request-user-flight-list', function(){
-        $('#user-flight-form').remove();
-        var url = $('.ajax-empty-flight-form').attr('href');
+        //$('#user-flight-form').remove();
+        var url = $('.ajax-flight-list').attr('href');
         $('.flight-container .loader-bg').removeClass('hide');
+        clearFlightUserForm();
         $.get(url).done(function(response){
             var data = $.parseJSON(response);
             $('.flight-container .loader-bg').addClass('hide');
             if(data.status == 'ok') {
-                console.log(data.form);
-                $('.flight-container').html(data.form);
+                console.log(data);
+                $('.badge.offers-tab.flights').text(data.count);
+                $('#flight-response .list-data').html(data.list);
             }else{
-
+                $('#flight-response .list-data').html(data.message);
             }
         });
     });
+
+    function clearFlightUserForm(){
+        $('[name*="UserFlightForm"]:not([type="checkbox"]):not([type="radio"])').val('');
+        $('select[name*="UserFlightForm"]').val(1);
+        $('select[name="UserFlightForm[exactly_date_to_since]"] option, select[name="UserFlightForm[exactly_date_from_since]"] option').filter(function () {
+            return $(this).val() == 0;
+        }).attr('selected', true);
+        $('select[name*="UserFlightForm"] option').filter(function () {
+            return $(this).val() == '';
+        }).attr('selected', true);
+        $('#user-flight-form [type="checkbox"]').attr('checked', false);
+        $('#user-flight-form [type="radio"]').attr('checked', false);
+        $('[name="UserFlightForm[way_ticket]"]').filter(function () {
+            return $(this).val() == 1;
+        }).prop('checked', true);
+    }
 
     //load user's flight request and overwrite filter
     function returnToUserFlightList(){
@@ -248,9 +266,11 @@ $(function(){
         if(val == 1){
             $('#userflightform-date_city_from_since').val('').attr('disabled', true);
             $('#userflightform-date_city_from_until').val('').attr('disabled', true);
+            $('#userflightform-exactly_date_from_since').attr('disabled', true);
         }else{
             $('#userflightform-date_city_from_since').attr('disabled', false);
             $('#userflightform-date_city_from_until').attr('disabled', false);
+            $('#userflightform-exactly_date_from_since').attr('disabled', false);
         }
     });
 
@@ -277,12 +297,12 @@ $(function(){
             var data = $.parseJSON(response);
             $('.flights-container .loader-bg').addClass('hide');
             if(data.status == 'ok'){
-                $('#flight-response').html(data.list);
+                $('#flight-response .list-data').html(data.list);
                 $('.badge.offers-tab.flights').text(data.count);
                 console.log(data.model);
             }else{
 
-                $('#flight-response').html(data.message);
+                $('#flight-response .list-data').html(data.message);
                 $('.badge.offers-tab.flights').text(data.count);
             }
         });

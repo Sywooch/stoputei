@@ -203,6 +203,8 @@ $(function(){
         //clear tour full info in Rollback tab
         $('.full-tour-information:not([data-tab-class="'+tab_class+'"])').empty();
         $('.full-hotel-information:not([data-tab-class="'+tab_class+'"])').empty();
+        $('.user-tour-wrapper').removeClass('active');
+        $(this).closest('.user-tour-wrapper').addClass('active');
 
         //reload tab
         //$('.full-tour-information[data-tab-class="'+tab_class+'"]').empty().html('<img src="/images/loader.gif" class="reload-tour"/>');
@@ -296,8 +298,10 @@ $(function(){
         var tab_class = $(this).closest('.main-tab-container').attr('data-tab-class');
         var tour_id = $(this).attr('data-tour-id');
         var url = $('.ajax-tour-full-info').attr('href');
+        $('.global.loader-bg').removeClass('hide');
         $('.main-tab-container[data-tab-class="'+tab_class+'"] .order-list').addClass('hidden-select');
         $.get(url,{'tour_id' : tour_id}).done(function(response){
+            $('.global.loader-bg').addClass('hide');
             var data = $.parseJSON(response);
             $('.back-to-main-from-tour-manager[data-tab-class="'+tab_class+'"]').addClass('open');
             $('.back-to-main-from-tour-manager[data-tab-class="'+tab_class+'"] .glyphicon-menu-right').removeClass('hide');

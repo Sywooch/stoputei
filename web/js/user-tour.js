@@ -107,7 +107,7 @@ $(function(){
     });
 
     //check flight included and disable fields
-    $(document).on('change', '#gettourform-flight_included', function(){
+    /*$(document).on('change', '#gettourform-flight_included', function(){
         var is_checked = ($('#gettourform-flight_included').attr("checked"))?true:false;
         if(is_checked){
             $('[name="GetTourForm[flight_included]"]').removeAttr('checked');
@@ -118,7 +118,7 @@ $(function(){
             $('[name="GetTourForm[flight_included]"]').attr('checked', true);
             $('#gettourform-depart_country, #gettourform-depart_city, #gettourform-from_date, #gettourform-to_date').attr('disabled', false);
         }
-    });
+    });*/
 
     //choose filed from autocomplete
     $(document).on('click', '#gettourform-hotel_id', function(){
@@ -135,7 +135,7 @@ $(function(){
         $('[name="GetTourForm[hotel_type]"]').attr('disabled', 'disabled');
         $(this).hide();
         getHotelList();
-        removeHotelFromFilter()
+        addHotelToFilter($('.add-to-filter').attr('data-hotel-star'));
     });
 
     $('.filter').on('click', function(){
@@ -189,22 +189,25 @@ $(function(){
 
     //handling modal window USER TOUR
     $(document).on('click', '.create-one-more-tour', function(){
-        $('#get-tour-form').remove();
-        var url = $('.ajax-empty-tour-form').attr('href');
         $('.hotels-container .loader-bg').removeClass('hide');
-        $.get(url).done(function(response){
-            var data = $.parseJSON(response);
-            $('.hotels-container .loader-bg').addClass('hide');
-            if(data.status == 'ok') {
-                console.log(data.form);
-                $('.tour-container').html(data.form);
-                $('#hotel-response').empty();
-                $('.tab-badge.get-tour').text('0');
-            }else{
-
-            }
-        });
+        clearGetTourForm();
+        $('#hotel-response').empty();
+        $('.hotels-container .loader-bg').addClass('hide');
     });
+
+    function clearGetTourForm(){
+        $('[name*="GetTourForm"]:not([type="checkbox"])').val('');
+        $('select[name*="GetTourForm"]').val(1);
+        $('select[name="GetTourForm[exactly_date]"] option').filter(function () {
+            return $(this).val() == 0;
+        }).attr('selected', true);
+        $('select[name*="GetTourForm"] option').filter(function () {
+            return $(this).val() == '';
+        }).attr('selected', true);
+        $('#get-tour-form input.disabled').removeClass('disabled').attr('disabled', false);
+        $('#get-tour-form [type="checkbox"]').attr('checked', false);
+        $('#get-tour-form [type="radio"]').attr('checked', false);
+    }
 
     //clear hotel name user request
     $(document).on('click' ,'.remove-hotel-name-user-request', function(){

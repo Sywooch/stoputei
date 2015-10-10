@@ -73,6 +73,7 @@ return [
     'My hot tours' => 'Мои горящие туры',
     'Destination' => 'Направление',
     'Choose destination' => 'Выберите направление',
+    'Choose resort' => 'Выберите курорт',
     'Resort' => 'Курорт',
     'Hotel' => 'Отель',
     'Category' => 'Категория',
@@ -189,7 +190,10 @@ return [
     'Economy class' => 'Эконом',
     'Business class' => 'Бизнес',
     'Only direct flight' => 'Только прямые рейсы',
+    'Direct flight' => 'Прямые рейсы',
     'Only regular flight' => 'Только регулярные рейсы',
+    'Regular flight' => 'Регулярные рейсы',
+    'Flight\'s type' => 'Типы рейсов',
     'Request flight' => 'Запросить билеты',
     'Congratulations! Request on flights was submitted successfully.' => 'Запрос на авиаперелет был успешно отправлен. В течении скорого времени Тур фирмы из Вашего региона вышлют свои предложения. Внимание, все запросы и предложения авиабилетов актуальны лишь 2 суток.',
     'Request on flight' => 'Ответ на авиазапрос',
@@ -267,6 +271,7 @@ return [
     'Tour cost' => 'Стоимость тура',
     'Exactly date' => 'Точная дата',
     'Closest date' => 'Ближайшая дата',
+    'Closest dates' => 'Ближайшие даты',
     '+-1 day' => '+-1 день',
     '+-2 days' => '+-2 дня',
     '+-3 days' => '+-3 дня',
@@ -357,5 +362,6 @@ return [
     'Currency' => 'Валюта',
     'Mail from contact form' => 'Письмо с формы контактов на "СтоПутей"',
     'Near underground' => 'Ближайщее метро',
-    'capital time' => 'по столице'
+    'capital time' => 'по столице',
+    'Departure town' => 'Города вылета'
 ];

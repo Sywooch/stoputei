@@ -394,6 +394,9 @@
                 left: 30px;
                 width: 59px;
               }
+              &#gettourform-hotel_id, &#createhottourform-hotel_id, &#createtourform-hotel_id{
+                background-image: none;
+              }
             }
             &.field-gettourform-adult_amount, &.field-gettourform-children_under_12_amount,
             &.field-gettourform-children_under_2_amount{
@@ -401,6 +404,7 @@
               margin-left: 0px;
               display: inline-block;
               float: left;
+              z-index: 10;
               select{
                 width: 70px;
                 background-position: 98% -34px;
