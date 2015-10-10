@@ -363,5 +363,6 @@ return [
     'Mail from contact form' => 'Письмо с формы контактов на "СтоПутей"',
     'Near underground' => 'Ближайщее метро',
     'capital time' => 'по столице',
-    'Departure town' => 'Города вылета'
+    'Departure town' => 'Города вылета',
+    'Offer\'s number' => 'Номер предложения'
 ];

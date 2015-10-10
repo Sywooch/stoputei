@@ -58,7 +58,7 @@ class TourController extends Controller
             }
             $list[] = [
                 'city_id' => '',
-                'city_name' => Yii::t('app', 'All resorts')
+                'city_name' => Yii::t('app', 'All cities')
             ];
             foreach ($cities as $key => $city) {
                 $list[] = [
