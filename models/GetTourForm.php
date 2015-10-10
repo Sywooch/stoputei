@@ -57,11 +57,11 @@ class GetTourForm extends Model
             }, 'whenClient' => "function (attribute, value) {
                 return $('[name=\"GetTourForm[hotel_id]\"]').val() == '';
             }"],
-            [['from_date', 'depart_city'], 'required',  'message' => Yii::t('app','{attribute} can not be blank.'), 'when' => function ($model) {
+            /*[['from_date', 'depart_city'], 'required',  'message' => Yii::t('app','{attribute} can not be blank.'), 'when' => function ($model) {
                 return $model->flight_included == 1;
             }, 'whenClient' => "function (attribute, value) {
                 return $('[name=\"GetTourForm[flight_included]\"]').val() == 1;
-            }"],
+            }"],*/
         ];
     }
 
