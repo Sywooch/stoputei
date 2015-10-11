@@ -21,6 +21,7 @@ class UsersController extends Controller
             if($user->role == 1) {
                 $model->approved = $user->approved;
             }elseif($user->role == 2){
+                $model->approved = $user->approved;
                 $model->company_name = $user->company_name;
                 $model->company_city = $user->company_city;
                 $model->company_phone = $user->company_phone;

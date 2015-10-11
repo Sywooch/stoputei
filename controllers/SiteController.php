@@ -2,9 +2,11 @@
 
 namespace app\controllers;
 
+use app\models\EmailPasswordResetForm;
 use app\models\Hotel;
 use app\models\PageEditForm;
 use app\models\Pages;
+use app\models\PasswordResetForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -134,7 +136,53 @@ class SiteController extends Controller
                     ]);
             case 2:
             case 3:
-                if((Yii::$app->user->identity->single_region_paid == 1) or (Yii::$app->user->identity->multiple_region_paid == 1)) {
+                if(Yii::$app->user->identity->multiple_region_paid == 1) {
+                    $cities = \app\models\City::find()->where(['country_id' => Yii::$app->user->identity->city->country->country_id])->all();
+                    $cities_arr = [];
+                    foreach($cities as $city){
+                        $cities_arr[] = $city->city_id;
+                    }
+                    $CreateTourForm = new CreateTourForm();
+                    $CreateHotTourForm = new CreateHotTourForm();
+                    $ManagerFlightForm = new ManagerFlightForm();
+                    $ManagerOffersForm = new ManagerOffersForm();
+                    $ManagerHotTourForm = new ManagerHotTourForm();
+                    $country = new Country();
+                    $departCity = new DepartCity();
+                    $destinationDropdown = $country->destinationDropdown();
+                    $departCityDropdown = $departCity->regionDropdown();
+                    $departCountryDropdown = $country->destinationDropdown(\Yii::$app->params['depart_countries']);
+                    $userTours = UserTour::find()->where([
+                        'region_owner_id' => $cities_arr
+                    ])->orderBy('created_at DESC')->all();
+                    $userFlights = UserFlight::find()->where([
+                        'region_owner_id' => $cities_arr
+                    ])->orderBy('created_at DESC')->all();
+                    $myOffers = TourResponse::find()->where([
+                        'manager_id' => Yii::$app->user->identity->getId(),
+                        'is_hot_tour' => 0
+                    ])->orderBy('created_at DESC')->all();
+                    $myHotTours = TourResponse::find()->where([
+                        'manager_id' => Yii::$app->user->identity->getId(),
+                        'is_hot_tour' => 1
+                    ])->orderBy('created_at DESC')->all();
+                    return $this->render('index_manager_paid',
+                        [
+                            'email' => Yii::$app->user->identity->email,
+                            'CreateTourForm' => $CreateTourForm,
+                            'CreateHotTourForm' => $CreateHotTourForm,
+                            'ManagerFlightForm' => $ManagerFlightForm,
+                            'ManagerOffersForm' => $ManagerOffersForm,
+                            'ManagerHotTourForm' => $ManagerHotTourForm,
+                            'destinationDropdown' => $destinationDropdown,
+                            'departCityDropdown' => $departCityDropdown,
+                            'userTours' => $userTours,
+                            'userFlights' => $userFlights,
+                            'departCountryDropdown' => $departCountryDropdown,
+                            'myOffers' => $myOffers,
+                            'myHotTours' => $myHotTours
+                        ]);
+                }elseif(Yii::$app->user->identity->single_region_paid == 1) {
                     $CreateTourForm = new CreateTourForm();
                     $CreateHotTourForm = new CreateHotTourForm();
                     $ManagerFlightForm = new ManagerFlightForm();
@@ -175,7 +223,7 @@ class SiteController extends Controller
                             'myOffers' => $myOffers,
                             'myHotTours' => $myHotTours
                         ]);
-                }else{
+                }else {
                     return $this->render('index_manager',
                         ['email' => Yii::$app->user->identity->email]);
                 }
@@ -378,5 +426,60 @@ class SiteController extends Controller
 
     public function actionPayment(){
         return $this->render('payment');
+    }
+
+    public function actionPasswordReset(){
+        $token = Yii::$app->request->getQueryParam('token', null);
+        $resetPasswordForm = new PasswordResetForm();
+        if(!is_null($token)) {
+            $resetPasswordForm->token = $token;
+            if ($resetPasswordForm->load(Yii::$app->request->post()) && $resetPasswordForm->validate()) {
+                if($user = User::findByPasswordResetToken($resetPasswordForm->token)) {
+                    $user->setPassword($resetPasswordForm->password);
+                    $user->reset_password_token = null;
+                    $user->save();
+                    Yii::$app->session->setFlash('resetPassword', 'SUCCESS');
+                    return $this->redirect(['/site/login']);
+                }else{
+                    return $this->render('password-reset', [
+                        'model' => $resetPasswordForm,
+                        'token' => 'not_exists'
+                    ]);
+                }
+            } else {
+                return $this->render('password-reset', [
+                    'model' => $resetPasswordForm
+                ]);
+            }
+        }else{
+            return $this->render('password-reset', [
+                'model' => $resetPasswordForm,
+                'token' => 'not_exists'
+            ]);
+        }
+    }
+
+    public function actionEmailConfirmForPassword(){
+        $emailResetPasswordForm = new EmailPasswordResetForm();
+        if($emailResetPasswordForm->load(Yii::$app->request->post()) && $emailResetPasswordForm->validate()){
+            $token = md5($emailResetPasswordForm->email.''.Yii::$app->params['hash']);
+            $user = User::findByEmail($emailResetPasswordForm->email);
+            $user->reset_password_token = $token;
+            if($user->save()) {
+                CustomMailer::resetPassword('reset-password', Yii::t('app', 'Reset password'), null, $emailResetPasswordForm->email, ['token' => $token,]);
+                return $this->render('email-password-reset', [
+                    'model' => $emailResetPasswordForm,
+                    'success' => true
+                ]);
+            }else{
+                return $this->render('email-password-reset', [
+                    'model' => $emailResetPasswordForm
+                ]);
+            }
+        }else {
+            return $this->render('email-password-reset', [
+                'model' => $emailResetPasswordForm
+            ]);
+        }
     }
 }

@@ -7,7 +7,8 @@ return [
     'Stoputei' => '100 путей',
     'About' => 'О компании',
     'Contacts' => 'Контакты',
-    'Edit profile' => 'Сохранить изменения',
+    'Save changes' => 'Сохранить изменения',
+    'Edit profile' => 'Редактировать профиль',
     'Settings' => 'Настройки',
     'All rights reserved' => 'Все права защищены',
     'Close' => 'Закрыть',
@@ -364,5 +365,15 @@ return [
     'Near underground' => 'Ближайщее метро',
     'capital time' => 'по столице',
     'Departure town' => 'Города вылета',
-    'Offer\'s number' => 'Номер предложения'
+    'Offer\'s number' => 'Номер предложения',
+    'Confirm Password' => 'Подтвердите пароль',
+    'Restore password' => 'Восстановление пароля',
+    'Please fill out the following fields to restore your password' => 'Заполните форму ниже, чтобы установить новый пароль к вшему аккаунту',
+    'Set new password' => 'Установить новый пароль',
+    'Forget password' => 'Забыли пароль',
+    'This email address doesn\'t exist.' => 'Данный электронный адрес не существует',
+    'We will send you instructions about restore password on email which you enter bellow' => 'Мы отправим вам инструкцию по восстановлению пароля на электронный адрес, который вы введете ниже',
+    'Checkout your email to reset tour password' => 'На вашу почту отправлено письмо с инструкцией по восстановлению пароля',
+    'You can\'t restore your password now' => 'Вы не можете восставноить сейчас свой пароль',
+    'Now you can login with new password' => 'Теперь вы можете войти с новым паролем'
 ];

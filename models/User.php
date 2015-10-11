@@ -89,6 +89,11 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         return static::findOne(['email' => $email]);
     }
 
+    public static function findByPasswordResetToken($token)
+    {
+        return static::findOne(['reset_password_token' => $token]);
+    }
+
     /**
      * @inheritdoc
      */

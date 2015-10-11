@@ -27,4 +27,18 @@ class CustomMailer
             ->setSubject($subject)
             ->send();
     }
+
+    public static function resetPassword($view = 'reset-password', $subject = null, $to = null, $from = null, $params = null){
+        if(is_null($subject)){
+            $subject = \Yii::t('app', 'Reset password');
+        }
+        if(is_null($to)){
+            $to = \Yii::$app->params['adminEmailContact'];
+        }
+        \Yii::$app->mailer->compose($view, $params)
+            ->setFrom($from)
+            ->setTo($to)
+            ->setSubject($subject)
+            ->send();
+    }
 }

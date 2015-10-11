@@ -32,6 +32,10 @@ $verify_success = Yii::$app->request->get('verify_success', null);
         <p class="col-xs-offset-1 success-field"><?=Yii::t('app', 'Your account was opened on another device.');?></p>
     <?php endif;?>
 
+    <?php if(Yii::$app->session->getFlash('resetPassword')):?>
+        <p class="col-xs-offset-1 success-field"><?=Yii::t('app', 'Now you can login with new password');?>.</p>
+    <?php endif;?>
+
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'options' => ['class' => 'form-horizontal'],
@@ -57,6 +61,8 @@ $verify_success = Yii::$app->request->get('verify_success', null);
 
     <?php ActiveForm::end(); ?>
     <div class="col-xs-offset-1">
-        <span class="switch"><?=Yii::t('app', 'Don\'t have an account?');?></span><a class="switch-link" href="<?= Url::to(['site/registration']);?>"><?= Yii::t('app','Sign up');?></a>
+        <span class="switch"><?=Yii::t('app', 'Don\'t have an account?');?></span>
+        <a class="switch-link" href="<?= Url::to(['site/registration']);?>"><?= Yii::t('app','Sign up');?></a>
+        <a class="switch-link" href="<?= Url::to(['site/email-confirm-for-password']);?>"><?= Yii::t('app','Forget password');?>?</a>
     </div>
 </div>

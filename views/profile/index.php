@@ -34,7 +34,7 @@ use yii\bootstrap\Alert;
         <?= $form->field($model, 'password')->input('password', ['disabled' => true]);?><input type="checkbox" name="bootstrap-switch-checkbox" data-on-text="<?=Yii::t('app', 'Editing');?>" data-off-text="<?=Yii::t('app', 'Locked');?>" data-size="small" data-type="password">
         <?= $form->field($model, 'password_repeat')->input('password', ['disabled' => true]);?>
         <?= $form->field($model, 'country')->dropDownList($dropdownCountries, ['disabled' => true, 'prompt' => Yii::t('app', 'Choose country')]);?>
-        <?= $form->field($model, 'region_id')->dropDownList($dropdownCities, ['disabled' => true, 'prompt' => Yii::t('app', 'Choose region')]);?><input type="checkbox" name="bootstrap-switch-checkbox" data-on-text="<?=Yii::t('app', 'Editing');?>" data-off-text="<?=Yii::t('app', 'Locked');?>" data-size="small" data-type="region_id">
+        <?= $form->field($model, 'region_id')->dropDownList($dropdownCities, ['disabled' => true, 'prompt' => Yii::t('app', 'Choose region')]);?><!--<input type="checkbox" name="bootstrap-switch-checkbox" data-on-text="<?//=Yii::t('app', 'Editing');?>" data-off-text="<?//=Yii::t('app', 'Locked');?>" data-size="small" data-type="region_id">-->
 
         <!--FOR USER-->
         <?php if(Yii::$app->user->identity->role == 1):?>
@@ -55,7 +55,7 @@ use yii\bootstrap\Alert;
 
         <div class="form-group buttons-action">
             <div class="col-xs-6 col-xs-offset-2">
-                <?= Html::submitButton(Yii::t('app','Edit profile'), ['class' => 'btn btn-success col-xs-5', 'name' => 'edit-profile-button']) ?>
+                <?= Html::submitButton(Yii::t('app','Save changes'), ['class' => 'btn btn-success col-xs-5', 'name' => 'edit-profile-button']) ?>
                 <?= Html::a(Yii::t('app','Back to offers'), Url::toRoute(['/']), ['class' => 'btn btn-info col-xs-5 pull-right']);?>
             </div>
         </div>
