@@ -139,6 +139,7 @@ return [
     'User\'s tour not found. Please, change search params.' => 'Туры пользователей не найдены. Пожалуйста, измените условия поискового запроса.',
     'Congratulations! Just now you have been created your order.' => 'Ваш запрос  успешно отправлен. В течении скорого времени Тур фирмы из Вашего региона вышлют свои предложения. Внимание, все запросы и предложения  туров актуальны лишь 2 суток.',
     'Congratulations! Just now you have been created your response to tourist. Warning! All responses are actually only 2 days.' => 'Предложение отправлено. Внимание, все запросы и предложения туров актуальны лишь 2 суток.',
+    'Congratulations! Just now you have been created your response to tourist. Warning! This tour are actually only to ' => 'Предложение отправлено. Внимание, это предложение актуально лишь до ',
     'Congratulations! Just now you have been created your response to tourist\s flight. Warning! All responses are actually only 2 days.' => 'Предложение по авиабилету было успешно отправлено. Внимание, все запросы и предложения авиабилетов актуальны лишь 2 суток.',
     'Order' => 'Запрос',
     'Please, choose one tour for answer' => 'Пожалуйста, выберите один из туров для дальнейшего изучения и ответа на него',
@@ -376,5 +377,7 @@ return [
     'We will send you instructions about restore password on email which you enter bellow' => 'Мы отправим вам инструкцию по восстановлению пароля на электронный адрес, который вы введете ниже',
     'Checkout your email to reset tour password' => 'На вашу почту отправлено письмо с инструкцией по восстановлению пароля',
     'You can\'t restore your password now' => 'Вы не можете восставноить сейчас свой пароль',
-    'Now you can login with new password' => 'Теперь вы можете войти с новым паролем'
+    'Now you can login with new password' => 'Теперь вы можете войти с новым паролем',
+    'License "Region" ($15 per 3 months)' => 'Лицензия регион 15 долларов США за 3 месяца ( 5 долларов в месяц)',
+    'License "Whole country" ($30 per 3 months)' => 'Лицензия Вся страна 30 долларов США за 3 месяца (10 долларов в месяц)'
 ];

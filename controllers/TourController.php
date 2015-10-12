@@ -637,7 +637,7 @@ class TourController extends Controller
                 $tourResponse->city_id = $model->resort;
                 if(!empty($model->hotel_id[0])) {
                     $tourResponse->hotel_id = $model->hotel_id[0];
-                    $tourResponse->hotel_star = Hotel::findOne($model->hotel_id[0])->star_id;
+                    $tourResponse->hotel_star = Hotel::find()->where(['hotel_id' => $model->hotel_id[0]])->one()->star_id;
                 }else{
                     $tourResponse->hotel_id = null;
                 }
@@ -675,7 +675,7 @@ class TourController extends Controller
                 if($tourResponse->save()) {
                     $response = [
                         'status' => 'ok',
-                        'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your response to tourist. Warning! All responses are actually only 2 days.").'</div><div class="modal-footer">
+                        'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your response to tourist. Warning! This tour are actually only to ").''.date('d.m.Y', strtotime($tourResponse->deadline)).'</div><div class="modal-footer">
                                         <button type="button" class="btn btn-default col-xs-12 create-one-more-hot-tour" data-dismiss="modal">'.Yii::t('app', 'Create one more hot tour').'</button>
                                       </div>'
                     ];

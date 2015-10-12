@@ -369,31 +369,37 @@
     #map-canvas{
       min-height: 250px;
     }
-    .fields {
-      padding: 0px;
-      text-align: left;
-      .field {
-        color: $grey-text;
-        font-size: 0.8em;
-      }
-      .value {
-        font-weight: 600;
-        color: $grey-dark;
-        font-size: 0.9em;
-        position: absolute;
-        right: 0px;
-        margin-top: 2px;
-      }
-      &.left{
-        padding-right: 15px;
-      }
-      &.right{
-        padding-left: 15px;
-      }
-      .company{
-        .field, .value{
-          display: inline-block;
-          text-align: center;
+    .full-information {
+      position: relative;
+      top: 20px;
+      border: $light-grey-border;
+      box-shadow: $grey-shadow;
+      .fields {
+        padding: 0px;
+        text-align: left;
+        .field {
+          color: $grey-text;
+          font-size: 0.8em;
+        }
+        .value {
+          font-weight: 600;
+          color: $grey-dark;
+          font-size: 0.9em;
+          position: absolute;
+          right: 0px;
+          margin-top: 2px;
+        }
+        &.left {
+          padding-right: 15px;
+        }
+        &.right {
+          padding-left: 15px;
+        }
+        .company {
+          .field, .value {
+            display: inline-block;
+            text-align: center;
+          }
         }
       }
     }

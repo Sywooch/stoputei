@@ -280,17 +280,15 @@ use yii\helpers\Url;
 <div class="flight-included <?=($CreateTourForm->flight_included==0)?'hide':'';?>">
     <!--<?= $form->field($CreateTourForm, 'depart_country_there')->dropDownList($dropdownDestination);?>
     <?= $form->field($CreateTourForm, 'depart_city_there')->dropDownList($destinationCityDropdown);?>-->
-    <?= $form->field($CreateTourForm, 'from_date')->widget(
-        \dosamigos\datepicker\DatePicker::className(), [
-        'inline' => false,
-        'options' => ['placeholder' => Yii::t('app', date('Y-M-d'))],
-        'clientOptions' => [
-            'autoclose' => true,
-            'format' => 'yyyy-m-d',
-            'todayHighlight' => true,
-            'startDate' => date('Y-M-d', strtotime('today')),
+
+    <?= $form->field($CreateTourForm, 'from_date')->widget(\yii\jui\DatePicker::classname(), [
+        'language' => Yii::$app->language,
+        'dateFormat' => 'yyyy-MM-dd',
+        'options' => [
+            'placeholder' =>  Yii::t('app', date('Y-M-d')),
+            'id' => 'from_date'
         ]
-    ]);?>
+    ]) ?>
 
     <?= $form->field($CreateTourForm, 'voyage_there')->checkbox();?>
     <!--<div class="voyage_through_there">
@@ -298,17 +296,15 @@ use yii\helpers\Url;
     </div>
     <?= $form->field($CreateTourForm, 'depart_city_from_there')->dropDownList($dropdownResort);?>-->
 
-    <?= $form->field($CreateTourForm, 'to_date')->widget(
-        \dosamigos\datepicker\DatePicker::className(), [
-        'inline' => false,
-        'options' => ['placeholder' => Yii::t('app', date('Y-M-d'))],
-        'clientOptions' => [
-            'autoclose' => true,
-            'format' => 'yyyy-m-d',
-            'todayHighlight' => true,
-            'startDate' => date('Y-M-d', strtotime('+2 days')),
+    <?= $form->field($CreateTourForm, 'to_date')->widget(\yii\jui\DatePicker::classname(), [
+        'language' => Yii::$app->language,
+        'dateFormat' => 'yyyy-MM-dd',
+        'options' => [
+            'placeholder' =>  Yii::t('app', date('Y-M-d')),
+            'id' => 'to_date'
         ]
-    ]);?>
+    ]) ?>
+
     <?= $form->field($CreateTourForm, 'voyage_from_there')->checkbox();?>
     <!--<div class="voyage_through_from_there">
         <?= $form->field($CreateTourForm, 'voyage_through_city_from_there')->dropDownList($destinationCityDropdown);?>
