@@ -40,7 +40,7 @@ class GetTourForm extends Model
     public function rules()
     {
         return [
-            [['destination', 'resort', 'nutrition', 'night_min', 'night_max', 'adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count'], 'required'],
+            [['destination', 'resort', 'nutrition', 'night_min', 'night_max', 'adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count', 'from_date'], 'required'],
             ['add_info', 'string', 'max' => 255],
             ['hotel_id', 'safe'],
             [['hotel_id', 'beach_line'], 'default', 'value' => null],
