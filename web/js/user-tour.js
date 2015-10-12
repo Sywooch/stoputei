@@ -192,6 +192,7 @@ $(function(){
         $('.hotels-container .loader-bg').removeClass('hide');
         clearGetTourForm();
         $('#hotel-response').empty();
+        $('.badge.tab-badge.get-tour').text('0');
         $('.hotels-container .loader-bg').addClass('hide');
     });
 
