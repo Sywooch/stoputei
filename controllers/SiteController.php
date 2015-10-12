@@ -462,7 +462,7 @@ class SiteController extends Controller
     public function actionEmailConfirmForPassword(){
         $emailResetPasswordForm = new EmailPasswordResetForm();
         if($emailResetPasswordForm->load(Yii::$app->request->post()) && $emailResetPasswordForm->validate()){
-            $token = md5($emailResetPasswordForm->email.''.Yii::$app->params['hash']);
+            $token = md5(uniqid().''.$emailResetPasswordForm->email.''.Yii::$app->params['hash']);
             $user = User::findByEmail($emailResetPasswordForm->email);
             $user->reset_password_token = $token;
             if($user->save()) {

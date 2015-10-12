@@ -124,7 +124,7 @@ if($tour->to_date) {
             </div>
             <div class="col-xs-6">
                 <span class="rate cost">
-                <?=Yii::t('app', 'Tour cost');?> : <?=$tour->tour_cost;?> <?=$tour->owner->city->country->currency->name;?>
+                <?=Yii::t('app', 'Tour cost');?> : <span class="price"><?=$tour->tour_cost;?></span> <?=$tour->owner->city->country->currency->name;?>
                 </span>
             </div>
         </div>

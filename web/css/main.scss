@@ -163,10 +163,10 @@ body {
           }
         }
         &.active {
-          border-bottom: 1px solid #ffffff;
           a {
             background: transparent;
             color: white;
+            text-decoration: underline;
             &:hover {
               color: $site-color-hover;
             }

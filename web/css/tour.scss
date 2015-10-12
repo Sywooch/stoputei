@@ -265,6 +265,10 @@
       font-size: 1.1em;
       &.cost{
         color: $site-color;
+        .price{
+          font-size: 1.2em;
+          color: #000000;
+        }
       }
     }
     .stars{
@@ -336,6 +340,7 @@
           font-size: 0.95em;
           line-height: 16px;
           text-align: justify;
+          padding: 0px 10px;
         }
       }
     }
