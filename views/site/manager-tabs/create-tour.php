@@ -344,7 +344,9 @@ use yii\helpers\Url;
                 <?php $CreateHotTourForm->medicine_insurance = 1;?>
                 <?= $form->field($CreateHotTourForm, 'medicine_insurance')->checkbox();?>
                 <?= $form->field($CreateHotTourForm, 'charge_manager')->checkbox();?>
-                <?= $form->field($CreateHotTourForm, 'tour_cost')->input('number', ['min' => 0, 'max' => 99000000, 'step' => 100, 'value' => '']);?>
+                <?= $form->field($CreateHotTourForm, 'tour_cost')->widget(\yii\widgets\MaskedInput::className(), [
+                    'mask' => '9 999 999',
+                ]);?>
 
                 <?php $CreateHotTourForm->is_hot_tour = 1;?>
                 <?= $form->field($CreateHotTourForm, 'is_hot_tour')->hiddenInput()->label('');?>

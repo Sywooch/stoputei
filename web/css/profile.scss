@@ -55,4 +55,13 @@
       }
     }
   }
+  &.payment{
+    &.liqpay{
+      text-align: center;
+      box-shadow: $grey-shadow-tour-list;
+      h4{
+        color: $site-color;
+      }
+    }
+  }
 }

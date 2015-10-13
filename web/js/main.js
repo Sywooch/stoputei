@@ -490,7 +490,7 @@ $(function(){
         });
     });
 
-    $('.custom-header li a:first').on('click', function(e){
+    $('.custom-header li a:first, .payment-btns .license-paid').on('click', function(e){
         e.preventDefault();
     });
 });
