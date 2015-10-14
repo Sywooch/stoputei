@@ -25,6 +25,11 @@ class TourController extends Controller
      */
     public function actionIndex($message = 'hello world')
     {
+        $file = 'web/list.txt';
+        $fh = fopen($file, 'a') or die("can't open file");
+        $longDate = \Yii::$app->formatter->format('now', 'datetime');
+        fwrite($fh, 'Write text at '.$longDate. "\n");
+        fclose($fh);
         echo $message . "\n";
         echo 'TEST console controller' . "\n";
     }
