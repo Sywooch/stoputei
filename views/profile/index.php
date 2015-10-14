@@ -30,20 +30,22 @@ use yii\bootstrap\Alert;
             ],
         ]); ?>
 
-        <div class="form-group payment-btns">
-            <div class="col-xs-6 col-xs-offset-2">
-            <?php if(Yii::$app->user->identity->single_region_paid == 0):?>
-                <?= Html::a(Yii::t('app', 'Payment package "Region"'), ['site/payment', 'type' => 'single'], ['id' => 'license-region', 'class' => 'license btn btn-success col-xs-5']);?>
-            <?php else:?>
-                <?= Html::a(Yii::t('app', 'Payment package "Region"'), ['/'], ['id' => 'license-region', 'class' => 'license-paid btn btn-default col-xs-5', 'disabled' => true]);?>
-            <?php endif;?>
-            <?php if(Yii::$app->user->identity->multiple_region_paid == 0):?>
-                <?= Html::a(Yii::t('app', 'Payment package "Country"'), ['site/payment', 'type' => 'multiple'], ['id' => 'license-country', 'class' => 'license btn btn-success col-xs-5 pull-right']);?>
-            <?php else:?>
-                <?= Html::a(Yii::t('app', 'Payment package "Country"'), ['/'], ['id' => 'license-country', 'class' => 'license-paid btn btn-default col-xs-5 pull-right', 'disabled' => true]);?>
-            <?php endif;?>
+        <?php if(Yii::$app->user->identity->role == 2):?>
+            <div class="form-group payment-btns">
+                <div class="col-xs-6 col-xs-offset-2">
+                <?php if(Yii::$app->user->identity->single_region_paid == 0):?>
+                    <?= Html::a(Yii::t('app', 'Payment package "Region"'), ['site/payment', 'type' => 'single'], ['id' => 'license-region', 'class' => 'license btn btn-success col-xs-5']);?>
+                <?php else:?>
+                    <?= Html::a(Yii::t('app', 'Payment package "Region"'), ['/'], ['id' => 'license-region', 'class' => 'license-paid btn btn-default col-xs-5', 'disabled' => true]);?>
+                <?php endif;?>
+                <?php if(Yii::$app->user->identity->multiple_region_paid == 0):?>
+                    <?= Html::a(Yii::t('app', 'Payment package "Country"'), ['site/payment', 'type' => 'multiple'], ['id' => 'license-country', 'class' => 'license btn btn-success col-xs-5 pull-right']);?>
+                <?php else:?>
+                    <?= Html::a(Yii::t('app', 'Payment package "Country"'), ['/'], ['id' => 'license-country', 'class' => 'license-paid btn btn-default col-xs-5 pull-right', 'disabled' => true]);?>
+                <?php endif;?>
+                </div>
             </div>
-        </div>
+        <?php endif;?>
 
         <?= $form->field($model, 'email')->input('email', ['disabled' => true]);?>
         <?= $form->field($model, 'password')->input('password', ['disabled' => true]);?><input type="checkbox" name="bootstrap-switch-checkbox" data-on-text="<?=Yii::t('app', 'Editing');?>" data-off-text="<?=Yii::t('app', 'Locked');?>" data-size="small" data-type="password">
