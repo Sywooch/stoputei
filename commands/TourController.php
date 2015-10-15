@@ -60,7 +60,7 @@ class TourController extends Controller
         }
 
         //all manager response tour for deleting
-        $toursResponse = TourResponse::find()->where(['<', 'deadline', \Yii::$app->formatter->asDate('now', 'yyyy-MM-dd')])->all();
+        $toursResponse = TourResponse::find()->where(['<', 'deadline', \Yii::$app->formatter->asDate('now', 'yyyy-MM-dd')])->orWhere(['deadline' => null])->all();
         foreach($toursResponse as $tour){
             $tour->delete();
             echo "ID $tour->id \n";
