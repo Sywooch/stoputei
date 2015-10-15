@@ -2,6 +2,7 @@
 namespace app\models;
 
 use yii\db\ActiveRecord;
+
 class TourResponse extends ActiveRecord
 {
     public static function tableName(){
@@ -78,6 +79,15 @@ class TourResponse extends ActiveRecord
             if($this->isNewRecord){
                 $this->created_at = time();
             }
+            return true;
+        }
+        return false;
+    }
+
+    public function beforeDelete()
+    {
+        if (parent::beforeDelete()) {
+            UserTourFavourites::deleteAll(['tour_id' => $this->id]);
             return true;
         }
         return false;
