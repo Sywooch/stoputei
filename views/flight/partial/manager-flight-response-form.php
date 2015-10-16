@@ -126,7 +126,7 @@ use dosamigos\datetimepicker\DateTimePicker;
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
     }]);?>
 
-<?= $form->field($ManagerFlightForm, 'flight_cost')->input('number', ['min' => 0, 'max' => 99000, 'step' => 100]);?>
+<?= $form->field($ManagerFlightForm, 'flight_cost', ['template' => "{label}\n<div class=\"col-xs-8 col-xs-offset-1 \">{input}</div>\n<div class=\"input-group-addon\">".Yii::$app->user->identity->city->country->currency->name."</div><div class=\"col-xs-8 col-xs-offset-1\">{error}</div>"])->input('number', ['min' => 0, 'max' => 99000, 'step' => 100]);?>
 
 <?= $form->field($ManagerFlightForm, 'user_id')->hiddenInput()->label('');?>
 <?= $form->field($ManagerFlightForm, 'from_flight_id')->hiddenInput()->label('');?>

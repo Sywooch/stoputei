@@ -267,6 +267,8 @@ $(function(){
             $('.hotels-container .loader-bg').addClass('hide');
             if(data.status == 'ok') {
                 console.log(data.popup);
+                $('#manager-offers-response .list-data .user-tour-wrapper:first').before(data.tour);
+                $('.badge.offers-tab.manager-offers').text(data.count);
                 $('#modal-container .modal-content').html(data.popup);
                 $('#modal-container').modal({backdrop: 'static', keyboard: false});
                 $('#modal-container').modal('show');

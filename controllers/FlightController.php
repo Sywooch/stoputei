@@ -87,7 +87,7 @@ class FlightController extends Controller
                 $city = new City();
                 $country_cities = $city->destinationCityDropdown($userFlight->country_id);
                 $dropdownDepartCountry = $country->destinationDropdown();
-                $departCountryDropdown = $country->destinationDropdown(Yii::$app->params['depart_countries']);
+                $departCountryDropdown = $country->destinationDropdown(/*Yii::$app->params['depart_countries']*/);
                 $departCityDropdown = $departCity->regionDropdown();
                 $dropdownDestination = [$userFlight->country_id => $userFlight->country->name];
                 $dropdownResort = $country_cities;
@@ -227,9 +227,20 @@ class FlightController extends Controller
 
     public function actionCloseFlightFullInfo(){
         if(Yii::$app->request->isAjax) {
-            $userFlights = UserFlight::find()->where([
-                'region_owner_id' => Yii::$app->user->identity->region_id
-            ])->orderBy('created_at DESC')->all();
+            if(Yii::$app->user->identity->multiple_region_paid == 1) {
+                $cities = \app\models\City::find()->where(['country_id' => Yii::$app->user->identity->city->country->country_id])->all();
+                $cities_arr = [];
+                foreach($cities as $city){
+                    $cities_arr[] = $city->city_id;
+                }
+                $userFlights = UserFlight::find()->where([
+                    'region_owner_id' => $cities_arr
+                ])->orderBy('created_at DESC')->all();
+            }else {
+                $userFlights = UserFlight::find()->where([
+                    'region_owner_id' => Yii::$app->user->identity->region_id
+                ])->orderBy('created_at DESC')->all();
+            }
             $response = [
                     'status' => 'ok',
                     'form' => $this->renderAjax('partial/manager-flight-response-form-empty'),

@@ -509,7 +509,12 @@ class TourController extends Controller
                         'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your response to tourist. Warning! All responses are actually only 2 days.").'</div><div class="modal-footer">
                                         <button type="button" class="btn btn-default col-xs-6 create-one-more-manager-response" data-dismiss="modal">'.Yii::t('app', 'Create new one').'</button>
                                         <button type="button" class="btn btn-primary col-xs-6 to-request-list">'.Yii::t('app', 'Back to request list').'</button>
-                                      </div>'
+                                      </div>',
+                        'tour' => $this->renderAjax('partial/user-tour-response', ['tour' => $tourResponse, 'tour_title' => 'offer']),
+                        'count' => TourResponse::find()->where([
+                            'manager_id' => Yii::$app->user->identity->getId(),
+                            'is_hot_tour' => 0
+                        ])->count()
                     ];
                 }else{
                     $response = [
@@ -695,7 +700,12 @@ class TourController extends Controller
                         'status' => 'ok',
                         'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your response to tourist. Warning! This tour are actually only to ").''.date('d.m.Y', strtotime($tourResponse->deadline)).'</div><div class="modal-footer">
                                         <button type="button" class="btn btn-default col-xs-12 create-one-more-hot-tour" data-dismiss="modal">'.Yii::t('app', 'Create one more hot tour').'</button>
-                                      </div>'
+                                      </div>',
+                        'tour' =>  $this->renderAjax('partial/user-tour-response', ['tour' => $tourResponse, 'tour_title' => 'hot-tour']),
+                        'count' => TourResponse::find()->where([
+                            'manager_id' => Yii::$app->user->identity->getId(),
+                            'is_hot_tour' => 1
+                        ])->count()
                     ];
                 }else{
                     $response = [
