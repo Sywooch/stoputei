@@ -318,7 +318,6 @@ use yii\helpers\Url;
                 <?= $form->field($CreateHotTourForm, 'tickets_exist')->radioList([0 => '', 1 => ''],
                     ['item' => function($index, $label, $name, $checked, $value){
                         if($value == 0){
-                            $checked = true;
                             $span = Html::tag('span', Yii::t('app','Little'), ['class' => 'line-name']);
                         }elseif($value == 1){
                             $span = Html::tag('span', Yii::t('app','Lot of'), ['class' => 'type-name']);
@@ -344,9 +343,7 @@ use yii\helpers\Url;
                 <?php $CreateHotTourForm->medicine_insurance = 1;?>
                 <?= $form->field($CreateHotTourForm, 'medicine_insurance')->checkbox();?>
                 <?= $form->field($CreateHotTourForm, 'charge_manager')->checkbox();?>
-                <?= $form->field($CreateHotTourForm, 'tour_cost')->widget(\yii\widgets\MaskedInput::className(), [
-                    'mask' => '9 999 999',
-                ]);?>
+                <?= $form->field($CreateHotTourForm, 'tour_cost', ['template' => "{label}\n<div class=\"col-xs-8 col-xs-offset-1 \">{input}</div>\n<div class=\"input-group-addon\">".Yii::$app->user->identity->city->country->currency->name."</div><div class=\"col-xs-8 col-xs-offset-1\">{error}</div>"])->input('number', ['min' => 0, 'max' => 99000, 'step' => 500, 'value' => '']);?>
 
                 <?php $CreateHotTourForm->is_hot_tour = 1;?>
                 <?= $form->field($CreateHotTourForm, 'is_hot_tour')->hiddenInput()->label('');?>

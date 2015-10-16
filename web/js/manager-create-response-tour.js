@@ -153,7 +153,8 @@ $(function(){
     });
 
     //close user's tour with full information
-    $(document).on('click', '.close-tour-full-info', function(){
+    $(document).on('click', '.close-tour-full-info', function(e){
+        e.preventDefault();
         returnToUserTourList();
     });
 
@@ -163,6 +164,7 @@ $(function(){
         $('.user-tour-container .loader-bg').removeClass('hide');
         $.get(url).done(function(response){
             var data = $.parseJSON(response);
+            console.log(data.html);
             $('.user-tour-container .loader-bg').addClass('hide');
             if(data.status == 'ok') {
                 $('.right-data .main-data').show();
@@ -170,7 +172,7 @@ $(function(){
                 $('.user-tour-full-info').remove();
                 $('#create-tour-response').addClass('inactive');
                 $('#user-tour-response .list-data').html(data.html);
-                $('a[href="#tour-from-user"]').text(data.tab_name);
+                //$('a[href="#tour-from-user"]').text(data.tab_name);
                 $('#modal-container').modal('hide');
                 $('[data-toggle="tooltip"]').tooltip();
             }else{

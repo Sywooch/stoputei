@@ -316,11 +316,25 @@ class TourController extends Controller
         $model = new CreateTourForm();
         if(Yii::$app->request->isAjax) {
             if($model->load(Yii::$app->request->get())){
-                if($tours = UserTour::find()->where([
-                    'country_id' => $model->destination,
-                    'resort_id' => $model->resort,
-                    'region_owner_id' => Yii::$app->user->identity->region_id
-                ])->all()) {
+                if(Yii::$app->user->identity->multiple_region_paid == 1) {
+                    $cities = \app\models\City::find()->where(['country_id' => Yii::$app->user->identity->city->country->country_id])->all();
+                    $cities_arr = [];
+                    foreach($cities as $city){
+                        $cities_arr[] = $city->city_id;
+                    }
+                    $tours = UserTour::find()->where([
+                        'country_id' => $model->destination,
+                        'resort_id' => $model->resort,
+                        'region_owner_id' => $cities_arr
+                    ])->all();
+                }else {
+                    $tours = UserTour::find()->where([
+                        'country_id' => $model->destination,
+                        'resort_id' => $model->resort,
+                        'region_owner_id' => Yii::$app->user->identity->region_id
+                    ])->all();
+                }
+                if($tours) {
                     $response = [
                         'html' => $this->renderAjax('partial/user-tour-list', ['tours' => $tours]),
                         'status' => 'ok',
@@ -412,10 +426,20 @@ class TourController extends Controller
 
     public function actionGetUserTourRequest(){
         if(Yii::$app->request->isAjax) {
-            $userTours = UserTour::find()->where([
-                'region_owner_id' => Yii::$app->user->identity->region_id
-            ])->select('id, country_id, resort_id, hotel_id, created_at, adult_amount, children_under_12_amount, children_under_2_amount')->orderBy('created_at DESC')->all();
-            if ($userTours) {
+            if(Yii::$app->user->identity->multiple_region_paid == 1) {
+                $cities = \app\models\City::find()->where(['country_id' => Yii::$app->user->identity->city->country->country_id])->all();
+                $cities_arr = [];
+                foreach($cities as $city){
+                    $cities_arr[] = $city->city_id;
+                }
+                $userTours = UserTour::find()->where([
+                    'region_owner_id' => $cities_arr
+                ])->orderBy('created_at DESC')->all();
+            }else {
+                $userTours = UserTour::find()->where([
+                    'region_owner_id' => Yii::$app->user->identity->region_id
+                ])->select('id, country_id, resort_id, hotel_id, created_at, adult_amount, children_under_12_amount, children_under_2_amount')->orderBy('created_at DESC')->all();
+            }//if ($userTours) {
                 $createTourForm = new CreateTourForm();
                 $response = [
                     'status' => 'ok',
@@ -425,13 +449,7 @@ class TourController extends Controller
                     ]),
                     'tab_name' => Yii::t('app', 'Tour from users')
                 ];
-            } else {
-                $response = [
-                    'status' => 'error',
-                    'html' => '',
-                    'message' => 'Statistics'
-                ];
-            }
+            //}
             echo Json::encode($response);
             Yii::$app->end();
         }

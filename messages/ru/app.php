@@ -207,7 +207,6 @@ return [
     'Airport location' => 'Город вылета',
     'Date docking' => 'Время стыковки',
     'Charter flight' => 'Чартерный рейс',
-    'Regular flight' => 'Регулярный рейс',
     'Flight cost' => 'Стоимость билета',
     'Hours' => 'Часов',
     'Minutes' => 'Минут',
@@ -379,5 +378,7 @@ return [
     'You can\'t restore your password now' => 'Вы не можете восставноить сейчас свой пароль',
     'Now you can login with new password' => 'Теперь вы можете войти с новым паролем',
     'License "Region" ($15 per 3 months)' => 'Лицензия регион 15 долларов США за 3 месяца ( 5 долларов в месяц)',
-    'License "Whole country" ($30 per 3 months)' => 'Лицензия Вся страна 30 долларов США за 3 месяца (10 долларов в месяц)'
+    'License "Whole country" ($30 per 3 months)' => 'Лицензия Вся страна 30 долларов США за 3 месяца (10 долларов в месяц)',
+    'User was deleted successful' => 'Пользователь был успешно удален',
+    'Something went wrong' => 'Что-то пошло не так'
 ];

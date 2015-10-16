@@ -42,7 +42,7 @@ use yii\helpers\Html;
                     'value' => function($model){
                         $actions = '';
                         $actions .= Html::a(Html::tag('span', '', ['class' => 'glyphicon glyphicon-pencil edit']), \yii\helpers\Url::toRoute(['/admin/payments/edit', 'id' => $model->id]), ['class' => 'actions col-xs-4']);
-                        $actions .= Html::a(Html::tag('span', '', ['class' => 'glyphicon glyphicon-trash delete']), \yii\helpers\Url::toRoute(['/admin/payments/delete', 'id' => $model->id]), ['class' => 'actions col-xs-4']);
+                        //$actions .= Html::a(Html::tag('span', '', ['class' => 'glyphicon glyphicon-trash delete payment']), \yii\helpers\Url::toRoute(['/admin/payments/delete', 'id' => $model->id]), ['class' => 'actions col-xs-4']);
                         return $actions;
                     }
                 ],

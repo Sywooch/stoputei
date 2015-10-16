@@ -4,6 +4,7 @@ namespace app\modules\admin\controllers;
 
 use app\models\User;
 use app\models\UserEditForm;
+use yii\helpers\Json;
 use yii\web\Controller;
 use Yii;
 
@@ -59,6 +60,26 @@ class UsersController extends Controller
                     'user' => $user
                 ]);
             }
+        }
+    }
+
+    public function actionDelete($id){
+        $user = User::findOne($id);
+        if($user and $user->delete()){
+            $response = [
+                'message' => Yii::t('app', 'User was deleted successful'),
+                'status' => 'ok',
+                'id' => $id
+            ];
+            echo Json::encode($response);
+            Yii::$app->end();
+        }else{
+            $response = [
+                'message' => Yii::t('app', 'Something went wrong'),
+                'status' => 'error'
+            ];
+            echo Json::encode($response);
+            Yii::$app->end();
         }
     }
 }

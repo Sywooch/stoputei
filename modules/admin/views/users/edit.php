@@ -30,10 +30,8 @@ use yii\helpers\Html;
                     $checkbox = Html::radio($name, $checked, ['value' => $value]);
                     return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox']);
                 }]);?>
-
-            <?php if($user->role == 1):?>
-                <?= $form->field($model, 'approved')->checkbox();?>
-            <?php elseif($user->role == 2):?>
+            <?= $form->field($model, 'approved')->checkbox();?>
+            <?php if($user->role == 2):?>
                 <?= $form->field($model, 'single_region_paid')->checkbox();?>
                 <?= $form->field($model, 'multiple_region_paid')->checkbox();?>
                 <?= $form->field($model, 'company_name');?>

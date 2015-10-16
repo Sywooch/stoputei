@@ -186,6 +186,20 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         return false;
     }
 
+    public function beforeDelete()
+    {
+        if (parent::beforeDelete()) {
+            UserTourFavourites::deleteAll(['user_id' => $this->id]);
+            if($this->role == 1) {
+                UserTour::deleteAll(['owner_id' => $this->id]);
+            }elseif($this->role == 2){
+                TourResponse::deleteAll(['manager_id' => $this->id]);
+            }
+            return true;
+        }
+        return false;
+    }
+
     public function getFavourites(){
         return $this->hasMany(UserTourFavourites::className(), ['user_id' => 'id']);
     }
