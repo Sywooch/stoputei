@@ -3,6 +3,7 @@
 return [
     'application_name' => 'stoputei',
     'adminEmail' => 'noreply@stoputei.com',
+    'adminEmailMain' => 'admin@stoputei.com',
     'adminPhone' => '+380501234567',
     'adminEmailContact' => 'azbukin777@gmail.com',
     'api' => [

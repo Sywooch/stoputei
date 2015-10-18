@@ -28,6 +28,7 @@ use app\models\City;
 use app\models\CreateHotTourForm;
 use app\models\ManagerHotTourForm;
 use app\models\ManagerOffersForm;
+use app\modules\admin\models\TimeCycles;
 
 class TourController extends Controller
 {
@@ -504,9 +505,11 @@ class TourController extends Controller
                 $tourResponse->manager_id = Yii::$app->user->identity->getId();
                 $tourResponse->region_manager_id = Yii::$app->user->identity->region_id;
                 if($tourResponse->save()) {
+                    $timeCycle = TimeCycles::find()->where(['is not', 'id', null])->one();
+                    $tourResponseLifeInSec = $timeCycle->tour_response_life*3600;
                     $response = [
                         'status' => 'ok',
-                        'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your response to tourist. Warning! All responses are actually only 2 days.").'</div><div class="modal-footer">
+                        'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your response to tourist. Warning! All responses are actually only to : ").Yii::$app->formatter->asDate((time()+$tourResponseLifeInSec),'yyyy-MM-dd').'</div><div class="modal-footer">
                                         <button type="button" class="btn btn-default col-xs-6 create-one-more-manager-response" data-dismiss="modal">'.Yii::t('app', 'Create new one').'</button>
                                         <button type="button" class="btn btn-primary col-xs-6 to-request-list">'.Yii::t('app', 'Back to request list').'</button>
                                       </div>',
@@ -574,10 +577,18 @@ class TourController extends Controller
                 $dropdownDestination = [$userTour->country_id => $userTour->country->name];
                 $dropdownResort = [$userTour->resort_id => $userTour->city->name];
                 $createTourForm->flight_included = $userTour->flight_included;
+                $createTourForm->adult_amount = $userTour->adult_amount;
+                $createTourForm->children_under_12_amount = $userTour->children_under_12_amount;
+                $createTourForm->children_under_2_amount = $userTour->children_under_2_amount;
+                $createTourForm->room_count = $userTour->room_count;
+                $createTourForm->user_id = $userTour->owner_id;
+                $createTourForm->from_tour_id = $userTour->id;
                 $destinationCityDropdown = $city->destinationCityDropdown($userTour->country_id);
 
                 if(!empty($userTour->hotel_id)){
                     $dropdownHotel = [$userTour->hotel_id => $userTour->hotel->name];
+                    $createTourForm->hotel = $userTour->hotel->name;
+                    $createTourForm->hotel_id = $userTour->hotel_id;
                 }else{
                     $dropdownHotel = [];
                 }
@@ -591,7 +602,8 @@ class TourController extends Controller
                         'dropdownHotel' => $dropdownHotel,
                         'destinationCityDropdown' => $destinationCityDropdown
                     ]),
-                    'tab_name' => Yii::t('app', 'Tour from users')
+                    'tab_name' => Yii::t('app', 'Tour from users'),
+                    'model' => $createTourForm
                 ];
             }else{
                 $response = [

@@ -121,7 +121,7 @@ class CreateHotTourForm extends Model
             'voyage_there' => Yii::t('app', 'Voyage'),
             'voyage_through_city_there' => Yii::t('app', 'Voyage through'),
             'depart_city_from_there' => Yii::t('app', 'Depart city from there'),
-            'to_date' => Yii::t('app', 'Date end'),
+            'to_date' => Yii::t('app', 'Date end from'),
             'voyage_from_there' => Yii::t('app', 'Voyage'),
             'voyage_through_city_from_there' => Yii::t('app', 'Voyage through'),
             'add_payment' => Yii::t('app', 'Payment is absent'),

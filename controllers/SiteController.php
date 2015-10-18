@@ -466,7 +466,7 @@ class SiteController extends Controller
             $user = User::findByEmail($emailResetPasswordForm->email);
             $user->reset_password_token = $token;
             if($user->save()) {
-                CustomMailer::resetPassword('reset-password', Yii::t('app', 'Reset password'), $emailResetPasswordForm->email, null, ['token' => $token,]);
+                CustomMailer::resetPassword($emailResetPasswordForm->email, null, ['token' => $token]);
                 return $this->render('email-password-reset', [
                     'model' => $emailResetPasswordForm,
                     'success' => true

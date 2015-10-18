@@ -307,6 +307,17 @@ use yii\helpers\Url;
                 <div class="voyage_through_from_there">
                     <?= $form->field($CreateHotTourForm, 'voyage_through_city_from_there')->dropDownList($departCityThereDropdown);?>
                 </div>-->
+
+                    <?= $form->field($CreateHotTourForm, 'tickets_exist')->radioList([0 => '', 1 => ''],
+                        ['item' => function($index, $label, $name, $checked, $value){
+                            if($value == 0){
+                                $span = Html::tag('span', Yii::t('app','Little'), ['class' => 'line-name']);
+                            }elseif($value == 1){
+                                $span = Html::tag('span', Yii::t('app','Lot of'), ['class' => 'type-name']);
+                            }
+                            $checkbox = Html::radio($name, $checked, ['value' => $value]);
+                            return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
+                        }]);?>
                 </div>
                 <div>
                     <label class="col-xs-11 col-xs-offset-1 control-label label-add-paymnet" for="createhottourform-add-payment"><?=Yii::t('app', 'Add payment');?></label>
@@ -315,16 +326,7 @@ use yii\helpers\Url;
                     <?= $form->field($CreateHotTourForm, 'add_payment')->checkbox();?>
                 </div>
 
-                <?= $form->field($CreateHotTourForm, 'tickets_exist')->radioList([0 => '', 1 => ''],
-                    ['item' => function($index, $label, $name, $checked, $value){
-                        if($value == 0){
-                            $span = Html::tag('span', Yii::t('app','Little'), ['class' => 'line-name']);
-                        }elseif($value == 1){
-                            $span = Html::tag('span', Yii::t('app','Lot of'), ['class' => 'type-name']);
-                        }
-                        $checkbox = Html::radio($name, $checked, ['value' => $value]);
-                        return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
-                    }]);?>
+
 
                 <?= $form->field($CreateHotTourForm, 'deadline')->widget(
                     \dosamigos\datepicker\DatePicker::className(), [
@@ -335,7 +337,7 @@ use yii\helpers\Url;
                         'format' => 'yyyy-m-d',
                         'todayHighlight' => true,
                         'startDate' => date('Y-M-d', strtotime('today')),
-                        'endDate' => date('Y-M-d', strtotime('+2 week')),
+                        'endDate' => date('Y-M-d', strtotime('+13 days')),
                     ]
                 ]);?>
 

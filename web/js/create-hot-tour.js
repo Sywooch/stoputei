@@ -186,7 +186,11 @@ $(function(){
             $('.manager-hot-tour-container .loader-bg').addClass('hide');
             if(data.status == 'ok') {
                 console.log(data.popup);
-                $('#manager-hot-tours-response .list-data .user-tour-wrapper:first').before(data.tour);
+                if($('#manager-hot-tours-response .list-data .user-tour-wrapper').length > 0) {
+                    $('#manager-hot-tours-response .list-data .user-tour-wrapper:first').before(data.tour);
+                }else{
+                    $('#manager-hot-tours-response .list-data').html(data.tour);
+                }
                 $('.badge.offers-tab.manager-hot-tours').text(data.count);
                 $('#modal-container .modal-content').html(data.popup);
                 $('#modal-container').modal({backdrop: 'static', keyboard: false});
@@ -213,6 +217,7 @@ $(function(){
         $('.hot-tour.flight-included').addClass('hide');
         $('.badge.tab-badge.create-hot-tour').text('0');
         $('[class*="field-createhottourform"]').removeClass('has-success has-error');
+        $('[class*="field-createhottourform"] .help-block').text('');
         $('#create-hot-tour-response').empty();
     });
 

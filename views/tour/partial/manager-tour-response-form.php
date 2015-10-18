@@ -1,10 +1,12 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\Url;
+use kartik\date\DatePicker;
 ?>
 <?php $form = \yii\widgets\ActiveForm::begin([
     'id' => 'manager-tour-response-form',
     'action' => Url::toRoute(['tour/create-tour-manager']),
+    'enableClientValidation' => false,
     'options' => ['class' => 'form-horizontal'],
     'fieldConfig' => [
         'template' => "{label}\n<div class=\"col-xs-11 col-xs-offset-1 \">{input}</div>\n<div class=\"col-xs-11 col-xs-offset-1\">{error}</div>",
@@ -281,14 +283,19 @@ use yii\helpers\Url;
     <!--<?= $form->field($CreateTourForm, 'depart_country_there')->dropDownList($dropdownDestination);?>
     <?= $form->field($CreateTourForm, 'depart_city_there')->dropDownList($destinationCityDropdown);?>-->
 
-    <?= $form->field($CreateTourForm, 'from_date')->widget(\yii\jui\DatePicker::classname(), [
-        'language' => Yii::$app->language,
-        'dateFormat' => 'yyyy-MM-dd',
+
+    <?=$form->field($CreateTourForm, 'from_date')->widget(DatePicker::classname(), [
         'options' => [
-            'placeholder' =>  Yii::t('app', date('Y-M-d')),
-            'id' => 'from_date'
+            'placeholder' => Yii::t('app', date('Y-m-d'))
+        ],
+        'removeButton' => false,
+        'pluginOptions' => [
+            'autoclose'=>true,
+            'todayHighlight' => true,
+            'todayBtn' => true,
+            'format' => 'yyyy-m-dd',
         ]
-    ]) ?>
+    ]);?>
 
     <?= $form->field($CreateTourForm, 'voyage_there')->checkbox();?>
     <!--<div class="voyage_through_there">
@@ -296,14 +303,18 @@ use yii\helpers\Url;
     </div>
     <?= $form->field($CreateTourForm, 'depart_city_from_there')->dropDownList($dropdownResort);?>-->
 
-    <?= $form->field($CreateTourForm, 'to_date')->widget(\yii\jui\DatePicker::classname(), [
-        'language' => Yii::$app->language,
-        'dateFormat' => 'yyyy-MM-dd',
+    <?=$form->field($CreateTourForm, 'to_date')->widget(DatePicker::classname(), [
         'options' => [
-            'placeholder' =>  Yii::t('app', date('Y-M-d')),
-            'id' => 'to_date'
+            'placeholder' => Yii::t('app', date('Y-m-d'))
+        ],
+        'removeButton' => false,
+        'pluginOptions' => [
+            'autoclose'=>true,
+            'todayHighlight' => true,
+            'todayBtn' => true,
+            'format' => 'yyyy-m-dd',
         ]
-    ]) ?>
+    ]);?>
 
     <?= $form->field($CreateTourForm, 'voyage_from_there')->checkbox();?>
     <!--<div class="voyage_through_from_there">

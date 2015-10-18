@@ -139,6 +139,7 @@ return [
     'User\'s tour not found. Please, change search params.' => 'Туры пользователей не найдены. Пожалуйста, измените условия поискового запроса.',
     'Congratulations! Just now you have been created your order.' => 'Ваш запрос  успешно отправлен. В течении скорого времени Тур фирмы из Вашего региона вышлют свои предложения. Внимание, все запросы и предложения  туров актуальны лишь 2 суток.',
     'Congratulations! Just now you have been created your response to tourist. Warning! All responses are actually only 2 days.' => 'Предложение отправлено. Внимание, все запросы и предложения туров актуальны лишь 2 суток.',
+    'Congratulations! Just now you have been created your response to tourist. Warning! All responses are actually only to : ' => 'Предложение отправлено. Внимание, данное предложение тура актуально лишь до ',
     'Congratulations! Just now you have been created your response to tourist. Warning! This tour are actually only to ' => 'Предложение отправлено. Внимание, это предложение актуально лишь до ',
     'Congratulations! Just now you have been created your response to tourist\s flight. Warning! All responses are actually only 2 days.' => 'Предложение по авиабилету было успешно отправлено. Внимание, все запросы и предложения авиабилетов актуальны лишь 2 суток.',
     'Order' => 'Запрос',

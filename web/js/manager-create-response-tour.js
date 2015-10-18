@@ -190,6 +190,7 @@ $(function(){
             var data = $.parseJSON(response);
             $('.user-tour-container .loader-bg').addClass('hide');
             if(data.status == 'ok') {
+                console.log(data);
                 $('.create-tour').empty().html(data.form);
                 $('a[href="#tour-from-user"]').text(data.tab_name);
                 $('#create-tour-response').removeClass('inactive');
@@ -266,8 +267,12 @@ $(function(){
             var data = $.parseJSON(response);
             $('.hotels-container .loader-bg').addClass('hide');
             if(data.status == 'ok') {
-                console.log(data.popup);
-                $('#manager-offers-response .list-data .user-tour-wrapper:first').before(data.tour);
+                console.log(data);
+                if($('#manager-offers-response .list-data .user-tour-wrapper').length > 0) {
+                    $('#manager-offers-response .list-data .user-tour-wrapper:first').before(data.tour);
+                }else{
+                    $('#manager-offers-response .list-data').html(data.tour);
+                }
                 $('.badge.offers-tab.manager-offers').text(data.count);
                 $('#modal-container .modal-content').html(data.popup);
                 $('#modal-container').modal({backdrop: 'static', keyboard: false});
