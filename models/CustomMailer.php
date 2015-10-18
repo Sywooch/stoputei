@@ -28,12 +28,12 @@ class CustomMailer
             ->send();
     }
 
-    public static function resetPassword($view = 'reset-password', $subject = null, $to = null, $from = null, $params = null){
+    public static function resetPassword($view = 'reset-password', $subject = null, $to, $from = null, $params = null){
         if(is_null($subject)){
             $subject = \Yii::t('app', 'Reset password');
         }
-        if(is_null($to)){
-            $to = \Yii::$app->params['adminEmailContact'];
+        if(is_null($from)){
+            $to = \Yii::$app->params['adminEmail'];
         }
         \Yii::$app->mailer->compose($view, $params)
             ->setFrom($from)
