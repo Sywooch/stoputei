@@ -43,7 +43,7 @@ switch($tour->hotel->star_id){
         break;
 }
 $tour_name = ($tour->is_hot_tour == 1)?Yii::t('app', 'Hot tour'):Yii::t('app', 'Offer');
-$flight_data_from = date('d.m.Y H:m', strtotime($tour->from_date));
+$flight_data_from = date('d.m.Y', strtotime($tour->from_date));
 ?>
 <div class="user-tour-wrapper col-xs-12" data-tour-id="<?=$tour->id;?>">
     <div class="col-xs-12 header-info">
@@ -80,7 +80,7 @@ $flight_data_from = date('d.m.Y H:m', strtotime($tour->from_date));
             <div class="data"><?=$tour->city->name;?></div>
             <?php if($tour->flight_included==1):?>
                 <?php if(!is_null($tour->departCityThere)):?>
-                    <div><span class="describe"><?=Yii::t('app', 'Depart city there');?></span> : <span class="data"><?= $tour->departCityThere->name;?></span></div>
+                    <!--<div><span class="describe"><?//=Yii::t('app', 'Depart city there');?></span> : <span class="data"><?//= $tour->departCityThere->name;?></span></div>?>-->
                 <?php endif;?>
                 <div class="data"><?=$flight_included;?></div>
                 <div class="data"><?=$flight_data_from;?></div>

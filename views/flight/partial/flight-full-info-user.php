@@ -5,7 +5,7 @@ $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
 ?>
 <div class="row">
     <div class="col-xs-6 col-xs-offset-3 full-flight">
-        <div class="col-xs-8 flight-info">
+        <div class="col-xs-12 flight-info">
             <div class="header">
                 <span class="number">№ <?=$flight->id;?></span>
                 <span class="created"><?=$created;?></span>

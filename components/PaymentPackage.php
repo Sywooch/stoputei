@@ -24,7 +24,7 @@ class PaymentPackage extends Widget
                     $this->type = \Yii::t('app','Payment package "Region"');
                     return;
                 }else{
-                    $this->type = Html::a(\Yii::t('app','Payment package is absent.', ['/site/payment']));
+                    $this->type = \Yii::t('app','Payment package is absent.');
                     return;
                 }
             }else{

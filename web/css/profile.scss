@@ -62,6 +62,14 @@
       h4{
         color: $site-color;
       }
+      .describe-payment{
+        max-width: 60%;
+        margin: 30px auto 30px;
+        font-size: 1.2em;
+        color: $site-color;
+        line-height: 20px;
+        text-align: justify;
+      }
     }
   }
 }
