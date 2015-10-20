@@ -23,6 +23,8 @@ class UserEditForm extends Model
     public $single_region_paid;
     public $multiple_region_paid;
     public $approved;
+    public $single_license_expire;
+    public $multiple_license_expire;
 
     /**
      * @return array the validation rules.
@@ -32,7 +34,7 @@ class UserEditForm extends Model
         return [
             [['email', 'region_id'], 'required'],
             ['role', 'default', 'value' => 1],
-            ['company_underground', 'default', 'value' => null],
+            [['company_underground', 'single_license_expire', 'multiple_license_expire'], 'default', 'value' => null],
             [['single_region_paid', 'multiple_region_paid', 'approved'], 'default', 'value' => 0],
             [['company_name', 'company_city', 'company_phone'], 'required', 'when' => function ($model) {
                 return $model->role == 2;
@@ -59,6 +61,8 @@ class UserEditForm extends Model
             'single_region_paid' => \Yii::t('app', 'Payment "Region"'),
             'multiple_region_paid' => \Yii::t('app', 'Payment "Country"'),
             'approved' => \Yii::t('app', 'Approved'),
+            'single_license_expire' => \Yii::t('app', 'License "Region" will be expired to'),
+            'multiple_license_expire' => \Yii::t('app', 'License "Country" will be expired to'),
         ];
     }
 }

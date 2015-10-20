@@ -2,6 +2,7 @@
 use yii\widgets\ActiveForm;
 use yii\helpers\Url;
 use yii\helpers\Html;
+use kartik\date\DatePicker;
 ?>
 <div class="admin-panel">
     <div class="users">
@@ -33,7 +34,35 @@ use yii\helpers\Html;
             <?= $form->field($model, 'approved')->checkbox();?>
             <?php if($user->role == 2):?>
                 <?= $form->field($model, 'single_region_paid')->checkbox();?>
+
+                <?=$form->field($model, 'single_license_expire')->widget(DatePicker::classname(), [
+                    'options' => [
+                        'placeholder' => Yii::t('app', date('Y-m-d'))
+                    ],
+                    //'removeButton' => false,
+                    'pluginOptions' => [
+                        'autoclose'=>true,
+                        'todayHighlight' => true,
+                        'todayBtn' => true,
+                        'format' => 'yyyy-m-dd',
+                    ]
+                ]);?>
+
                 <?= $form->field($model, 'multiple_region_paid')->checkbox();?>
+
+                <?=$form->field($model, 'multiple_license_expire')->widget(DatePicker::classname(), [
+                    'options' => [
+                        'placeholder' => Yii::t('app', date('Y-m-d'))
+                    ],
+                    //'removeButton' => false,
+                    'pluginOptions' => [
+                        'autoclose'=>true,
+                        'todayHighlight' => true,
+                        'todayBtn' => true,
+                        'format' => 'yyyy-m-dd',
+                    ]
+                ]);?>
+
                 <?= $form->field($model, 'company_name');?>
                 <?= $form->field($model, 'company_city');?>
                 <?= $form->field($model, 'company_phone');?>

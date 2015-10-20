@@ -30,6 +30,8 @@ class UsersController extends Controller
                 $model->company_street = $user->company_street;
                 $model->single_region_paid = $user->single_region_paid;
                 $model->multiple_region_paid = $user->multiple_region_paid;
+                $model->single_license_expire = $user->single_license_expire;
+                $model->multiple_license_expire = $user->multiple_license_expire;
             }
             if ($model->load(Yii::$app->request->post()) and $model->validate()) {
                 $user->role = $model->role;
@@ -41,6 +43,10 @@ class UsersController extends Controller
                 $user->company_street = $model->company_street;
                 $user->single_region_paid = $model->single_region_paid;
                 $user->multiple_region_paid = $model->multiple_region_paid;
+                if($model->role == 2) {
+                    $user->single_license_expire = $model->single_license_expire;
+                    $user->multiple_license_expire = $model->multiple_license_expire;
+                }
                 if($user->save()){
                     Yii::$app->session->setFlash('success', 'SUCCESS');
                     if($model->role == 2) {

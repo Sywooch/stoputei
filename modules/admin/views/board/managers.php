@@ -53,7 +53,7 @@ use yii\bootstrap\Alert;
                 'format' => 'html',
                 'value' => function($model){
                     if($model->single_region_paid == 1){
-                        return Html::tag('span', '', ['class' => 'glyphicon glyphicon-ok paid']);
+                        return Html::tag('span', '', ['class' => 'glyphicon glyphicon-ok paid']).'<br><span>'.Yii::$app->formatter->asDate($model->single_license_expire, 'long').'</span>';
                     }else{
                         return Html::tag('span', '', ['class' => 'glyphicon glyphicon-remove']);
                     }
@@ -64,7 +64,7 @@ use yii\bootstrap\Alert;
                 'format' => 'html',
                 'value' => function($model){
                     if($model->multiple_region_paid == 1){
-                        return Html::tag('span', '', ['class' => 'glyphicon glyphicon-ok paid']);
+                        return Html::tag('span', '', ['class' => 'glyphicon glyphicon-ok paid']).'<br><span>'.Yii::$app->formatter->asDate($model->multiple_license_expire, 'long').'</span>';
                     }else{
                         return Html::tag('span', '', ['class' => 'glyphicon glyphicon-remove']);
                     }
