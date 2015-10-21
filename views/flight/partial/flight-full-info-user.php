@@ -79,7 +79,7 @@ $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
                 <div>
                     <span class="value"><?=$depart_to_date;?></span>
                 </div>
-                <?php if($flight->voyage_is_direct_to == 1):?>
+                <?php if($flight->voyage_is_direct_to == 0):?>
                     <div>
                         <span class="field"><?=Yii::t('app','Voyage is not direct');?> : </span>
                         <?php if(!is_null($flight->voyageCityTo)):?>
@@ -98,7 +98,7 @@ $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
             </div>
 
             <div class="group-field">
-                <?php if($flight->voyage_is_direct_from == 1 and $flight->way_ticket == 2):?>
+                <?php if($flight->voyage_is_direct_from == 0 and $flight->way_ticket == 2):?>
                     <div>
                         <span class="field"><?=Yii::t('app','Depart city from');?> : </span>
                         <?php if(!is_null($flight->voyageCityFrom)):?>

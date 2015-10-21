@@ -38,4 +38,15 @@ class CustomMailer
             ->setSubject(\Yii::t('app', 'Reset password'))
             ->send();
     }
+
+    public static function userRegisteredEvent($to, $from = null, $params = null){
+        if(is_null($from)){
+            $from = \Yii::$app->params['adminEmail'];
+        }
+        \Yii::$app->mailer->compose('user-registered', $params)
+            ->setFrom($from)
+            ->setTo($to)
+            ->setSubject(\Yii::t('app', 'New user registered'))
+            ->send();
+    }
 }

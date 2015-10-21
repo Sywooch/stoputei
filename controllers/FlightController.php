@@ -16,6 +16,7 @@ use app\models\FlightResponse;
 use app\models\ManagerFlightForm;
 use app\models\DepartCity;
 use app\models\Country;
+use app\modules\admin\models\TimeCycles;
 
 class FlightController extends Controller
 {
@@ -50,9 +51,12 @@ class FlightController extends Controller
                             unset($userFlightTypes);
                         }
                     }
+
+                    $timeCycle = TimeCycles::find()->where(['is not', 'id', null])->one();
+                    $flightRequestLifeInSec = $timeCycle->flight_request_life*3600;
                     $response = [
                         'status' => 'ok',
-                        'popup' => '<div>'.Yii::t('app', "Congratulations! Request on flights was submitted successfully.").'</div><div class="modal-footer">
+                        'popup' => '<div>'.Yii::t('app', "Congratulations! Request on flights was submitted successfully.").Yii::$app->formatter->asDate((time()+$flightRequestLifeInSec),'yyyy-MM-dd').'</div><div class="modal-footer">
                                         <button type="button" class="btn btn-default col-xs-6 create-one-more-flight" data-dismiss="modal">'.Yii::t('app', 'Create new one request').'</button>
                                         <button type="button" class="btn btn-primary col-xs-6 to-request-user-flight-list" data-dismiss="modal">'.Yii::t('app', 'Back to request list').'</button>
                                       </div>'
@@ -173,10 +177,12 @@ class FlightController extends Controller
                 $managerFlight->flight_cost = $model->flight_cost;
                 $managerFlight->manager_id = Yii::$app->user->identity->getId();
                 if($managerFlight->save()){
+                    $timeCycle = TimeCycles::find()->where(['is not', 'id', null])->one();
+                    $flightResponseLifeInSec = $timeCycle->flight_response_life*3600;
                     $response = [
                         'status' => 'ok',
                         'model' => $model,
-                        'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your response to tourist\s flight. Warning! All responses are actually only 2 days.").'</div><div class="modal-footer">
+                        'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your response to tourist\s flight. Warning! All responses are actually only to ").Yii::$app->formatter->asDate((time()+$flightResponseLifeInSec),'yyyy-MM-dd').'</div><div class="modal-footer">
                                         <button type="button" class="btn btn-default col-xs-6 create-one-more-flight-response" data-dismiss="modal">'.Yii::t('app', 'Create new one').'</button>
                                         <button type="button" class="btn btn-primary col-xs-6 to-request-flight-list-from-modal">'.Yii::t('app', 'Back to request list').'</button>
                                       </div>'

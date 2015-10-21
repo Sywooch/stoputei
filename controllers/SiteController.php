@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\components\EventHandler;
+use app\components\MailerEvent;
 use app\models\EmailPasswordResetForm;
 use app\models\Hotel;
 use app\models\PageEditForm;
@@ -299,6 +301,12 @@ class SiteController extends Controller
             $user->setVerifyCode();
             if($user->save()) {
                 CustomMailer::sendSingleMail('verify', 'Verify you account on '.Yii::$app->params['application_name'], $user->email, null, ['email' => $user->email, 'token' => $user->verify]);
+                //handler user registration
+                $eventHandler = new EventHandler();
+                $mailerEvent = new MailerEvent();
+                $mailerEvent->user = $user;
+                $eventHandler->on(EventHandler::EVENT_USER_REGISTERED, [$mailerEvent, 'userLogin']);
+                $eventHandler->userRegistered();
                 return $this->redirect(['site/registration-success']);
             }
         } else {
