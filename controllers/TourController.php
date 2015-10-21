@@ -285,9 +285,11 @@ class TourController extends Controller
                             unset($userTourRooms);
                         }
                     }
+                    $timeCycle = TimeCycles::find()->where(['is not', 'id', null])->one();
+                    $tourRequestLifeInSec = $timeCycle->tour_request_life*3600;
                     $response = [
                         'status' => 'ok',
-                        'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your order.").'</div><div class="modal-footer">
+                        'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your order. It will be actually to ").Yii::$app->formatter->asDate((time()+$tourRequestLifeInSec),'yyyy-MM-dd').'</div><div class="modal-footer">
                                         <button type="button" class="btn btn-default col-xs-6 create-one-more-tour" data-dismiss="modal">'.Yii::t('app', 'Close').'</button>
                                         <button type="button" class="btn btn-primary col-xs-6" data-dismiss="modal">'.Yii::t('app', 'Create same tour').'</button>
                                       </div>'
