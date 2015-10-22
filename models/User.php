@@ -190,10 +190,12 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     {
         if (parent::beforeDelete()) {
             UserTourFavourites::deleteAll(['user_id' => $this->id]);
+            UserFlight::deleteAll(['owner_id' => $this->id]);
             if($this->role == 1) {
                 UserTour::deleteAll(['owner_id' => $this->id]);
             }elseif($this->role == 2){
                 TourResponse::deleteAll(['manager_id' => $this->id]);
+                FlightResponse::deleteAll(['manager_id' => $this->id]);
             }
             return true;
         }

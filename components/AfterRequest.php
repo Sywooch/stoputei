@@ -25,5 +25,6 @@ class AfterRequest extends Behavior
         }else{
             \Yii::$app->language = 'ru';
         }
+        \Yii::$app->formatter->locale = \Yii::$app->language;
     }
 }

@@ -78,6 +78,20 @@ class CustomMailer
         \Yii::$app->mailer->sendMultiple($messages);
     }
 
+    public static function sendMultipleMailsAboutManagerResponseFlightCreate($users = array(), $from = null, $params = null){
+        if(is_null($from)){
+            $from = \Yii::$app->params['adminEmail'];
+        }
+        $messages = [];
+        foreach ($users as $user) {
+            $messages[] = \Yii::$app->mailer->compose('create-response-flight-manager', $params)
+                ->setFrom($from)
+                ->setTo($user->email)
+                ->setSubject(\Yii::t('app', 'New flight response was created'));
+        }
+        \Yii::$app->mailer->sendMultiple($messages);
+    }
+
     public static function sendMultipleMailsToManagerAboutNewUserTour($users = array(), $from = null, $params = null){
         if(is_null($from)){
             $from = \Yii::$app->params['adminEmail'];

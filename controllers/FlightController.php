@@ -196,6 +196,13 @@ class FlightController extends Controller
                                         <button type="button" class="btn btn-primary col-xs-6 to-request-flight-list-from-modal">'.Yii::t('app', 'Back to request list').'</button>
                                       </div>'
                     ];
+
+                    //event: manager flight create
+                    $eventHandler = new EventHandler();
+                    $mailerEvent = new MailerEvent();
+                    $mailerEvent->flight = $managerFlight;
+                    $eventHandler->on(EventHandler::EVENT_MANAGER_FLIGHT_RESPONSE, [$mailerEvent, 'managerCreateResponseFlight']);
+                    $eventHandler->managerFlightResponse();
                 }else{
                     $response = [
                         'status' => 'error',
