@@ -17,6 +17,8 @@ use app\models\ManagerFlightForm;
 use app\models\DepartCity;
 use app\models\Country;
 use app\modules\admin\models\TimeCycles;
+use app\components\EventHandler;
+use app\components\MailerEvent;
 
 class FlightController extends Controller
 {
@@ -61,6 +63,13 @@ class FlightController extends Controller
                                         <button type="button" class="btn btn-primary col-xs-6 to-request-user-flight-list" data-dismiss="modal">'.Yii::t('app', 'Back to request list').'</button>
                                       </div>'
                     ];
+
+                    //event: user tour create
+                    $eventHandler = new EventHandler();
+                    $mailerEvent = new MailerEvent();
+                    $mailerEvent->flight = $userFlight;
+                    $eventHandler->on(EventHandler::EVENT_NEW_USER_FLIGHT, [$mailerEvent, 'userCreateFlight']);
+                    $eventHandler->newUserFlight();
                 }else{
                     $response = [
                         'status' => 'error',

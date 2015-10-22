@@ -390,4 +390,8 @@ return [
     'New hot tour created' => 'Создан новый горящий тур',
     'New tour response created' => 'Новое предложение тура',
     'New flight response created' => 'Новое предложение авиабилета',
+    'New hot tour was created' => 'Создан новый горящий тур',
+    'New tour response was created' => 'Новое предложение на запрос тура',
+    'New user tour was created' => 'Создан новый запрос на тур',
+    'New user flight was created' => 'Создан новый запрос на авиабилет'
 ];

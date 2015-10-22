@@ -49,4 +49,60 @@ class CustomMailer
             ->setSubject(\Yii::t('app', 'New user registered'))
             ->send();
     }
+
+    public static function sendMultipleMailsAboutManagerHotTourCreate($users = array(), $from = null, $params = null){
+        if(is_null($from)){
+            $from = \Yii::$app->params['adminEmail'];
+        }
+        $messages = [];
+        foreach ($users as $user) {
+            $messages[] = \Yii::$app->mailer->compose('create-hot-tour-manager', $params)
+                ->setFrom($from)
+                ->setTo($user->email)
+                ->setSubject(\Yii::t('app', 'New hot tour was created'));
+        }
+        \Yii::$app->mailer->sendMultiple($messages);
+    }
+
+    public static function sendMultipleMailsAboutManagerResponseTourCreate($users = array(), $from = null, $params = null){
+        if(is_null($from)){
+            $from = \Yii::$app->params['adminEmail'];
+        }
+        $messages = [];
+        foreach ($users as $user) {
+            $messages[] = \Yii::$app->mailer->compose('create-response-tour-manager', $params)
+                ->setFrom($from)
+                ->setTo($user->email)
+                ->setSubject(\Yii::t('app', 'New tour response was created'));
+        }
+        \Yii::$app->mailer->sendMultiple($messages);
+    }
+
+    public static function sendMultipleMailsToManagerAboutNewUserTour($users = array(), $from = null, $params = null){
+        if(is_null($from)){
+            $from = \Yii::$app->params['adminEmail'];
+        }
+        $messages = [];
+        foreach ($users as $user) {
+            $messages[] = \Yii::$app->mailer->compose('new-user-tour', $params)
+                ->setFrom($from)
+                ->setTo($user->email)
+                ->setSubject(\Yii::t('app', 'New user tour was created'));
+        }
+        \Yii::$app->mailer->sendMultiple($messages);
+    }
+
+    public static function sendMultipleMailsToManagerAboutNewUserFlight($users = array(), $from = null, $params = null){
+        if(is_null($from)){
+            $from = \Yii::$app->params['adminEmail'];
+        }
+        $messages = [];
+        foreach ($users as $user) {
+            $messages[] = \Yii::$app->mailer->compose('new-user-flight', $params)
+                ->setFrom($from)
+                ->setTo($user->email)
+                ->setSubject(\Yii::t('app', 'New user flight was created'));
+        }
+        \Yii::$app->mailer->sendMultiple($messages);
+    }
 }

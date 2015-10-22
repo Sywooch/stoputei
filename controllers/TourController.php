@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\components\EventHandler;
+use app\components\MailerEvent;
 use app\models\UserFavouriteForm;
 use app\models\UserHotTourForm;
 use app\models\UserTourBeachLines;
@@ -294,6 +296,13 @@ class TourController extends Controller
                                         <button type="button" class="btn btn-primary col-xs-6" data-dismiss="modal">'.Yii::t('app', 'Create same tour').'</button>
                                       </div>'
                     ];
+
+                    //event: user tour create
+                    $eventHandler = new EventHandler();
+                    $mailerEvent = new MailerEvent();
+                    $mailerEvent->tour = $userTour;
+                    $eventHandler->on(EventHandler::EVENT_NEW_USER_TOUR, [$mailerEvent, 'userCreateTour']);
+                    $eventHandler->newUserTour();
                 }else{
                     $response = [
                         'status' => 'error',
@@ -521,6 +530,12 @@ class TourController extends Controller
                             'is_hot_tour' => 0
                         ])->count()
                     ];
+                    //event: manager response tour create
+                    $eventHandler = new EventHandler();
+                    $mailerEvent = new MailerEvent();
+                    $mailerEvent->tour = $tourResponse;
+                    $eventHandler->on(EventHandler::EVENT_MANAGER_TOUR_RESPONSE, [$mailerEvent, 'managerCreateResponseTour']);
+                    $eventHandler->managerTourResponse();
                 }else{
                     $response = [
                         'status' => 'error',
@@ -721,6 +736,12 @@ class TourController extends Controller
                             'is_hot_tour' => 1
                         ])->count()
                     ];
+                    //event: manager hot tour create
+                    $eventHandler = new EventHandler();
+                    $mailerEvent = new MailerEvent();
+                    $mailerEvent->tour = $tourResponse;
+                    $eventHandler->on(EventHandler::EVENT_MANAGER_HOT_TOUR, [$mailerEvent, 'managerCreateHotTour']);
+                    $eventHandler->managerHotTour();
                 }else{
                     $response = [
                         'status' => 'error',
