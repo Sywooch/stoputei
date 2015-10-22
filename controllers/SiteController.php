@@ -305,7 +305,7 @@ class SiteController extends Controller
                 $eventHandler = new EventHandler();
                 $mailerEvent = new MailerEvent();
                 $mailerEvent->user = $user;
-                $eventHandler->on(EventHandler::EVENT_USER_REGISTERED, [$mailerEvent, 'userLogin']);
+                $eventHandler->on(EventHandler::EVENT_USER_REGISTERED, [$mailerEvent, 'userRegistered']);
                 $eventHandler->userRegistered();
                 return $this->redirect(['site/registration-success']);
             }
