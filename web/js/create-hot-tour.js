@@ -179,6 +179,8 @@ $(function(){
     $(document).on('click', '#create-hot-tour', function(e){
         e.preventDefault();
         var url = $('#manager-hot-tour-create-form').attr('action');
+        //unmask
+        $('[name="CreateHotTourForm[tour_cost]"]').val(parseInt(( $('#createhottourform-tour_cost').val().replace(/ /g,'').replace(/_/g,'')  )));
         var data = $('#manager-hot-tour-create-form').serialize();
         $('.manager-hot-tour-container .loader-bg').removeClass('hide');
         $.post(url, data).done(function(response){
