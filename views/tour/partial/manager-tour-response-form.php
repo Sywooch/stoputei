@@ -324,8 +324,8 @@ use kartik\date\DatePicker;
 
     <div>
         <label class="col-xs-11 col-xs-offset-1 control-label label-add-paymnet" for="createtourform-add-payment"><?=Yii::t('app', 'Add payment');?></label>
-        <?= $form->field($CreateTourForm, 'visa')->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => '']);?>
-        <?= $form->field($CreateTourForm, 'oil_tax')->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => '']);?>
+        <?= $form->field($CreateTourForm, 'visa', ['template' => "{label}\n<div class=\"col-xs-8 col-xs-offset-1 \">{input}</div>\n<div class=\"input-group-addon\">".Yii::$app->user->identity->city->country->currency->name."</div><div class=\"col-xs-8 col-xs-offset-1\">{error}</div>"])->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => '']);?>
+        <?= $form->field($CreateTourForm, 'oil_tax', ['template' => "{label}\n<div class=\"col-xs-8 col-xs-offset-1 \">{input}</div>\n<div class=\"input-group-addon\">".Yii::$app->user->identity->city->country->currency->name."</div><div class=\"col-xs-8 col-xs-offset-1\">{error}</div>"])->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => '']);?>
         <?= $form->field($CreateTourForm, 'add_payment')->checkbox();?>
     </div>
 <?= $form->field($CreateTourForm, 'tickets_exist')->radioList([0 => '', 1 => ''],

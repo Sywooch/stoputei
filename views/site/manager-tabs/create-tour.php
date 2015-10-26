@@ -321,8 +321,8 @@ use yii\helpers\Url;
                 </div>
                 <div>
                     <label class="col-xs-11 col-xs-offset-1 control-label label-add-paymnet" for="createhottourform-add-payment"><?=Yii::t('app', 'Add payment');?></label>
-                    <?= $form->field($CreateHotTourForm, 'visa')->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => '']);?>
-                    <?= $form->field($CreateHotTourForm, 'oil_tax')->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => '']);?>
+                    <?= $form->field($CreateHotTourForm, 'visa', ['template' => "{label}\n<div class=\"col-xs-8 col-xs-offset-1 \">{input}</div>\n<div class=\"input-group-addon\">".Yii::$app->user->identity->city->country->currency->name."</div><div class=\"col-xs-8 col-xs-offset-1\">{error}</div>"])->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => '']);?>
+                    <?= $form->field($CreateHotTourForm, 'oil_tax', ['template' => "{label}\n<div class=\"col-xs-8 col-xs-offset-1 \">{input}</div>\n<div class=\"input-group-addon\">".Yii::$app->user->identity->city->country->currency->name."</div><div class=\"col-xs-8 col-xs-offset-1\">{error}</div>"])->input('number', ['min' => 0, 'max' => 99000, 'step' => 100, 'value' => '']);?>
                     <?= $form->field($CreateHotTourForm, 'add_payment')->checkbox();?>
                 </div>
 
