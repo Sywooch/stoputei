@@ -131,7 +131,7 @@ if($tour->is_hot_tour == 1){
             </div>
             <div class="col-xs-6">
                 <span class="rate cost">
-                <?=Yii::t('app', 'Tour cost');?> : <span class="price"><?=$tour->tour_cost;?></span> <?=$tour->owner->city->country->currency->name;?>
+                <?=Yii::t('app', 'Tour cost');?> : <span class="price"><?= \app\models\Helper::break_string($tour->tour_cost, 3);?></span> <?=$tour->owner->city->country->currency->name;?>
                 </span>
             </div>
         </div>

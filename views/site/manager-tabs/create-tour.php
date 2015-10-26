@@ -345,12 +345,7 @@ use yii\helpers\Url;
                 <?php $CreateHotTourForm->medicine_insurance = 1;?>
                 <?= $form->field($CreateHotTourForm, 'medicine_insurance')->checkbox();?>
                 <?= $form->field($CreateHotTourForm, 'charge_manager')->checkbox();?>
-                <?= $form->field($CreateHotTourForm, 'tour_cost', ['template' => "{label}\n<div class=\"col-xs-8 col-xs-offset-1 \">{input}</div>\n<div class=\"input-group-addon\">".Yii::$app->user->identity->city->country->currency->name."</div><div class=\"col-xs-8 col-xs-offset-1\">{error}</div>"])->widget(\yii\widgets\MaskedInput::className(), [
-                    'mask' => '999 999 9999',
-                    'clientOptions' => [
-                        'numericInput' => true,
-                    ],
-                ]) ?>
+                <?= $form->field($CreateHotTourForm, 'tour_cost', ['template' => "{label}\n<div class=\"col-xs-8 col-xs-offset-1 \">{input}</div>\n<div class=\"input-group-addon\">".Yii::$app->user->identity->city->country->currency->name."</div><div class=\"col-xs-8 col-xs-offset-1\">{error}</div>"])->input('number', ['min' => 0, 'max' => 99999, 'step' => 100, 'value' => '']);?>
 
                 <?php $CreateHotTourForm->is_hot_tour = 1;?>
                 <?= $form->field($CreateHotTourForm, 'is_hot_tour')->hiddenInput()->label('');?>

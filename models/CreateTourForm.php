@@ -61,7 +61,7 @@ class CreateTourForm extends Model
             [['destination', 'resort', 'adult_amount', 'room_count', 'nutrition', 'location', 'room_type', 'room_view', 'tour_cost'], 'required'],
             [['stars', 'apartment'], 'default', 'value' => []],
             [['hotel_id', 'oil_tax', 'visa', 'voyage_through_city_there', 'voyage_through_city_from_there', 'deadline'], 'default', 'value' => null],
-            [['adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count', 'night_count', 'user_id', 'from_tour_id', 'room_view', 'beach_line', 'hotel_type', 'room_type', 'location', 'nutrition', 'hotel_star'], 'integer'],
+            [['adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count', 'night_count', 'user_id', 'from_tour_id', 'room_view', 'beach_line', 'hotel_type', 'room_type', 'location', 'nutrition', 'hotel_star', 'tour_cost'], 'integer'],
             ['stars', 'each', 'rule' => ['in', 'range' => [400, 401, 402, 403, 404]]],
             ['letter_filter', 'each', 'rule' => ['in', 'range' => ['a', 'b', 'c', 'd']]],
             [['flight_included' ], 'default', 'value' => 1],

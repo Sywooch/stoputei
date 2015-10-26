@@ -83,7 +83,7 @@ if(!empty($tour->nutritions)){
         <?php if($tour->budget > 0):?>
             <div class="field">
                 <span class="describe"><?=Yii::t('app', 'Budget');?> : </span>
-                <span class="value"><?=$tour->budget;?></span>
+                <span class="value"><?= \app\models\Helper::break_string($tour->budget, 3);?></span>
             </div>
         <?php endif;?>
         <div class="field">

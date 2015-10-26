@@ -341,7 +341,7 @@ use kartik\date\DatePicker;
     }]);?>
 <?= $form->field($CreateTourForm, 'medicine_insurance')->checkbox();?>
 <?= $form->field($CreateTourForm, 'charge_manager')->checkbox();?>
-<?= $form->field($CreateTourForm, 'tour_cost', ['template' => "{label}\n<div class=\"col-xs-8 col-xs-offset-1 \">{input}</div>\n<div class=\"input-group-addon\">".Yii::$app->user->identity->city->country->currency->name."</div><div class=\"col-xs-8 col-xs-offset-1\">{error}</div>"])->input('number', ['min' => 0, 'max' => 99000000, 'step' => 100, 'value' => '']);?>
+<?= $form->field($CreateTourForm, 'tour_cost', ['template' => "{label}\n<div class=\"col-xs-8 col-xs-offset-1 \">{input}</div>\n<div class=\"input-group-addon\">".Yii::$app->user->identity->city->country->currency->name."</div><div class=\"col-xs-8 col-xs-offset-1\">{error}</div>"])->input('number', ['min' => 0, 'max' => 99999999, 'step' => 100, 'value' => '']);?>
 <?= $form->field($CreateTourForm, 'user_id')->hiddenInput()->label('');?>
 <?= $form->field($CreateTourForm, 'from_tour_id')->hiddenInput()->label('');?>
 <?= $form->field($CreateTourForm, 'is_hot_tour')->hiddenInput()->label('');?>
