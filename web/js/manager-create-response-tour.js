@@ -262,10 +262,10 @@ $(function(){
         e.preventDefault();
         var url = $('#manager-tour-response-form').attr('action');
         var data = $('#manager-tour-response-form').serialize();
-        $('.hotels-container .loader-bg').removeClass('hide');
+        $('.global.loader-bg').removeClass('hide');
         $.post(url, data).done(function(response){
             var data = $.parseJSON(response);
-            $('.hotels-container .loader-bg').addClass('hide');
+            $('.global.loader-bg').addClass('hide');
             if(data.status == 'ok') {
                 console.log(data);
                 if($('#manager-offers-response .list-data .user-tour-wrapper').length > 0) {

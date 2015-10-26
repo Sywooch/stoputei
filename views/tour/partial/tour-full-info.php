@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\BaseFileHelper;
+use app\modules\admin\models\TimeCycles;
 $date = date(('d.m.Y H:i:s'), $tour->created_at);
 $star = '';
 switch($tour->hotel->star_id){
@@ -62,7 +63,13 @@ if($tour->from_date) {
 if($tour->to_date) {
     $to_date = date('d.m.Y', strtotime($tour->to_date));
 }
-
+if($tour->is_hot_tour == 1){
+    $tour_deadline = Yii::$app->formatter->asDate($tour->deadline,'yyyy-MM-dd');
+}else{
+    $timeCycle = TimeCycles::find()->where(['is not', 'id', null])->one();
+    $tourResponseLifeInSec = $timeCycle->tour_response_life*3600;
+    $tour_deadline = Yii::$app->formatter->asDate(time()+$tourResponseLifeInSec,'yyyy-MM-dd');
+}
 ?>
 
 <script type="text/javascript">
@@ -199,6 +206,7 @@ if($tour->to_date) {
 
         <div class="col-xs-6 body-tour">
             <div id="map-canvas" class="col-xs-12"></div>
+            <div class="col-xs-12 actually"><?= Yii::t('app', 'Tour\'s deadline');?> : <?=$tour_deadline;?></div>
             <div class="full-information col-xs-12">
                 <div class="col-xs-6 fields left">
                     <div>
@@ -278,7 +286,7 @@ if($tour->to_date) {
                             <?php endif;?>
                         <?php endif;?>
                         <div>
-                            <span class="field"><?=Yii::t('app', 'Flight start time');?> : </span>
+                            <span class="field"><?=Yii::t('app', 'Date flight to');?> : </span>
                             <span class="value"><?=$from_date;?></span>
                         </div>
                         <!--Flight to-->
@@ -300,7 +308,7 @@ if($tour->to_date) {
                             <?php endif;?>
                         <?php endif;?>
                         <div>
-                            <span class="field"><?=Yii::t('app', 'Flight start time');?> : </span>
+                            <span class="field"><?=Yii::t('app', 'Date end from');?> : </span>
                             <span class="value"><?=$to_date;?></span>
                         </div>
                         <!--Flight from-->

@@ -179,6 +179,9 @@
             display: none;
           }
         }
+        .favourite-user-tour{
+          top: 2px;
+        }
       }
       .people{
         display: none;
@@ -196,11 +199,17 @@
         margin-left: -15px;
         a {
           &.btn-primary {
-            padding: 4px 2px;
+            padding: 4px 8px;
           }
         }
         .tour-cost{
           display: block;
+        }
+        .company-name{
+          text-align: center;
+          display: block;
+          width: 100%;
+          min-width: 90px;
         }
       }
       &.active{
@@ -381,6 +390,11 @@
   .body-tour{
     #map-canvas{
       min-height: 250px;
+    }
+    .actually{
+      margin: 5px auto -15px;
+      font-weight: 300;
+      font-size: 1.2em;
     }
     .full-information {
       position: relative;

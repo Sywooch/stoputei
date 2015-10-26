@@ -215,6 +215,7 @@ return [
     'Date docking (minutes)' => 'Время стыковки (минут)',
     'Date start' => 'Дата вылета',
     'Date end' => 'Дата вылета',
+    'Date flight to' => 'Дата вылета туда',
     'Date end from' => 'Дата вылета обратно',
     'Payment is absent' => 'Отсутствуют',
     'Is absent' => 'Отсутствует',
