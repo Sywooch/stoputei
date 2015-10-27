@@ -106,7 +106,7 @@ $flight_data_from = date('d.m.Y', strtotime($tour->from_date));
     </div>
     <div class="col-xs-2 buttons">
         <span class="tour-cost">
-            <?=$tour->tour_cost;?><br><span class="currency" data-placement="bottom" data-toggle="tooltip" title="<?= $tour->owner->city->country->currency->hint;?>"><?= $tour->owner->city->country->currency->name;?></span>
+            <?=\app\models\Helper::break_string($tour->tour_cost, 3);?><br><span class="currency" data-placement="bottom" data-toggle="tooltip" title="<?= $tour->owner->city->country->currency->hint;?>"><?= $tour->owner->city->country->currency->name;?></span>
         </span>
         <a href="#" class="<?=(Yii::$app->user->identity->role == 1)?'tour-full-info-user':'tour-full-info-manager';?> btn btn-primary" data-tour-id="<?=$tour->id;?>" data-filter-type="<?=$filter_type;?>"><?= Yii::t('app', 'More');?></a>
         <span class="company-name">
