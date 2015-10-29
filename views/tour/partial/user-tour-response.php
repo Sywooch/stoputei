@@ -61,7 +61,11 @@ $flight_data_from = date('d.m.Y', strtotime($tour->from_date));
         <?php endif;?>
         <?php if($tour->hotel):?>
             <div class="hotel-title <?=(Yii::$app->user->identity->role == 1)?'tour-full-info-user':'tour-full-info-manager';?>" data-tour-id="<?=$tour->id;?>">
-                <?=$tour->hotel->name;?>
+                <?php if(strlen($tour->hotel->name) > 40):?>
+                    <span class="hotel-name truncate" data-toggle="tooltip" data-placement="bottom" title="<?=$tour->hotel->name;?>"><?=$tour->hotel->name;?></span>
+                <?php else:?>
+                    <span class="hotel-name"><?=$tour->hotel->name;?></span>
+                <?php endif;?>
                 <span class="hotel-rate"></span>
                 <span class="hotel-star"><?=$star;?></span>
             </div>

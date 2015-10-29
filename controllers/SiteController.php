@@ -116,7 +116,7 @@ class SiteController extends Controller
                 $destinationDropdown = $country->destinationDropdown();
                 $departCountryDropdown = $country->destinationDropdown(\Yii::$app->params['depart_countries']);
                 $departCityDropdown = $departCity->regionDropdown();
-                $cityDropdown = $city->destinationCityDropdown();
+                $cityDropdown = $city->destinationCityDropdown(\Yii::$app->params['depart_countries']);
                 $GetTourForm->flight_included = 1;
 
                 return $this->render('index',

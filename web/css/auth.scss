@@ -80,7 +80,7 @@
       }
     }
   }
-  .field-registrationform-company_name, .field-registrationform-company_city, .field-registrationform-company_phone{
+  .field-registrationform-company_name, .field-registrationform-company_city, .field-registrationform-company_phone, .field-registrationform-company_address{
     label:after {
       content: ' *';
       color: $red;

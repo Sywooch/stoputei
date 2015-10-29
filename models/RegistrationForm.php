@@ -45,7 +45,7 @@ class RegistrationForm extends Model
             }, 'whenClient' => "function (attribute, value) {
                 return $('[name=\"RegistrationForm[role]\"]:checked').val() == 1;
             }"],
-            [['company_name', 'company_city', 'company_address', 'company_phone', 'company_street'], 'required', 'when' => function ($model) {
+            [['company_name', 'company_city', 'company_address', 'company_phone'], 'required', 'when' => function ($model) {
                 return $model->role == 2;
             }, 'whenClient' => "function (attribute, value) {
                 return $('[name=\"RegistrationForm[role]\"]:checked').val() == 2;

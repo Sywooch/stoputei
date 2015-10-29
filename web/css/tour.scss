@@ -17,6 +17,7 @@
         color: $grey-light-text;
         position: absolute;
         right: 115px;
+        top: 3px;
       }
       .created{
         font-weight: 300;
@@ -24,12 +25,22 @@
         right: 16px;
         position: absolute;
         color: $grey-light-text;
+        top: 3px;
       }
       .hotel-title{
         cursor: pointer;
         color: $site-color-light;
         font-size: 1em;
         font-weight: 600;
+        .hotel-name{
+          &.truncate {
+            max-width: 320px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: inline-block;
+          }
+        }
         &:hover{
           color: $site-color;
         }
@@ -266,6 +277,13 @@
       font-size: 1.2em;
       font-weight: 600;
       color: $site-color;
+      &.truncate {
+        max-width: 290px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+      }
     }
     .rate{
       color: $green;

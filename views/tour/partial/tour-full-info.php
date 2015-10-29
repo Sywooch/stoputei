@@ -119,9 +119,11 @@ if($tour->is_hot_tour == 1){
 
         <div class="hotel-header col-xs-12">
             <div class="col-xs-6">
-                <span class="name">
-                    <?=$tour->hotel->name;?>
-                </span>
+                <?php if(strlen($tour->hotel->name) > 35):?>
+                    <span class="name truncate" data-toggle="tooltip" data-placement="bottom" title="<?=$tour->hotel->name;?>"><?=$tour->hotel->name;?></span>
+                <?php else:?>
+                    <span class="name"><?=$tour->hotel->name;?></span>
+                <?php endif;?>
                 <span class="stars">
                     <?=$star;?>
                 </span>
