@@ -76,7 +76,7 @@ $role = (Yii::$app->user->identity->role==1)?'user':'manager';
             </div>
             <div class="col-xs-6 buttons">
                 <a href="#" class="<?=(Yii::$app->user->identity->role == 1)?'more-hotel-info-user':'more-hotel-info-manager';?> btn btn-primary" data-tab-class="<?=$filter_type;?>" data-hotel-id="<?=$hotel->hotel_id;?>"><?= Yii::t('app', 'More');?></a>
-                <a href="#" class="add-to-filter <?=$role;?> <?=$filter_type;?> btn btn-primary" data-hotel-id="<?=$hotel->hotel_id;?>" data-hotel-name="<?=$hotel->name;?>" data-hotel-star="<?=$hotel->star_id;?>"><?= Yii::t('app', 'Choose');?></a>
+                <a href="#" class="add-to-filter <?=$role;?> <?=$filter_type;?> btn btn-primary check" data-hotel-id="<?=$hotel->hotel_id;?>" data-hotel-name="<?=$hotel->name;?>" data-hotel-star="<?=$hotel->star_id;?>"><?= Yii::t('app', 'Choose');?></a>
             </div>
         </div>
     </div>

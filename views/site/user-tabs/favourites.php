@@ -26,7 +26,7 @@ use yii\helpers\Url;
             <div class="col-md-8 user-favourite-tours overflow-list">
                 <div class="loader-bg hide"><img src="/images/loader.gif"></div>
                 <div id="user-favourite-tours-response">
-                    <div class="list-data">
+                    <div class="list-data col-xs-12">
                         <?=$userFavouriteToursList;?>
                     </div>
                 </div>

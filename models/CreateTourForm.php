@@ -82,7 +82,7 @@ class CreateTourForm extends Model
                 return $('[name=\"CreateTourForm[flight_included]\"]').val() == 1;
             }"],
             [['depart_city_from_there', 'depart_city_there'], 'required', 'message' => Yii::t('app','Field "To date" must be bigger than "From date".'), 'when' => function ($model) {
-                return $model->flight_included == 1;
+                return (($model->flight_included == 1) and ($model->is_hot_tour == 1));
             }, 'whenClient' => "function (attribute, value) {
                 return $('[name=\"CreateTourForm[flight_included]\"]').val() == 1;
             }"],

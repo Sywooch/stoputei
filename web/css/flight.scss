@@ -55,7 +55,17 @@
     a{
       border-radius: 0px;
       &.btn-primary{
-        @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
+        color: $site-color;
+        border: none;
+        background: transparent;
+        font-weight: 600;
+        &:hover{
+          color: $site-color-hover;
+        }
+        &.check {
+          color: white !important;
+          @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
+        }
       }
     }
     .cost{

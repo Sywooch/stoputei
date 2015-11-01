@@ -120,7 +120,7 @@ use dosamigos\datepicker\DatePicker;
                     'new-to-old' => Yii::t('app','From new to old'),
                     'old-to-new' => Yii::t('app','From old to new')
                 ], ['class' => 'form-control col-xs-7 order-list']) ?>
-                <div class="list-data">
+                <div class="list-data col-xs-12">
                     <?=$userFlights;?>
                 </div>
             </div>

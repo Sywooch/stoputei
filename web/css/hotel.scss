@@ -80,7 +80,17 @@
               margin-top: 3px;
             }
             width: 100px;
-            @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
+            color: $site-color;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            &:hover{
+              color: $site-color-hover;
+            }
+            &.check {
+              color: white !important;
+              @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
+            }
           }
         }
       }
@@ -356,7 +366,18 @@
         line-height: 12px;
         font-size: 1em;
         &.btn-primary{
-          @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
+          padding: 0px;
+          color: $site-color;
+          border: none;
+          background: transparent;
+          font-weight: 600;
+          &:hover{
+            color: $site-color-hover;
+          }
+          &.check {
+            color: white !important;
+            @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
+          }
         }
       }
     }

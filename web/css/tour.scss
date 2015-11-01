@@ -147,7 +147,17 @@
         padding: 4px 5px;
         margin-bottom: 2px;
         &.btn-primary{
-          @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
+          color: $site-color;
+          border: none;
+          background: transparent;
+          font-weight: 600;
+          &:hover{
+            color: $site-color-hover;
+          }
+          &.check {
+            color: white !important;
+            @include linear-gradient-three(top, bottom, $site-color, $site-color-extra-light, $site-color);
+          }
         }
       }
       .tour-cost{
@@ -297,6 +307,10 @@
         .price{
           font-size: 1.2em;
           color: #000000;
+        }
+        .surcharge{
+          font-size: 0.7em;
+          color: $grey-text;
         }
       }
     }

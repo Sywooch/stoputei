@@ -277,7 +277,7 @@ use kartik\date\DatePicker;
 <?= $form->field($CreateTourForm, 'children_under_12_amount')->input('text', ['class' => 'form-control disabled']);?>
 <?= $form->field($CreateTourForm, 'children_under_2_amount')->input('text', ['class' => 'form-control disabled']);?>
 <?= $form->field($CreateTourForm, 'room_count')->dropDownList([1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6, 7 => 7, 8 => 8, 9 => 9, 10 => 10, 11 => 11, 12 => 12, 13 => 13, 14 => 14, 15 => 15, 16 => 16, 17 => 17, 18 => 18, 19 => 19, 20 => 20, 21 => 21]);?>
-<?= $form->field($CreateTourForm, 'flight_included')->checkbox(['disabled' => true]);?>
+<?= $form->field($CreateTourForm, 'flight_included')->checkbox(['readonly' => true]);?>
 
 <div class="flight-included <?=($CreateTourForm->flight_included==0)?'hide':'';?>">
     <!--<?= $form->field($CreateTourForm, 'depart_country_there')->dropDownList($dropdownDestination);?>

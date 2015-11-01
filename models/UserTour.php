@@ -37,7 +37,7 @@ class UserTour extends ActiveRecord
     }
 
     public function getDepartCity(){
-        return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_id']);
+        return $this->hasOne(City::className(), ['city_id' => 'depart_city_id']);
     }
 
     public function getOwner(){
