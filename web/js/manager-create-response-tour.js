@@ -20,6 +20,22 @@ $(function(){
         //imagePreview();
     }
 
+    //dropdown list with airport cities for manager response after country change
+    $(document).on('change', '#createtourform-depart_country_there', function(){
+        var destination = ($(this).val() != '')?$(this).val():'all';
+        $('.global.loader-bg').removeClass('hide');
+        var resort_url = $('.ajax-resort').attr('href');
+        $.get(resort_url,{'country_id':destination}).done(function(response){
+            var data = $.parseJSON(response);
+            $('.global.loader-bg').addClass('hide');
+            var select_resort = '';
+            for (var i in data) {
+                select_resort += '<option value="'+data[i].city_id+'">'+data[i].city_name+'</option>';
+            }
+            $('#createtourform-depart_city_there').html(select_resort);
+        });
+    });
+
     var autocomplete_url_manager = $('.ajax-hotel-autocomplete-manager').attr('href');
     $(document).on('input', '#createtourform-hotel', function(){
         var country_id = $('#createtourform-destination').val();

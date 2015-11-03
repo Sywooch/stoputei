@@ -273,7 +273,7 @@ return [
     'Night count min' => 'от',
     'Night count max' => 'до',
     'Tour cost' => 'Стоимость тура',
-    'Without surcharge' => 'Цена тура не включает доплаты',
+    'Without surcharge' => 'Без учета доплаты',
     'Exactly date' => 'Точная дата',
     'Closest date' => 'Ближайшая дата',
     'Closest dates' => 'Ближайшие даты',

@@ -375,8 +375,10 @@ class TourController extends Controller
                 $createTourForm = new CreateTourForm();
                 $departCity = new DepartCity();
                 $city = new City();
+                $country = new Country();
                 $departCityThereDropdown = $departCity->regionDropdown();
                 $dropdownDestination = [$userTour->country_id => $userTour->country->name];
+                $dropdownDepartCountries = $country->destinationDropdown(Yii::$app->params['depart_countries']);
                 $dropdownResort = [$userTour->resort_id => $userTour->city->name];
                 $createTourForm->user_id = $userTour->owner_id;
                 $createTourForm->from_tour_id = $userTour->id;
@@ -385,7 +387,7 @@ class TourController extends Controller
                 $createTourForm->room_count = $userTour->room_count;
                 $createTourForm->children_under_12_amount = $userTour->children_under_12_amount;
                 $createTourForm->children_under_2_amount = $userTour->children_under_2_amount;
-                $destinationCityDropdown = $city->destinationCityDropdown($userTour->country_id);
+                $destinationCityDropdown = $city->destinationCityDropdown(Yii::$app->params['depart_countries']);
 
                 //get hotels list
                 if(!empty($userTour->hotel_id)){
@@ -420,7 +422,8 @@ class TourController extends Controller
                         'dropdownResort' => $dropdownResort,
                         'departCityThereDropdown' => $departCityThereDropdown,
                         'dropdownHotel' => $dropdownHotel,
-                        'destinationCityDropdown' => $destinationCityDropdown
+                        'destinationCityDropdown' => $destinationCityDropdown,
+                        'dropdownDepartCountries' => $dropdownDepartCountries
                     ]),
                     'tab_name' => Yii::t('app', 'Creating tour')
                 ];

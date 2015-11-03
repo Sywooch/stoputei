@@ -280,8 +280,8 @@ use kartik\date\DatePicker;
 <?= $form->field($CreateTourForm, 'flight_included')->checkbox(['readonly' => true]);?>
 
 <div class="flight-included <?=($CreateTourForm->flight_included==0)?'hide':'';?>">
-    <!--<?= $form->field($CreateTourForm, 'depart_country_there')->dropDownList($dropdownDestination);?>
-    <?= $form->field($CreateTourForm, 'depart_city_there')->dropDownList($destinationCityDropdown);?>-->
+    <?= $form->field($CreateTourForm, 'depart_country_there')->dropDownList($dropdownDepartCountries, ['prompt' => Yii::t('app','Choose destination')]);?>
+    <?= $form->field($CreateTourForm, 'depart_city_there')->dropDownList($destinationCityDropdown, ['prompt' => Yii::t('app','Airport location')]);?>
 
 
     <?=$form->field($CreateTourForm, 'from_date')->widget(DatePicker::classname(), [
