@@ -13,11 +13,11 @@
     .header-info{
       padding: 0px;
       .count{
-        font-size: 0.75em;
         color: $grey-light-text;
+        font-size: 0.7em;
         position: absolute;
-        right: 115px;
-        top: 3px;
+        right: 127px;
+        top: 4px;
       }
       .created{
         font-weight: 300;
@@ -304,6 +304,7 @@
       font-size: 1.1em;
       &.cost{
         color: $site-color;
+        font-size: 0.95em;
         .price{
           font-size: 1.2em;
           color: #000000;

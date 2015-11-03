@@ -101,6 +101,12 @@ $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
                 <?php if($flight->voyage_is_direct_from == 0 and $flight->way_ticket == 2):?>
                     <div>
                         <span class="field"><?=Yii::t('app','Depart city from');?> : </span>
+                        <?php if(!is_null($flight->departCityFrom)):?>
+                            <span class="value"><?=$flight->departCityFrom->name;?> (<?=$flight->voyageCityFrom->country->name;?>)</span>
+                        <?php endif;?>
+                    </div>
+                    <div>
+                        <span class="field"><?=Yii::t('app','Voyage is not direct');?> : </span>
                         <?php if(!is_null($flight->voyageCityFrom)):?>
                             <span class="value"><?=$flight->voyageCityFrom->name;?> (<?=$flight->voyageCityFrom->country->name;?>)</span>
                         <?php endif;?>

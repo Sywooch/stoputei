@@ -99,10 +99,10 @@ use dosamigos\datetimepicker\DateTimePicker;
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one type']);
     }]);?>
 
-<?= $form->field($ManagerFlightForm, 'adult_count_senior_24')->input('text', ['disabled' => true]);?>
-<?= $form->field($ManagerFlightForm, 'adult_count_under_24')->input('text', ['disabled' => true]);?>
-<?= $form->field($ManagerFlightForm, 'children_under_12_amount')->input('text', ['disabled' => true]);?>
-<?= $form->field($ManagerFlightForm, 'children_under_2_amount')->input('text', ['disabled' => true]);?>
+<?= $form->field($ManagerFlightForm, 'adult_count_senior_24')->input('text', ['readonly' => true]);?>
+<?= $form->field($ManagerFlightForm, 'adult_count_under_24')->input('text', ['readonly' => true]);?>
+<?= $form->field($ManagerFlightForm, 'children_under_12_amount')->input('text', ['readonly' => true]);?>
+<?= $form->field($ManagerFlightForm, 'children_under_2_amount')->input('text', ['readonly' => true]);?>
 
 <?= $form->field($ManagerFlightForm, 'flight_class')->radioList([0 => '', 1 => ''],
     ['item' => function($index, $label, $name, $checked, $value){

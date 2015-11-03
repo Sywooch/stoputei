@@ -75,15 +75,11 @@ switch($flight->flight_class){
         </div>
         <?php endif;?>
 
-        <?php if($flight->regular_flight == 1):?>
+        <?php foreach($flight->types as $type):?>
             <div class="field">
-                <span class="describe"><?=Yii::t('app', 'Only regular flight');?></span>
+                <span class="describe"><?= \app\models\UserFlight::getFlightType($type->type_id);?></span>
             </div>
-        <?php else:?>
-            <div class="field">
-                <span class="describe"><?=Yii::t('app', 'Only direct flight');?></span>
-            </div>
-        <?php endif;?>
+        <?php endforeach;?>
     </div>
     <div class="col-xs-6 buttons">
         <a href="#" class="close-flight-full-info btn btn-primary"><?= Yii::t('app', 'Close');?></a>

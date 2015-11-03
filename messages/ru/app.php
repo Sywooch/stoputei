@@ -36,7 +36,7 @@ return [
     '{attribute} can not be blank.' => '"{attribute}" не может быть пустым.',
     'Field "From date" must be date type.' => 'Начало поездки должно быть датой.',
     'Field "To date" must be date type.' => 'Окончание поездки должно быть датой.',
-    'Field "To date" must be bigger than "From date".' => 'Значение "Окончание поездки" должно быть больше "Начало поездки".',
+    'Field "To date" must be bigger than "From date".' => 'Значение "Вылет обратно" должно быть больше "Вылет туда".',
     '{attribute} can only contain alphanumeric characters.' => 'Телефон компании может содержать лишь цифры.',
     'or' => 'или',
     'Awesome company' => 'Моя успешная компания',
