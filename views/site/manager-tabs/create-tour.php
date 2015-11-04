@@ -337,7 +337,7 @@ use yii\helpers\Url;
                         'format' => 'yyyy-m-d',
                         'todayHighlight' => true,
                         'startDate' => date('Y-M-d', strtotime('today')),
-                        //'endDate' => '+14d',
+                        'endDate' => '+14d',
                     ]
                 ]);?>
 

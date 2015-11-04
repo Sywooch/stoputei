@@ -20,19 +20,19 @@ $(function(){
             if(val.length > 7){
                 $(this).val(val.slice(0,-1));
             }
-            if(val > 99000000){
-                $(this).val(99000000);
+            if(val > 99999999){
+                $(this).val(99999999);
             }
         }else if(($(this).attr('id') == 'managerflightform-flight_cost') ||
             ($(this).attr('id') == 'createhottourform-visa') ||
             ($(this).attr('id') == 'createtourform-visa') ||
             ($(this).attr('id') == 'createtourform-oil_tax') ||
             ($(this).attr('id') == 'createhottourform-oil_tax')){
-            if(val.length > 4){
+            if(val.length > 7){
                 $(this).val(val.slice(0,-1));
             }
-            if(val > 99000){
-                $(this).val(99000);
+            if(val > 99999999){
+                $(this).val(99999999);
             }
         }else if(val.length > 1){
             $(this).val(val.slice(0,-1));

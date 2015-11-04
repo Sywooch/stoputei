@@ -733,7 +733,7 @@ class TourController extends Controller
                         'popup' => '<div>'.Yii::t('app', "Congratulations! Just now you have been created your response to tourist. Warning! This tour are actually only to ").''.date('d.m.Y', strtotime($tourResponse->deadline)).'</div><div class="modal-footer">
                                         <button type="button" class="btn btn-default col-xs-12 create-one-more-hot-tour" data-dismiss="modal">'.Yii::t('app', 'Create one more hot tour').'</button>
                                       </div>',
-                        'tour' =>  $this->renderAjax('partial/user-tour-response', ['tour' => $tourResponse, 'tour_title' => 'hot-tour']),
+                        'tour' =>  $this->renderAjax('partial/user-tour-response', ['tour' => $tourResponse, 'tour_title' => 'my-hot-tour']),
                         'count' => TourResponse::find()->where([
                             'manager_id' => Yii::$app->user->identity->getId(),
                             'is_hot_tour' => 1

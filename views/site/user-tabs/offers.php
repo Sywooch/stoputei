@@ -60,8 +60,8 @@ use dosamigos\datepicker\DatePicker;
                     '' => Yii::t('app','Order by'),
                     'cheap-to-expensive' => Yii::t('app','From cheap to expensive'),
                     'expensive-to-cheap' => Yii::t('app','From expensive to cheap'),
-                    'new-to-old' => Yii::t('app','From new to old'),
-                    'old-to-new' => Yii::t('app','From old to new')
+                    'new-to-old' => Yii::t('app','From old to new'),
+                    'old-to-new' => Yii::t('app','From new to old')
                 ], ['class' => 'form-control col-xs-7 order-list', 'data-type' => 'offer']) ?>
                 <div class="list-data col-xs-12">
                     <?=$tourUserResponse;?>

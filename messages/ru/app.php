@@ -273,7 +273,7 @@ return [
     'Night count min' => 'от',
     'Night count max' => 'до',
     'Tour cost' => 'Стоимость тура',
-    'Without surcharge' => 'Без учета доплаты',
+    'Without surcharge' => 'Без учета доплат',
     'Exactly date' => 'Точная дата',
     'Closest date' => 'Ближайшая дата',
     'Closest dates' => 'Ближайшие даты',
@@ -315,6 +315,7 @@ return [
     'Tour responses' => 'Предложения туров',
     'Email management' => 'Управление почтой',
     'Time cycles' => 'Временные циклы',
+    'Edit pages' => 'Редактирование страниц',
     'Tour created' => 'Тур создан',
     'Actions' => 'Действия',
     'Payments' => 'Оплаты',
@@ -396,5 +397,6 @@ return [
     'New tour response was created' => 'Новое предложение на запрос тура',
     'New user tour was created' => 'Создан новый запрос на тур',
     'New user flight was created' => 'Создан новый запрос на авиабилет',
-    'New flight response was created' => 'Новое предложение на запрос авиабилета'
+    'New flight response was created' => 'Новое предложение на запрос авиабилета',
+    'Page was updated successful' => 'Страница успешно обновлена'
 ];

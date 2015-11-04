@@ -4,6 +4,7 @@ namespace app\modules\admin\controllers;
 
 use app\models\HotToursSearch;
 use app\models\ManagerSearch;
+use app\models\Pages;
 use app\models\TourResponseSearch;
 use app\modules\admin\models\AdminEmail;
 use app\modules\admin\models\AdminEmailsForm;
@@ -135,5 +136,12 @@ class BoardController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionPages(){
+        $pages = Pages::find()->all();
+        return $this->render('pages', [
+            'pages' => $pages
+        ]);
     }
 }

@@ -31,6 +31,9 @@ use yii\helpers\Html;
                     <li>
                         <?= Html::a(Html::tag('span', '', ['class' => 'glyphicon glyphicon-hourglass', 'data-toogle' => 'tooltip', 'title' => Yii::t('app', 'Time cycles')]), Url::toRoute(['/admin/board/periods']), ['class' => ' '.$active_link_periods]);?>
                     </li>
+                    <li>
+                        <?= Html::a(Html::tag('span', '', ['class' => 'glyphicon glyphicon-file', 'data-toogle' => 'tooltip', 'title' => Yii::t('app', 'Edit pages')]), Url::toRoute(['/admin/board/pages']), ['class' => ' '.$active_link_pages]);?>
+                    </li>
                 </ul>
             </div>
         </div>

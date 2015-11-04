@@ -40,7 +40,7 @@ switch(Yii::$app->controller->action->id){
         <?php
             NavBar::begin([
                 'brandLabel' => Html::img('/images/logo.png', ['class' => 'img-response main-logo']),
-                'brandUrl' => \yii\helpers\Url::to(['site/index']),
+                'brandUrl' => \yii\helpers\Url::home(),
                 'options' => [
                     'class' => (Yii::$app->controller->action->id == 'welcome')?'navbar-inverse navbar-fixed-top welcome':'navbar-inverse navbar-fixed-top',
                     'id' => 'header-navbar',

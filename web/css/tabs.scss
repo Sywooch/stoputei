@@ -74,6 +74,9 @@
   .tab-content{
     overflow: hidden;
     box-shadow: $grey-shadow;
+    .user-hot-tours, .user-favourite-tours, .filter-tour{
+      position: relative;
+    }
   }
   .overflow-list{
     overflow-y: auto;
@@ -131,7 +134,7 @@
         &.to-right{
           left: 265px;
           position: absolute;
-          top: 59px;
+          top: 31px;
           margin-top: -1px;
           &:before{
             height: 400px;
