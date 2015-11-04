@@ -107,7 +107,7 @@
       border-color: transparent $site-color transparent transparent;
       border-width: 30px;
       transform: rotate(180deg);
-      margin-left: 15px;
+      margin-left: -1185px;
       margin-top: 15px;
       z-index: 50;
       &:hover{
@@ -136,6 +136,7 @@
           position: absolute;
           top: 31px;
           margin-top: -1px;
+          margin-left: 20px;
           &:before{
             height: 400px;
             top: -180px;
