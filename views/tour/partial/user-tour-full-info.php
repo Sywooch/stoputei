@@ -122,6 +122,11 @@ if(!empty($tour->nutritions)){
                 <span class="describe"><?=Yii::t('app', 'Flight');?> : </span>
                 <span class="value"><?=Yii::t('app', 'not included');?></span>
             </div>
+            <div class="field">
+                <span class="describe"><?=Yii::t('app', 'Since');?> </span>
+                <span class="value"><?=$from_date;?></span>
+                <span class="value">(<?=\app\models\UserTour::getExactlyDateGetTour($tour->exactly_date);?>)</span>
+            </div>
         <?php endif;?>
 
         <br>

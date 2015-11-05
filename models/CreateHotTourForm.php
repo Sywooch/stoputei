@@ -58,14 +58,14 @@ class CreateHotTourForm extends Model
     public function rules()
     {
         return [
-            [['destination', 'resort', 'hotel', 'room_count', 'nutrition', 'location', 'room_type', 'room_view', 'tour_cost', 'hotel_type', 'beach_line', 'deadline'], 'required'],
+            [['destination', 'resort', 'hotel', 'room_count', 'nutrition', 'location', 'room_type', 'room_view', 'tour_cost', 'hotel_type', 'beach_line', 'deadline', 'night_count'], 'required'],
             [['stars', 'apartment'], 'default', 'value' => []],
+            ['night_count', 'compare', 'operator'=>'>', 'compareValue' => 0],
             [['hotel_id', 'oil_tax', 'visa', 'voyage_through_city_there', 'voyage_through_city_from_there', 'user_id', 'from_tour_id', 'from_date', 'to_date', 'region_manager_id', 'deadline', 'depart_city_from_there', 'depart_city_there'], 'default', 'value' => null],
             [['adult_amount', 'children_under_12_amount', 'children_under_2_amount', 'room_count', 'night_count', 'room_view', 'beach_line', 'hotel_type', 'room_type', 'location', 'nutrition', 'tour_cost'], 'integer'],
             ['stars', 'each', 'rule' => ['in', 'range' => [400, 401, 402, 403, 404]]],
             ['letter_filter', 'each', 'rule' => ['in', 'range' => ['a', 'b', 'c', 'd']]],
-            [['flight_included', 'is_hot_tour'], 'default', 'value' => 0],
-            [['add_payment', 'tickets_exist', 'charge_manager', 'medicine_insurance', 'voyage_from_there', 'voyage_there', 'room_view', 'beach_line', 'hotel_type', 'room_type', 'location', 'nutrition', 'children_under_12_amount', 'children_under_2_amount'], 'default', 'value' => 0],
+            [['flight_included', 'is_hot_tour', 'add_payment', 'tickets_exist', 'charge_manager', 'medicine_insurance', 'voyage_from_there', 'voyage_there', 'room_view', 'beach_line', 'hotel_type', 'room_type', 'location', 'nutrition', 'children_under_12_amount', 'children_under_2_amount'], 'default', 'value' => 0],
             ['from_date', 'required', 'message' => Yii::t('app','Field "From date" must be date type.'), 'when' => function ($model) {
                 return $model->flight_included == 1;
             }, 'whenClient' => "function (attribute, value) {
