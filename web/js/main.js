@@ -1,10 +1,10 @@
 $(function(){
     //check user geolocation
-    navigator.geolocation.getCurrentPosition(showPosition);
+    /*navigator.geolocation.getCurrentPosition(showPosition);
     function showPosition(position) {
         console.log("Latitude: " + position.coords.latitude +
         "  Longitude: " + position.coords.longitude);
-    }
+    }*/
 
     //detect user browser
     var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
@@ -20,7 +20,7 @@ $(function(){
     }
 
     if(isChrome){
-        $('.back-to-main').addClass('chrome');
+        $('span[class^="back-to-main"]').addClass('chrome');
     }
 
     //initialize tooltip
