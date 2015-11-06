@@ -213,4 +213,20 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     public function getAdminEmails(){
         return $this->hasOne(Email::className(), ['user_id' => 'id']);
     }
+
+    public static function isPaymentExpired($type_of_payment, $user_id = null){
+        if(is_null($user_id)){
+            $user_id = Yii::$app->user->identity->getId();
+        }
+        $user = self::find()->where(['id' => $user_id, $type_of_payment => 1])->one();
+        switch($type_of_payment){
+            case 'single_region_paid':
+                $isExpired = strtotime($user->single_license_expire) < strtotime('now');
+                break;
+            case 'multiple_region_paid':
+                $isExpired = strtotime($user->multiple_license_expire) < strtotime('now');
+                break;
+        }
+        return $isExpired;
+    }
 }

@@ -138,7 +138,7 @@ class SiteController extends Controller
                     ]);
             case 2:
             case 3:
-                if(Yii::$app->user->identity->multiple_region_paid == 1) {
+                if((Yii::$app->user->identity->multiple_region_paid == 1) and (!User::isPaymentExpired('multiple_region_paid'))) {
                     $cities = \app\models\City::find()->where(['country_id' => Yii::$app->user->identity->city->country->country_id])->all();
                     $cities_arr = [];
                     foreach($cities as $city){
@@ -184,7 +184,7 @@ class SiteController extends Controller
                             'myOffers' => $myOffers,
                             'myHotTours' => $myHotTours
                         ]);
-                }elseif(Yii::$app->user->identity->single_region_paid == 1) {
+                }elseif((Yii::$app->user->identity->single_region_paid == 1) and (!User::isPaymentExpired('single_region_paid'))) {
                     $CreateTourForm = new CreateTourForm();
                     $CreateHotTourForm = new CreateHotTourForm();
                     $ManagerFlightForm = new ManagerFlightForm();
