@@ -60,7 +60,7 @@ return [
     'Get a tour' => 'Отправить запрос',
     'Take a tour' => 'Запрос тура',
     'Create a tour' => 'Создать тур',
-    'Create same tour' => 'Создать похожий тур',
+    'Create same tour' => 'Создать запрос',
     'Creating tour' => 'Создание тура',
     'Offers' => 'Предложения',
     'Offer' => 'Предложение',

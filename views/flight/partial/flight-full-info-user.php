@@ -13,6 +13,9 @@ $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
             <div class="title"><?=Yii::t('app', 'Flight information');?></div>
             <div class="group-field">
                 <div>
+                    <span class="cost"><?= \app\models\Helper::break_string($flight->flight_cost, 3);?> <?=$flight->owner->city->country->currency->name;?></span>
+                </div>
+                <div>
                     <span class="field"><?=Yii::t('app', 'Destination');?> : </span>
                     <span class="value"><?=$flight->country->name;?></span>
                 </div>

@@ -90,7 +90,6 @@ use dosamigos\datetimepicker\DateTimePicker;
 <?= $form->field($ManagerFlightForm, 'tickets_exist')->radioList([0 => '', 1 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
         if($value == 0){
-            $checked = true;
             $span = Html::tag('span', Yii::t('app','Little'), ['class' => 'line-name']);
         }elseif($value == 1){
             $span = Html::tag('span', Yii::t('app','Lot of'), ['class' => 'line-name']);

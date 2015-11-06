@@ -113,11 +113,11 @@ class FlightController extends Controller
                 $ManagerFlightForm->adult_count_senior_24 = $userFlight->adult_count_senior_24;
                 $ManagerFlightForm->children_under_12_amount = $userFlight->children_under_12_amount;
                 $ManagerFlightForm->children_under_2_amount = $userFlight->children_under_2_amount;
-                if($userFlight->flight_class == 0) {
+                /*if($userFlight->flight_class == 0) {
                     $ManagerFlightForm->flight_class = [1, 2];
                 }else{
                     $ManagerFlightForm->flight_class = $userFlight->flight_class;
-                }
+                }*/
                 $country = Country::findOne($userFlight->country_id);
                 $cities = $country->cities;
                 $list = [];

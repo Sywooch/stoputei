@@ -18,7 +18,8 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            //'enableAutoLogin' => true,
+            'authTimeout' => Yii::$app->params['authLoginTime']
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

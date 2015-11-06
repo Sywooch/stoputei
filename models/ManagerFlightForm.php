@@ -43,7 +43,7 @@ class ManagerFlightForm extends Model
     public function rules()
     {
         return [
-            [['destination', 'resort', 'depart_city_to', 'date_city_to', 'flight_class', 'regular_flight', 'flight_cost'], 'required'],
+            [['destination', 'resort', 'depart_city_to', 'date_city_to', 'flight_class', 'regular_flight', 'flight_cost', 'tickets_exist'], 'required'],
             [['regular_flight', 'adult_count_under_24', 'children_under_12_amount', 'children_under_2_amount', 'voyage_is_direct_from', 'voyage_is_direct_to', 'voyage_direct_to_id', 'voyage_direct_from_id', 'tickets_exist'], 'default', 'value' => 0],
             [['way_ticket', 'adult_count_senior_24'], 'default', 'value' => 1],
             [['depart_city_from', 'date_city_from'], 'required', 'message' => Yii::t('app','{attribute} must be checked.'), 'when' => function ($model) {
