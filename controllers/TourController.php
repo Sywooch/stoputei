@@ -50,6 +50,22 @@ class TourController extends Controller
         }
     }
 
+    public function actionAjaxDepartCitiesDropdown(){
+        if(Yii::$app->request->isAjax) {
+            $country_id = \Yii::$app->request->getQueryParam('country_id', null);
+            $country = Country::findOne($country_id);
+            $cities = $country->departCities;
+            $list = [];
+            foreach ($cities as $key => $city) {
+                $list[] = [
+                    'city_id' => $city->city_id,
+                    'city_name' => $city->name
+                ];
+            }
+            echo json_encode($list);
+        }
+    }
+
     public function actionAjaxResortsDropdownForFilter(){
         if(Yii::$app->request->isAjax) {
             $country_id = \Yii::$app->request->getQueryParam('country_id', null);

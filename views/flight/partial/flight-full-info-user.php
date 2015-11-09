@@ -4,17 +4,15 @@ $depart_to_date = date('d.m.Y H:i', strtotime($flight->date_city_to));
 $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
 ?>
 <div class="row">
-    <div class="col-xs-6 col-xs-offset-3 full-flight">
+    <div class="col-xs-6 col-xs-offset-1 full-flight">
         <div class="col-xs-12 flight-info">
-            <div class="header">
+            <div class="header col-xs-12">
                 <span class="number">№ <?=$flight->id;?></span>
                 <span class="created"><?=$created;?></span>
+                <div class="title"><?=Yii::t('app', 'Flight information');?></div>
             </div>
-            <div class="title"><?=Yii::t('app', 'Flight information');?></div>
+            <div class="col-xs-6">
             <div class="group-field">
-                <div>
-                    <span class="cost"><?= \app\models\Helper::break_string($flight->flight_cost, 3);?> <?=$flight->owner->city->country->currency->name;?></span>
-                </div>
                 <div>
                     <span class="field"><?=Yii::t('app', 'Destination');?> : </span>
                     <span class="value"><?=$flight->country->name;?></span>
@@ -134,24 +132,27 @@ $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
                     <?php endif;?>
                 </div>
             </div>
+            </div>
+            <div class="col-xs-6 company-info">
+                <div class="group-field">
+                    <span class="cost number"><?= \app\models\Helper::break_string($flight->flight_cost, 3);?></span> <span class="cost currency"> <?=$flight->owner->city->country->currency->name;?></span>
+                </div>
 
-            <div class="group-field">
-                <div>
-                    <span class="field"><?=Yii::t('app','Company name');?> : </span><br>
-                    <span class="value"><?=$flight->owner->company_name;?></span>
-                </div>
-                <div>
-                    <span class="field"><?=Yii::t('app','Company address');?> : </span><br>
-                    <span class="value"><?=($flight->owner->company_address)?$flight->owner->company_address:Yii::t('app','Is absent');?></span>
-                </div>
-                <div>
-                    <span class="field"><?=Yii::t('app','Email');?> : </span><br>
-                    <a href="mailto:<?=$flight->owner->email;?>" <span class="value"><?=$flight->owner->email;?></span>
+                <div class="group-field">
+                    <div>
+                        <span class="field"><?=Yii::t('app','Company name');?> : </span><br>
+                        <span class="value"><?=$flight->owner->company_name;?></span>
+                    </div>
+                    <div>
+                        <span class="field"><?=Yii::t('app','Company address');?> : </span><br>
+                        <span class="value"><?=($flight->owner->company_address)?$flight->owner->company_address:Yii::t('app','Is absent');?></span>
+                    </div>
+                    <div>
+                        <span class="field"><?=Yii::t('app','Email');?> : </span><br>
+                        <a href="mailto:<?=$flight->owner->email;?>" <span class="value"><?=$flight->owner->email;?></span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-4 company-info">
-
         </div>
     </div>
 </div>

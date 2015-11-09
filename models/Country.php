@@ -10,6 +10,10 @@ class Country extends ActiveRecord
         return $this->hasMany(City::className(), ['country_id' => 'id'])->orderBy('name');
     }
 
+    public function getDepartCities(){
+        return $this->hasMany(DepartCity::className(), ['country_id' => 'id'])->orderBy('name');
+    }
+
     public function getHotels(){
         return $this->hasMany(Hotel::className(), ['country_id' => 'id']);
     }
