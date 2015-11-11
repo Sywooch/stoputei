@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'company_underground');?>
     </div>
 
-    <?= Html::a('', Url::toRoute(['site/get-city-dropdown']), ['class' => 'get-city-dropdown']);?>
+    <?= Html::a('', Url::toRoute(['tour/ajax-depart-cities-dropdown']), ['class' => 'get-city-dropdown']);?>
 
     <div class="form-group">
         <div class="col-xs-10 col-xs-offset-1">

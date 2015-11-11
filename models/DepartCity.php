@@ -13,6 +13,10 @@ class DepartCity extends ActiveRecord
         return $this->hasMany(UserTour::className(), ['depart_city_id' => 'city_id']);
     }
 
+    public function getCountry(){
+        return $this->hasOne(Country::className(), ['country_id' => 'country_id']);
+    }
+
     public function regionDropdown(){
         $cities = self::find()->all();
         $list = [];

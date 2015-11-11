@@ -259,17 +259,15 @@ if($tour->is_hot_tour == 1){
                             <span class="field"><?=Yii::t('app', 'Flight');?> : </span>
                             <span class="value"><?=Yii::t('app', 'Included');?></span>
                         </div>
-                        <?php if($tour->is_hot_tour == 1):?>
-                            <?php if($tour->voyage_there == 1):?>
-                                <div>
-                                    <span class="value"><?=Yii::t('app', 'Voyage is not direct');?></span>
-                                </div>
-                            <?php else:?>
+                            <?php if($tour->voyage_there == 0):?>
                                 <div>
                                     <span class="value"><?=Yii::t('app', 'Voyage');?></span>
                                 </div>
+                            <?php else:?>
+                                <div>
+                                    <span class="value"><?=Yii::t('app', 'Voyage is not direct');?></span>
+                                </div>
                             <?php endif;?>
-                        <?php endif;?>
                         <br>
 
                         <!--Flight to-->
@@ -355,11 +353,11 @@ if($tour->is_hot_tour == 1){
                     <?php if(($tour->visa) != 0 or ($tour->oil_tax != 0)):?>
                         <div>
                             <span class="field"><?=Yii::t('app', 'Visa');?> : </span>
-                            <span class="value"><?=$tour->visa;?></span>
+                            <span class="value"><?=$tour->visa;?> <?=$tour->owner->city->country->currency->name;?></span>
                         </div>
                         <div>
                             <span class="field"><?=Yii::t('app', 'Oil tax');?> : </span>
-                            <span class="value"><?=$tour->oil_tax;?></span>
+                            <span class="value"><?=$tour->oil_tax;?> <?=$tour->owner->city->country->currency->name;?></span>
                         </div>
                      <?php else:?>
                     <div>

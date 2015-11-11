@@ -37,7 +37,7 @@ class UserTour extends ActiveRecord
     }
 
     public function getDepartCity(){
-        return $this->hasOne(City::className(), ['city_id' => 'depart_city_id']);
+        return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_id']);
     }
 
     public function getOwner(){
@@ -82,6 +82,19 @@ class UserTour extends ActiveRecord
         return false;
     }
 
+    public function beforeDelete()
+    {
+        if (parent::beforeDelete()) {
+            UserTourFavourites::deleteAll(['tour_id' => $this->id]);
+            UserTourBeachLines::deleteAll(['tour_id' => $this->id]);
+            UserTourCategories::deleteAll(['tour_id' => $this->id]);
+            UserTourNutritions::deleteAll(['tour_id' => $this->id]);
+            UserTourRooms::deleteAll(['tour_id' => $this->id]);
+            return true;
+        }
+        return false;
+    }
+
     public static function getNutritionName($nutrition){
         switch($nutrition){
             case 0:
@@ -119,8 +132,6 @@ class UserTour extends ActiveRecord
                 return \Yii::t('app', 'TRP');
             case 3:
                 return \Yii::t('app', 'QTRL');
-            default:
-                return \Yii::t('app', 'SGL');
             default:
                 return \Yii::t('app', 'Any type');
         }

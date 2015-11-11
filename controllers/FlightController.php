@@ -72,6 +72,7 @@ class FlightController extends Controller
                     $eventHandler->newUserFlight();
                 }else{
                     $response = [
+                        'model' => $model,
                         'status' => 'error',
                         'errors' => $model->getErrors()
                     ];
@@ -80,6 +81,7 @@ class FlightController extends Controller
                 Yii::$app->end();
             }else{
                 $response = [
+                    'model' => $model,
                     'status' => 'error',
                     'errors' => $model->getErrors()
                 ];
@@ -205,6 +207,7 @@ class FlightController extends Controller
                     $eventHandler->managerFlightResponse();
                 }else{
                     $response = [
+                        'model' => $model,
                         'status' => 'error',
                         'errors' => $model->getErrors(),
                         'message' => Yii::t('app', "Flight was not created.")
@@ -214,6 +217,7 @@ class FlightController extends Controller
                 Yii::$app->end();
             }else{
                 $response = [
+                    'model' => $model,
                     'status' => 'error',
                     'errors' => $model->getErrors(),
                     'message' => Yii::t('app', "Flight was not created.")

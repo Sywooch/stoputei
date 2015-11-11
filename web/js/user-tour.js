@@ -2,7 +2,7 @@ $(function(){
     //get a depart city from depart country
     $(document).on('change', '#gettourform-depart_country', function(){
         var destination = $(this).val();
-        var resort_url = $('.ajax-resort').attr('href');
+        var resort_url = $('.ajax-depart-cities-dropdown').attr('href');
         $.get(resort_url,{'country_id':destination}).done(function(response){
             var data = $.parseJSON(response);
             var select_resort = '';

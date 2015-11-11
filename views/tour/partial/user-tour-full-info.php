@@ -54,9 +54,9 @@ if(!empty($tour->nutritions)){
     $hotel_nutritions = Yii::t('app', 'Any nutrition');
 }
 //hotel's beach line
-if(!empty($tour->beachLine)){
+if(!empty($tour->beachLines)){
     $hotel_beach_lines = [];
-    foreach($tour->beachLine as $one){
+    foreach($tour->beachLines as $one){
         $hotel_beach_lines[] = Yii::t('app', $one->name);
     }
     $hotel_beach_lines = implode(',', $hotel_beach_lines);
@@ -83,7 +83,7 @@ if(!empty($tour->nutritions)){
         <?php if($tour->budget > 0):?>
             <div class="field">
                 <span class="describe"><?=Yii::t('app', 'Budget');?> : </span>
-                <span class="value"><?= \app\models\Helper::break_string($tour->budget, 3);?></span>
+                <span class="value"><?= \app\models\Helper::break_string($tour->budget, 3);?> <?=$tour->owner->city->country->currency->name;?></span>
             </div>
         <?php endif;?>
         <div class="field">
@@ -190,7 +190,7 @@ if(!empty($tour->nutritions)){
         </div>
         <div class="field">
             <span class="describe"><?=Yii::t('app', 'Beach line');?> : </span>
-            <?= $hotel_beach_lines;?>
+            <span class="value"><?= $hotel_beach_lines;?></span>
         </div>
 
         <br>
