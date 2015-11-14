@@ -215,6 +215,7 @@ $(function(){
         $('[id*="createhottourform"]').val('');
         $('[id*="createhottourform"] [type="radio"]:checked').attr('checked', false);
         $('[id*="createhottourform"] [type="checkbox"]:checked').attr('checked', false);
+        $('#createhottourform-is_hot_tour').val(1);
         $('[name="CreateHotTourForm[flight_included]"]').removeAttr('checked');
         $('.hot-tour.flight-included').addClass('hide');
         $('.badge.tab-badge.create-hot-tour').text('0');

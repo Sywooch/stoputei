@@ -609,6 +609,8 @@ class TourController extends Controller
                 $createTourForm = new CreateTourForm();
                 $departCity = new DepartCity();
                 $city = new City();
+                $country = new Country();
+                $dropdownDepartCountries = $country->destinationDropdown(Yii::$app->params['depart_countries']);
                 $departCityThereDropdown = $departCity->regionDropdown();
                 $dropdownDestination = [$userTour->country_id => $userTour->country->name];
                 $dropdownResort = [$userTour->resort_id => $userTour->city->name];
@@ -636,7 +638,8 @@ class TourController extends Controller
                         'dropdownResort' => $dropdownResort,
                         'departCityThereDropdown' => $departCityThereDropdown,
                         'dropdownHotel' => $dropdownHotel,
-                        'destinationCityDropdown' => $destinationCityDropdown
+                        'destinationCityDropdown' => $destinationCityDropdown,
+                        'dropdownDepartCountries' => $dropdownDepartCountries
                     ]),
                     'tab_name' => Yii::t('app', 'Tour from users'),
                     'model' => $createTourForm
