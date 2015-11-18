@@ -3,12 +3,13 @@
 namespace app\controllers;
 
 use app\models\City;
+use app\models\DepartCity;
 use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use app\models\Country;
 use app\models\ProfileEditForm;
-use yii\web\User;
+use app\models\User;
 
 class ProfileController extends Controller
 {
@@ -51,11 +52,11 @@ class ProfileController extends Controller
             $model->email_about_flight = Yii::$app->user->identity->email_about_flight;
         }
         $country = new Country();
-        $city = City::find()->where(['city_id' => Yii::$app->user->identity->region_id])->one();
+        $city = DepartCity::find()->where(['city_id' => Yii::$app->user->identity->region_id])->one();
         $model->country = $city->country->country_id;
         $model->region_id = Yii::$app->user->identity->region_id;
         $dropdownCountries = $country->destinationDropdown(Yii::$app->params['depart_countries']);
-        $dropdownCities = $city->destinationCityDropdown($city->country->country_id);
+        $dropdownCities = $city->cityDropdown($city->country->country_id);
         if ($model->load(Yii::$app->request->post()) and $model->validate()) {
             $user = Yii::$app->user->identity;
             $user->email = $model->email;

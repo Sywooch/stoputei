@@ -207,7 +207,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     }
 
     public function getCity(){
-        return $this->hasOne(City::className(), ['city_id' => 'region_id']);
+        return $this->hasOne(DepartCity::className(), ['city_id' => 'region_id']);
     }
 
     public function getAdminEmails(){

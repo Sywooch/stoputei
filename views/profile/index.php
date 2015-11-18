@@ -3,6 +3,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\Alert;
+use app\models\User;
 ?>
 <div class="row">
     <div class="col-xs-12 profile edit">
@@ -33,15 +34,15 @@ use yii\bootstrap\Alert;
         <?php if(Yii::$app->user->identity->role == 2):?>
             <div class="form-group payment-btns">
                 <div class="col-xs-6 col-xs-offset-2">
-                <?php if(Yii::$app->user->identity->single_region_paid == 0):?>
-                    <?= Html::a(Yii::t('app', 'Payment package "Region"'), ['site/payment', 'type' => 'single'], ['id' => 'license-region', 'class' => 'license btn btn-success col-xs-5']);?>
-                <?php else:?>
+                <?php if((Yii::$app->user->identity->single_region_paid == 1) and (!User::isPaymentExpired('single_region_paid'))):?>
                     <?= Html::a(Yii::t('app', 'Payment package "Region"'), ['/'], ['id' => 'license-region', 'class' => 'license-paid btn btn-default col-xs-5', 'disabled' => true]);?>
-                <?php endif;?>
-                <?php if(Yii::$app->user->identity->multiple_region_paid == 0):?>
-                    <?= Html::a(Yii::t('app', 'Payment package "Country"'), ['site/payment', 'type' => 'multiple'], ['id' => 'license-country', 'class' => 'license btn btn-success col-xs-5 pull-right']);?>
                 <?php else:?>
+                    <?= Html::a(Yii::t('app', 'Payment package "Region"'), ['site/payment', 'type' => 'single'], ['id' => 'license-region', 'class' => 'license btn btn-success col-xs-5']);?>
+                <?php endif;?>
+                <?php if((Yii::$app->user->identity->multiple_region_paid == 1) and (!User::isPaymentExpired('multiple_region_paid'))):?>
                     <?= Html::a(Yii::t('app', 'Payment package "Country"'), ['/'], ['id' => 'license-country', 'class' => 'license-paid btn btn-default col-xs-5 pull-right', 'disabled' => true]);?>
+                <?php else:?>
+                    <?= Html::a(Yii::t('app', 'Payment package "Country"'), ['site/payment', 'type' => 'multiple'], ['id' => 'license-country', 'class' => 'license btn btn-success col-xs-5 pull-right']);?>
                 <?php endif;?>
                 </div>
             </div>
@@ -51,7 +52,11 @@ use yii\bootstrap\Alert;
         <?= $form->field($model, 'password')->input('password', ['disabled' => true]);?><input type="checkbox" name="bootstrap-switch-checkbox" data-on-text="<?=Yii::t('app', 'Editing');?>" data-off-text="<?=Yii::t('app', 'Locked');?>" data-size="small" data-type="password">
         <?= $form->field($model, 'password_repeat')->input('password', ['disabled' => true]);?>
         <?= $form->field($model, 'country')->dropDownList($dropdownCountries, ['disabled' => true, 'prompt' => Yii::t('app', 'Choose country')]);?>
-        <?= $form->field($model, 'region_id')->dropDownList($dropdownCities, ['disabled' => true, 'prompt' => Yii::t('app', 'Choose region')]);?><?php if(Yii::$app->user->identity->role == 1):?><input type="checkbox" name="bootstrap-switch-checkbox" data-on-text="<?=Yii::t('app', 'Editing');?>" data-off-text="<?=Yii::t('app', 'Locked');?>" data-size="small" data-type="region_id"><?php endif;?>
+        <?php if(Yii::$app->user->identity->role == 2):?>
+            <?= $form->field($model, 'region_id')->dropDownList($dropdownCities, ['disabled' => true, 'prompt' => Yii::t('app', 'Choose region')]);?><?php if((Yii::$app->user->identity->multiple_region_paid == 1) and (!User::isPaymentExpired('multiple_region_paid'))):?><input type="checkbox" name="bootstrap-switch-checkbox" data-on-text="<?=Yii::t('app', 'Editing');?>" data-off-text="<?=Yii::t('app', 'Locked');?>" data-size="small" data-type="region_id"><?php endif;?>
+        <?php else:?>
+            <?= $form->field($model, 'region_id')->dropDownList($dropdownCities, ['disabled' => true, 'prompt' => Yii::t('app', 'Choose region')]);?><?php if(in_array(Yii::$app->user->identity->role,[1,3])):?><input type="checkbox" name="bootstrap-switch-checkbox" data-on-text="<?=Yii::t('app', 'Editing');?>" data-off-text="<?=Yii::t('app', 'Locked');?>" data-size="small" data-type="region_id"><?php endif;?>
+        <?php endif;?>
 
         <!--FOR USER-->
         <?php if(Yii::$app->user->identity->role == 1):?>

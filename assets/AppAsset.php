@@ -38,6 +38,7 @@ class AppAsset extends AssetBundle
         'js/profile.js',
         'js/bootstrap-switch.js',
         'js/admin.js',
+        'js/google-analytics.js',
     ];
     public $images = [];
     public $depends = [
