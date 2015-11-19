@@ -58,7 +58,7 @@ class TourResponse extends ActiveRecord
     }
 
     public function getRegion(){
-        return $this->hasOne(City::className(), ['city_id' => 'region_manager_id'])->from(['region' => 'city']);
+        return $this->hasOne(DepartCity::className(), ['city_id' => 'region_manager_id'])->from(['region' => 'city']);
     }
 
     public function getRooms(){

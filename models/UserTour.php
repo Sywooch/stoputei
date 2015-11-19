@@ -2,7 +2,6 @@
 namespace app\models;
 
 use yii\db\ActiveRecord;
-use yii\db\Expression;
 
 class UserTour extends ActiveRecord
 {
@@ -45,7 +44,7 @@ class UserTour extends ActiveRecord
     }
 
     public function getRegion(){
-        return $this->hasOne(City::className(), ['city_id' => 'region_owner_id'])->from(['region' => 'city']);
+        return $this->hasOne(DepartCity::className(), ['city_id' => 'region_owner_id'])->from(['region' => 'city']);
     }
 
     public function getCategories(){

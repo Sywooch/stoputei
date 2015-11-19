@@ -24,7 +24,7 @@ use yii\helpers\Html;
             [
                 'attribute' => 'region.name',
                 'value' => function($model){
-                    return $model->region->name.' ('.$model->region->country->name.')';
+                    return $model->owner->city->name.' ('.$model->owner->city->country->name.')';
                 }
             ],
             [
