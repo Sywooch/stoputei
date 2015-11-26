@@ -91,12 +91,14 @@ $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
                         <span class="field"><?=Yii::t('app','Date docking');?> : </span>
                         <span class="value"><?=$flight->date_docking_to_hours.' '.Yii::t('app','Hours');?> <?=$flight->date_docking_to_minutes.' '.Yii::t('app','Minutes');?> </span>
                     </div>
+                <?php if($flight->way_ticket == 1):?>
                     <div>
                         <span class="field"><?=Yii::t('app','Depart city from');?> : </span>
                         <?php if(!is_null($flight->departCityFrom)):?>
                             <span class="value"><?=$flight->departCityFrom->name;?> (<?=$flight->departCityFrom->country->name;?>)</span>
                         <?php endif;?>
                     </div>
+                <?php endif;?>
                 <?php else:?>
                     <div>
                         <span class="value"><?=Yii::t('app','Voyage');?></span>
