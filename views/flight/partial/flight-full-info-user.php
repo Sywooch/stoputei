@@ -97,9 +97,6 @@ $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
                             <span class="value"><?=$flight->departCityFrom->name;?> (<?=$flight->departCityFrom->country->name;?>)</span>
                         <?php endif;?>
                     </div>
-                    <div>
-                        <span class="value"><?=Yii::t('app','Voyage');?></span>
-                    </div>
                 <?php else:?>
                     <div>
                         <span class="value"><?=Yii::t('app','Voyage');?></span>
