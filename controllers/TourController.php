@@ -458,7 +458,7 @@ class TourController extends Controller
     public function actionGetUserTourRequest(){
         if(Yii::$app->request->isAjax) {
             if(Yii::$app->user->identity->multiple_region_paid == 1) {
-                $cities = \app\models\City::find()->where(['country_id' => Yii::$app->user->identity->city->country->country_id])->all();
+                $cities = \app\models\DepartCity::find()->where(['country_id' => Yii::$app->user->identity->city->country->country_id])->all();
                 $cities_arr = [];
                 foreach($cities as $city){
                     $cities_arr[] = $city->city_id;

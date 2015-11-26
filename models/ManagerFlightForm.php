@@ -57,7 +57,6 @@ class ManagerFlightForm extends Model
                 return $('[name=\"ManagerFlightForm[way_ticket]\"]').val() == 2;
             }"],
             [['date_docking_to_hours', 'date_docking_to_minutes', 'date_docking_from_hours', 'date_docking_from_minutes', 'user_id', 'from_flight_id', 'date_city_to'], 'default', 'value' => null],
-            [['tickets_exist'], 'default', 'value' => 1]
         ];
     }
 

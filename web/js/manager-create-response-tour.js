@@ -180,7 +180,7 @@ $(function(){
         $('.user-tour-container .loader-bg').removeClass('hide');
         $.get(url).done(function(response){
             var data = $.parseJSON(response);
-            console.log(data.html);
+            console.log(data);
             $('.user-tour-container .loader-bg').addClass('hide');
             if(data.status == 'ok') {
                 $('.right-data .main-data').show();

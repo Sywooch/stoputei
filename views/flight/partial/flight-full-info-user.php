@@ -91,6 +91,15 @@ $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
                         <span class="field"><?=Yii::t('app','Date docking');?> : </span>
                         <span class="value"><?=$flight->date_docking_to_hours.' '.Yii::t('app','Hours');?> <?=$flight->date_docking_to_minutes.' '.Yii::t('app','Minutes');?> </span>
                     </div>
+                    <div>
+                        <span class="field"><?=Yii::t('app','Depart city from');?> : </span>
+                        <?php if(!is_null($flight->departCityFrom)):?>
+                            <span class="value"><?=$flight->departCityFrom->name;?> (<?=$flight->departCityFrom->country->name;?>)</span>
+                        <?php endif;?>
+                    </div>
+                    <div>
+                        <span class="value"><?=Yii::t('app','Voyage');?></span>
+                    </div>
                 <?php else:?>
                     <div>
                         <span class="value"><?=Yii::t('app','Voyage');?></span>
@@ -103,7 +112,7 @@ $depart_to_from = date('d.m.Y H:i', strtotime($flight->date_city_from));
                     <div>
                         <span class="field"><?=Yii::t('app','Depart city from');?> : </span>
                         <?php if(!is_null($flight->departCityFrom)):?>
-                            <span class="value"><?=$flight->departCityFrom->name;?> (<?=$flight->voyageCityFrom->country->name;?>)</span>
+                            <span class="value"><?=$flight->departCityFrom->name;?> (<?=$flight->departCityFrom->country->name;?>)</span>
                         <?php endif;?>
                     </div>
                     <div>

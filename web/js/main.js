@@ -19,7 +19,7 @@ $(function(){
 
     }
 
-    if(isChrome || isOpera){
+    if(isChrome || isOpera || isSafari || isIE){
         $('span[class^="back-to-main"]').addClass('chrome');
     }
 

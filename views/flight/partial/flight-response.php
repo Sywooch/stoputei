@@ -1,6 +1,8 @@
 <?php
 $date_city_to = new DateTime($flight->date_city_to);
+$date_city_from = new DateTime($flight->date_city_from);
 $date_to = $date_city_to->format('d.m.Y H:i');
+$date_from = $date_city_from->format('d.m.Y H:i');
 ?>
 <div class="col-xs-12 flight-wrapper padding" data-flight-id="<?=$flight->id;?>">
     <div class="col-xs-12 header">
@@ -37,7 +39,7 @@ $date_to = $date_city_to->format('d.m.Y H:i');
                     </div>
                 <?php endif;?>
                 <div>
-                    <span class="describe"><?=Yii::t('app', 'Flight start time');?> : </span><span class="value"><?=$date_to;?></span>
+                    <span class="describe"><?=Yii::t('app', 'Flight start time');?> : </span><span class="value"><?=$date_from;?></span>
                 </div>
             <?php else:?>
                 <span class="value"><?=Yii::t('app', 'One way');?></span>

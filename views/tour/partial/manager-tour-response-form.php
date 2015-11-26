@@ -173,7 +173,7 @@ use kartik\date\DatePicker;
         return Html::tag('div', Html::label($span.$checkbox . $label), ['class' => 'checkbox-one col-xs-6']);
     }]);?>
 
-<?= $form->field($CreateTourForm, 'night_count')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => 0]);?>
+<?= $form->field($CreateTourForm, 'night_count')->input('number', ['min' => 1, 'max' => 99, 'step' => 1, 'value' => '']);?>
 <?= $form->field($CreateTourForm, 'location')->radioList([0 => '', 1 => '', 2 => '', 3 => ''],
     ['item' => function($index, $label, $name, $checked, $value){
         if($value == 0){

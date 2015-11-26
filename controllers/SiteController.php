@@ -139,7 +139,7 @@ class SiteController extends Controller
             case 2:
             case 3:
                 if((Yii::$app->user->identity->multiple_region_paid == 1) and (!User::isPaymentExpired('multiple_region_paid'))) {
-                    $cities = \app\models\City::find()->where(['country_id' => Yii::$app->user->identity->city->country->country_id])->all();
+                    $cities = \app\models\DepartCity::find()->where(['country_id' => Yii::$app->user->identity->city->country->country_id])->all();
                     $cities_arr = [];
                     foreach($cities as $city){
                         $cities_arr[] = $city->city_id;
