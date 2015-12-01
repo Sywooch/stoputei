@@ -269,7 +269,7 @@ use yii\helpers\Url;
                         'clientOptions' => [
                             'autoclose' => true,
                             'format' => 'yyyy-m-d',
-                            'todayHighlight' => true,
+                            //'todayHighlight' => true,
                             'startDate' => date('Y-M-d', strtotime('today'))
                         ]
                     ]);?>
@@ -298,7 +298,7 @@ use yii\helpers\Url;
                         'clientOptions' => [
                             'autoclose' => true,
                             'format' => 'yyyy-m-d',
-                            'todayHighlight' => true,
+                            //'todayHighlight' => true,
                             'startDate' => date('Y-M-d', strtotime('today')),
                         ]
                     ]);?>

@@ -405,7 +405,9 @@ if($tour->is_hot_tour == 1){
                         <?=$tour->owner->company_street;?>
                     </div>
                     <?php endif;?>
-
+                    <div class="col-xs-12">
+                        <?=$tour->owner->city->name;?>
+                    </div>
                     <?php if(!is_null($tour->owner->company_underground)):?>
                     <div class="col-xs-12">
                         <span><?=Yii::t('app', 'Near underground');?>:</span>

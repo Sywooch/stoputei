@@ -127,9 +127,11 @@ $(function(){
     $(document).on('change', '#createhottourform-flight_included', function(){
         var is_checked = ($(this).attr('checked') == 'checked')?true:false;
         if(is_checked){
+            $('[name="CreateHotTourForm[flight_included]"]').val(0);
             $(this).removeAttr('checked');
             $('.flight-included').addClass('hide');
         }else{
+            $('[name="CreateHotTourForm[flight_included]"]').val(1);
             $(this).attr('checked', 'checked');
             $('.flight-included').removeClass('hide');
         }
@@ -185,6 +187,7 @@ $(function(){
         $('.manager-hot-tour-container .loader-bg').removeClass('hide');
         $.post(url, data).done(function(response){
             var data = $.parseJSON(response);
+            console.log(response);
             $('.manager-hot-tour-container .loader-bg').addClass('hide');
             if(data.status == 'ok') {
                 console.log(data.popup);

@@ -37,12 +37,12 @@ use app\models\User;
                 <?php if((Yii::$app->user->identity->single_region_paid == 1) and (!User::isPaymentExpired('single_region_paid'))):?>
                     <?= Html::a(Yii::t('app', 'Payment package "Region"'), ['/'], ['id' => 'license-region', 'class' => 'license-paid btn btn-default col-xs-5', 'disabled' => true]);?>
                 <?php else:?>
-                    <?= Html::a(Yii::t('app', 'Payment package "Region"'), ['site/payment', 'type' => 'single'], ['id' => 'license-region', 'class' => 'license btn btn-success col-xs-5']);?>
+                    <?= Html::a(Yii::t('app', 'Payment package "Region"'), ['site/payment', 'type' => 'single'], ['id' => 'license-region', 'class' => 'license-paid btn btn-success col-xs-5', 'disabled' => true]);?>
                 <?php endif;?>
                 <?php if((Yii::$app->user->identity->multiple_region_paid == 1) and (!User::isPaymentExpired('multiple_region_paid'))):?>
                     <?= Html::a(Yii::t('app', 'Payment package "Country"'), ['/'], ['id' => 'license-country', 'class' => 'license-paid btn btn-default col-xs-5 pull-right', 'disabled' => true]);?>
                 <?php else:?>
-                    <?= Html::a(Yii::t('app', 'Payment package "Country"'), ['site/payment', 'type' => 'multiple'], ['id' => 'license-country', 'class' => 'license btn btn-success col-xs-5 pull-right']);?>
+                    <?= Html::a(Yii::t('app', 'Payment package "Country"'), ['site/payment', 'type' => 'multiple'], ['id' => 'license-country', 'class' => 'license-paid btn btn-success col-xs-5 pull-right', 'disabled' => true]);?>
                 <?php endif;?>
                 </div>
             </div>
