@@ -787,6 +787,7 @@ class TourController extends Controller
     public function actionCreateOneMoreHotTour(){
         if(Yii::$app->request->isAjax) {
             $CreateHotTourForm = new CreateHotTourForm();
+            $CreateHotTourForm->flight_included = 1;
             $country = new Country();
             $departCity = new DepartCity();
             $destinationDropdown = $country->destinationDropdown();

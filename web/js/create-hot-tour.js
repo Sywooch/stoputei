@@ -219,8 +219,7 @@ $(function(){
         $('[id*="createhottourform"] [type="radio"]:checked').attr('checked', false);
         $('[id*="createhottourform"] [type="checkbox"]:checked').attr('checked', false);
         $('#createhottourform-is_hot_tour').val(1);
-        $('[name="CreateHotTourForm[flight_included]"]').removeAttr('checked');
-        $('.hot-tour.flight-included').addClass('hide');
+        $('[name="CreateHotTourForm[flight_included]"]').val(1);
         $('.badge.tab-badge.create-hot-tour').text('0');
         $('[class*="field-createhottourform"]').removeClass('has-success has-error');
         $('[class*="field-createhottourform"] .help-block').text('');

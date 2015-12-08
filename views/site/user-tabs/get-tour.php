@@ -241,7 +241,7 @@ use dosamigos\datepicker\DatePicker;
                     'options' => ['placeholder' => Yii::t('app', date('Y-M-d'))],
                     'clientOptions' => [
                         'autoclose' => true,
-                        'format' => 'yyyy-m-d',
+                        'format' => 'yyyy-m-dd',
                         'todayHighlight' => true,
                         //'startDate' => date('Y-M-d', strtotime('today')),
                     ]
