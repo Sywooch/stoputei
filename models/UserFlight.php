@@ -18,6 +18,10 @@ class UserFlight extends ActiveRecord
         return $this->hasOne(City::className(), ['city_id' => 'city_id']);
     }
 
+    public function getCityMail(){
+        return $this->hasOne(City::className(), ['city_id' => 'depart_city_id']);
+    }
+
     public function getDepartCity(){
         return $this->hasOne(DepartCity::className(), ['city_id' => 'depart_city_id']);
     }

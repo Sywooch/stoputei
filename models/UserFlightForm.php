@@ -45,6 +45,7 @@ class UserFlightForm extends Model
             ['date_city_to_since', 'compare', 'compareAttribute' => 'date_city_from_since', 'operator'=>'<', 'message' => Yii::t('app','{attribute} must be less than {attribute}.'), 'when' => function ($model) {
                 return $model->way_ticket == 2;
             }, 'whenClient' => "function (attribute, value) {
+                alert($('[name=\"UserFlightForm[way_ticket]\"]').val());
                 return $('[name=\"UserFlightForm[way_ticket]\"]').val() == 2;
             }"],
             [['date_city_from_since', 'depart_country'], 'default', 'value' => null]

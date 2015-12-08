@@ -38,7 +38,7 @@ $this->title = 'StoPutei';
                         'UserFlightForm' => $UserFlightForm,
                         'destinationDropdown' => $destinationDropdown,
                         'departCityDropdown' => $departCityDropdown,
-                        'departCountryDropdown' => $departCountryDropdown,
+                        'departCountryDropdown' => $destinationDropdown,
                         'userFlights' => $this->renderAjax('//flight/partial/user-flight-response-list', ['flights' => $flightsUserResponse]),
                     ]);?>
                 </div>

@@ -146,6 +146,7 @@ class SiteController extends Controller
                     }
                     $CreateTourForm = new CreateTourForm();
                     $CreateHotTourForm = new CreateHotTourForm();
+                    $CreateHotTourForm->flight_included = 1;
                     $ManagerFlightForm = new ManagerFlightForm();
                     $ManagerOffersForm = new ManagerOffersForm();
                     $ManagerHotTourForm = new ManagerHotTourForm();

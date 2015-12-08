@@ -21,7 +21,7 @@ $flightRequestLifeInSec = $timeCycle->flight_request_life*3600;
 ?>
 <h3>Запрос на авиабилет по направлению: <?=$flight->city->name;?> (<?=$flight->country->name;?>)</h3>
 <div>
-    <p> Город вылета : <?=$flight->departCity->name;?> (<?=$flight->departCity->country->name;?>)</p>
+    <p> Город вылета : <?=$flight->cityMail->name;?> (<?=$flight->cityMail->country->name;?>)</p>
     <p> <?=($flight->way_ticket == 2)?'В обе стороны':'В одну сторону';?></p>
     <p> Запрос актуален до : <b><?=Yii::$app->formatter->asDate((time()+$flightRequestLifeInSec),'yyyy-MM-dd');?></b></p>
     <p> Класс : <?=$flight_class;?></p>

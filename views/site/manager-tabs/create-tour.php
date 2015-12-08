@@ -258,7 +258,7 @@ use yii\helpers\Url;
                 <?= $form->field($CreateHotTourForm, 'room_count')->input('number', ['min' => 0, 'max' => 99, 'step' => 1, 'value' => '']);?>
                 <?= $form->field($CreateHotTourForm, 'flight_included')->checkbox();?>
 
-                <div class="hot-tour flight-included <?=($CreateHotTourForm->flight_included==0)?'hide':'';?>">
+                <div class="hot-tour flight-included <?=($CreateHotTourForm->flight_included==1)?'':'hide';?>">
                     <?= $form->field($CreateHotTourForm, 'depart_country_to')->dropDownList($departCountryDropdown,['prompt' => Yii::t('app','Choose destination')]);?>
                     <?= $form->field($CreateHotTourForm, 'depart_city_there')->dropDownList([]);?>
 
@@ -269,7 +269,7 @@ use yii\helpers\Url;
                         'clientOptions' => [
                             'autoclose' => true,
                             'format' => 'yyyy-m-d',
-                            //'todayHighlight' => true,
+                            'todayHighlight' => true,
                             'startDate' => date('Y-M-d', strtotime('today'))
                         ]
                     ]);?>
@@ -298,7 +298,7 @@ use yii\helpers\Url;
                         'clientOptions' => [
                             'autoclose' => true,
                             'format' => 'yyyy-m-d',
-                            //'todayHighlight' => true,
+                            'todayHighlight' => true,
                             'startDate' => date('Y-M-d', strtotime('today')),
                         ]
                     ]);?>
