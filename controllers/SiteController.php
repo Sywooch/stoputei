@@ -188,6 +188,7 @@ class SiteController extends Controller
                 }elseif((Yii::$app->user->identity->single_region_paid == 1) and (!User::isPaymentExpired('single_region_paid'))) {
                     $CreateTourForm = new CreateTourForm();
                     $CreateHotTourForm = new CreateHotTourForm();
+                    $CreateHotTourForm->flight_included = 1;
                     $ManagerFlightForm = new ManagerFlightForm();
                     $ManagerOffersForm = new ManagerOffersForm();
                     $ManagerHotTourForm = new ManagerHotTourForm();
