@@ -49,7 +49,7 @@ $responseCount = $flightResponse->hasResponse($flight->id);
         <div class="col-xs-5">
             <div>
                 <?php if(!is_null($flight->departCity)):?>
-                    <span class="describe"><?=Yii::t('app', 'Depart city to');?> : </span><span class="value"><?=$flight->departCity->name;?></span>
+                    <span class="describe"><?=Yii::t('app', 'Depart city to');?> : </span><span class="value"><?=$flight->departCity->name;?>(<?=$flight->departCity->country->name;?>)</span>
                 <?php endif;?>
             </div>
             <div>

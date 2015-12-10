@@ -59,7 +59,7 @@ switch($flight->flight_class){
         <?php if($flight->departCity):?>
         <div class="field">
             <span class="describe"><?=Yii::t('app', 'Depart city to');?> : </span>
-            <span class="value"><?=$flight->departCity->name;?></span>
+            <span class="value"><?=$flight->departCity->name;?>(<?=$flight->departCity->country->name;?>)</span>
         </div>
         <?php endif;?>
 

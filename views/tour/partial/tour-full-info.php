@@ -261,11 +261,11 @@ if($tour->is_hot_tour == 1){
                         </div>
                             <?php if($tour->voyage_there == 0):?>
                                 <div>
-                                    <span class="value"><?=Yii::t('app', 'Voyage');?></span>
+                                    <span class="value"><?=Yii::t('app', 'Voyage is not direct');?></span>
                                 </div>
                             <?php else:?>
                                 <div>
-                                    <span class="value"><?=Yii::t('app', 'Voyage is not direct');?></span>
+                                    <span class="value"><?=Yii::t('app', 'Voyage to is direct');?></span>
                                 </div>
                             <?php endif;?>
                         <br>
@@ -293,20 +293,17 @@ if($tour->is_hot_tour == 1){
                         <!--Flight to-->
 
                         <!--Flight from-->
-                        <?php if(!is_null($tour->departCityFromThere)):?>
-                        <!--<div>
-                            <span class="field"><?//=Yii::t('app', 'Depart city from there');?> : </span>
-                            <span class="value"><?//=$tour->departCityFromThere->name;?></span>
-                        </div>-->
-                        <?php endif;?>
-                        <!--not show-->
-                        <?php if(false or $tour->voyage_from_there == 0):?>
+                        <?php if($tour->voyage_from_there == 0):?>
                             <?php if(!is_null($tour->voyageThroughCityFromThere)):?>
                             <div>
                                 <span class="field"><?=Yii::t('app', 'Voyage through');?> : </span>
                                 <span class="value"><?=$tour->voyageThroughCityFromThere->name;?></span>
                             </div>
                             <?php endif;?>
+                        <?php else:?>
+                            <span class="field"><?=Yii::t('app', 'Flight back');?> : </span>
+                            <span class="value"><?=Yii::t('app', 'Voyage is direct');?></span>
+                            <!--not show-->
                         <?php endif;?>
                         <div>
                             <span class="field"><?=Yii::t('app', 'Date end from');?> : </span>
