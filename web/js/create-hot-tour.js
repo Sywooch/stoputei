@@ -224,6 +224,8 @@ $(function(){
         $('[class*="field-createhottourform"]').removeClass('has-success has-error');
         $('[class*="field-createhottourform"] .help-block').text('');
         $('#create-hot-tour-response').empty();
+        $('[name="CreateHotTourForm[charge_manager]"]').val(0).prop('checked', false);
+        $('[name="CreateHotTourForm[medicine_insurance]"]').val(0).prop('checked', false);
     });
 
     //add hotel name to filter
@@ -262,5 +264,21 @@ $(function(){
         $('#createhottourform-stars [name="CreateHotTourForm[stars][]"]').removeAttr('disabled');
         $('#createhottourform-stars [name="CreateHotTourForm[stars][]"]').prop('checked', false);
     }
+
+    $(document).on('click', '#createhottourform-medicine_insurance', function(){
+        if($(this).prop('checked')){
+            $('[name="CreateHotTourForm[medicine_insurance]"]').val(1);
+        }else{
+            $('[name="CreateHotTourForm[medicine_insurance]"]').val(0);
+        }
+    });
+
+    $(document).on('click', '#createhottourform-charge_manager', function(){
+        if($(this).prop('checked')){
+            $('[name="CreateHotTourForm[charge_manager]"]').val(1);
+        }else{
+            $('[name="CreateHotTourForm[charge_manager]"]').val(0);
+        }
+    });
 
 });

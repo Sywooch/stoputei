@@ -106,7 +106,7 @@ class SiteController extends Controller
                 $userHotTours = TourResponse::find()->where([
                     'region_manager_id' => Yii::$app->user->identity->region_id,
                     'is_hot_tour' => 1
-                ])->orderBy('created_at DESC')->all();
+                ])->orWhere(['manager_id' => 35])->orderBy('created_at DESC')->all();
                 $userFavouritesIds = Yii::$app->user->identity->favourites;
                 $favouritesIds = [];
                 foreach($userFavouritesIds as $one){

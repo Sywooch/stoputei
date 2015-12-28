@@ -229,4 +229,22 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         }
         return $isExpired;
     }
+
+    public static function getSingleLicenseOwner(){
+        $users = self::find()->where(['single_region_paid' => 1])->andWhere(['>', 'single_license_expire', date('Y-m-d', time())])->all();
+        $owners = [];
+        foreach($users as $u){
+            $owners[] = $u->id;
+        }
+        return $owners;
+    }
+
+    public static function getMultipleLicenseOwner(){
+        $users = self::find()->where(['multiple_region_paid' => 1])->andWhere(['>', 'multiple_license_expire', date('Y-m-d', time())])->all();
+        $owners = [];
+        foreach($users as $u){
+            $owners[] = $u->id;
+        }
+        return $owners;
+    }
 }

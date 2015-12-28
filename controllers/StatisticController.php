@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Country;
 use app\models\FlightResponse;
 use app\models\ManagerStatisticsFlightForm;
 use app\models\ManagerStatisticsTourForm;
@@ -20,13 +21,23 @@ class StatisticController extends Controller
             $model = new ManagerStatisticsTourForm();
             if($model->load(Yii::$app->request->get())){
 
+                if(empty($model->country_id)){
+                    $countries = Country::find()->indexBy('id')->all();
+                    $countries_ids = [];
+                    foreach($countries as $country){
+                        $countries_ids[] = $country->id;
+                    }
+                    $country_id = $countries_ids;
+                }else{
+                    $country_id = $model->country_id;
+                }
                 //period for user's request
                 if($model->request_tour_count != 0) {
                     $period_request = time() - $model->request_tour_count;
                 }else{
                     $period_request = 0;
                 }
-                $query_request = 'created_at >= '.$period_request;
+                $query_request = $period_request;
 
                 //period for manager's response
                 if($model->response_tour_count != 0) {
@@ -34,7 +45,7 @@ class StatisticController extends Controller
                 }else{
                     $period_response = 0;
                 }
-                $query_response = 'created_at >= '.$period_response;
+                $query_response = $period_response;
 
                 //period for manager's hot tour
                 if($model->hot_tour_count != 0) {
@@ -42,29 +53,29 @@ class StatisticController extends Controller
                 }else{
                     $period_hot_tour = 0;
                 }
-                $query_hot_tour = 'created_at >= '.$period_hot_tour;
+                $query_hot_tour = $period_hot_tour;
 
                 $tour_count_all_destination = UserTour::find()->where([
                     'region_owner_id' => Yii::$app->user->identity->region_id,
-                    'country_id' => $model->country_id
+                    'country_id' => $country_id
                 ])->count();
 
                 $tour_count_request = UserTour::find()->where([
                     'region_owner_id' => Yii::$app->user->identity->region_id,
-                    'country_id' => $model->country_id
-                ])->andWhere($query_request)->count();
+                    'country_id' => $country_id
+                ])->andWhere(['>', 'created_at', $query_request])->count();
 
                 $tour_count_response = TourResponse::find()->where([
                     'manager_id' => Yii::$app->user->identity->getId(),
-                    'country_id' => $model->country_id,
+                    'country_id' => $country_id,
                     'is_hot_tour' => 0
-                ])->andWhere($query_response)->count();
+                ])->andWhere(['>', 'created_at', $query_response])->count();
 
                 $tour_count_hot_tour = TourResponse::find()->where([
                     'manager_id' => Yii::$app->user->identity->getId(),
-                    'country_id' => $model->country_id,
+                    'country_id' => $country_id,
                     'is_hot_tour' => 1
-                ])->andWhere($query_hot_tour)->count();
+                ])->andWhere(['>', 'created_at', $query_hot_tour])->count();
 
                 $response = [
                     'status' => 'ok',
@@ -73,6 +84,8 @@ class StatisticController extends Controller
                     'count_requests' => $tour_count_request,
                     'count_responses' => $tour_count_response,
                     'count_hot_tours' => $tour_count_hot_tour,
+                    'model' => $model,
+                    'counties' => $country_id
                 ];
             }else{
                 $response = [
