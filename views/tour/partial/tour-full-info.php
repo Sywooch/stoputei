@@ -261,11 +261,11 @@ if($tour->is_hot_tour == 1){
                         </div>
                             <?php if($tour->voyage_there == 0):?>
                                 <div>
-                                    <span class="value"><?=Yii::t('app', 'Voyage is not direct');?></span>
+                                    <span class="value"><?=Yii::t('app', 'Voyage');?></span>
                                 </div>
                             <?php else:?>
                                 <div>
-                                    <span class="value"><?=Yii::t('app', 'Voyage to is direct');?></span>
+                                    <span class="value"><?=Yii::t('app', 'Voyage is not direct');?></span>
                                 </div>
                             <?php endif;?>
                         <br>
